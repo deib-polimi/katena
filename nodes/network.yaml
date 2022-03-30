@@ -15,4 +15,12 @@ node_types:
       host:
         type: tosca.capabilities.Container
         valid_source_types: [toscachain.nodes.contract] # network can host only smart contracts
-  
+  toscachain.nodes.network.ganache: # set default value for ganache
+    derived_from: toscachain.nodes.network
+    properties:
+      address:
+        description: Host IP and port
+        type: string
+        required: true
+        default: 'localhost:8545'
+# TODO: add more networks
