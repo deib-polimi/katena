@@ -1,4 +1,0 @@
-- hosts: all
-  tasks:
-  - name: deploy
-    script: scrits/deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }}

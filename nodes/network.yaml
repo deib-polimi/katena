@@ -1,13 +1,10 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
-description: ""
 imports:
-  - contract.yaml
-
+- contract.yaml
 
 node_types:
   toscachain.nodes.network: # network can be any type of blockchain (e.g. Eth, L2, Ganache)
-    abstract: true
     derived_from: tosca.nodes.Root
     properties:
       address:
@@ -18,3 +15,4 @@ node_types:
       host:
         type: tosca.capabilities.Container
         valid_source_types: [toscachain.nodes.contract] # network can host only smart contracts
+  
