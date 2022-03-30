@@ -1,11 +1,16 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
-metadata:
-  template_name: "toscachain.nodes.contract"
+imports:
+- network.yaml
 
 node_types:
   toscachain.nodes.contract:
     derived_from: tosca.nodes.Root
+    requirements:
+    - host:
+        capability: tosca.capabilities.Container
+        node: toscachain.nodes.network
+        relationship: tosca.relationships.HostedOn
     properties:
       abi:
         description: path to smart contract ABI
@@ -13,10 +18,6 @@ node_types:
         required: true
       privateKey:
         description: privateKey of the address that should perform the deploy
-        type: string
-        required: true
-      address:
-        description: Host IP and port
         type: string
         required: true
     interfaces:
@@ -32,18 +33,10 @@ node_types:
                   default: { get_property: [SELF, privateKey] }
                 }
               network:
-                { type: string, default: { get_property: [SELF, address] } }
+                { type: string, default: { get_property: [toscachain.nodes.network, address] } }
             implementation:
               primary: playbooks/deploy_contract.yml
               dependencies:
                 - scripts/
                 - contracts/
 
-topology_template:
-  node_templates:
-    demo:
-      type: toscachain.nodes.contract
-      properties:
-        abi: "Demo"
-        privateKey: "0x08816f2ff5ff5bbf6071252b118ffc16c465694087117b3bfa941817eb4a6460"
-        address: "127.0.0.1:8545"
