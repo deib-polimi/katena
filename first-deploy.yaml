@@ -7,9 +7,7 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network
-      properties:
-        address: "127.0.0.1:8545"
+      type: toscachain.nodes.network.ganache
     demo:
       type: toscachain.nodes.contract
       requirements:
