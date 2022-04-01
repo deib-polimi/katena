@@ -2,3 +2,4 @@
 .opera/
 .idea
 deploy.log
+node_modules/
