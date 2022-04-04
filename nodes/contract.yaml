@@ -24,6 +24,10 @@ node_types:
         type: string
         required: true
         default: { get_property: [toscachain.nodes.network, address] }
+    attributes:
+      contract_address: # set after playbook execution
+        type: string
+        description: "Smart contract address when deployed"
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -35,6 +39,8 @@ node_types:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, address] } }
+            outputs:
+              contract_address: [SELF, contract_address]
             implementation:
               primary: playbooks/deploy_contract.yml
               dependencies:

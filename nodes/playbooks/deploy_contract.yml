@@ -4,10 +4,9 @@
     pip: 
       name: web3==5.28.0
   - name: deploy
-    command: ls .
-    register: contract_address
-  - name: deploy
     command: python scripts/deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }}
     register: contract_address
-  - name: print
-    command: echo {{ contract_address.stdout }}
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_address: "{{ contract_address.stdout }}"
