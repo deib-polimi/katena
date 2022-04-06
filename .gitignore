@@ -5,4 +5,4 @@
 node_modules/
 smart-contract-example/
 contracts/
-first-*.yaml
+input.yml
