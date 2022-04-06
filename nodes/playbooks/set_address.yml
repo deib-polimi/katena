@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: install web3
+    pip: 
+      name: web3==5.28.0
+  - name: set address
+    command: python scripts/set_address.py --network {{ network }} --callerAbi {{ caller_abi }} --callerPrivateKey {{ caller_private_key }} --callerAddress {{ caller_address }} --callerAddressSetter {{ caller_address_setter }} --calleeAddress {{ callee_address }} 
+    register: contract_address
