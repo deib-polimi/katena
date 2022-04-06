@@ -1,5 +1,8 @@
 .venv/
 .opera/
 .idea
-deploy.log
+*.log
 node_modules/
+smart-contract-example/
+contracts/
+first-*.yaml
