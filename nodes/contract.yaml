@@ -2,6 +2,7 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
   - network.yaml
+  - relationships.yaml
 
 node_types:
   toscachain.nodes.contract:
@@ -11,6 +12,14 @@ node_types:
           capability: tosca.capabilities.Container
           node: toscachain.nodes.network
           relationship: tosca.relationships.HostedOn
+          occurrences: [1, 1] # a node smart contract is deployed in only one network at time
+      - calls: # a contract can call other contracts
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.calls
+          occurrences: [ 0, UNBOUNDED ]
+    capabilities:
+      callable:
+        type: tosca.capabilities.Callable
     properties:
       abi:
         description: path to smart contract ABI
@@ -20,12 +29,12 @@ node_types:
         description: privateKey of the address that should perform the deploy
         type: string
         required: true
-      address:
+      network:
         type: string
         required: true
         default: { get_property: [toscachain.nodes.network, address] }
     attributes:
-      contract_address: # set after playbook execution
+      contractAddress: # set after playbook execution
         type: string
         description: "Smart contract address when deployed"
     interfaces:
@@ -38,9 +47,9 @@ node_types:
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
-                { type: string, default: { get_property: [SELF, address] } }
+                { type: string, default: { get_property: [SELF, network] } }
             outputs:
-              contract_address: [SELF, contract_address]
+              contract_address: [SELF, contractAddress]
             implementation:
               primary: playbooks/deploy_contract.yml
               dependencies:

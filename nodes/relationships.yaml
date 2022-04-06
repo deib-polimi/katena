@@ -6,32 +6,38 @@ imports:
 capability_types:
   tosca.capabilities.Callable:
     derived_from: tosca.capabilities.Container
-    valid_source_types: [toscachain.nodes.contract]
-    valid_target_types: [toscachain.nodes.contract]
+    # valid_source_types: [toscachain.nodes.contract]
+    
 
 relationship_types:
-  toscachain.relationships.calls:
+  tosca.relationships.calls:
     derived_from: tosca.relationships.DependsOn
-    valid_target_types: [tosca.capabilities.Callable]
+    # TODO: set valid target type
+    # valid_target_types: [toscachain.nodes.contract]
+    properties:
+      # TODO: maybe could be an array of strings
+      modifier:
+        description: Method name to set callee address
+        type: string
+        required: true
     interfaces:
-      Standard:
-        type: tosca.interfaces.node.lifecycle.Standard
+      Configure:
+        type: tosca.interfaces.relationship.Configure
         operations:
-          create:
+          post_configure_source:
             inputs:
               caller_address:
-                { type: string, default: { get_property: [TARGET, address] } }
-              caller_privateKey:
-                {
-                  type: string,
-                  default: { get_property: [TARGET, privateKey] },
-                }
+                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+              caller_private_key:
+                { type: string, default: { get_property: [SOURCE, privateKey] } }
               network:
-                { type: string, default: { get_property: [TARGET, address] } }
+                { type: string, default: { get_property: [SOURCE, network] } }
               caller_abi:
-                { type: string, default: { get_property: [TARGET, abi] } }
+                { type: string, default: { get_property: [SOURCE, abi] } }
+              caller_address_setter:
+                { type: string, default: { get_property: [SELF, modifier] } }
               callee_address:
-                { type: string, default: { get_property: [HOST, address] } }
+                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
             implementation:
               primary: playbooks/set_address.yml
               dependencies:
