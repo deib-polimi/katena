@@ -1,0 +1,34 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+
+topology_template:
+  node_templates:
+    ganache:
+      type: toscachain.nodes.network.ganache
+    callee:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      properties:
+        abi: "Callee"
+        privateKey: { get_input: UserKeyGanache }
+    caller:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - calls: 
+          node: callee
+          capability: tosca.capabilities.Callable
+          relationship: increment
+      properties:
+        abi: "Caller"
+        privateKey: { get_input: UserKeyGanache }
+
+  relationship_templates:
+    increment:
+      type: tosca.relationships.calls
+      properties:
+        modifier: "setCallee"
