@@ -1,11 +1,10 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
-  - network.yaml
-  - relationships.yaml
+  - contract.yaml
 
-node_types:
-  toscachain.nodes.contract:
+data_types:
+  toscachain.data.facets:
     derived_from: tosca.nodes.Root
     requirements:
       - host:
@@ -52,33 +51,6 @@ node_types:
               contract_address: [SELF, contractAddress]
             implementation:
               primary: playbooks/deploy_contract.yml
-              dependencies:
-                - scripts/
-                - contracts/
-
-  toscachain.nodes.diamond:
-    derived_from: toscachain.nodes.contract
-    requirements:
-      - facets:
-        capability: tosca.capabilities.Callable
-        relationship: tosca.relationships.facet
-        occurrences: [0, UNBOUNDED]
-    interfaces:
-      Standard:
-        type: tosca.interfaces.node.lifecycle.Standard
-        operations:
-          create:
-            inputs:
-              abi: { type: string, default: { get_property: [SELF, abi] } }
-              privateKey:
-                { type: string, default: { get_property: [SELF, privateKey] } }
-              network:
-                { type: string, default: { get_property: [SELF, network] } }
-              facets: { type: map, default: { get_property: [SELF, facets] } }
-            outputs:
-              contract_address: [SELF, contractAddress]
-            implementation:
-              primary: playbooks/diamond_contract.yml
               dependencies:
                 - scripts/
                 - contracts/
