@@ -15,7 +15,7 @@ topology_template:
       properties:
         abi: "CalleeLocalParams"
         privateKey: { get_input: UserKeyGanache }
-        constructorParameters:
+        parameters:
           - 1
           - "HelloWorld"
           - "0x0000000000000000000000000000000000000000"

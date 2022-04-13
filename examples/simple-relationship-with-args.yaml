@@ -19,20 +19,21 @@ topology_template:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
-      - calls:
-          node: callee
-          capability: tosca.capabilities.Callable
-          relationship: increment
+      - constructorCalls: callee
+          # node: callee
+          # capability: tosca.capabilities.Callable
+          # relationship: increment
       properties:
-        abi: "Caller"
+        abi: "CallerConstructor"
         privateKey: { get_input: UserKeyGanache }
+        parameters:
+          - 5
+          - { get_attribute: [SELF, constructorCalls, contractAddress] }
 
   relationship_templates:
     increment:
-      type: tosca.relationships.calls
-      properties:
-        modifier: "setCallee"
-
+      type: tosca.relationships.callsConstructor
+  
   inputs:
     UserKeyGanache:
       type: string
