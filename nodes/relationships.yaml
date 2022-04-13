@@ -10,10 +10,12 @@ capability_types:
     
 
 relationship_types:
-  tosca.relationships.calls:
+  tosca.relationships.callsConstructor:
     derived_from: tosca.relationships.DependsOn
     # TODO: set valid target type
     # valid_target_types: [toscachain.nodes.contract]
+  tosca.relationships.calls:
+    derived_from: tosca.relationships.callsConstructor
     properties:
       # TODO: maybe could be an array of strings
       modifier:
