@@ -17,6 +17,10 @@ node_types:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.calls
           occurrences: [ 0, UNBOUNDED ]
+      - constructorCalls:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [ 0, UNBOUNDED ]
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -32,7 +36,11 @@ node_types:
       network:
         type: string
         required: true
-        default: { get_property: [toscachain.nodes.network, address] }
+        default: { get_property: [SELF, host, address] }
+      parameters:
+        type: list
+        description: arguments to pass in smart contract constructor. The order must reflect the one in the contract signature.
+        default: []
     attributes:
       contractAddress: # set after playbook execution
         type: string
@@ -48,6 +56,8 @@ node_types:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
+              contract_parameters:
+                { type: list, default: { get_property: [SELF, parameters] } }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
