@@ -32,3 +32,8 @@ topology_template:
       type: tosca.relationships.calls
       properties:
         modifier: "setCallee"
+
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
