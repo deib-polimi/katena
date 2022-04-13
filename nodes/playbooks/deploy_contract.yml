@@ -4,7 +4,7 @@
     pip: 
       name: web3==5.28.0
   - name: deploy
-    command: python scripts/deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }}
+    command: python scripts/deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --params {{ contract_parameters | join(" ") }}
     register: contract_address
   - name: Set attributes
     set_stats:
