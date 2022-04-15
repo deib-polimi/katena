@@ -3,6 +3,7 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 imports:
   - network.yaml
   - relationships.yaml
+  - capabilities.yaml
 
 node_types:
   toscachain.nodes.contract:
@@ -33,6 +34,10 @@ node_types:
         description: privateKey of the address that should perform the deploy
         type: string
         required: true
+      owner:
+        description: owner wallet address
+        type: string
+        required: false
       network:
         type: string
         required: true
@@ -69,9 +74,9 @@ node_types:
   toscachain.nodes.diamond:
     derived_from: toscachain.nodes.contract
     requirements:
-      - facets:
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.calls
+      - facet:
+          capability: tosca.capabilities.Facet
+          relationship: tosca.relationships.facet
           occurrences: [0, UNBOUNDED]
       - cut:
           capability: tosca.capabilities.Callable
@@ -90,6 +95,8 @@ node_types:
               abi: { type: string, default: { get_property: [SELF, abi] } }
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
+              owner:
+                { type: string, default: { get_property: [SELF, owner]}}
               network:
                 { type: string, default: { get_property: [SELF, network] } }
               cutAbi:
@@ -113,3 +120,15 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
+  toscachain.nodes.diamond.facet:
+    derived_from: toscachain.nodes.contract
+    capabilities:
+      facet:
+        type: tosca.capabilities.Facet
+    # properties:
+      # functions:
+      #   type: list
+      #   description: functions to include in facet
+      #   required: true
+      #   default: []
+

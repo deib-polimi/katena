@@ -2,12 +2,7 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
   - contract.yaml
-
-capability_types:
-  tosca.capabilities.Callable:
-    derived_from: tosca.capabilities.Container
-    # valid_source_types: [toscachain.nodes.contract]
-    
+  - capabilities.yaml   
 
 relationship_types:
   tosca.relationships.callsConstructor:
@@ -47,32 +42,33 @@ relationship_types:
                 - contracts/
   tosca.relationships.facet:
     derived_from: tosca.relationships.DependsOn
+    valid_target_types: [tosca.capabilities.Facet]
     properties:
       # TODO: maybe could be an array of strings
       exclude:
         description: facet functions to exclude
         type: list 
-        required: true
+        default: []
     interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
         operations:
           post_configure_source:
             inputs:
-              caller_address:
+              diamond_address:
                 { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
-              caller_private_key:
+              diamond_private_key:
                 { type: string, default: { get_property: [SOURCE, privateKey] } }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
-              caller_abi:
-                { type: string, default: { get_property: [SOURCE, abi] } }
-              caller_address_setter:
-                { type: string, default: { get_property: [SELF, modifier] } }
-              callee_address:
+              cut_abi:
+                { type: string, default: { get_property: [SOURCE, cut, abi] } }
+              facet_address:
                 { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+              facet_abi:
+                { type: string, default: { get_attribute: [TARGET, abi] } }
             implementation:
-              primary: playbooks/set_address.yml
+              primary: playbooks/set_facet.yml
               dependencies:
                 - scripts/
                 - contracts/

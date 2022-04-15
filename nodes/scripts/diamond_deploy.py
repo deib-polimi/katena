@@ -1,4 +1,3 @@
-from dis import Bytecode
 from enum import Enum
 from typing import Any
 from eth_utils import function_abi_to_4byte_selector
@@ -31,6 +30,7 @@ parser.add_argument('--cutAbi', type=str, help='diamond cut ABI')
 parser.add_argument('--cutAddress', type=str, help='diamond cut address')
 parser.add_argument('--loupeAbi', type=str, help='diamond loupe ABI')
 parser.add_argument('--loupeAddress', type=str, help='diamond loupe address')
+parser.add_argument('--owner', type=str, help='owner wallet address')
 
 args = parser.parse_args()
 
@@ -55,11 +55,10 @@ for contract_abi, contract_address in contracts.items():
     
     for function in contract.abi:
         if function["type"] == 'function':
-            print(function)
             selector = function_abi_to_4byte_selector(function)
             selectors.append(selector)
     diamond_cut.append([contract_address, FacetAction.Add.value, selectors])
 
-tx_hash = diamond.constructor(diamond_cut).transact()
+tx_hash = diamond.constructor(diamond_cut, args.owner).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print(tx_receipt.contractAddress)

@@ -4,7 +4,7 @@
     pip: 
       name: web3==5.28.0
   - name: deploy
-    command: python scripts/diamond_deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --cutAbi {{ cutAbi }} --cutAddress {{ cutAddress }} --loupeAbi {{ loupeAbi}} --loupeAddress {{ loupeAddress }}
+    command: python scripts/diamond_deploy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --cutAbi {{ cutAbi }} --cutAddress {{ cutAddress }} --loupeAbi {{ loupeAbi}} --loupeAddress {{ loupeAddress }} --owner {{ owner }}
     register: contract_address
   - name: Set attributes
     set_stats:
