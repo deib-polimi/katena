@@ -109,7 +109,7 @@ node_types:
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
-              primary: playbooks/diamond_contract.yml
+              primary: playbooks/diamond_contract_deploy.yml
               dependencies:
                 - scripts/
                 - contracts/
