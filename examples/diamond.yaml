@@ -8,31 +8,49 @@ topology_template:
   node_templates:
     ganache:
       type: toscachain.nodes.network.ganache
-    caller:
+    # facet1:
+    #   type: toscachain.nodes.contract
+    #   requirements:
+    #   - host: ganache
+    #   properties:
+    #     abi: "Callee"
+    #     privateKey: { get_input: UserKeyGanache }
+    # facet2:
+    #   type: toscachain.nodes.contract
+    #   requirements:
+    #   - host: ganache
+    #   properties:
+    #     abi: "Callee"
+    #     privateKey: { get_input: UserKeyGanache }
+    diamondCut:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
       properties:
-        abi: "Caller"
+        abi: "DiamondCutFacet"
         privateKey: { get_input: UserKeyGanache }
-    Diamond: 
+    diamondLoupe:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      properties:
+        abi: "DiamondLoupeFacet"
+        privateKey: { get_input: UserKeyGanache }
+    myDiamond:
       type: toscachain.nodes.diamond
       requirements:
       - host: ganache
-      - facets:
-          node: caller
-          capability: tosca.capabilities.Callable
-          relationship: callerFacet
+      - cut: diamondCut
+      - loupe: diamondLoupe
       properties:
-        abi: "Caller"
+        abi: "Diamond"
         privateKey: { get_input: UserKeyGanache }
+        
 
   relationship_templates:
-    callerFacet:
-      type: tosca.relationships.facet
-      properties:
-        exclude: ["a"]
-      
+    increment:
+      type: tosca.relationships.callsConstructor
+  
   inputs:
     UserKeyGanache:
       type: string

@@ -16,11 +16,11 @@ node_types:
       - calls: # a contract can call other contracts
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.calls
-          occurrences: [ 0, UNBOUNDED ]
+          occurrences: [0, UNBOUNDED]
       - constructorCalls:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
-          occurrences: [ 0, UNBOUNDED ]
+          occurrences: [0, UNBOUNDED]
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -70,9 +70,17 @@ node_types:
     derived_from: toscachain.nodes.contract
     requirements:
       - facets:
-        capability: tosca.capabilities.Callable
-        relationship: tosca.relationships.facet
-        occurrences: [0, UNBOUNDED]
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.calls
+          occurrences: [0, UNBOUNDED]
+      - cut:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [1, 1]
+      - loupe:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [1, 1]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -84,7 +92,20 @@ node_types:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
-              facets: { type: map, default: { get_property: [SELF, facets] } }
+              cutAbi:
+                { type: string, default: { get_property: [SELF, cut, abi] } }
+              cutAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, cut, contractAddress] },
+                }
+              loupeAbi:
+                { type: string, default: { get_property: [SELF, loupe, abi] } }
+              loupeAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, loupe, contractAddress] },
+                }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:

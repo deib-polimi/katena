@@ -20,9 +20,6 @@ topology_template:
       requirements:
       - host: ganache
       - constructorCalls: callee
-          # node: callee
-          # capability: tosca.capabilities.Callable
-          # relationship: increment
       properties:
         abi: "CallerConstructor"
         privateKey: { get_input: UserKeyGanache }
