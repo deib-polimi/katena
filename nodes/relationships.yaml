@@ -40,6 +40,44 @@ relationship_types:
               dependencies:
                 - scripts/
                 - contracts/
+          target_changed:
+            inputs:
+              caller_address:
+                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+              caller_private_key:
+                { type: string, default: { get_property: [SOURCE, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SOURCE, network] } }
+              caller_abi:
+                { type: string, default: { get_property: [SOURCE, abi] } }
+              caller_address_setter:
+                { type: string, default: { get_property: [SELF, modifier] } }
+              callee_address:
+                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+            implementation:
+              primary: playbooks/set_address.yml
+              dependencies:
+                - scripts/
+                - contracts/
+          remove_target:
+            inputs:
+              caller_address:
+                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+              caller_private_key:
+                { type: string, default: { get_property: [SOURCE, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SOURCE, network] } }
+              caller_abi:
+                { type: string, default: { get_property: [SOURCE, abi] } }
+              caller_address_setter:
+                { type: string, default: { get_property: [SELF, modifier] } }
+              callee_address:
+                { type: string, default: '0x0000000000000000000000000000000000000000'}
+            implementation:
+              primary: playbooks/set_address.yml
+              dependencies:
+                - scripts/
+                - contracts/
   tosca.relationships.facet:
     derived_from: tosca.relationships.DependsOn
     valid_target_types: [tosca.capabilities.Facet]
