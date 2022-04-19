@@ -38,6 +38,7 @@ node_types:
         description: owner wallet address
         type: string
         required: false
+        default: ""
       network:
         type: string
         required: true
@@ -46,6 +47,16 @@ node_types:
         type: list
         description: arguments to pass in smart contract constructor. The order must reflect the one in the contract signature.
         default: []
+      destroy:
+        type: string
+        description: function to call for self destruct the contract
+        required: false
+        default: ""
+      refund: 
+        type: string
+        description: address to refund for self destructing the contract
+        required: false
+        default: { get_property: [SELF, owner] }
     attributes:
       contractAddress: # set after playbook execution
         type: string
@@ -70,7 +81,24 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-
+          delete:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              address:
+                { type: string, default: { get_attribute: [SELF, contractAddress] } }
+              destroy_function:
+                { type: string, default: { get_property: [SELF, destroy] } }
+              refund:
+                { type: string, default: { get_property: [SELF, refund] } }
+            implementation:
+              primary: playbooks/delete_contract.yml
+              dependencies:
+                - scripts/
+                - contracts/
   toscachain.nodes.diamond:
     derived_from: toscachain.nodes.contract
     requirements:

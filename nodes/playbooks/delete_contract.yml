@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+  - name: install web3
+    pip: 
+      name: web3==5.28.0
+  - name: deploy
+    command: python scripts/destroy.py --network {{ network }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --address {{ address }} --destroyFunction {{ destroy_function }} --refund {{ refund }}
