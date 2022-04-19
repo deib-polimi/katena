@@ -2,18 +2,15 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
   - contract.yaml
-
-capability_types:
-  tosca.capabilities.Callable:
-    derived_from: tosca.capabilities.Container
-    # valid_source_types: [toscachain.nodes.contract]
-    
+  - capabilities.yaml   
 
 relationship_types:
-  tosca.relationships.calls:
+  tosca.relationships.callsConstructor:
     derived_from: tosca.relationships.DependsOn
     # TODO: set valid target type
     # valid_target_types: [toscachain.nodes.contract]
+  tosca.relationships.calls:
+    derived_from: tosca.relationships.callsConstructor
     properties:
       # TODO: maybe could be an array of strings
       modifier:
@@ -40,6 +37,38 @@ relationship_types:
                 { type: string, default: { get_attribute: [TARGET, contractAddress] } }
             implementation:
               primary: playbooks/set_address.yml
+              dependencies:
+                - scripts/
+                - contracts/
+  tosca.relationships.facet:
+    derived_from: tosca.relationships.DependsOn
+    valid_target_types: [tosca.capabilities.Facet]
+    properties:
+      # TODO: maybe could be an array of strings
+      exclude:
+        description: facet functions to exclude
+        type: list 
+        default: []
+    interfaces:
+      Configure:
+        type: tosca.interfaces.relationship.Configure
+        operations:
+          post_configure_source:
+            inputs:
+              diamond_address:
+                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+              diamond_private_key:
+                { type: string, default: { get_property: [SOURCE, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SOURCE, network] } }
+              cut_abi:
+                { type: string, default: { get_property: [SOURCE, cut, abi] } }
+              facet_address:
+                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+              facet_abi:
+                { type: string, default: { get_attribute: [TARGET, abi] } }
+            implementation:
+              primary: playbooks/set_facet.yml
               dependencies:
                 - scripts/
                 - contracts/

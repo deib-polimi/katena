@@ -3,6 +3,7 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 imports:
   - network.yaml
   - relationships.yaml
+  - capabilities.yaml
 
 node_types:
   toscachain.nodes.contract:
@@ -16,7 +17,11 @@ node_types:
       - calls: # a contract can call other contracts
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.calls
-          occurrences: [ 0, UNBOUNDED ]
+          occurrences: [0, UNBOUNDED]
+      - constructorCalls:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [0, UNBOUNDED]
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -29,10 +34,18 @@ node_types:
         description: privateKey of the address that should perform the deploy
         type: string
         required: true
+      owner:
+        description: owner wallet address
+        type: string
+        required: false
       network:
         type: string
         required: true
-        default: { get_property: [toscachain.nodes.network, address] }
+        default: { get_property: [SELF, host, address] }
+      parameters:
+        type: list
+        description: arguments to pass in smart contract constructor. The order must reflect the one in the contract signature.
+        default: []
     attributes:
       contractAddress: # set after playbook execution
         type: string
@@ -48,6 +61,8 @@ node_types:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
+              contract_parameters:
+                { type: list, default: { get_property: [SELF, parameters] } }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
@@ -55,3 +70,65 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
+
+  toscachain.nodes.diamond:
+    derived_from: toscachain.nodes.contract
+    requirements:
+      - facet:
+          capability: tosca.capabilities.Facet
+          relationship: tosca.relationships.facet
+          occurrences: [0, UNBOUNDED]
+      - cut:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [1, 1]
+      - loupe:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [1, 1]
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          create:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              owner:
+                { type: string, default: { get_property: [SELF, owner]}}
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              cutAbi:
+                { type: string, default: { get_property: [SELF, cut, abi] } }
+              cutAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, cut, contractAddress] },
+                }
+              loupeAbi:
+                { type: string, default: { get_property: [SELF, loupe, abi] } }
+              loupeAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, loupe, contractAddress] },
+                }
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: playbooks/diamond_contract_deploy.yml
+              dependencies:
+                - scripts/
+                - contracts/
+  toscachain.nodes.diamond.facet:
+    derived_from: toscachain.nodes.contract
+    capabilities:
+      facet:
+        type: tosca.capabilities.Facet
+    # properties:
+      # functions:
+      #   type: list
+      #   description: functions to include in facet
+      #   required: true
+      #   default: []
+
