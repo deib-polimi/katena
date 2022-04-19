@@ -8,15 +8,15 @@ topology_template:
   node_templates:
     ganache:
       type: toscachain.nodes.network.ganache
-    # facet1:
-    #   type: toscachain.nodes.contract
-    #   requirements:
-    #   - host: ganache
-    #   properties:
-    #     abi: "Callee"
-    #     privateKey: { get_input: UserKeyGanache }
+    facet1:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+      - host: ganache
+      properties:
+        abi: "Callee"
+        privateKey: { get_input: UserKeyGanache }
     # facet2:
-    #   type: toscachain.nodes.contract
+    #   type: toscachain.nodes.diamond.facet
     #   requirements:
     #   - host: ganache
     #   properties:
@@ -42,16 +42,17 @@ topology_template:
       - host: ganache
       - cut: diamondCut
       - loupe: diamondLoupe
+      - facet: facet1
+      # - facet: facet2
       properties:
         abi: "Diamond"
         privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet}
         
-
-  relationship_templates:
-    increment:
-      type: tosca.relationships.callsConstructor
-  
   inputs:
     UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
       type: string
       required: true
