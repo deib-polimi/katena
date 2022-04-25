@@ -110,3 +110,41 @@ relationship_types:
               dependencies:
                 - scripts/
                 - contracts/
+          # target_changed:
+          #   inputs:
+          #     diamond_address:
+          #       { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+          #     diamond_private_key:
+          #       { type: string, default: { get_property: [SOURCE, privateKey] } }
+          #     network:
+          #       { type: string, default: { get_property: [SOURCE, network] } }
+          #     cut_abi:
+          #       { type: string, default: { get_property: [SOURCE, cut, abi] } }
+          #     facet_address:
+          #       { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+          #     facet_abi:
+          #       { type: string, default: { get_attribute: [TARGET, abi] } }
+          #   implementation:
+          #     primary: playbooks/change_facet.yml
+          #     dependencies:
+          #       - scripts/
+          #       - contracts/
+          remove_target:
+            inputs:
+              diamond_address:
+                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+              diamond_private_key:
+                { type: string, default: { get_property: [SOURCE, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SOURCE, network] } }
+              cut_abi:
+                { type: string, default: { get_property: [SOURCE, cut, abi] } }
+              facet_address:
+                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+              facet_abi:
+                { type: string, default: { get_attribute: [TARGET, abi] } }
+            implementation:
+              primary: playbooks/delete_facet.yml
+              dependencies:
+                - scripts/
+                - contracts/
