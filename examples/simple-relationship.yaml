@@ -8,13 +8,19 @@ topology_template:
   node_templates:
     ganache:
       type: toscachain.nodes.network.ganache
+    userWallet: 
+      type: toscachain.nodes.network
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
     calleeParam:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
+      - wallet: userWallet
       properties:
         abi: "CalleeLocalParams"
-        privateKey: { get_input: UserKeyGanache }
         parameters:
           - 1
           - "HelloWorld"
@@ -23,13 +29,13 @@ topology_template:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
+      - wallet: userWallet
       - calls:
           node: calleeParam
           capability: tosca.capabilities.Callable
           relationship: increment
       properties:
         abi: "Caller"
-        privateKey: { get_input: UserKeyGanache }
 
   relationship_templates:
     increment:

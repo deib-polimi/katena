@@ -7,3 +7,4 @@ smart-contract-example/
 contracts/
 input.yml
 .vscode/
+nodes/benchmark/
