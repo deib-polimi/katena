@@ -4,6 +4,7 @@ imports:
   - network.yaml
   - relationships.yaml
   - capabilities.yaml
+  - wallet.yaml
 
 node_types:
   toscachain.nodes.contract:
@@ -22,6 +23,11 @@ node_types:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
           occurrences: [0, UNBOUNDED]
+      - wallet:
+          capability: tosca.capabilities.Container 
+          node: toscachain.nodes.wallet
+          relationship: tosca.relationships.HostedOn
+          occurrences: [1, 1]   
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -34,11 +40,12 @@ node_types:
         description: privateKey of the address that should perform the deploy
         type: string
         required: true
+        default: {get_property: [SELF, wallet, privateKey]}
       owner:
         description: owner wallet address
         type: string
         required: false
-        default: ""
+        default: {get_property: [SELF, wallet, owner]}
       network:
         type: string
         required: true

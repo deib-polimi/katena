@@ -8,14 +8,20 @@ topology_template:
   node_templates:
     ganache:
       type: toscachain.nodes.network.ganache
+    userWallet: 
+      type: toscachain.nodes.network
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet}
     Destroy: 
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
+      - wallet: userWallet
       properties:
         abi: "Destroy"
-        privateKey: { get_input: UserKeyGanache }
-        owner: { get_input: UserWallet}
         destroy: destroySmartContract
       
   inputs:

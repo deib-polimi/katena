@@ -8,21 +8,27 @@ topology_template:
   node_templates:
     ganache:
       type: toscachain.nodes.network.ganache
+    userWallet: 
+      type: toscachain.nodes.network
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
     callee:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
+      - wallet: userWallet
       properties:
         abi: "Callee"
-        privateKey: { get_input: UserKeyGanache }
     caller:
       type: toscachain.nodes.contract
       requirements:
       - host: ganache
+      - wallet: userWallet
       - constructorCalls: callee
       properties:
         abi: "CallerConstructor"
-        privateKey: { get_input: UserKeyGanache }
         parameters:
           - 5
           - { get_attribute: [SELF, constructorCalls, contractAddress] }
