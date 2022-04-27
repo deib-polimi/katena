@@ -7,7 +7,7 @@ imports:
   - wallet.yaml
 
 node_types:
-  toscachain.nodes.contract:
+  toscachain.nodes.library:
     derived_from: tosca.nodes.Root
     requirements:
       - host:
@@ -15,27 +15,11 @@ node_types:
           node: toscachain.nodes.network
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] # a node smart contract is deployed in only one network at time
-      - calls: # a contract can call other contracts
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.calls
-          occurrences: [0, UNBOUNDED]
-      - constructorCalls:
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.callsConstructor
-          occurrences: [0, UNBOUNDED]
       - wallet:
           capability: tosca.capabilities.Container 
           node: toscachain.nodes.wallet
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] 
-      - libraries:  
-          capability: tosca.capabilities.Container 
-          node: toscachain.nodes.contract
-          relationship: tosca.relationships.libraryLinkage
-          occurrences: [0, UNBOUNDED] 
-    capabilities:
-      callable:
-        type: tosca.capabilities.Callable
     properties:
       abi:
         description: path to smart contract ABI
@@ -46,19 +30,77 @@ node_types:
         type: string
         required: true
         default: {get_property: [SELF, wallet, privateKey]}
-      owner:
-        description: owner wallet address
-        type: string
-        required: false
-        default: {get_property: [SELF, wallet, owner]}
       network:
         type: string
         required: true
-        default: { get_property: [SELF, host, address] }
+        default: { get_property: [SELF, host, address] } 
+    attributes:
+      contractAddress: # set after playbook execution
+        type: string
+        description: 'Smart contract address when deployed'
+      bytecode:
+        type: string
+        description: 'contract bytecode'
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          create:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+            outputs:
+              contract_bytecode: [SELF, bytecode]
+            implementation:
+              primary: playbooks/load_bytecode.yml
+              dependencies:
+                - scripts/
+                - contracts/
+          configure:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              contract_parameters: { type: list, default: [] }
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: playbooks/deploy_library.yml
+              dependencies:
+                - scripts/
+                - contracts/
+
+  toscachain.nodes.contract:
+    derived_from: toscachain.nodes.library
+    requirements:
+      - calls: # a contract can call other contracts
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.calls
+          occurrences: [0, UNBOUNDED]
+      - constructorCalls:
+          capability: tosca.capabilities.Callable
+          relationship: tosca.relationships.callsConstructor
+          occurrences: [0, UNBOUNDED]
+      - libraries:  
+          capability: tosca.capabilities.Container 
+          node: toscachain.nodes.library
+          relationship: tosca.relationships.libraryLinkage
+          occurrences: [0, UNBOUNDED] 
+    capabilities:
+      callable:
+        type: tosca.capabilities.Callable
+    properties:
       parameters:
         type: list
         description: arguments to pass in smart contract constructor. The order must reflect the one in the contract signature.
         default: []
+      owner:
+        description: owner wallet address
+        type: string
+        required: false
+        default: {get_property: [SELF, wallet, owner]} 
       destroy:
         type: string
         description: function to call for self destruct the contract
@@ -69,13 +111,6 @@ node_types:
         description: address to refund for self destructing the contract
         required: false
         default: { get_property: [SELF, owner] }
-    attributes:
-      contractAddress: # set after playbook execution
-        type: string
-        description: 'Smart contract address when deployed'
-      bytecode:
-        type: string
-        description: 'contract bytecode'
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
