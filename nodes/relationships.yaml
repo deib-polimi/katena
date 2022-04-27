@@ -78,6 +78,24 @@ relationship_types:
               dependencies:
                 - scripts/
                 - contracts/
+  tosca.relationships.libraryLinkage:
+    derived_from: tosca.relationships.DependsOn
+    interfaces: 
+      Configure:
+        type: tosca.interfaces.relationship.Configure
+        operations:
+          pre_configure_source:
+            inputs:
+              library: {type: string, default: {get_property: [TARGET, abi]}}
+              library_address: {type: string, default: {get_attribute: [TARGET, contractAddress]}}
+              bytecode: { type: string, default: { get_attribute: [SOURCE, bytecode]}}
+            outputs:
+              contract_bytecode: [SOURCE, bytecode]
+            implementation:
+              primary: playbooks/link_library.yml
+              dependencies:
+                - scripts/
+                - contracts/
   tosca.relationships.facet:
     derived_from: tosca.relationships.DependsOn
     valid_target_types: [tosca.capabilities.Facet]

@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+  
+  - name: install web3
+    pip: 
+      name: py-solc-x==1.1.1
+  - name: install web3
+    pip: 
+      name: web3==5.28.0
+  - name: deploy
+    command: python scripts/link_library.py --library {{ library }} --bytecode {{ bytecode }} --libraryAddress {{ library_address }}
+    register: contract_bytecode
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_bytecode: "{{ contract_bytecode.stdout }}"

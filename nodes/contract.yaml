@@ -27,7 +27,12 @@ node_types:
           capability: tosca.capabilities.Container 
           node: toscachain.nodes.wallet
           relationship: tosca.relationships.HostedOn
-          occurrences: [1, 1]   
+          occurrences: [1, 1] 
+      - libraries:  
+          capability: tosca.capabilities.Container 
+          node: toscachain.nodes.contract
+          relationship: tosca.relationships.libraryLinkage
+          occurrences: [0, UNBOUNDED] 
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -67,7 +72,10 @@ node_types:
     attributes:
       contractAddress: # set after playbook execution
         type: string
-        description: "Smart contract address when deployed"
+        description: 'Smart contract address when deployed'
+      bytecode:
+        type: string
+        description: 'contract bytecode'
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -75,6 +83,17 @@ node_types:
           create:
             inputs:
               abi: { type: string, default: { get_property: [SELF, abi] } }
+            outputs:
+              contract_bytecode: [SELF, bytecode]
+            implementation:
+              primary: playbooks/load_bytecode.yml
+              dependencies:
+                - scripts/
+                - contracts/
+          configure:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
@@ -125,7 +144,7 @@ node_types:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
         operations:
-          create:
+          configure:
             inputs:
               abi: { type: string, default: { get_property: [SELF, abi] } }
               privateKey:
@@ -134,6 +153,7 @@ node_types:
                 { type: string, default: { get_property: [SELF, owner]}}
               network:
                 { type: string, default: { get_property: [SELF, network] } }
+              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
               cutAbi:
                 { type: string, default: { get_property: [SELF, cut, abi] } }
               cutAddress:

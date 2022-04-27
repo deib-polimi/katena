@@ -8,3 +8,4 @@ contracts/
 input.yml
 .vscode/
 nodes/benchmark/
+nodes/contracts-try/
