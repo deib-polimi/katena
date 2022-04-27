@@ -1,25 +1,8 @@
-from enum import Enum
-from typing import Any
 from eth_utils import function_abi_to_4byte_selector
+from facet_utils import FacetAction
 from web3 import Web3
 import argparse
 import json
-
-class FacetAction(Enum):
-    Add = 0
-    Replace = 1
-    Delete = 2
-
-def convert(data_type: str, value: str) -> Any:
-    if "int" in data_type or "fixed" in data_type:
-        return int(value)
-    elif data_type == "bool":
-        return bool(value)
-    elif "bytes" in data_type:
-        return value.encode()
-    else:
-        return value
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -31,6 +14,7 @@ parser.add_argument('--cutAddress', type=str, help='diamond cut address')
 parser.add_argument('--loupeAbi', type=str, help='diamond loupe ABI')
 parser.add_argument('--loupeAddress', type=str, help='diamond loupe address')
 parser.add_argument('--owner', type=str, help='owner wallet address')
+parser.add_argument('--bytecode', type=str, help='owner wallet address')
 
 args = parser.parse_args()
 
@@ -41,7 +25,7 @@ w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': 
 
 signer = w3.eth.account.from_key(args.privateKey.upper())
 w3.eth.default_account = signer.address
-diamond = w3.eth.contract(abi=diamond_json['abi'], bytecode=diamond_json['bytecode'])
+diamond = w3.eth.contract(abi=diamond_json['abi'], bytecode=args.bytecode)
 
 contracts = {args.cutAbi: args.cutAddress, args.loupeAbi: args.loupeAddress}
 diamond_cut = []

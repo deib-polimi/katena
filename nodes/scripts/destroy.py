@@ -1,19 +1,7 @@
 import sys
-from typing import Any
 from web3 import Web3
 import argparse
 import json
-
-def convert(data_type: str, value: str) -> Any:
-    if "int" in data_type or "fixed" in data_type:
-        return int(value)
-    elif data_type == "bool":
-        return bool(value)
-    elif "bytes" in data_type:
-        return value.encode()
-    else:
-        return value
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
