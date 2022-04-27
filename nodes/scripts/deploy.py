@@ -36,13 +36,14 @@ params = args.params
 address_params = args.addressParams
 casted_params = parse_parameters(constructor_inputs, params, address_params)
 
-# if args.contractAbi == 'SoloMargin':
-#     for p in args.params:
-#         print(p)
-
-#     print('---------------')
-#     for p in casted_params:
-#         print(f'{p} {type(p)}')
+if args.contractAbi == 'PolynomialInterestSetter':
+    for p in args.params:
+        print(p)
+# 
+    print('---------------')
+    print(f'a {casted_params}')
+    for p in casted_params:
+        print(f'{p} {type(p)}')
 tx_hash = contract.constructor(*casted_params).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print(tx_receipt.contractAddress)

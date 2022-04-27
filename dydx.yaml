@@ -17,15 +17,16 @@ topology_template:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
 
+    # deploy base protocol
     adminImpl:
-      type: toscachain.nodes.contract
+      type: toscachain.nodes.library
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "AdminImpl"
     operationImpl:
-      type: toscachain.nodes.contract
+      type: toscachain.nodes.library
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -38,14 +39,8 @@ topology_template:
       - wallet: userWallet
       - libraries: adminImpl
       - libraries: operationImpl
-      # - libraries:
-          # AdminImpl: adminImpl
-          # OperationImpl: operationImpl
       properties:
         abi: "SoloMargin"
-        # libraries:
-          # AdminImpl: { get_attribute: [adminImpl, contractAddress] }
-          # OperationImpl: { get_attribute: [operationImpl, contractAddress] }
         parameters:
         - 0.15e18
         - 0.05e18
@@ -57,7 +52,82 @@ topology_template:
         - 2.00e18
         - 2.00e18
         - 100.00e18
-  
+
+    # deploy Interest setters
+    interest:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Interest"
+    math:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Math"
+    polynomialInterestSetter:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: interest
+      - libraries: math
+      properties:
+        abi: "PolynomialInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 87960930880000
+
+    doubleExponentInterestSetter:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: interest
+      - libraries: math
+      properties:
+        abi: "DoubleExponentInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 86236206100
+
+    # deploy price oracles
+    monetary:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Monetary"
+    require:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Require"
+    time:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Time"
+    daiPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: monetary
+      - libraries: require
+      - libraries: time
+      - libraries: math
+      properties:
+        abi: "DaiPriceOracle"
+
   inputs:
     UserKeyGanache:
       type: string
