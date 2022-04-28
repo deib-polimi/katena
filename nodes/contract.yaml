@@ -7,6 +7,12 @@ imports:
   - wallet.yaml
 
 node_types:
+  toscachain.nodes.contractReference:
+    derived_from: tosca.nodes.Root
+    attributes:
+      contractAddress: # set after playbook execution
+        type: string
+        description: 'address reference of existing contract'
   toscachain.nodes.library:
     derived_from: tosca.nodes.Root
     requirements:
@@ -87,7 +93,7 @@ node_types:
           capability: tosca.capabilities.Container 
           node: toscachain.nodes.library
           relationship: tosca.relationships.libraryLinkage
-          occurrences: [0, UNBOUNDED] 
+          occurrences: [0, UNBOUNDED]    
     capabilities:
       callable:
         type: tosca.capabilities.Callable
