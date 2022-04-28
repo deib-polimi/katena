@@ -116,6 +116,45 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "Time"
+    oraclePoker:
+      type: toscachain.nodes.contractReference
+      attributes:
+        contractAddress: "0x500dd93a74dbfa65a4eeda44da489adcef530cb9"
+    weth:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "WETH9"
+    dai:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TokenB"
+    curve:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestCurve"
+    uniswapDai:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair"
+    uniswapUsd:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair2"
     daiPriceOracle:
       type: toscachain.nodes.contract
       requirements:
@@ -125,8 +164,92 @@ topology_template:
       - libraries: require
       - libraries: time
       - libraries: math
+      - constructorCalls: oraclePoker
+      - constructorCalls: weth
+      - constructorCalls: dai
+      - constructorCalls: curve
+      - constructorCalls: uniswapDai
+      - constructorCalls: uniswapUsd
       properties:
         abi: "DaiPriceOracle"
+        parameters:
+        -  { get_attribute: [oraclePoker, contractAddress] }
+        -  { get_attribute: [weth, contractAddress] }
+        -  { get_attribute: [dai, contractAddress] }
+        -  { get_attribute: [curve, contractAddress] }
+        -  { get_attribute: [uniswapDai, contractAddress] }
+        -  { get_attribute: [uniswapUsd, contractAddress] }
+        - 1000000000000000000
+        - 100000000000000
+        - 10000000000000000
+    usdcPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: monetary
+      properties:
+        abi: "UsdcPriceOracle"
+
+    testMakerOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: monetary
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+   
+    wethPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: monetary
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+    # second layer
+    account:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Account"
+    # onlySolo: TODO: should be deployed?
+    testCalle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: account
+      - libraries: require
+      - constructorCalls: soloMarginf
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+    testSimpleCallee:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: account
+      - constructorCalls: soloMargin
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
+
+    payableProxyForSoloMargin:
 
   inputs:
     UserKeyGanache:
