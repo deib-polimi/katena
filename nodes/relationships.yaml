@@ -7,6 +7,18 @@ imports:
 relationship_types:
   tosca.relationships.callsConstructor:
     derived_from: tosca.relationships.DependsOn
+    interfaces:
+      Configure:
+        type: tosca.interfaces.relationship.Configure
+        operations:
+          post_configure_target:
+            inputs:
+              previous_constructor_calls: { type: list, default: { get_attribute: [SOURCE, addressParameters] } }
+              new_address: { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+            outputs:
+              contract_addresses: [SOURCE, addressParameters]
+            implementation: 
+              primary: playbooks/constructor_calls.yml
     # TODO: set valid target type
     # valid_target_types: [toscachain.nodes.contract]
   tosca.relationships.calls:

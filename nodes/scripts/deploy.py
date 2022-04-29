@@ -9,6 +9,7 @@ parser.add_argument('--network', type=str, default='localhost:8545',
 parser.add_argument('--privateKey', type=str, help='private key to sign transactions')
 parser.add_argument('--contractAbi', type=str, help='ABI of the smart contract to deploy')
 parser.add_argument('--params', nargs='*', help='contract input parameters')
+parser.add_argument('--addressParams', nargs='*', help='contract input address parameters')
 parser.add_argument('--bytecode', type=str, help='contract bytecode')
 
 args = parser.parse_args()
@@ -32,7 +33,8 @@ for function in contract.abi:
 
 
 params = args.params
-casted_params = parse_parameters(constructor_inputs, params)
+address_params = args.addressParams
+casted_params = parse_parameters(constructor_inputs, params, address_params)
 
 # if args.contractAbi == 'SoloMargin':
 #     for p in args.params:

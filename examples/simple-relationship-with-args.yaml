@@ -9,7 +9,7 @@ topology_template:
     ganache:
       type: toscachain.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.network
+      type: toscachain.nodes.wallet
       requirements:
       - host: ganache
       properties:
@@ -31,7 +31,7 @@ topology_template:
         abi: "CallerConstructor"
         parameters:
           - 5
-          - { get_attribute: [SELF, constructorCalls, contractAddress] }
+          # - { get_attribute: [SELF, constructorCalls, contractAddress] }
 
   relationship_templates:
     increment:
@@ -41,3 +41,5 @@ topology_template:
     UserKeyGanache:
       type: string
       required: true
+    UserWallet:
+      type: string
