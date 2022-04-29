@@ -117,6 +117,11 @@ node_types:
         description: address to refund for self destructing the contract
         required: false
         default: { get_property: [SELF, owner] }
+    attributes:
+      addressParameters:
+        type: list
+        description: used by callConstructor
+        default: []
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -139,6 +144,8 @@ node_types:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
+              address_parameters:
+                { type: list, default: { get_attribute: [SELF, addressParameters] } }
               contract_parameters:
                 { type: list, default: { get_property: [SELF, parameters] } }
             outputs:

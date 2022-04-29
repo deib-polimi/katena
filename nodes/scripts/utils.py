@@ -1,45 +1,46 @@
+from audioop import add
 from typing import Any
 import re
 
-def parse_parameters(signature, values):
+from web3 import Web3
+
+def parse_parameters(signature, values, addresses):
     params = []        
 
     for input in signature:
 
         if 'tuple' in input['type']:
             tuple_param = input['components']
-            param, removed_elements = parse_tuple(tuple_param, values)
-            values = values[removed_elements:]
-            # params.append({input['name']: param})
+            param = parse_tuple(tuple_param, values, addresses)
             params.append(param)
+        elif 'address' in input['type']:
+            params.append(Web3.toChecksumAddress(addresses[0]))
+            addresses.pop(0)
         else:
-            # params.append(convert(input['type'], values[0]))
             params.append(convert(input['type'], values[0]))
             values.pop(0)
 
     return params
 
-def parse_tuple(params, values):
+def parse_tuple(params, values, addresses):
     t = []
-    removed_elements = 0
 
-    for index, p in enumerate(params):
+    for p in params:
         if 'tuple' in p['type'] and p['name'] != 'value':
-            # recursive call
-            new_t, new_removed_elements = parse_tuple(p['components'], values)
-            # t[p['name']]= new_t
-            # t = t + new_t
+            new_t = parse_tuple(p['components'], values, addresses)
             t.append(new_t)
-            removed_elements += new_removed_elements
+        elif 'address' in p['type']:
+            t.append(Web3.toChecksumAddress(addresses[0]))
+            addresses.pop(0)
         else:
-            # t[p['name']]= convert(p['type'], values[index])
-            t.append(convert(p['type'], values[index]))
-            # t = t + tuple([convert(p['type'], values[index])])
-            removed_elements += 1
+            t.append(convert(p['type'], values[0]))
+            values.pop(0)
 
-    return t, removed_elements
+    return t
 
 def convert(data_type: str, value: str) -> Any:
+    # if "int" in data_type or "fixed" in data_type:
+        # return int(value)
     if "int" in data_type or "fixed" in data_type or re.findall(r'[\d]+e[\d]+', value) or re.findall(r'[\d]+.[\d]+e[\d]+', value):
         value = value.replace('+', '')
         return int(float(value))

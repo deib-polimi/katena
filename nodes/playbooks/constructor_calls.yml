@@ -1,0 +1,17 @@
+- hosts: all
+  tasks:
+  - name: createLists
+    set_fact:
+     acc: "{{ previous_constructor_calls }}"
+     element:
+     - "{{ new_address }}"
+  - name: merge
+    set_fact:
+      lists_merged: "{{ acc + element }}"
+  - name: Demonstrate merged lists
+    debug: var=lists_merged
+  - debug: msg="tacci tua"
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_addresses: "{{ lists_merged }}"
