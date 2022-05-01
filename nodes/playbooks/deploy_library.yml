@@ -9,4 +9,4 @@
   - name: Set attributes
     set_stats:
       data:
-        contract_address: "{{ contract_address.stdout }}"
+        contract_address: "{{ contract_address.stdout_lines[-1] }}"

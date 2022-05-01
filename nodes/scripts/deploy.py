@@ -34,15 +34,23 @@ for function in contract.abi:
 
 params = args.params
 address_params = args.addressParams
+# for i, p in enumerate(params):
+#     if p == 'EMPTY_LIST':
+#         params[i] = []
+
 casted_params = parse_parameters(constructor_inputs, params, address_params)
 
-# if args.contractAbi == 'SoloMargin':
-#     for p in args.params:
-#         print(p)
-
-#     print('---------------')
-#     for p in casted_params:
-#         print(f'{p} {type(p)}')
+if args.contractAbi == 'CanonicalOrders':
+    for p in args.addressParams:
+        print(p)
+    print('-------------------------')
+    for p in args.params:
+        print(p)
+# 
+    print('---------------')
+    print(f'a {casted_params}')
+    for p in casted_params:
+        print(f'{p} {type(p)}')
 tx_hash = contract.constructor(*casted_params).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print(tx_receipt.contractAddress)
