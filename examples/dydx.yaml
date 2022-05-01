@@ -1,0 +1,462 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+- nodes/wallet.yaml
+
+topology_template:
+  node_templates:
+    ganache:
+      type: toscachain.nodes.network.ganache
+    userWallet: 
+      type: toscachain.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet}
+
+    # libraries
+    # account:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Account"
+    # # onlySolo: TODO: should be deployed?
+    # actions:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: Actions
+    # interest:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Interest"
+    # math:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Math"
+    # monetary:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Monetary"
+    # require:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Require"
+    # time:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Time"
+    # decimal:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: Decimal
+    # types:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: Types
+    # typedSignature:
+    #   type: toscachain.nodes.library
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: TypedSignature
+    adminImpl:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "AdminImpl"
+    operationImpl:
+      type: toscachain.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "OperationImpl"
+
+    # deploy base protocol
+    soloMargin:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: adminImpl
+      - libraries: operationImpl
+      properties:
+        abi: "SoloMargin"
+        parameters:
+        - 0.15e18
+        - 0.05e18
+        - 0.90e18
+        - 0.00
+        - 2.00e18
+        - 0.50e18
+        - 1.00e18
+        - 2.00e18
+        - 2.00e18
+        - 100.00e18
+
+    # deploy Interest setters
+    polynomialInterestSetter:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: interest
+      # - libraries: math
+      properties:
+        abi: "PolynomialInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 87960930880000
+
+    doubleExponentInterestSetter:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: interest
+      # - libraries: math
+      properties:
+        abi: "DoubleExponentInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 86236206100
+
+    # deploy price oracles
+
+    oraclePoker:
+      type: toscachain.nodes.contractReference
+      attributes:
+        contractAddress: { get_input: UserWallet }
+    weth:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "WETH9"
+    dai:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TokenB"
+    curve:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestCurve"
+    # safeMath:
+    #   type: toscachain.nodes.contract
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "SafeMath"
+    # ownable:
+    #   type: toscachain.nodes.contract
+    #   requirements:
+    #   - host: ganache
+    #   - wallet: userWallet
+    #   properties:
+    #     abi: "Ownable"
+    uniswapDai:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair"
+    uniswapUsd:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair2"
+    daiPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: time
+      # - libraries: math
+      # - libraries: safeMath
+      # - libraries: ownable
+      - constructorCalls: oraclePoker
+      - constructorCalls: weth
+      - constructorCalls: dai
+      - constructorCalls: curve
+      - constructorCalls: uniswapDai
+      - constructorCalls: uniswapUsd
+      properties:
+        abi: "DaiPriceOracle"
+        parameters:
+        - 1000000000000000000
+        - 100000000000000
+        - 10000000000000000
+    usdcPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: monetary
+      properties:
+        abi: "UsdcPriceOracle"
+
+    testMakerOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: monetary
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+   
+    wethPriceOracle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: monetary
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+    # second layer
+    testCalle:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: require
+      - constructorCalls: soloMargin
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+    testSimpleCallee:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      - constructorCalls: soloMargin
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
+
+    # second layer
+
+    payableProxyForSoloMargin:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: actions
+      # - libraries: require
+      - constructorCalls: soloMargin
+      - constructorCalls: weth
+      properties:
+        abi: "PayableProxyForSoloMargin"
+    expiry:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: decimal
+      # - libraries: math
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: time
+      # - libraries: types
+      - constructorCalls: soloMargin
+      properties:
+        abi: "Expiry"
+        parameters:
+          - 3600
+    expiryV2:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: decimal
+      # - libraries: math
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: time
+      # - libraries: types
+      - constructorCalls: soloMargin
+      properties:
+        abi: "ExpiryV2"
+        parameters:
+          - 3600
+    finalSettlement:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: decimal
+      # - libraries: math
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: time
+      # - libraries: types
+      - constructorCalls: soloMargin
+      properties:
+        abi: "FinalSettlement"
+        parameters:
+          - 2419200
+    refunder:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: require
+      # - libraries: types
+      - constructorCalls: soloMargin
+      properties:
+        abi: "Refunder"
+        parameters:
+        - EMPTY_LIST
+    daiMigrator:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: require
+      # - libraries: types
+      properties:
+        abi: "DaiMigrator"
+        parameters: 
+        - EMPTY_LIST 
+    liquidatorProxyV1ForSoloMargin:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LiquidatorProxyV1ForSoloMargin"
+    limitOrders:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: math
+      # - libraries: require
+      # - libraries: types
+      # - libraries: typedSignature
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LimitOrders"
+        parameters:
+        - 1001
+    stopLimitOrders:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: math
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: types
+      # - libraries: typedSignature
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LimitOrders"
+        parameters:
+        - 1001 
+    canonicalOrders:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: math
+      # - libraries: monetary
+      # - libraries: require
+      # - libraries: types
+      # - libraries: typedSignature
+      - constructorCalls: soloMargin
+      properties:
+        abi: "CanonicalOrders"
+        parameters:
+        - { get_input: UserWallet }
+        - 1001 
+    signedOperationProxy:
+      type: toscachain.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      # - libraries: account
+      # - libraries: actions
+      # - libraries: require
+      # - libraries: types
+      # - libraries: typedSignature
+      - constructorCalls: soloMargin
+      properties:
+        abi: "SignedOperationProxy"
+        parameters:
+        - 1001 
+
+
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string
+      required: true

@@ -4,7 +4,7 @@
 *.log
 node_modules/
 smart-contract-example/
-contracts/
+contracts*/
 input.yml
 .vscode/
 nodes/benchmark/

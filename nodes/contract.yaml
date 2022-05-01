@@ -26,6 +26,11 @@ node_types:
           node: toscachain.nodes.wallet
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] 
+      - libraries:  
+          capability: tosca.capabilities.Container 
+          node: toscachain.nodes.library
+          relationship: tosca.relationships.libraryLinkage
+          occurrences: [0, UNBOUNDED]    
     properties:
       abi:
         description: path to smart contract ABI
@@ -183,11 +188,11 @@ node_types:
       - cut:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
-          occurrences: [1, 1]
+          occurrences: [0, 1]
       - loupe:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
-          occurrences: [1, 1]
+          occurrences: [0, 1]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard

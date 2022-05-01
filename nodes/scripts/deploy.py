@@ -34,9 +34,16 @@ for function in contract.abi:
 
 params = args.params
 address_params = args.addressParams
+# for i, p in enumerate(params):
+#     if p == 'EMPTY_LIST':
+#         params[i] = []
+
 casted_params = parse_parameters(constructor_inputs, params, address_params)
 
-if args.contractAbi == 'PolynomialInterestSetter':
+if args.contractAbi == 'CanonicalOrders':
+    for p in args.addressParams:
+        print(p)
+    print('-------------------------')
     for p in args.params:
         print(p)
 # 
