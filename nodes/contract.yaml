@@ -12,7 +12,7 @@ node_types:
     attributes:
       contractAddress: # set after playbook execution
         type: string
-        description: 'address reference of existing contract'
+        description: "address reference of existing contract"
   toscachain.nodes.library:
     derived_from: tosca.nodes.Root
     requirements:
@@ -22,15 +22,15 @@ node_types:
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] # a node smart contract is deployed in only one network at time
       - wallet:
-          capability: tosca.capabilities.Container 
+          capability: tosca.capabilities.Container
           node: toscachain.nodes.wallet
           relationship: tosca.relationships.HostedOn
-          occurrences: [1, 1] 
-      - libraries:  
-          capability: tosca.capabilities.Container 
+          occurrences: [1, 1]
+      - libraries:
+          capability: tosca.capabilities.Container
           node: toscachain.nodes.library
           relationship: tosca.relationships.libraryLinkage
-          occurrences: [0, UNBOUNDED]    
+          occurrences: [0, UNBOUNDED]
     properties:
       abi:
         description: path to smart contract ABI
@@ -40,18 +40,18 @@ node_types:
         description: privateKey of the address that should perform the deploy
         type: string
         required: true
-        default: {get_property: [SELF, wallet, privateKey]}
+        default: { get_property: [SELF, wallet, privateKey] }
       network:
         type: string
         required: true
-        default: { get_property: [SELF, host, address] } 
+        default: { get_property: [SELF, host, address] }
     attributes:
       contractAddress: # set after playbook execution
         type: string
-        description: 'Smart contract address when deployed'
+        description: "Smart contract address when deployed"
       bytecode:
         type: string
-        description: 'contract bytecode'
+        description: "contract bytecode"
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -69,7 +69,8 @@ node_types:
           configure:
             inputs:
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
@@ -94,11 +95,11 @@ node_types:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
           occurrences: [0, UNBOUNDED]
-      - libraries:  
-          capability: tosca.capabilities.Container 
+      - libraries:
+          capability: tosca.capabilities.Container
           node: toscachain.nodes.library
           relationship: tosca.relationships.libraryLinkage
-          occurrences: [0, UNBOUNDED]    
+          occurrences: [0, UNBOUNDED]
     capabilities:
       callable:
         type: tosca.capabilities.Callable
@@ -111,13 +112,13 @@ node_types:
         description: owner wallet address
         type: string
         required: false
-        default: {get_property: [SELF, wallet, owner]} 
+        default: { get_property: [SELF, wallet, owner] }
       destroy:
         type: string
         description: function to call for self destruct the contract
         required: false
         default: ""
-      refund: 
+      refund:
         type: string
         description: address to refund for self destructing the contract
         required: false
@@ -144,13 +145,17 @@ node_types:
           configure:
             inputs:
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
               address_parameters:
-                { type: list, default: { get_attribute: [SELF, addressParameters] } }
+                {
+                  type: list,
+                  default: { get_attribute: [SELF, addressParameters] },
+                }
               contract_parameters:
                 { type: list, default: { get_property: [SELF, parameters] } }
             outputs:
@@ -168,7 +173,10 @@ node_types:
               network:
                 { type: string, default: { get_property: [SELF, network] } }
               address:
-                { type: string, default: { get_attribute: [SELF, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, contractAddress] },
+                }
               destroy_function:
                 { type: string, default: { get_property: [SELF, destroy] } }
               refund:
@@ -188,11 +196,15 @@ node_types:
       - cut:
           capability: tosca.capabilities.Callable
           relationship: tosca.relationships.callsConstructor
-          occurrences: [0, 1]
-      - loupe:
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.callsConstructor
-          occurrences: [0, 1]
+          occurrences: [1, 1]
+      # - loupe:
+      #     capability: tosca.capabilities.Callable
+      #     relationship: tosca.relationships.callsConstructor
+      #     occurrences: [1, 1]
+      # - init:
+      #     capability: tosca.capabilities.InitFunction
+      #     relationship: tosca.relationships.DependsOn
+      #     occurrences: [1, 1]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -202,11 +214,11 @@ node_types:
               abi: { type: string, default: { get_property: [SELF, abi] } }
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
-              owner:
-                { type: string, default: { get_property: [SELF, owner]}}
+              owner: { type: string, default: { get_property: [SELF, owner] } }
               network:
                 { type: string, default: { get_property: [SELF, network] } }
-              bytecode: { type: string, default: {get_attribute: [SELF, bytecode]}}
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
               cutAbi:
                 { type: string, default: { get_property: [SELF, cut, abi] } }
               cutAddress:
@@ -214,17 +226,87 @@ node_types:
                   type: string,
                   default: { get_attribute: [SELF, cut, contractAddress] },
                 }
-              loupeAbi:
-                { type: string, default: { get_property: [SELF, loupe, abi] } }
-              loupeAddress:
-                {
-                  type: string,
-                  default: { get_attribute: [SELF, loupe, contractAddress] },
-                }
+              # loupeAbi:
+              #   { type: string, default: { get_property: [SELF, loupe, abi] } }
+              # loupeAddress:
+              #   {
+              #     type: string,
+              #     default: { get_attribute: [SELF, loupe, contractAddress] },
+              #   }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
               primary: playbooks/diamond_contract_deploy.yml
+              dependencies:
+                - scripts/
+                - contracts/
+  toscachain.nodes.diamond.diamondInit:
+    derived_from: toscachain.nodes.contract
+    capabilities:
+      initFunction:
+        type: tosca.capabilities.InitFunction
+    properties:
+      initFunction:
+        type: string
+        required: true
+      initParameters:
+        type: list
+        default: []
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          create:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+            outputs:
+              contract_bytecode: [SELF, bytecode]
+            implementation:
+              primary: playbooks/load_bytecode.yml
+              dependencies:
+                - scripts/
+                - contracts/
+          configure:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              address_parameters:
+                {
+                  type: list,
+                  default: { get_attribute: [SELF, addressParameters] },
+                }
+              contract_parameters:
+                { type: list, default: { get_property: [SELF, parameters] } }
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: playbooks/deploy_contract.yml
+              dependencies:
+                - scripts/
+                - contracts/
+          delete:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              address:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, contractAddress] },
+                }
+              destroy_function:
+                { type: string, default: { get_property: [SELF, destroy] } }
+              refund:
+                { type: string, default: { get_property: [SELF, refund] } }
+            implementation:
+              primary: playbooks/delete_contract.yml
               dependencies:
                 - scripts/
                 - contracts/
@@ -233,10 +315,3 @@ node_types:
     capabilities:
       facet:
         type: tosca.capabilities.Facet
-    # properties:
-      # functions:
-      #   type: list
-      #   description: functions to include in facet
-      #   required: true
-      #   default: []
-

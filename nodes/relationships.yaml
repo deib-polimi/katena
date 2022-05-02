@@ -2,7 +2,7 @@ tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
   - contract.yaml
-  - capabilities.yaml   
+  - capabilities.yaml
 
 relationship_types:
   tosca.relationships.callsConstructor:
@@ -13,11 +13,19 @@ relationship_types:
         operations:
           post_configure_target:
             inputs:
-              previous_constructor_calls: { type: list, default: { get_attribute: [SOURCE, addressParameters] } }
-              new_address: { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+              previous_constructor_calls:
+                {
+                  type: list,
+                  default: { get_attribute: [SOURCE, addressParameters] },
+                }
+              new_address:
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
             outputs:
               contract_addresses: [SOURCE, addressParameters]
-            implementation: 
+            implementation:
               primary: playbooks/constructor_calls.yml
     # TODO: set valid target type
     # valid_target_types: [toscachain.nodes.contract]
@@ -36,9 +44,15 @@ relationship_types:
           post_configure_source:
             inputs:
               caller_address:
-                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SOURCE, contractAddress] },
+                }
               caller_private_key:
-                { type: string, default: { get_property: [SOURCE, privateKey] } }
+                {
+                  type: string,
+                  default: { get_property: [SOURCE, privateKey] },
+                }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
               caller_abi:
@@ -46,7 +60,10 @@ relationship_types:
               caller_address_setter:
                 { type: string, default: { get_property: [SELF, modifier] } }
               callee_address:
-                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
             implementation:
               primary: playbooks/set_address.yml
               dependencies:
@@ -55,9 +72,15 @@ relationship_types:
           target_changed:
             inputs:
               caller_address:
-                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SOURCE, contractAddress] },
+                }
               caller_private_key:
-                { type: string, default: { get_property: [SOURCE, privateKey] } }
+                {
+                  type: string,
+                  default: { get_property: [SOURCE, privateKey] },
+                }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
               caller_abi:
@@ -65,7 +88,10 @@ relationship_types:
               caller_address_setter:
                 { type: string, default: { get_property: [SELF, modifier] } }
               callee_address:
-                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
             implementation:
               primary: playbooks/set_address.yml
               dependencies:
@@ -74,9 +100,15 @@ relationship_types:
           remove_target:
             inputs:
               caller_address:
-                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SOURCE, contractAddress] },
+                }
               caller_private_key:
-                { type: string, default: { get_property: [SOURCE, privateKey] } }
+                {
+                  type: string,
+                  default: { get_property: [SOURCE, privateKey] },
+                }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
               caller_abi:
@@ -84,7 +116,10 @@ relationship_types:
               caller_address_setter:
                 { type: string, default: { get_property: [SELF, modifier] } }
               callee_address:
-                { type: string, default: '0x0000000000000000000000000000000000000000'}
+                {
+                  type: string,
+                  default: "0x0000000000000000000000000000000000000000",
+                }
             implementation:
               primary: playbooks/set_address.yml
               dependencies:
@@ -92,15 +127,21 @@ relationship_types:
                 - contracts/
   tosca.relationships.libraryLinkage:
     derived_from: tosca.relationships.DependsOn
-    interfaces: 
+    interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
         operations:
           pre_configure_source:
             inputs:
-              library: {type: string, default: {get_property: [TARGET, abi]}}
-              library_address: {type: string, default: {get_attribute: [TARGET, contractAddress]}}
-              bytecode: { type: string, default: { get_attribute: [SOURCE, bytecode]}}
+              library:
+                { type: string, default: { get_property: [TARGET, abi] } }
+              library_address:
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
+              bytecode:
+                { type: string, default: { get_attribute: [SOURCE, bytecode] } }
             outputs:
               contract_bytecode: [SOURCE, bytecode]
             implementation:
@@ -115,7 +156,7 @@ relationship_types:
       # TODO: maybe could be an array of strings
       exclude:
         description: facet functions to exclude
-        type: list 
+        type: list
         default: []
     interfaces:
       Configure:
@@ -124,17 +165,50 @@ relationship_types:
           post_configure_source:
             inputs:
               diamond_address:
-                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SOURCE, contractAddress] },
+                }
               diamond_private_key:
-                { type: string, default: { get_property: [SOURCE, privateKey] } }
+                {
+                  type: string,
+                  default: { get_property: [SOURCE, privateKey] },
+                }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
               cut_abi:
                 { type: string, default: { get_property: [SOURCE, cut, abi] } }
+              cut_bytecode:
+                { type: string, default: { get_attribute: [SOURCE, cut, bytecode] } }
               facet_address:
-                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
               facet_abi:
                 { type: string, default: { get_attribute: [TARGET, abi] } }
+              facet_bytecode:
+                { type: string, default: { get_attribute: [TARGET, bytecode] } }
+              # init_address:
+              #   {
+              #     type: string,
+              #     default: { get_attribute: [SOURCE, init, contractAddress] },
+              #   }
+              # init_abi:
+              #   {
+              #     type: string,
+              #     default: { get_property: [SOURCE, init, abi] },
+              #   }
+              # init_function:
+              #   {
+              #     type: string,
+              #     default: { get_property: [SOURCE, init, initFunction] },
+              #   }
+              # init_parameters:
+              #   {
+              #     type: string,
+              #     default: { get_property: [SOURCE, init, initParameters] },
+              #   }
             implementation:
               primary: playbooks/set_facet.yml
               dependencies:
@@ -162,15 +236,24 @@ relationship_types:
           remove_target:
             inputs:
               diamond_address:
-                { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [SOURCE, contractAddress] },
+                }
               diamond_private_key:
-                { type: string, default: { get_property: [SOURCE, privateKey] } }
+                {
+                  type: string,
+                  default: { get_property: [SOURCE, privateKey] },
+                }
               network:
                 { type: string, default: { get_property: [SOURCE, network] } }
               cut_abi:
                 { type: string, default: { get_property: [SOURCE, cut, abi] } }
               facet_address:
-                { type: string, default: { get_attribute: [TARGET, contractAddress] } }
+                {
+                  type: string,
+                  default: { get_attribute: [TARGET, contractAddress] },
+                }
               facet_abi:
                 { type: string, default: { get_attribute: [TARGET, abi] } }
             implementation:

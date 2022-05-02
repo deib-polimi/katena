@@ -10,4 +10,6 @@ capability_types:
   tosca.capabilities.Facet:
     derived_from: tosca.capabilities.Container
     valid_source_types: [toscachain.nodes.diamond.facet]
- 
+  tosca.capabilities.InitFunction:
+    derived_from: tosca.capabilities.Container
+    valid_source_types: [toscachain.nodes.diamond.diamondInit]
