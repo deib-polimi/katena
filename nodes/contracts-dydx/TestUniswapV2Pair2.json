@@ -1,0 +1,286 @@
+{
+  "contractName": "TestUniswapV2Pair2",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getReserves",
+      "outputs": [
+        {
+          "name": "reserve0",
+          "type": "uint112"
+        },
+        {
+          "name": "reserve1",
+          "type": "uint112"
+        },
+        {
+          "name": "blockTimestampLast",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "RESERVE0",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint112"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "reserve0",
+          "type": "uint112"
+        },
+        {
+          "name": "reserve1",
+          "type": "uint112"
+        }
+      ],
+      "name": "setReserves",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "RESERVE1",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint112"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getReserves\",\"outputs\":[{\"name\":\"reserve0\",\"type\":\"uint112\"},{\"name\":\"reserve1\",\"type\":\"uint112\"},{\"name\":\"blockTimestampLast\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"RESERVE0\",\"outputs\":[{\"name\":\"\",\"type\":\"uint112\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"reserve0\",\"type\":\"uint112\"},{\"name\":\"reserve1\",\"type\":\"uint112\"}],\"name\":\"setReserves\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"RESERVE1\",\"outputs\":[{\"name\":\"\",\"type\":\"uint112\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Another mock Uniswap V2 pair.\",\"methods\":{},\"title\":\"TestUniswapV2Pair2\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/testing/TestUniswapV2Pair2.sol\":\"TestUniswapV2Pair2\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/interfaces/IUniswapV2Pair.sol\":{\"keccak256\":\"0xaabb468ea4fbe3f503ecc0d172a5ad16f3cddd363b5df7c99b37c8aad978e501\",\"urls\":[\"bzzr://0af14b16179666b1ac8fcd608addab8a353afead2729e95c90697a0135c0de62\"]},\"project:/contracts/testing/TestUniswapV2Pair.sol\":{\"keccak256\":\"0xcd25d79bd9a651b2cbc13f1531c7deed06847cee44e12957edc33e3def1b037a\",\"urls\":[\"bzzr://943ce6fa894faf526311330c361da86312cdc9ffc7fe49045f38456fb0dada7a\"]},\"project:/contracts/testing/TestUniswapV2Pair2.sol\":{\"keccak256\":\"0x95b4d2f928ff494ba4df49246e9d1f98f14c554daaf46677d79cda58bd53e1d3\",\"urls\":[\"bzzr://bac308a72c79fbc27fee56a784555280f096b189ee623a809724c0e655c6070c\"]}},\"version\":1}",
+  "bytecode": "0x6080604052600080547fffffffff0000000000000000000000000000000000000000000000000000000016905534801561003857600080fd5b506102a5806100486000396000f3fe608060405234801561001057600080fd5b5060043610610068577c010000000000000000000000000000000000000000000000000000000060003504630902f1ac811461006d5780631b7a38891461008d57806375ea5f2e146100a25780637ef44b96146100b7575b600080fd5b6100756100bf565b6040516100849392919061021f565b60405180910390f35b6100956100ee565b604051610084919061020b565b6100b56100b03660046101b9565b610104565b005b61009561017e565b600080546dffffffffffffffffffffffffffff808216926e010000000000000000000000000000909204169192565b6000546dffffffffffffffffffffffffffff1681565b600080546dffffffffffffffffffffffffffff9283166e010000000000000000000000000000027fffffffff0000000000000000000000000000ffffffffffffffffffffffffffff949093167fffffffffffffffffffffffffffffffffffff00000000000000000000000000009091161792909216179055565b6000546e01000000000000000000000000000090046dffffffffffffffffffffffffffff1681565b60006101b2823561024f565b9392505050565b600080604083850312156101cc57600080fd5b60006101d885856101a6565b92505060206101e9858286016101a6565b9150509250929050565b6101fc8161024f565b82525050565b6101fc81610262565b6020810161021982846101f3565b92915050565b6060810161022d82866101f3565b61023a60208301856101f3565b6102476040830184610202565b949350505050565b6dffffffffffffffffffffffffffff1690565b63ffffffff169056fea265627a7a72305820e5f3c83185a7efac5b2c59c790037aefa1e21c0d52c4ee77d16f5727b729928c6c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610068577c010000000000000000000000000000000000000000000000000000000060003504630902f1ac811461006d5780631b7a38891461008d57806375ea5f2e146100a25780637ef44b96146100b7575b600080fd5b6100756100bf565b6040516100849392919061021f565b60405180910390f35b6100956100ee565b604051610084919061020b565b6100b56100b03660046101b9565b610104565b005b61009561017e565b600080546dffffffffffffffffffffffffffff808216926e010000000000000000000000000000909204169192565b6000546dffffffffffffffffffffffffffff1681565b600080546dffffffffffffffffffffffffffff9283166e010000000000000000000000000000027fffffffff0000000000000000000000000000ffffffffffffffffffffffffffff949093167fffffffffffffffffffffffffffffffffffff00000000000000000000000000009091161792909216179055565b6000546e01000000000000000000000000000090046dffffffffffffffffffffffffffff1681565b60006101b2823561024f565b9392505050565b600080604083850312156101cc57600080fd5b60006101d885856101a6565b92505060206101e9858286016101a6565b9150509250929050565b6101fc8161024f565b82525050565b6101fc81610262565b6020810161021982846101f3565b92915050565b6060810161022d82866101f3565b61023a60208301856101f3565b6102476040830184610202565b949350505050565b6dffffffffffffffffffffffffffff1690565b63ffffffff169056fea265627a7a72305820e5f3c83185a7efac5b2c59c790037aefa1e21c0d52c4ee77d16f5727b729928c6c6578706572696d656e74616cf50037",
+  "sourceMap": "813:56:74:-;;;900:1:73;874:27;;907;;;;813:56:74;5:2:-1;;;;30:1;27;20:12;5:2;813:56:74;;;;;;;",
+  "deployedSourceMap": "813:56:74:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;813:56:74;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;992:184:73;;;:::i;:::-;;;;;;;;;;;;;;;;;;874:27;;;:::i;:::-;;;;;;;;1243:165;;;;;;;;;:::i;:::-;;907:27;;;:::i;992:184::-;1062:16;1147:8;;;;;;;1157;;;;;992:184;;:::o;874:27::-;;;;;;:::o;1243:165::-;1353:8;:19;;;1382;;;;;;1353;;;;;;;;;1382;;;;;;;1243:165::o;907:27::-;;;;;;;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;57:66;-1:-1;;;57:66;130:366;;;251:2;239:9;230:7;226:23;222:32;219:2;;;267:1;264;257:12;219:2;302:1;319:53;364:7;344:9;319:53;;;309:63;;281:97;409:2;427:53;472:7;463:6;452:9;448:22;427:53;;;417:63;;388:98;213:283;;;;;;503:120;586:31;611:5;586:31;;;581:3;574:44;568:55;;;630:117;711:30;735:5;711:30;;754:213;872:2;857:18;;886:71;861:9;930:6;886:71;;;843:124;;;;;974:431;1146:2;1131:18;;1160:71;1135:9;1204:6;1160:71;;;1242:72;1310:2;1299:9;1295:18;1286:6;1242:72;;;1325:70;1391:2;1380:9;1376:18;1367:6;1325:70;;;1117:288;;;;;;;1412:116;1492:30;1481:42;;1464:64;1535:95;1614:10;1603:22;;1586:44",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { TestUniswapV2Pair } from \"./TestUniswapV2Pair.sol\";\n\n\n/**\n * @title TestUniswapV2Pair2\n * @author dYdX\n *\n * Another mock Uniswap V2 pair.\n */\ncontract TestUniswapV2Pair2 is\n    TestUniswapV2Pair\n{\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/testing/TestUniswapV2Pair2.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/testing/TestUniswapV2Pair2.sol",
+    "exportedSymbols": {
+      "TestUniswapV2Pair2": [
+        24011
+      ]
+    },
+    "id": 24012,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 24005,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:74"
+      },
+      {
+        "id": 24006,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:74"
+      },
+      {
+        "absolutePath": "project:/contracts/testing/TestUniswapV2Pair.sol",
+        "file": "./TestUniswapV2Pair.sol",
+        "id": 24008,
+        "nodeType": "ImportDirective",
+        "scope": 24012,
+        "sourceUnit": 24004,
+        "src": "661:60:74",
+        "symbolAliases": [
+          {
+            "foreign": 24007,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 24009,
+              "name": "TestUniswapV2Pair",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 24003,
+              "src": "848:17:74",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_TestUniswapV2Pair_$24003",
+                "typeString": "contract TestUniswapV2Pair"
+              }
+            },
+            "id": 24010,
+            "nodeType": "InheritanceSpecifier",
+            "src": "848:17:74"
+          }
+        ],
+        "contractDependencies": [
+          1203,
+          24003
+        ],
+        "contractKind": "contract",
+        "documentation": "@title TestUniswapV2Pair2\n@author dYdX\n * Another mock Uniswap V2 pair.",
+        "fullyImplemented": true,
+        "id": 24011,
+        "linearizedBaseContracts": [
+          24011,
+          24003,
+          1203
+        ],
+        "name": "TestUniswapV2Pair2",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 24012,
+        "src": "813:56:74"
+      }
+    ],
+    "src": "603:267:74"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/testing/TestUniswapV2Pair2.sol",
+      "exportedSymbols": {
+        "TestUniswapV2Pair2": [
+          24011
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 24005,
+        "name": "PragmaDirective",
+        "src": "603:22:74"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 24006,
+        "name": "PragmaDirective",
+        "src": "626:33:74"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 24004,
+          "absolutePath": "project:/contracts/testing/TestUniswapV2Pair.sol",
+          "file": "./TestUniswapV2Pair.sol",
+          "scope": 24012,
+          "symbolAliases": [
+            {
+              "foreign": 24007,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 24008,
+        "name": "ImportDirective",
+        "src": "661:60:74"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            1203,
+            24003
+          ],
+          "contractKind": "contract",
+          "documentation": "@title TestUniswapV2Pair2\n@author dYdX\n * Another mock Uniswap V2 pair.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            24011,
+            24003,
+            1203
+          ],
+          "name": "TestUniswapV2Pair2",
+          "nodes": [
+            null
+          ],
+          "scope": 24012
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "TestUniswapV2Pair",
+                  "referencedDeclaration": 24003,
+                  "type": "contract TestUniswapV2Pair"
+                },
+                "id": 24009,
+                "name": "UserDefinedTypeName",
+                "src": "848:17:74"
+              }
+            ],
+            "id": 24010,
+            "name": "InheritanceSpecifier",
+            "src": "848:17:74"
+          }
+        ],
+        "id": 24011,
+        "name": "ContractDefinition",
+        "src": "813:56:74"
+      }
+    ],
+    "id": 24012,
+    "name": "SourceUnit",
+    "src": "603:267:74"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.410Z",
+  "devdoc": {
+    "author": "dYdX * Another mock Uniswap V2 pair.",
+    "methods": {},
+    "title": "TestUniswapV2Pair2"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
