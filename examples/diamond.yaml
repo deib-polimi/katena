@@ -9,7 +9,7 @@ topology_template:
     ganache:
       type: toscachain.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.network
+      type: toscachain.nodes.wallet
       requirements:
       - host: ganache
       properties:
@@ -49,7 +49,7 @@ topology_template:
       - host: ganache
       - wallet: userWallet
       - cut: diamondCut
-      - loupe: diamondLoupe
+      - facet: diamondLoupe
       - facet: facet1
       # - facet: facet2
       properties:

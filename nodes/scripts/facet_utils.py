@@ -7,6 +7,8 @@ from web3 import Web3
 import argparse
 import json
 
+# from nodes.scripts.utils import parse_parameters
+
 zero_address = '0x0000000000000000000000000000000000000000'
 
 class FacetAction(Enum):
@@ -31,29 +33,35 @@ def set_arg_parser() -> argparse.ArgumentParser:
                         help='network to deploy the smart contract. Can be either a url or a host:port. Default communication is through HTTPS so https:// is omitted.')
     parser.add_argument('--diamondPrivateKey', type=str, help='private key to sign transactions')
     parser.add_argument('--cutAbi', type=str, help='diamond cut ABI')
+    parser.add_argument('--cutBytecode', type=str, help='diamond cut bytecode')
     parser.add_argument('--diamondAddress', type=str, help='diamond cut address')
     parser.add_argument('--facetAddress', type=str, help='facet address')
     parser.add_argument('--facetAbi', type=str, help='facet abi')
-
-    args = parser.parse_args()
+    parser.add_argument('--facetBytecode', type=str, help='facet bytecode')
+    # parser.add_argument('--initAddress', type=str, help='init function address', default='')
+    # parser.add_argument('--initAbi', type=str, help='init function abi', default='')
+    # parser.add_argument('--initFunction', type=str, help='facet abi', default='')
+    # parser.add_argument('--initParameters', nargs='*', help='facet abi', default=[])
+    
+    return parser
 
 def set_facet(args, action: FacetAction):
     with open(f'contracts/{args.cutAbi}.json') as f:
-        diamond_cut_json = json.load(f)
+        diamond_cut_abi = json.load(f)['abi']
 
     w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
     signer = w3.eth.account.from_key(args.diamondPrivateKey.upper())
     w3.eth.default_account = signer.address
-    diamond_cut = w3.eth.contract(abi=diamond_cut_json['abi'], bytecode=diamond_cut_json['bytecode'], address=args.diamondAddress)
+    diamond_cut = w3.eth.contract(abi=diamond_cut_abi, bytecode=args.cutBytecode, address=args.diamondAddress)
 
     diamond_cut_input = []
 
     with open(f'contracts/{args.facetAbi}.json') as f:
-        facet_json = json.load(f)
+        facet_abi = json.load(f)['abi']
 
     selectors = []
-    facet = w3.eth.contract(abi=facet_json['abi'], bytecode=facet_json['bytecode'])
+    facet = w3.eth.contract(abi=facet_abi, bytecode=args.facetBytecode)
 
     for function in facet.abi:
         if function["type"] == 'function':
@@ -62,6 +70,27 @@ def set_facet(args, action: FacetAction):
 
     diamond_cut_input.append([args.facetAddress, action.value, selectors])
 
-    # TODO: last 2 arguments not used
-    diamond_cut.functions.diamondCut(diamond_cut_input, zero_address, b'' ).transact()
+    init_address = zero_address
 
+    # if args.initAddress != '':
+    #     init_address = args.initAddress
+    
+    init_calldata = b''
+
+    # if args.initAbi != '' and args.initFunction != '':
+    #     with open(f'contracts/{args.initAbi}.json') as f:
+    #         init_json = json.load(f)
+        
+    #     function_abi = ''
+    #     for f in init_json['abi']:
+    #         if f == args.initFunction:
+    #             function_abi = f
+        
+    #     init = w3.eth.contract(abi=function_abi, address=init_address)
+    #     init_calldata = init.encodeABI(fn_name=args.initFunction, args=parse_parameters(function_abi, args.initParameters, []))
+    
+    # TODO: last 2 arguments not used
+    # avoid out of gas
+    tx_hash= diamond_cut.functions.diamondCut(diamond_cut_input, init_address, init_calldata).transact()
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    print(tx_receipt)

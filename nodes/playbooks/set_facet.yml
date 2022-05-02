@@ -4,5 +4,5 @@
     pip: 
       name: web3==5.28.0
   - name: set address
-    command: python scripts/set_facet.py --network {{ network }} --cutAbi {{ cut_abi }} --diamondPrivateKey {{ diamond_private_key }} --diamondAddress {{ diamond_address }} --facetAddress {{ facet_address }} --facetAbi {{ facet_abi }} 
-    register: contract_address
+    command: python scripts/set_facet.py --network {{ network }} --cutAbi {{ cut_abi }} --cutBytecode {{ cut_bytecode }} --diamondPrivateKey {{ diamond_private_key }} --diamondAddress {{ diamond_address }} --facetAddress {{ facet_address }} --facetBytecode {{ facet_bytecode }} --facetAbi {{ facet_abi }} 
+    # --initAddress {{ init_address }} --initFunction {{ init_function }} --initParameters {{ init_parameters }} --initAbi {{ init_abi }}
