@@ -1,0 +1,22 @@
+{
+  "name": "smart-contract-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ensdomains/ens-contracts": "0.0.11",
+    "@trufflesuite/bigint-buffer": "^1.1.9",
+    "solc": "^0.8.13",
+    "truffle": "^4.0.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@solidstate/contracts": "^0.0.31"
+  }
+}
