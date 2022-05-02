@@ -1,0 +1,858 @@
+{
+  "contractName": "IMakerOracle",
+  "abi": [
+    {
+      "anonymous": true,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "msgSig",
+          "type": "bytes4"
+        },
+        {
+          "indexed": true,
+          "name": "msgSender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "arg1",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "name": "arg2",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "msgValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "msgData",
+          "type": "bytes"
+        }
+      ],
+      "name": "LogNote",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "peek",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "read",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"read\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"peek\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"},{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":true,\"inputs\":[{\"indexed\":true,\"name\":\"msgSig\",\"type\":\"bytes4\"},{\"indexed\":true,\"name\":\"msgSender\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"arg1\",\"type\":\"bytes32\"},{\"indexed\":true,\"name\":\"arg2\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"msgValue\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"msgData\",\"type\":\"bytes\"}],\"name\":\"LogNote\",\"type\":\"event\"}],\"devdoc\":{\"author\":\"dYdX * Interface for the price oracles run by MakerDao\",\"methods\":{},\"title\":\"IMakerOracle\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/external/interfaces/IMakerOracle.sol\":\"IMakerOracle\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/interfaces/IMakerOracle.sol\":{\"keccak256\":\"0x5370ca611b4153b1aac8cce05402a7c0df7544e76309cfde8aa0b9061a613fd7\",\"urls\":[\"bzzr://21aa378b1bbd2928e28180d346f3017af2cf0c1984b435cfe74e02fcf87969c1\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\n\n/**\n * @title IMakerOracle\n * @author dYdX\n *\n * Interface for the price oracles run by MakerDao\n */\ninterface IMakerOracle {\n\n    // Event that is logged when the `note` modifier is used\n    event LogNote(\n        bytes4 indexed msgSig,\n        address indexed msgSender,\n        bytes32 indexed arg1,\n        bytes32 indexed arg2,\n        uint256 msgValue,\n        bytes msgData\n    ) anonymous;\n\n    // returns the current value (ETH/USD * 10**18) as a bytes32\n    function peek()\n        external\n        view\n        returns (bytes32, bool);\n\n    // requires a fresh price and then returns the current value\n    function read()\n        external\n        view\n        returns (bytes32);\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/external/interfaces/IMakerOracle.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/external/interfaces/IMakerOracle.sol",
+    "exportedSymbols": {
+      "IMakerOracle": [
+        1190
+      ]
+    },
+    "id": 1191,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1162,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:9"
+      },
+      {
+        "id": 1163,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:9"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title IMakerOracle\n@author dYdX\n * Interface for the price oracles run by MakerDao",
+        "fullyImplemented": false,
+        "id": 1190,
+        "linearizedBaseContracts": [
+          1190
+        ],
+        "name": "IMakerOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": true,
+            "documentation": null,
+            "id": 1177,
+            "name": "LogNote",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1165,
+                  "indexed": true,
+                  "name": "msgSig",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "877:21:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 1164,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "877:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1167,
+                  "indexed": true,
+                  "name": "msgSender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "908:25:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1166,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "908:7:9",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1169,
+                  "indexed": true,
+                  "name": "arg1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "943:20:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1168,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "943:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1171,
+                  "indexed": true,
+                  "name": "arg2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "973:20:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1170,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "973:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1173,
+                  "indexed": false,
+                  "name": "msgValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "1003:16:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1172,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1003:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1175,
+                  "indexed": false,
+                  "name": "msgData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1177,
+                  "src": "1029:13:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 1174,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1029:5:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "867:181:9"
+            },
+            "src": "854:205:9"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1184,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "peek",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1178,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1143:2:9"
+            },
+            "returnParameters": {
+              "id": 1183,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1180,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1184,
+                  "src": "1193:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1179,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1193:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1182,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1184,
+                  "src": "1202:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1181,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1202:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1192:15:9"
+            },
+            "scope": 1190,
+            "src": "1130:78:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1189,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "read",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1185,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1292:2:9"
+            },
+            "returnParameters": {
+              "id": 1188,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1187,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1342:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1186,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1341:9:9"
+            },
+            "scope": 1190,
+            "src": "1279:72:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1191,
+        "src": "763:590:9"
+      }
+    ],
+    "src": "603:751:9"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/external/interfaces/IMakerOracle.sol",
+      "exportedSymbols": {
+        "IMakerOracle": [
+          1190
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 1162,
+        "name": "PragmaDirective",
+        "src": "603:22:9"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 1163,
+        "name": "PragmaDirective",
+        "src": "626:33:9"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title IMakerOracle\n@author dYdX\n * Interface for the price oracles run by MakerDao",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1190
+          ],
+          "name": "IMakerOracle",
+          "scope": 1191
+        },
+        "children": [
+          {
+            "attributes": {
+              "anonymous": true,
+              "documentation": null,
+              "name": "LogNote"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "msgSig",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes4",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes4",
+                          "type": "bytes4"
+                        },
+                        "id": 1164,
+                        "name": "ElementaryTypeName",
+                        "src": "877:6:9"
+                      }
+                    ],
+                    "id": 1165,
+                    "name": "VariableDeclaration",
+                    "src": "877:21:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "msgSender",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1166,
+                        "name": "ElementaryTypeName",
+                        "src": "908:7:9"
+                      }
+                    ],
+                    "id": 1167,
+                    "name": "VariableDeclaration",
+                    "src": "908:25:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "arg1",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1168,
+                        "name": "ElementaryTypeName",
+                        "src": "943:7:9"
+                      }
+                    ],
+                    "id": 1169,
+                    "name": "VariableDeclaration",
+                    "src": "943:20:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "arg2",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1170,
+                        "name": "ElementaryTypeName",
+                        "src": "973:7:9"
+                      }
+                    ],
+                    "id": 1171,
+                    "name": "VariableDeclaration",
+                    "src": "973:20:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "msgValue",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1172,
+                        "name": "ElementaryTypeName",
+                        "src": "1003:7:9"
+                      }
+                    ],
+                    "id": 1173,
+                    "name": "VariableDeclaration",
+                    "src": "1003:16:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "msgData",
+                      "scope": 1177,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 1174,
+                        "name": "ElementaryTypeName",
+                        "src": "1029:5:9"
+                      }
+                    ],
+                    "id": 1175,
+                    "name": "VariableDeclaration",
+                    "src": "1029:13:9"
+                  }
+                ],
+                "id": 1176,
+                "name": "ParameterList",
+                "src": "867:181:9"
+              }
+            ],
+            "id": 1177,
+            "name": "EventDefinition",
+            "src": "854:205:9"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "peek",
+              "scope": 1190,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1178,
+                "name": "ParameterList",
+                "src": "1143:2:9"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1184,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1179,
+                        "name": "ElementaryTypeName",
+                        "src": "1193:7:9"
+                      }
+                    ],
+                    "id": 1180,
+                    "name": "VariableDeclaration",
+                    "src": "1193:7:9"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1184,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1181,
+                        "name": "ElementaryTypeName",
+                        "src": "1202:4:9"
+                      }
+                    ],
+                    "id": 1182,
+                    "name": "VariableDeclaration",
+                    "src": "1202:4:9"
+                  }
+                ],
+                "id": 1183,
+                "name": "ParameterList",
+                "src": "1192:15:9"
+              }
+            ],
+            "id": 1184,
+            "name": "FunctionDefinition",
+            "src": "1130:78:9"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "read",
+              "scope": 1190,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1185,
+                "name": "ParameterList",
+                "src": "1292:2:9"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1189,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1186,
+                        "name": "ElementaryTypeName",
+                        "src": "1342:7:9"
+                      }
+                    ],
+                    "id": 1187,
+                    "name": "VariableDeclaration",
+                    "src": "1342:7:9"
+                  }
+                ],
+                "id": 1188,
+                "name": "ParameterList",
+                "src": "1341:9:9"
+              }
+            ],
+            "id": 1189,
+            "name": "FunctionDefinition",
+            "src": "1279:72:9"
+          }
+        ],
+        "id": 1190,
+        "name": "ContractDefinition",
+        "src": "763:590:9"
+      }
+    ],
+    "id": 1191,
+    "name": "SourceUnit",
+    "src": "603:751:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.114Z",
+  "devdoc": {
+    "author": "dYdX * Interface for the price oracles run by MakerDao",
+    "methods": {},
+    "title": "IMakerOracle"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

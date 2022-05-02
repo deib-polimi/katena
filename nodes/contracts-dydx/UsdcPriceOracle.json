@@ -1,0 +1,960 @@
+{
+  "contractName": "UsdcPriceOracle",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ONE_DOLLAR",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "getPrice",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"getPrice\",\"outputs\":[{\"components\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ONE_DOLLAR\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * PriceOracle that returns the price of USDC in USD\",\"methods\":{},\"title\":\"UsdcPriceOracle\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/external/oracles/UsdcPriceOracle.sol\":\"UsdcPriceOracle\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/oracles/UsdcPriceOracle.sol\":{\"keccak256\":\"0x3f2072bf84eabc7529e1fe5b116ee5dfb95b686dfc0e222968f2bfcfa1f95970\",\"urls\":[\"bzzr://edc86bb90241e7e7f4ecd2ec2ddcb7cdc681798858c76a17d4a7a1f25f5575b8\"]},\"project:/contracts/protocol/interfaces/IPriceOracle.sol\":{\"keccak256\":\"0x647a7519803283e4152e0617881f0cf2766f8968cd1de9f28d624ee164adf19a\",\"urls\":[\"bzzr://0cb0053f7cfea2c823036aef20a99b63e5037fa9de5d55116a10374a45c7b828\"]},\"project:/contracts/protocol/lib/Monetary.sol\":{\"keccak256\":\"0x6f876a958c45fb1f2cefce1d7ee0ceb610fbe393e0040ad2d5680e0aa5536e54\",\"urls\":[\"bzzr://8b027c6ce5cd901a634dab7de74d617098b706d50b1c2ea0636406e021ea2815\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506101bf806100206000396000f3fe608060405234801561001057600080fd5b5060043610610052577c0100000000000000000000000000000000000000000000000000000000600035046341976e098114610057578063572ca9e714610080575b600080fd5b61006a6100653660046100f6565b610095565b6040516100779190610142565b60405180910390f35b6100886100bd565b6040516100779190610156565b61009d6100d0565b505060408051602081019091526c0c9f2c9cd04674edea40000000815290565b6ec097ce7bc90715b34b9f100000000081565b6040518060200160405280600081525090565b60006100ef8235610167565b9392505050565b60006020828403121561010857600080fd5b600061011484846100e3565b949350505050565b8051602083019061012d8482610133565b50505050565b61013c81610164565b82525050565b60208101610150828461011c565b92915050565b602081016101508284610133565b90565b600073ffffffffffffffffffffffffffffffffffffffff821661015056fea265627a7a72305820910ebcd36389c5f96a6efc3a5a25a344268486e06ffeba8ca995cad6ab09311e6c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610052577c0100000000000000000000000000000000000000000000000000000000600035046341976e098114610057578063572ca9e714610080575b600080fd5b61006a6100653660046100f6565b610095565b6040516100779190610142565b60405180910390f35b6100886100bd565b6040516100779190610156565b61009d6100d0565b505060408051602081019091526c0c9f2c9cd04674edea40000000815290565b6ec097ce7bc90715b34b9f100000000081565b6040518060200160405280600081525090565b60006100ef8235610167565b9392505050565b60006020828403121561010857600080fd5b600061011484846100e3565b949350505050565b8051602083019061012d8482610133565b50505050565b61013c81610164565b82525050565b60208101610150828461011c565b92915050565b602081016101508284610133565b90565b600073ffffffffffffffffffffffffffffffffffffffff821661015056fea265627a7a72305820910ebcd36389c5f96a6efc3a5a25a344268486e06ffeba8ca995cad6ab09311e6c6578706572696d656e74616cf50037",
+  "sourceMap": "904:451:16:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;904:451:16;;;;;;;",
+  "deployedSourceMap": "904:451:16:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;904:451:16;;;;;;;;;;;;;;;;;;;;;;;;1163:190;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;917:45:42;;;:::i;:::-;;;;;;;;1163:190:16;1261:21;;:::i;:::-;-1:-1:-1;;1305:41:16;;;;;;;;;1069:29;1305:41;;;1163:190::o;917:45:42:-;954:8;917:45;:::o;904:451:16:-;;;;;;;;;;;;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;57:66;-1:-1;;;57:66;130:241;;234:2;222:9;213:7;209:23;205:32;202:2;;;250:1;247;240:12;202:2;285:1;302:53;347:7;327:9;302:53;;;292:63;196:175;-1:-1;;;;196:175;431:317;638:22;;572:4;563:14;;;666:61;567:3;638:22;666:61;;;592:141;545:203;;;;755:110;828:31;853:5;828:31;;;823:3;816:44;810:55;;;999:309;1165:2;1150:18;;1179:119;1154:9;1271:6;1179:119;;;1136:172;;;;;1315:213;1433:2;1418:18;;1447:71;1422:9;1491:6;1447:71;;1535:79;1604:5;1587:27;1621:105;;1813:42;1802:54;;1690:31;1785:76",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { IPriceOracle } from \"../../protocol/interfaces/IPriceOracle.sol\";\nimport { Monetary } from \"../../protocol/lib/Monetary.sol\";\n\n\n/**\n * @title UsdcPriceOracle\n * @author dYdX\n *\n * PriceOracle that returns the price of USDC in USD\n */\ncontract UsdcPriceOracle is\n    IPriceOracle\n{\n    // ============ Constants ============\n\n    uint256 constant DECIMALS = 6;\n\n    uint256 constant EXPECTED_PRICE = ONE_DOLLAR / (10 ** DECIMALS);\n\n    // ============ IPriceOracle Functions =============\n\n    function getPrice(\n        address /* token */\n    )\n        public\n        view\n        returns (Monetary.Price memory)\n    {\n        return Monetary.Price({ value: EXPECTED_PRICE });\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/external/oracles/UsdcPriceOracle.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/external/oracles/UsdcPriceOracle.sol",
+    "exportedSymbols": {
+      "UsdcPriceOracle": [
+        3427
+      ]
+    },
+    "id": 3428,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3395,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:16"
+      },
+      {
+        "id": 3396,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:16"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/interfaces/IPriceOracle.sol",
+        "file": "../../protocol/interfaces/IPriceOracle.sol",
+        "id": 3398,
+        "nodeType": "ImportDirective",
+        "scope": 3428,
+        "sourceUnit": 16390,
+        "src": "661:74:16",
+        "symbolAliases": [
+          {
+            "foreign": 3397,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Monetary.sol",
+        "file": "../../protocol/lib/Monetary.sol",
+        "id": 3400,
+        "nodeType": "ImportDirective",
+        "scope": 3428,
+        "sourceUnit": 18652,
+        "src": "736:59:16",
+        "symbolAliases": [
+          {
+            "foreign": 3399,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3401,
+              "name": "IPriceOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 16389,
+              "src": "936:12:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IPriceOracle_$16389",
+                "typeString": "contract IPriceOracle"
+              }
+            },
+            "id": 3402,
+            "nodeType": "InheritanceSpecifier",
+            "src": "936:12:16"
+          }
+        ],
+        "contractDependencies": [
+          16389
+        ],
+        "contractKind": "contract",
+        "documentation": "@title UsdcPriceOracle\n@author dYdX\n * PriceOracle that returns the price of USDC in USD",
+        "fullyImplemented": true,
+        "id": 3427,
+        "linearizedBaseContracts": [
+          3427,
+          16389
+        ],
+        "name": "UsdcPriceOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3405,
+            "name": "DECIMALS",
+            "nodeType": "VariableDeclaration",
+            "scope": 3427,
+            "src": "999:29:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3403,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "999:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "36",
+              "id": 3404,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1027:1:16",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_6_by_1",
+                "typeString": "int_const 6"
+              },
+              "value": "6"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 3413,
+            "name": "EXPECTED_PRICE",
+            "nodeType": "VariableDeclaration",
+            "scope": 3427,
+            "src": "1035:63:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3406,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "1035:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "commonType": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "id": 3412,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "leftExpression": {
+                "argumentTypes": null,
+                "id": 3407,
+                "name": "ONE_DOLLAR",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 16381,
+                "src": "1069:10:16",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "BinaryOperation",
+              "operator": "/",
+              "rightExpression": {
+                "argumentTypes": null,
+                "components": [
+                  {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 3410,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "3130",
+                      "id": 3408,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1083:2:16",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_10_by_1",
+                        "typeString": "int_const 10"
+                      },
+                      "value": "10"
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "**",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 3409,
+                      "name": "DECIMALS",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3405,
+                      "src": "1089:8:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1083:14:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 3411,
+                "isConstant": false,
+                "isInlineArray": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "TupleExpression",
+                "src": "1082:16:16",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "src": "1069:29:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3425,
+              "nodeType": "Block",
+              "src": "1288:65:16",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 3422,
+                        "name": "EXPECTED_PRICE",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3413,
+                        "src": "1329:14:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3420,
+                        "name": "Monetary",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18651,
+                        "src": "1305:8:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Monetary_$18651_$",
+                          "typeString": "type(library Monetary)"
+                        }
+                      },
+                      "id": 3421,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "Price",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 18647,
+                      "src": "1305:14:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Price_$18647_storage_ptr_$",
+                        "typeString": "type(struct Monetary.Price storage pointer)"
+                      }
+                    },
+                    "id": 3423,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [
+                      "value"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "1305:41:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Price_$18647_memory",
+                      "typeString": "struct Monetary.Price memory"
+                    }
+                  },
+                  "functionReturnParameters": 3419,
+                  "id": 3424,
+                  "nodeType": "Return",
+                  "src": "1298:48:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 3426,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3416,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3415,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3426,
+                  "src": "1190:7:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3414,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1190:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1180:35:16"
+            },
+            "returnParameters": {
+              "id": 3419,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3418,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3426,
+                  "src": "1261:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Price_$18647_memory_ptr",
+                    "typeString": "struct Monetary.Price"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3417,
+                    "name": "Monetary.Price",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 18647,
+                    "src": "1261:14:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Price_$18647_storage_ptr",
+                      "typeString": "struct Monetary.Price"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1260:23:16"
+            },
+            "scope": 3427,
+            "src": "1163:190:16",
+            "stateMutability": "view",
+            "superFunction": 16388,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3428,
+        "src": "904:451:16"
+      }
+    ],
+    "src": "603:753:16"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/external/oracles/UsdcPriceOracle.sol",
+      "exportedSymbols": {
+        "UsdcPriceOracle": [
+          3427
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 3395,
+        "name": "PragmaDirective",
+        "src": "603:22:16"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 3396,
+        "name": "PragmaDirective",
+        "src": "626:33:16"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16390,
+          "absolutePath": "project:/contracts/protocol/interfaces/IPriceOracle.sol",
+          "file": "../../protocol/interfaces/IPriceOracle.sol",
+          "scope": 3428,
+          "symbolAliases": [
+            {
+              "foreign": 3397,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3398,
+        "name": "ImportDirective",
+        "src": "661:74:16"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 18652,
+          "absolutePath": "project:/contracts/protocol/lib/Monetary.sol",
+          "file": "../../protocol/lib/Monetary.sol",
+          "scope": 3428,
+          "symbolAliases": [
+            {
+              "foreign": 3399,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3400,
+        "name": "ImportDirective",
+        "src": "736:59:16"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            16389
+          ],
+          "contractKind": "contract",
+          "documentation": "@title UsdcPriceOracle\n@author dYdX\n * PriceOracle that returns the price of USDC in USD",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            3427,
+            16389
+          ],
+          "name": "UsdcPriceOracle",
+          "scope": 3428
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IPriceOracle",
+                  "referencedDeclaration": 16389,
+                  "type": "contract IPriceOracle"
+                },
+                "id": 3401,
+                "name": "UserDefinedTypeName",
+                "src": "936:12:16"
+              }
+            ],
+            "id": 3402,
+            "name": "InheritanceSpecifier",
+            "src": "936:12:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "DECIMALS",
+              "scope": 3427,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 3403,
+                "name": "ElementaryTypeName",
+                "src": "999:7:16"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "36",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 6",
+                  "value": "6"
+                },
+                "id": 3404,
+                "name": "Literal",
+                "src": "1027:1:16"
+              }
+            ],
+            "id": 3405,
+            "name": "VariableDeclaration",
+            "src": "999:29:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "EXPECTED_PRICE",
+              "scope": 3427,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 3406,
+                "name": "ElementaryTypeName",
+                "src": "1035:7:16"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "commonType": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "operator": "/",
+                  "type": "uint256"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 16381,
+                      "type": "uint256",
+                      "value": "ONE_DOLLAR"
+                    },
+                    "id": 3407,
+                    "name": "Identifier",
+                    "src": "1069:10:16"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "isConstant": false,
+                      "isInlineArray": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "type": "uint256"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "operator": "**",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "3130",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 10",
+                              "value": "10"
+                            },
+                            "id": 3408,
+                            "name": "Literal",
+                            "src": "1083:2:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3405,
+                              "type": "uint256",
+                              "value": "DECIMALS"
+                            },
+                            "id": 3409,
+                            "name": "Identifier",
+                            "src": "1089:8:16"
+                          }
+                        ],
+                        "id": 3410,
+                        "name": "BinaryOperation",
+                        "src": "1083:14:16"
+                      }
+                    ],
+                    "id": 3411,
+                    "name": "TupleExpression",
+                    "src": "1082:16:16"
+                  }
+                ],
+                "id": 3412,
+                "name": "BinaryOperation",
+                "src": "1069:29:16"
+              }
+            ],
+            "id": 3413,
+            "name": "VariableDeclaration",
+            "src": "1035:63:16"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getPrice",
+              "scope": 3427,
+              "stateMutability": "view",
+              "superFunction": 16388,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3426,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3414,
+                        "name": "ElementaryTypeName",
+                        "src": "1190:7:16"
+                      }
+                    ],
+                    "id": 3415,
+                    "name": "VariableDeclaration",
+                    "src": "1190:7:16"
+                  }
+                ],
+                "id": 3416,
+                "name": "ParameterList",
+                "src": "1180:35:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3426,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Monetary.Price",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Monetary.Price",
+                          "referencedDeclaration": 18647,
+                          "type": "struct Monetary.Price"
+                        },
+                        "id": 3417,
+                        "name": "UserDefinedTypeName",
+                        "src": "1261:14:16"
+                      }
+                    ],
+                    "id": 3418,
+                    "name": "VariableDeclaration",
+                    "src": "1261:21:16"
+                  }
+                ],
+                "id": 3419,
+                "name": "ParameterList",
+                "src": "1260:23:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3419
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            "value"
+                          ],
+                          "type": "struct Monetary.Price memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "Price",
+                              "referencedDeclaration": 18647,
+                              "type": "type(struct Monetary.Price storage pointer)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 18651,
+                                  "type": "type(library Monetary)",
+                                  "value": "Monetary"
+                                },
+                                "id": 3420,
+                                "name": "Identifier",
+                                "src": "1305:8:16"
+                              }
+                            ],
+                            "id": 3421,
+                            "name": "MemberAccess",
+                            "src": "1305:14:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3413,
+                              "type": "uint256",
+                              "value": "EXPECTED_PRICE"
+                            },
+                            "id": 3422,
+                            "name": "Identifier",
+                            "src": "1329:14:16"
+                          }
+                        ],
+                        "id": 3423,
+                        "name": "FunctionCall",
+                        "src": "1305:41:16"
+                      }
+                    ],
+                    "id": 3424,
+                    "name": "Return",
+                    "src": "1298:48:16"
+                  }
+                ],
+                "id": 3425,
+                "name": "Block",
+                "src": "1288:65:16"
+              }
+            ],
+            "id": 3426,
+            "name": "FunctionDefinition",
+            "src": "1163:190:16"
+          }
+        ],
+        "id": 3427,
+        "name": "ContractDefinition",
+        "src": "904:451:16"
+      }
+    ],
+    "id": 3428,
+    "name": "SourceUnit",
+    "src": "603:753:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.155Z",
+  "devdoc": {
+    "author": "dYdX * PriceOracle that returns the price of USDC in USD",
+    "methods": {},
+    "title": "UsdcPriceOracle"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "contractName": "ICallee",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "num",
+          "type": "int256"
+        }
+      ],
+      "name": "increment",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "result",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"int256\",\"name\":\"num\",\"type\":\"int256\"}],\"name\":\"increment\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"result\",\"type\":\"int256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ICallee.sol\":\"ICallee\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/ICallee.sol\":{\"keccak256\":\"0xfd3678cd2bc26a8f7865da9ec5d2cb5f08137943822ea7d2775e2f6c436dbfd8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd654edfecf0f1d6e83eb6a8796ec4ff1a06ba3068b2bac2079e165559bbc4f7\",\"dweb:/ipfs/QmPrFxAbWzz1SvD48HMrNqbCW4AnULT7eurp1QYD2jSrM4\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface ICallee {\n    function increment(int num) external pure returns(int result); \n}",
+  "sourcePath": "/home/terra/opensource/tosca-chain/smart-contract-example/contracts/ICallee.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/ICallee.sol",
+    "exportedSymbols": {
+      "ICallee": [
+        46
+      ]
+    },
+    "id": 47,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 38,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ICallee",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 46,
+        "linearizedBaseContracts": [
+          46
+        ],
+        "name": "ICallee",
+        "nameLocation": "67:7:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "c03c3003",
+            "id": 45,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "increment",
+            "nameLocation": "90:9:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 41,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 40,
+                  "mutability": "mutable",
+                  "name": "num",
+                  "nameLocation": "104:3:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 45,
+                  "src": "100:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 39,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "100:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "99:9:2"
+            },
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43,
+                  "mutability": "mutable",
+                  "name": "result",
+                  "nameLocation": "135:6:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 45,
+                  "src": "131:10:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 42,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "131:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "130:12:2"
+            },
+            "scope": 46,
+            "src": "81:62:2",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 47,
+        "src": "57:89:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:114:2"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/ICallee.sol",
+    "exportedSymbols": {
+      "ICallee": [
+        46
+      ]
+    },
+    "id": 47,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 38,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ICallee",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 46,
+        "linearizedBaseContracts": [
+          46
+        ],
+        "name": "ICallee",
+        "nameLocation": "67:7:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "c03c3003",
+            "id": 45,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "increment",
+            "nameLocation": "90:9:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 41,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 40,
+                  "mutability": "mutable",
+                  "name": "num",
+                  "nameLocation": "104:3:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 45,
+                  "src": "100:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 39,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "100:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "99:9:2"
+            },
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43,
+                  "mutability": "mutable",
+                  "name": "result",
+                  "nameLocation": "135:6:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 45,
+                  "src": "131:10:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 42,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "131:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "130:12:2"
+            },
+            "scope": 46,
+            "src": "81:62:2",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 47,
+        "src": "57:89:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:114:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-04-01T10:46:31.876Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

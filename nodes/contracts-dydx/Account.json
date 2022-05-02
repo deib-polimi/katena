@@ -1,0 +1,1150 @@
+{
+  "contractName": "Account",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"dYdX * Library of structs and functions that represent an account\",\"methods\":{},\"title\":\"Account\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/protocol/lib/Account.sol\":\"Account\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzzr://41ca38f6b0fa4b77b0feec43e422cfbec48b7eb38a41edf0b85c77e8d9a296b1\"]},\"project:/contracts/protocol/lib/Account.sol\":{\"keccak256\":\"0x4c27c617b01972ddb8ca160454284ed09f3ec6f7abd667c31ca9f38805738d33\",\"urls\":[\"bzzr://ad0dd4229cea4f8c5b877a653766cf413d733e442cfc448ffd715e786d7b5216\"]},\"project:/contracts/protocol/lib/Math.sol\":{\"keccak256\":\"0x05162cffa6d5479b6555e03af67b75e63d85272a3c3d3d2630a127ffa811ba41\",\"urls\":[\"bzzr://0e784dccf35201ef16030ec531028252d590936d75f0200f368a7e5981046af4\"]},\"project:/contracts/protocol/lib/Require.sol\":{\"keccak256\":\"0x6ecb512d52bb5cb36ba26b98877240e0b23eb3310df5dc61f82c655dc974d04b\",\"urls\":[\"bzzr://826485117e00106f438a7e64ecc32b2c3705e02d9bd6035dbdc5f9faaa19482c\"]},\"project:/contracts/protocol/lib/Types.sol\":{\"keccak256\":\"0x35c04c154e9ef818a3e1b59eb748565645864d5f8f2bc696c1f425a8ade9ab00\",\"urls\":[\"bzzr://8b2db9cb583f79fc2b74a70b270667f6a3bc54c3afef6a2d56e0d2ec5b8ca725\"]}},\"version\":1}",
+  "bytecode": "0x605a6023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a7230582042600417a2ad522c91df18bf56713a0d2a827ef1f8bd31b79eb60e97d24092c46c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a7230582042600417a2ad522c91df18bf56713a0d2a827ef1f8bd31b79eb60e97d24092c46c6578706572696d656e74616cf50037",
+  "sourceMap": "807:1228:43:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "807:1228:43:-;;;;;;;;",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { Types } from \"./Types.sol\";\n\n\n/**\n * @title Account\n * @author dYdX\n *\n * Library of structs and functions that represent an account\n */\nlibrary Account {\n    // ============ Enums ============\n\n    /*\n     * Most-recently-cached account status.\n     *\n     * Normal: Can only be liquidated if the account values are violating the global margin-ratio.\n     * Liquid: Can be liquidated no matter the account values.\n     *         Can be vaporized if there are no more positive account values.\n     * Vapor:  Has only negative (or zeroed) account values. Can be vaporized.\n     *\n     */\n    enum Status {\n        Normal,\n        Liquid,\n        Vapor\n    }\n\n    // ============ Structs ============\n\n    // Represents the unique key that specifies an account\n    struct Info {\n        address owner;  // The address that owns the account\n        uint256 number; // A nonce that allows a single address to control many accounts\n    }\n\n    // The complete storage for any account\n    struct Storage {\n        mapping (uint256 => Types.Par) balances; // Mapping from marketId to principal\n        Status status;\n    }\n\n    // ============ Library Functions ============\n\n    function equals(\n        Info memory a,\n        Info memory b\n    )\n        internal\n        pure\n        returns (bool)\n    {\n        return a.owner == b.owner && a.number == b.number;\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/protocol/lib/Account.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+    "exportedSymbols": {
+      "Account": [
+        16433
+      ]
+    },
+    "id": 16434,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 16391,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:43"
+      },
+      {
+        "id": 16392,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:43"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Types.sol",
+        "file": "./Types.sol",
+        "id": 16394,
+        "nodeType": "ImportDirective",
+        "scope": 16434,
+        "sourceUnit": 21431,
+        "src": "661:36:43",
+        "symbolAliases": [
+          {
+            "foreign": 16393,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": "@title Account\n@author dYdX\n * Library of structs and functions that represent an account",
+        "fullyImplemented": true,
+        "id": 16433,
+        "linearizedBaseContracts": [
+          16433
+        ],
+        "name": "Account",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Account.Status",
+            "id": 16398,
+            "members": [
+              {
+                "id": 16395,
+                "name": "Normal",
+                "nodeType": "EnumValue",
+                "src": "1283:6:43"
+              },
+              {
+                "id": 16396,
+                "name": "Liquid",
+                "nodeType": "EnumValue",
+                "src": "1299:6:43"
+              },
+              {
+                "id": 16397,
+                "name": "Vapor",
+                "nodeType": "EnumValue",
+                "src": "1315:5:43"
+              }
+            ],
+            "name": "Status",
+            "nodeType": "EnumDefinition",
+            "src": "1261:65:43"
+          },
+          {
+            "canonicalName": "Account.Info",
+            "id": 16403,
+            "members": [
+              {
+                "constant": false,
+                "id": 16400,
+                "name": "owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 16403,
+                "src": "1455:13:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 16399,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1455:7:43",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 16402,
+                "name": "number",
+                "nodeType": "VariableDeclaration",
+                "scope": 16403,
+                "src": "1516:14:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 16401,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1516:7:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Info",
+            "nodeType": "StructDefinition",
+            "scope": 16433,
+            "src": "1433:169:43",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Account.Storage",
+            "id": 16410,
+            "members": [
+              {
+                "constant": false,
+                "id": 16407,
+                "name": "balances",
+                "nodeType": "VariableDeclaration",
+                "scope": 16410,
+                "src": "1677:39:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Par_$20996_storage_$",
+                  "typeString": "mapping(uint256 => struct Types.Par)"
+                },
+                "typeName": {
+                  "id": 16406,
+                  "keyType": {
+                    "id": 16404,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1686:7:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1677:30:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Par_$20996_storage_$",
+                    "typeString": "mapping(uint256 => struct Types.Par)"
+                  },
+                  "valueType": {
+                    "contractScope": null,
+                    "id": 16405,
+                    "name": "Types.Par",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 20996,
+                    "src": "1697:9:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Par_$20996_storage_ptr",
+                      "typeString": "struct Types.Par"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 16409,
+                "name": "status",
+                "nodeType": "VariableDeclaration",
+                "scope": 16410,
+                "src": "1764:13:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Status_$16398",
+                  "typeString": "enum Account.Status"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 16408,
+                  "name": "Status",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 16398,
+                  "src": "1764:6:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$16398",
+                    "typeString": "enum Account.Status"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Storage",
+            "nodeType": "StructDefinition",
+            "scope": 16433,
+            "src": "1652:132:43",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 16431,
+              "nodeType": "Block",
+              "src": "1967:66:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 16429,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 16423,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 16419,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16412,
+                          "src": "1984:1:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                            "typeString": "struct Account.Info memory"
+                          }
+                        },
+                        "id": 16420,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 16400,
+                        "src": "1984:7:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 16421,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16414,
+                          "src": "1995:1:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                            "typeString": "struct Account.Info memory"
+                          }
+                        },
+                        "id": 16422,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "owner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 16400,
+                        "src": "1995:7:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "1984:18:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 16428,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 16424,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16412,
+                          "src": "2006:1:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                            "typeString": "struct Account.Info memory"
+                          }
+                        },
+                        "id": 16425,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "number",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 16402,
+                        "src": "2006:8:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 16426,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16414,
+                          "src": "2018:1:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                            "typeString": "struct Account.Info memory"
+                          }
+                        },
+                        "id": 16427,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "number",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 16402,
+                        "src": "2018:8:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "2006:20:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1984:42:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 16418,
+                  "id": 16430,
+                  "nodeType": "Return",
+                  "src": "1977:49:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 16432,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "equals",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16415,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16412,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16432,
+                  "src": "1867:13:43",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                    "typeString": "struct Account.Info"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16411,
+                    "name": "Info",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 16403,
+                    "src": "1867:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Info_$16403_storage_ptr",
+                      "typeString": "struct Account.Info"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16414,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16432,
+                  "src": "1890:13:43",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                    "typeString": "struct Account.Info"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16413,
+                    "name": "Info",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 16403,
+                    "src": "1890:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Info_$16403_storage_ptr",
+                      "typeString": "struct Account.Info"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1857:52:43"
+            },
+            "returnParameters": {
+              "id": 16418,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16417,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16432,
+                  "src": "1957:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16416,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1957:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1956:6:43"
+            },
+            "scope": 16433,
+            "src": "1842:191:43",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 16434,
+        "src": "807:1228:43"
+      }
+    ],
+    "src": "603:1433:43"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+      "exportedSymbols": {
+        "Account": [
+          16433
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 16391,
+        "name": "PragmaDirective",
+        "src": "603:22:43"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 16392,
+        "name": "PragmaDirective",
+        "src": "626:33:43"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 21431,
+          "absolutePath": "project:/contracts/protocol/lib/Types.sol",
+          "file": "./Types.sol",
+          "scope": 16434,
+          "symbolAliases": [
+            {
+              "foreign": 16393,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 16394,
+        "name": "ImportDirective",
+        "src": "661:36:43"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": "@title Account\n@author dYdX\n * Library of structs and functions that represent an account",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            16433
+          ],
+          "name": "Account",
+          "scope": 16434
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Account.Status",
+              "name": "Status"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "Normal"
+                },
+                "id": 16395,
+                "name": "EnumValue",
+                "src": "1283:6:43"
+              },
+              {
+                "attributes": {
+                  "name": "Liquid"
+                },
+                "id": 16396,
+                "name": "EnumValue",
+                "src": "1299:6:43"
+              },
+              {
+                "attributes": {
+                  "name": "Vapor"
+                },
+                "id": 16397,
+                "name": "EnumValue",
+                "src": "1315:5:43"
+              }
+            ],
+            "id": 16398,
+            "name": "EnumDefinition",
+            "src": "1261:65:43"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Account.Info",
+              "name": "Info",
+              "scope": 16433,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "owner",
+                  "scope": 16403,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 16399,
+                    "name": "ElementaryTypeName",
+                    "src": "1455:7:43"
+                  }
+                ],
+                "id": 16400,
+                "name": "VariableDeclaration",
+                "src": "1455:13:43"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "number",
+                  "scope": 16403,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 16401,
+                    "name": "ElementaryTypeName",
+                    "src": "1516:7:43"
+                  }
+                ],
+                "id": 16402,
+                "name": "VariableDeclaration",
+                "src": "1516:14:43"
+              }
+            ],
+            "id": 16403,
+            "name": "StructDefinition",
+            "src": "1433:169:43"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Account.Storage",
+              "name": "Storage",
+              "scope": 16433,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "balances",
+                  "scope": 16410,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "mapping(uint256 => struct Types.Par)",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "type": "mapping(uint256 => struct Types.Par)"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 16404,
+                        "name": "ElementaryTypeName",
+                        "src": "1686:7:43"
+                      },
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Types.Par",
+                          "referencedDeclaration": 20996,
+                          "type": "struct Types.Par"
+                        },
+                        "id": 16405,
+                        "name": "UserDefinedTypeName",
+                        "src": "1697:9:43"
+                      }
+                    ],
+                    "id": 16406,
+                    "name": "Mapping",
+                    "src": "1677:30:43"
+                  }
+                ],
+                "id": 16407,
+                "name": "VariableDeclaration",
+                "src": "1677:39:43"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "status",
+                  "scope": 16410,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "enum Account.Status",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Status",
+                      "referencedDeclaration": 16398,
+                      "type": "enum Account.Status"
+                    },
+                    "id": 16408,
+                    "name": "UserDefinedTypeName",
+                    "src": "1764:6:43"
+                  }
+                ],
+                "id": 16409,
+                "name": "VariableDeclaration",
+                "src": "1764:13:43"
+              }
+            ],
+            "id": 16410,
+            "name": "StructDefinition",
+            "src": "1652:132:43"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "equals",
+              "scope": 16433,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "a",
+                      "scope": 16432,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Account.Info",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Info",
+                          "referencedDeclaration": 16403,
+                          "type": "struct Account.Info"
+                        },
+                        "id": 16411,
+                        "name": "UserDefinedTypeName",
+                        "src": "1867:4:43"
+                      }
+                    ],
+                    "id": 16412,
+                    "name": "VariableDeclaration",
+                    "src": "1867:13:43"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "b",
+                      "scope": 16432,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Account.Info",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Info",
+                          "referencedDeclaration": 16403,
+                          "type": "struct Account.Info"
+                        },
+                        "id": 16413,
+                        "name": "UserDefinedTypeName",
+                        "src": "1890:4:43"
+                      }
+                    ],
+                    "id": 16414,
+                    "name": "VariableDeclaration",
+                    "src": "1890:13:43"
+                  }
+                ],
+                "id": 16415,
+                "name": "ParameterList",
+                "src": "1857:52:43"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 16432,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 16416,
+                        "name": "ElementaryTypeName",
+                        "src": "1957:4:43"
+                      }
+                    ],
+                    "id": 16417,
+                    "name": "VariableDeclaration",
+                    "src": "1957:4:43"
+                  }
+                ],
+                "id": 16418,
+                "name": "ParameterList",
+                "src": "1956:6:43"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 16418
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "&&",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "owner",
+                                  "referencedDeclaration": 16400,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 16412,
+                                      "type": "struct Account.Info memory",
+                                      "value": "a"
+                                    },
+                                    "id": 16419,
+                                    "name": "Identifier",
+                                    "src": "1984:1:43"
+                                  }
+                                ],
+                                "id": 16420,
+                                "name": "MemberAccess",
+                                "src": "1984:7:43"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "owner",
+                                  "referencedDeclaration": 16400,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 16414,
+                                      "type": "struct Account.Info memory",
+                                      "value": "b"
+                                    },
+                                    "id": 16421,
+                                    "name": "Identifier",
+                                    "src": "1995:1:43"
+                                  }
+                                ],
+                                "id": 16422,
+                                "name": "MemberAccess",
+                                "src": "1995:7:43"
+                              }
+                            ],
+                            "id": 16423,
+                            "name": "BinaryOperation",
+                            "src": "1984:18:43"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "number",
+                                  "referencedDeclaration": 16402,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 16412,
+                                      "type": "struct Account.Info memory",
+                                      "value": "a"
+                                    },
+                                    "id": 16424,
+                                    "name": "Identifier",
+                                    "src": "2006:1:43"
+                                  }
+                                ],
+                                "id": 16425,
+                                "name": "MemberAccess",
+                                "src": "2006:8:43"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "number",
+                                  "referencedDeclaration": 16402,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 16414,
+                                      "type": "struct Account.Info memory",
+                                      "value": "b"
+                                    },
+                                    "id": 16426,
+                                    "name": "Identifier",
+                                    "src": "2018:1:43"
+                                  }
+                                ],
+                                "id": 16427,
+                                "name": "MemberAccess",
+                                "src": "2018:8:43"
+                              }
+                            ],
+                            "id": 16428,
+                            "name": "BinaryOperation",
+                            "src": "2006:20:43"
+                          }
+                        ],
+                        "id": 16429,
+                        "name": "BinaryOperation",
+                        "src": "1984:42:43"
+                      }
+                    ],
+                    "id": 16430,
+                    "name": "Return",
+                    "src": "1977:49:43"
+                  }
+                ],
+                "id": 16431,
+                "name": "Block",
+                "src": "1967:66:43"
+              }
+            ],
+            "id": 16432,
+            "name": "FunctionDefinition",
+            "src": "1842:191:43"
+          }
+        ],
+        "id": 16433,
+        "name": "ContractDefinition",
+        "src": "807:1228:43"
+      }
+    ],
+    "id": 16434,
+    "name": "SourceUnit",
+    "src": "603:1433:43"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.318Z",
+  "devdoc": {
+    "author": "dYdX * Library of structs and functions that represent an account",
+    "methods": {},
+    "title": "Account"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

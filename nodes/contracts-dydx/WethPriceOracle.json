@@ -1,0 +1,1302 @@
+{
+  "contractName": "WethPriceOracle",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ONE_DOLLAR",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "MEDIANIZER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "medianizer",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "getPrice",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"getPrice\",\"outputs\":[{\"components\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ONE_DOLLAR\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"MEDIANIZER\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"medianizer\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"author\":\"dYdX * PriceOracle that returns the price of Wei in USD\",\"methods\":{},\"title\":\"WethPriceOracle\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/external/oracles/WethPriceOracle.sol\":\"WethPriceOracle\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/interfaces/IMakerOracle.sol\":{\"keccak256\":\"0x5370ca611b4153b1aac8cce05402a7c0df7544e76309cfde8aa0b9061a613fd7\",\"urls\":[\"bzzr://21aa378b1bbd2928e28180d346f3017af2cf0c1984b435cfe74e02fcf87969c1\"]},\"project:/contracts/external/oracles/WethPriceOracle.sol\":{\"keccak256\":\"0x59bbb149a73e2625a9a86ca664c5f9b6c2dfc91e17de8dac58528591e3882413\",\"urls\":[\"bzzr://91ed76c66654fe2f04a492f4d96c4ea33f7c806d43a91ff28b6341e32383188e\"]},\"project:/contracts/protocol/interfaces/IPriceOracle.sol\":{\"keccak256\":\"0x647a7519803283e4152e0617881f0cf2766f8968cd1de9f28d624ee164adf19a\",\"urls\":[\"bzzr://0cb0053f7cfea2c823036aef20a99b63e5037fa9de5d55116a10374a45c7b828\"]},\"project:/contracts/protocol/lib/Monetary.sol\":{\"keccak256\":\"0x6f876a958c45fb1f2cefce1d7ee0ceb610fbe393e0040ad2d5680e0aa5536e54\",\"urls\":[\"bzzr://8b027c6ce5cd901a634dab7de74d617098b706d50b1c2ea0636406e021ea2815\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806103ca833981018060405261002f9190810190610067565b60008054600160a060020a031916600160a060020a03929092169190911790556100aa565b6000610060825161008d565b9392505050565b60006020828403121561007957600080fd5b60006100858484610054565b949350505050565b60006100988261009e565b92915050565b600160a060020a031690565b610311806100b96000396000f3fe608060405234801561001057600080fd5b506004361061005d577c0100000000000000000000000000000000000000000000000000000000600035046341976e098114610062578063572ca9e71461008b57806394c5eddb146100a0575b600080fd5b6100756100703660046101e1565b6100b5565b6040516100829190610284565b60405180910390f35b610093610174565b6040516100829190610292565b6100a8610187565b6040516100829190610270565b6100bd6101a3565b60008054604080517f59e02dd7000000000000000000000000000000000000000000000000000000008152815173ffffffffffffffffffffffffffffffffffffffff909316926359e02dd792600480840193919291829003018186803b15801561012657600080fd5b505afa15801561013a573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061015e9190810190610207565b5060408051602081019091529081529392505050565b6ec097ce7bc90715b34b9f100000000081565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6040518060200160405280600081525090565b60006101c282356102bc565b9392505050565b60006101c282516102c7565b60006101c282516102b9565b6000602082840312156101f357600080fd5b60006101ff84846101b6565b949350505050565b6000806040838503121561021a57600080fd5b600061022685856101d5565b9250506020610237858286016101c9565b9150509250929050565b61024a816102cc565b82525050565b805160208301906102618482610267565b50505050565b61024a816102b9565b6020810161027e8284610241565b92915050565b6020810161027e8284610250565b6020810161027e8284610267565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b600061027e826102a0565b151590565b600061027e826102bc56fea265627a7a7230582043a984d068750cac6e98636590b6467efe51fa5eef8cfda46d8fb6bf7cb5b3ed6c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061005d577c0100000000000000000000000000000000000000000000000000000000600035046341976e098114610062578063572ca9e71461008b57806394c5eddb146100a0575b600080fd5b6100756100703660046101e1565b6100b5565b6040516100829190610284565b60405180910390f35b610093610174565b6040516100829190610292565b6100a8610187565b6040516100829190610270565b6100bd6101a3565b60008054604080517f59e02dd7000000000000000000000000000000000000000000000000000000008152815173ffffffffffffffffffffffffffffffffffffffff909316926359e02dd792600480840193919291829003018186803b15801561012657600080fd5b505afa15801561013a573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061015e9190810190610207565b5060408051602081019091529081529392505050565b6ec097ce7bc90715b34b9f100000000081565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6040518060200160405280600081525090565b60006101c282356102bc565b9392505050565b60006101c282516102c7565b60006101c282516102b9565b6000602082840312156101f357600080fd5b60006101ff84846101b6565b949350505050565b6000806040838503121561021a57600080fd5b600061022685856101d5565b9250506020610237858286016101c9565b9150509250929050565b61024a816102cc565b82525050565b805160208301906102618482610267565b50505050565b61024a816102b9565b6020810161027e8284610241565b92915050565b6020810161027e8284610250565b6020810161027e8284610267565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b600061027e826102a0565b151590565b600061027e826102bc56fea265627a7a7230582043a984d068750cac6e98636590b6467efe51fa5eef8cfda46d8fb6bf7cb5b3ed6c6578706572696d656e74616cf50037",
+  "sourceMap": "967:615:17:-;;;1144:119;8:9:-1;5:2;;;30:1;27;20:12;5:2;1144:119:17;;;;;;;;;;;;;;;;;;;;;;1219:10;:37;;-1:-1:-1;;;;;;1219:37:17;-1:-1:-1;;;;;1219:37:17;;;;;;;;;;967:615;;5:122:-1;;83:39;114:6;108:13;83:39;;;74:48;68:59;-1:-1;;;68:59;134:263;;249:2;237:9;228:7;224:23;220:32;217:2;;;265:1;262;255:12;217:2;300:1;317:64;373:7;353:9;317:64;;;307:74;211:186;-1:-1;;;;211:186;404:105;;473:31;498:5;473:31;;;462:42;456:53;-1:-1;;456:53;516:128;-1:-1;;;;;585:54;;568:76;;967:615:17;;;;;;",
+  "deployedSourceMap": "967:615:17:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;967:615:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1327:253;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;917:45:42;;;:::i;:::-;;;;;;;;1060:30:17;;;:::i;:::-;;;;;;;;1327:253;1425:21;;:::i;:::-;1463:13;1498:10;;:17;;;;;;;;:10;;;;;:15;;:17;;;;;;;;;;;;;:10;:17;;;5:2:-1;;;;30:1;27;20:12;5:2;1498:17:17;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1498:17:17;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1498:17:17;;;;;;;;;-1:-1:-1;1532:41:17;;;;;;;;;;;;;1327:253;-1:-1:-1;;;1327:253:17:o;917:45:42:-;954:8;917:45;:::o;1060:30:17:-;;;;;;:::o;967:615::-;;;;;;;;;;;;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;57:66;-1:-1;;;57:66;130:116;;205:36;233:6;227:13;205:36;;253:122;;331:39;362:6;356:13;331:39;;382:241;;486:2;474:9;465:7;461:23;457:32;454:2;;;502:1;499;492:12;454:2;537:1;554:53;599:7;579:9;554:53;;;544:63;448:175;-1:-1;;;;448:175;630:393;;;759:2;747:9;738:7;734:23;730:32;727:2;;;775:1;772;765:12;727:2;810:1;827:64;883:7;863:9;827:64;;;817:74;;789:108;928:2;946:61;999:7;990:6;979:9;975:22;946:61;;;936:71;;907:106;721:302;;;;;;1030:168;1134:58;1186:5;1134:58;;;1129:3;1122:71;1116:82;;;1258:317;1465:22;;1399:4;1390:14;;;1493:61;1394:3;1465:22;1493:61;;;1419:141;1372:203;;;;1582:110;1655:31;1680:5;1655:31;;1826:255;1965:2;1950:18;;1979:92;1954:9;2044:6;1979:92;;;1936:145;;;;;2088:309;2254:2;2239:18;;2268:119;2243:9;2360:6;2268:119;;2404:213;2522:2;2507:18;;2536:71;2511:9;2580:6;2536:71;;2624:128;2704:42;2693:54;;2676:76;2759:79;2828:5;2811:27;2845:105;;2914:31;2939:5;2914:31;;2957:92;3030:13;3023:21;;3006:43;3277:163;;3377:58;3429:5;3377:58;",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { IPriceOracle } from \"../../protocol//interfaces/IPriceOracle.sol\";\nimport { Monetary } from \"../../protocol/lib/Monetary.sol\";\nimport { IMakerOracle } from \"../interfaces/IMakerOracle.sol\";\n\n\n/**\n * @title WethPriceOracle\n * @author dYdX\n *\n * PriceOracle that returns the price of Wei in USD\n */\ncontract WethPriceOracle is\n    IPriceOracle\n{\n    // ============ Storage ============\n\n    IMakerOracle public MEDIANIZER;\n\n    // ============ Constructor =============\n\n    constructor(\n        address medianizer\n    )\n        public\n    {\n        MEDIANIZER = IMakerOracle(medianizer);\n    }\n\n    // ============ IPriceOracle Functions =============\n\n    function getPrice(\n        address /* token */\n    )\n        public\n        view\n        returns (Monetary.Price memory)\n    {\n        (bytes32 value, /* bool fresh */) = MEDIANIZER.peek();\n        return Monetary.Price({ value: uint256(value) });\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/external/oracles/WethPriceOracle.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/external/oracles/WethPriceOracle.sol",
+    "exportedSymbols": {
+      "WethPriceOracle": [
+        3474
+      ]
+    },
+    "id": 3475,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3429,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:17"
+      },
+      {
+        "id": 3430,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:17"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/interfaces/IPriceOracle.sol",
+        "file": "../../protocol//interfaces/IPriceOracle.sol",
+        "id": 3432,
+        "nodeType": "ImportDirective",
+        "scope": 3475,
+        "sourceUnit": 16390,
+        "src": "661:75:17",
+        "symbolAliases": [
+          {
+            "foreign": 3431,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Monetary.sol",
+        "file": "../../protocol/lib/Monetary.sol",
+        "id": 3434,
+        "nodeType": "ImportDirective",
+        "scope": 3475,
+        "sourceUnit": 18652,
+        "src": "737:59:17",
+        "symbolAliases": [
+          {
+            "foreign": 3433,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/external/interfaces/IMakerOracle.sol",
+        "file": "../interfaces/IMakerOracle.sol",
+        "id": 3436,
+        "nodeType": "ImportDirective",
+        "scope": 3475,
+        "sourceUnit": 1191,
+        "src": "797:62:17",
+        "symbolAliases": [
+          {
+            "foreign": 3435,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3437,
+              "name": "IPriceOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 16389,
+              "src": "999:12:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IPriceOracle_$16389",
+                "typeString": "contract IPriceOracle"
+              }
+            },
+            "id": 3438,
+            "nodeType": "InheritanceSpecifier",
+            "src": "999:12:17"
+          }
+        ],
+        "contractDependencies": [
+          16389
+        ],
+        "contractKind": "contract",
+        "documentation": "@title WethPriceOracle\n@author dYdX\n * PriceOracle that returns the price of Wei in USD",
+        "fullyImplemented": true,
+        "id": 3474,
+        "linearizedBaseContracts": [
+          3474,
+          16389
+        ],
+        "name": "WethPriceOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3440,
+            "name": "MEDIANIZER",
+            "nodeType": "VariableDeclaration",
+            "scope": 3474,
+            "src": "1060:30:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+              "typeString": "contract IMakerOracle"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 3439,
+              "name": "IMakerOracle",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1190,
+              "src": "1060:12:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+                "typeString": "contract IMakerOracle"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3451,
+              "nodeType": "Block",
+              "src": "1209:54:17",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3449,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 3445,
+                      "name": "MEDIANIZER",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3440,
+                      "src": "1219:10:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+                        "typeString": "contract IMakerOracle"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 3447,
+                          "name": "medianizer",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3442,
+                          "src": "1245:10:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 3446,
+                        "name": "IMakerOracle",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1190,
+                        "src": "1232:12:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IMakerOracle_$1190_$",
+                          "typeString": "type(contract IMakerOracle)"
+                        }
+                      },
+                      "id": 3448,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1232:24:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+                        "typeString": "contract IMakerOracle"
+                      }
+                    },
+                    "src": "1219:37:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+                      "typeString": "contract IMakerOracle"
+                    }
+                  },
+                  "id": 3450,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1219:37:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 3452,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3443,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3442,
+                  "name": "medianizer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3452,
+                  "src": "1165:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3441,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1165:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1155:34:17"
+            },
+            "returnParameters": {
+              "id": 3444,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1209:0:17"
+            },
+            "scope": 3474,
+            "src": "1144:119:17",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3472,
+              "nodeType": "Block",
+              "src": "1452:128:17",
+              "statements": [
+                {
+                  "assignments": [
+                    3460,
+                    null
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 3460,
+                      "name": "value",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 3472,
+                      "src": "1463:13:17",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 3459,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1463:7:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    null
+                  ],
+                  "id": 3464,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3461,
+                        "name": "MEDIANIZER",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3440,
+                        "src": "1498:10:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IMakerOracle_$1190",
+                          "typeString": "contract IMakerOracle"
+                        }
+                      },
+                      "id": 3462,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "peek",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1184,
+                      "src": "1498:15:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_bytes32_$_t_bool_$",
+                        "typeString": "function () view external returns (bytes32,bool)"
+                      }
+                    },
+                    "id": 3463,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1498:17:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bytes32_$_t_bool_$",
+                      "typeString": "tuple(bytes32,bool)"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1462:53:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 3468,
+                            "name": "value",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3460,
+                            "src": "1564:5:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          ],
+                          "id": 3467,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "1556:7:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": "uint256"
+                        },
+                        "id": 3469,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1556:14:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3465,
+                        "name": "Monetary",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18651,
+                        "src": "1532:8:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Monetary_$18651_$",
+                          "typeString": "type(library Monetary)"
+                        }
+                      },
+                      "id": 3466,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "Price",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 18647,
+                      "src": "1532:14:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Price_$18647_storage_ptr_$",
+                        "typeString": "type(struct Monetary.Price storage pointer)"
+                      }
+                    },
+                    "id": 3470,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [
+                      "value"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "1532:41:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Price_$18647_memory",
+                      "typeString": "struct Monetary.Price memory"
+                    }
+                  },
+                  "functionReturnParameters": 3458,
+                  "id": 3471,
+                  "nodeType": "Return",
+                  "src": "1525:48:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 3473,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3455,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3454,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3473,
+                  "src": "1354:7:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3453,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1354:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1344:35:17"
+            },
+            "returnParameters": {
+              "id": 3458,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3457,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3473,
+                  "src": "1425:21:17",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Price_$18647_memory_ptr",
+                    "typeString": "struct Monetary.Price"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3456,
+                    "name": "Monetary.Price",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 18647,
+                    "src": "1425:14:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Price_$18647_storage_ptr",
+                      "typeString": "struct Monetary.Price"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1424:23:17"
+            },
+            "scope": 3474,
+            "src": "1327:253:17",
+            "stateMutability": "view",
+            "superFunction": 16388,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3475,
+        "src": "967:615:17"
+      }
+    ],
+    "src": "603:980:17"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/external/oracles/WethPriceOracle.sol",
+      "exportedSymbols": {
+        "WethPriceOracle": [
+          3474
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 3429,
+        "name": "PragmaDirective",
+        "src": "603:22:17"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 3430,
+        "name": "PragmaDirective",
+        "src": "626:33:17"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16390,
+          "absolutePath": "project:/contracts/protocol/interfaces/IPriceOracle.sol",
+          "file": "../../protocol//interfaces/IPriceOracle.sol",
+          "scope": 3475,
+          "symbolAliases": [
+            {
+              "foreign": 3431,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3432,
+        "name": "ImportDirective",
+        "src": "661:75:17"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 18652,
+          "absolutePath": "project:/contracts/protocol/lib/Monetary.sol",
+          "file": "../../protocol/lib/Monetary.sol",
+          "scope": 3475,
+          "symbolAliases": [
+            {
+              "foreign": 3433,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3434,
+        "name": "ImportDirective",
+        "src": "737:59:17"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1191,
+          "absolutePath": "project:/contracts/external/interfaces/IMakerOracle.sol",
+          "file": "../interfaces/IMakerOracle.sol",
+          "scope": 3475,
+          "symbolAliases": [
+            {
+              "foreign": 3435,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3436,
+        "name": "ImportDirective",
+        "src": "797:62:17"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            16389
+          ],
+          "contractKind": "contract",
+          "documentation": "@title WethPriceOracle\n@author dYdX\n * PriceOracle that returns the price of Wei in USD",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            3474,
+            16389
+          ],
+          "name": "WethPriceOracle",
+          "scope": 3475
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IPriceOracle",
+                  "referencedDeclaration": 16389,
+                  "type": "contract IPriceOracle"
+                },
+                "id": 3437,
+                "name": "UserDefinedTypeName",
+                "src": "999:12:17"
+              }
+            ],
+            "id": 3438,
+            "name": "InheritanceSpecifier",
+            "src": "999:12:17"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "MEDIANIZER",
+              "scope": 3474,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract IMakerOracle",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IMakerOracle",
+                  "referencedDeclaration": 1190,
+                  "type": "contract IMakerOracle"
+                },
+                "id": 3439,
+                "name": "UserDefinedTypeName",
+                "src": "1060:12:17"
+              }
+            ],
+            "id": 3440,
+            "name": "VariableDeclaration",
+            "src": "1060:30:17"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 3474,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "medianizer",
+                      "scope": 3452,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3441,
+                        "name": "ElementaryTypeName",
+                        "src": "1165:7:17"
+                      }
+                    ],
+                    "id": 3442,
+                    "name": "VariableDeclaration",
+                    "src": "1165:18:17"
+                  }
+                ],
+                "id": 3443,
+                "name": "ParameterList",
+                "src": "1155:34:17"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3444,
+                "name": "ParameterList",
+                "src": "1209:0:17"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract IMakerOracle"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3440,
+                              "type": "contract IMakerOracle",
+                              "value": "MEDIANIZER"
+                            },
+                            "id": 3445,
+                            "name": "Identifier",
+                            "src": "1219:10:17"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract IMakerOracle",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1190,
+                                  "type": "type(contract IMakerOracle)",
+                                  "value": "IMakerOracle"
+                                },
+                                "id": 3446,
+                                "name": "Identifier",
+                                "src": "1232:12:17"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3442,
+                                  "type": "address",
+                                  "value": "medianizer"
+                                },
+                                "id": 3447,
+                                "name": "Identifier",
+                                "src": "1245:10:17"
+                              }
+                            ],
+                            "id": 3448,
+                            "name": "FunctionCall",
+                            "src": "1232:24:17"
+                          }
+                        ],
+                        "id": 3449,
+                        "name": "Assignment",
+                        "src": "1219:37:17"
+                      }
+                    ],
+                    "id": 3450,
+                    "name": "ExpressionStatement",
+                    "src": "1219:37:17"
+                  }
+                ],
+                "id": 3451,
+                "name": "Block",
+                "src": "1209:54:17"
+              }
+            ],
+            "id": 3452,
+            "name": "FunctionDefinition",
+            "src": "1144:119:17"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getPrice",
+              "scope": 3474,
+              "stateMutability": "view",
+              "superFunction": 16388,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3473,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3453,
+                        "name": "ElementaryTypeName",
+                        "src": "1354:7:17"
+                      }
+                    ],
+                    "id": 3454,
+                    "name": "VariableDeclaration",
+                    "src": "1354:7:17"
+                  }
+                ],
+                "id": 3455,
+                "name": "ParameterList",
+                "src": "1344:35:17"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3473,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Monetary.Price",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Monetary.Price",
+                          "referencedDeclaration": 18647,
+                          "type": "struct Monetary.Price"
+                        },
+                        "id": 3456,
+                        "name": "UserDefinedTypeName",
+                        "src": "1425:14:17"
+                      }
+                    ],
+                    "id": 3457,
+                    "name": "VariableDeclaration",
+                    "src": "1425:21:17"
+                  }
+                ],
+                "id": 3458,
+                "name": "ParameterList",
+                "src": "1424:23:17"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        3460,
+                        null
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "value",
+                          "scope": 3472,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bytes32",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes32",
+                              "type": "bytes32"
+                            },
+                            "id": 3459,
+                            "name": "ElementaryTypeName",
+                            "src": "1463:7:17"
+                          }
+                        ],
+                        "id": 3460,
+                        "name": "VariableDeclaration",
+                        "src": "1463:13:17"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple(bytes32,bool)",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "peek",
+                              "referencedDeclaration": 1184,
+                              "type": "function () view external returns (bytes32,bool)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3440,
+                                  "type": "contract IMakerOracle",
+                                  "value": "MEDIANIZER"
+                                },
+                                "id": 3461,
+                                "name": "Identifier",
+                                "src": "1498:10:17"
+                              }
+                            ],
+                            "id": 3462,
+                            "name": "MemberAccess",
+                            "src": "1498:15:17"
+                          }
+                        ],
+                        "id": 3463,
+                        "name": "FunctionCall",
+                        "src": "1498:17:17"
+                      }
+                    ],
+                    "id": 3464,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1462:53:17"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3458
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            "value"
+                          ],
+                          "type": "struct Monetary.Price memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "Price",
+                              "referencedDeclaration": 18647,
+                              "type": "type(struct Monetary.Price storage pointer)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 18651,
+                                  "type": "type(library Monetary)",
+                                  "value": "Monetary"
+                                },
+                                "id": 3465,
+                                "name": "Identifier",
+                                "src": "1532:8:17"
+                              }
+                            ],
+                            "id": 3466,
+                            "name": "MemberAccess",
+                            "src": "1532:14:17"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint256",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "type": "type(uint256)",
+                                  "value": "uint256"
+                                },
+                                "id": 3467,
+                                "name": "ElementaryTypeNameExpression",
+                                "src": "1556:7:17"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3460,
+                                  "type": "bytes32",
+                                  "value": "value"
+                                },
+                                "id": 3468,
+                                "name": "Identifier",
+                                "src": "1564:5:17"
+                              }
+                            ],
+                            "id": 3469,
+                            "name": "FunctionCall",
+                            "src": "1556:14:17"
+                          }
+                        ],
+                        "id": 3470,
+                        "name": "FunctionCall",
+                        "src": "1532:41:17"
+                      }
+                    ],
+                    "id": 3471,
+                    "name": "Return",
+                    "src": "1525:48:17"
+                  }
+                ],
+                "id": 3472,
+                "name": "Block",
+                "src": "1452:128:17"
+              }
+            ],
+            "id": 3473,
+            "name": "FunctionDefinition",
+            "src": "1327:253:17"
+          }
+        ],
+        "id": 3474,
+        "name": "ContractDefinition",
+        "src": "967:615:17"
+      }
+    ],
+    "id": 3475,
+    "name": "SourceUnit",
+    "src": "603:980:17"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.156Z",
+  "devdoc": {
+    "author": "dYdX * PriceOracle that returns the price of Wei in USD",
+    "methods": {},
+    "title": "WethPriceOracle"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

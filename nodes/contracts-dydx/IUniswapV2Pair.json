@@ -1,0 +1,383 @@
+{
+  "contractName": "IUniswapV2Pair",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getReserves",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getReserves\",\"outputs\":[{\"name\":\"\",\"type\":\"uint112\"},{\"name\":\"\",\"type\":\"uint112\"},{\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Partial interface for a Uniswap V2 pair.\",\"methods\":{},\"title\":\"IUniswapV2Pair\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/external/interfaces/IUniswapV2Pair.sol\":\"IUniswapV2Pair\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/interfaces/IUniswapV2Pair.sol\":{\"keccak256\":\"0xaabb468ea4fbe3f503ecc0d172a5ad16f3cddd363b5df7c99b37c8aad978e501\",\"urls\":[\"bzzr://0af14b16179666b1ac8fcd608addab8a353afead2729e95c90697a0135c0de62\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\n\n/**\n * @title IUniswapV2Pair\n * @author dYdX\n *\n * Partial interface for a Uniswap V2 pair.\n */\ninterface IUniswapV2Pair {\n\n    function getReserves()\n        external\n        view\n        returns (uint112, uint112, uint32);\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/external/interfaces/IUniswapV2Pair.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/external/interfaces/IUniswapV2Pair.sol",
+    "exportedSymbols": {
+      "IUniswapV2Pair": [
+        1203
+      ]
+    },
+    "id": 1204,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1192,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:10"
+      },
+      {
+        "id": 1193,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:10"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title IUniswapV2Pair\n@author dYdX\n * Partial interface for a Uniswap V2 pair.",
+        "fullyImplemented": false,
+        "id": 1203,
+        "linearizedBaseContracts": [
+          1203
+        ],
+        "name": "IUniswapV2Pair",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1202,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserves",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1194,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "810:2:10"
+            },
+            "returnParameters": {
+              "id": 1201,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1196,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1202,
+                  "src": "860:7:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 1195,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "860:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1198,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1202,
+                  "src": "869:7:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 1197,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "869:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1200,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1202,
+                  "src": "878:6:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 1199,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "878:6:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "859:26:10"
+            },
+            "scope": 1203,
+            "src": "790:96:10",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1204,
+        "src": "758:130:10"
+      }
+    ],
+    "src": "603:286:10"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/external/interfaces/IUniswapV2Pair.sol",
+      "exportedSymbols": {
+        "IUniswapV2Pair": [
+          1203
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 1192,
+        "name": "PragmaDirective",
+        "src": "603:22:10"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 1193,
+        "name": "PragmaDirective",
+        "src": "626:33:10"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title IUniswapV2Pair\n@author dYdX\n * Partial interface for a Uniswap V2 pair.",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1203
+          ],
+          "name": "IUniswapV2Pair",
+          "scope": 1204
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getReserves",
+              "scope": 1203,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1194,
+                "name": "ParameterList",
+                "src": "810:2:10"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1202,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 1195,
+                        "name": "ElementaryTypeName",
+                        "src": "860:7:10"
+                      }
+                    ],
+                    "id": 1196,
+                    "name": "VariableDeclaration",
+                    "src": "860:7:10"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1202,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 1197,
+                        "name": "ElementaryTypeName",
+                        "src": "869:7:10"
+                      }
+                    ],
+                    "id": 1198,
+                    "name": "VariableDeclaration",
+                    "src": "869:7:10"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1202,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 1199,
+                        "name": "ElementaryTypeName",
+                        "src": "878:6:10"
+                      }
+                    ],
+                    "id": 1200,
+                    "name": "VariableDeclaration",
+                    "src": "878:6:10"
+                  }
+                ],
+                "id": 1201,
+                "name": "ParameterList",
+                "src": "859:26:10"
+              }
+            ],
+            "id": 1202,
+            "name": "FunctionDefinition",
+            "src": "790:96:10"
+          }
+        ],
+        "id": 1203,
+        "name": "ContractDefinition",
+        "src": "758:130:10"
+      }
+    ],
+    "id": 1204,
+    "name": "SourceUnit",
+    "src": "603:286:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.115Z",
+  "devdoc": {
+    "author": "dYdX * Partial interface for a Uniswap V2 pair.",
+    "methods": {},
+    "title": "IUniswapV2Pair"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
