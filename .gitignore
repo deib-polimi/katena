@@ -3,9 +3,10 @@
 .idea
 *.log
 node_modules/
-smart-contract-example/
-contracts*/
 input.yml
 .vscode/
+build/
+migrations/
+test
 nodes/benchmark/
 nodes/contracts-try/
