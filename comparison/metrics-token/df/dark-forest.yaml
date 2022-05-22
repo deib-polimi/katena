@@ -1,0 +1,152 @@
+topology_template:
+  node_templates:
+    ganache:
+      type: toscachain.nodes.network.ganache
+    userWallet:
+      type: toscachain.nodes.wallet
+      requirements:
+        - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet }
+
+    verifier:
+      type: toscachain.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "Verifier"
+    libGameUtils:
+      type: toscachain.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "LibGameUtils"
+    libLazyUpdate:
+      type: toscachain.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "LibLazyUpdate"
+    libArtifactUtils:
+      type: toscachain.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+      properties:
+        abi: "LibArtifactUtils"
+    libPlanet:
+      type: toscachain.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: libLazyUpdate
+        - libraries: verifier
+      properties:
+        abi: "LibPlanet"
+
+    diamondCut:
+      type: toscachain.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DiamondCutFacet"
+    diamondLoupe:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DiamondLoupeFacet"
+    ownership:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "OwnershipFacet"
+    diamond:
+      type: toscachain.nodes.diamond
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - cut: diamondCut
+        - facet: diamondLoupe
+        - facet: ownership
+        - facet: coreFacet
+        - facet: moveFacet
+        - facet: captureFacet
+        - facet: getterFacet
+        - facet: whitelistFacet
+        - facet: adminFacet
+        - facet: lobbyFacet
+      properties:
+        abi: "Diamond"
+    coreFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: verifier
+        - libraries: libPlanet
+      properties:
+        abi: "DFCoreFacet"
+    moveFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libArtifactUtils
+        - libraries: libGameUtils
+        - libraries: verifier
+        - libraries: libPlanet
+      properties:
+        abi: "DFMoveFacet"
+    captureFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libPlanet
+      properties:
+        abi: "DFCaptureFacet"
+    getterFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+      properties:
+        abi: "DFGetterFacet"
+    whitelistFacet:
+      type: toscachain.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: verifier
+      properties:
+        abi: "DFWhitelistFacet"
+    adminFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: libArtifactUtils
+        - libraries: libPlanet
+      properties:
+        abi: "DFAdminFacet"
+    lobbyFacet:
+      type: toscachain.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DFLobbyFacet"
