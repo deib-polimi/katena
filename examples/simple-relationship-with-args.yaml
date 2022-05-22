@@ -7,22 +7,22 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.wallet
+      type: katena.nodes.wallet
       requirements:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
     callee:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "Callee"
     caller:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -35,7 +35,7 @@ topology_template:
 
   relationship_templates:
     increment:
-      type: tosca.relationships.callsConstructor
+      type: katena.relationships.callsConstructor
   
   inputs:
     UserKeyGanache:

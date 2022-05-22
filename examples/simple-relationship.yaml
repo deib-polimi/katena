@@ -7,15 +7,15 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.network
+      type: katena.nodes.network
       requirements:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
     calleeParam:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -26,20 +26,20 @@ topology_template:
           - "HelloWorld"
           - "0x0000000000000000000000000000000000000000"
     caller:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       - calls:
           node: calleeParam
-          capability: tosca.capabilities.Callable
+          capability: katena.capabilities.Callable
           relationship: increment
       properties:
         abi: "Caller"
 
   relationship_templates:
     increment:
-      type: tosca.relationships.calls
+      type: katena.relationships.calls
       properties:
         modifier: "setCallee"
 

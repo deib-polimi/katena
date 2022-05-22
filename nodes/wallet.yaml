@@ -6,12 +6,12 @@ imports:
   - capabilities.yaml
 
 node_types:
-  toscachain.nodes.wallet:
+  katena.nodes.wallet:
     derived_from: tosca.nodes.Root
     requirements:
       - host:
           capability: tosca.capabilities.Container
-          node: toscachain.nodes.network
+          node: katena.nodes.network
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] 
     properties:

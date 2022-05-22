@@ -8,15 +8,15 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.network
+      type: katena.nodes.network
       requirements:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
     demo: 
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet

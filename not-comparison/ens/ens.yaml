@@ -8,9 +8,9 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet:
-      type: toscachain.nodes.wallet
+      type: katena.nodes.wallet
       requirements:
         - host: ganache
       properties:
@@ -19,14 +19,14 @@ topology_template:
 
     # deploy diamond
     ensRegistry:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "ENSRegistry"
     publicResolver:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -36,7 +36,7 @@ topology_template:
         parameters:
           - "0x0000000000000000000000000000000000000000"
     registrar:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -46,7 +46,7 @@ topology_template:
         parameters:
           - "0x04f740db81dc36c853ab4205bddd785f46e79ccedca351fc6dfcbd8cc9a33dd6"
     reverseRegistrar:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet

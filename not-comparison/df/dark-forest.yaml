@@ -8,9 +8,9 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet:
-      type: toscachain.nodes.wallet
+      type: katena.nodes.wallet
       requirements:
         - host: ganache
       properties:
@@ -19,28 +19,28 @@ topology_template:
 
     # libraries
     verifier:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "Verifier"
     libGameUtils:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "LibGameUtils"
     libLazyUpdate:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "LibLazyUpdate"
     libArtifactUtils:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -48,7 +48,7 @@ topology_template:
       properties:
         abi: "LibArtifactUtils"
     libPlanet:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -60,28 +60,28 @@ topology_template:
 
     # deploy diamond
     diamondCut:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "DiamondCutFacet"
     diamondLoupe:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "DiamondLoupeFacet"
     ownership:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
       properties:
         abi: "OwnershipFacet"
     diamond:
-      type: toscachain.nodes.diamond
+      type: katena.nodes.diamond
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -98,7 +98,7 @@ topology_template:
       properties:
         abi: "Diamond"
     coreFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -108,7 +108,7 @@ topology_template:
       properties:
         abi: "DFCoreFacet"
     moveFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -119,7 +119,7 @@ topology_template:
       properties:
         abi: "DFMoveFacet"
     captureFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -127,7 +127,7 @@ topology_template:
       properties:
         abi: "DFCaptureFacet"
     getterFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -135,7 +135,7 @@ topology_template:
       properties:
         abi: "DFGetterFacet"
     whitelistFacet:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -143,7 +143,7 @@ topology_template:
       properties:
         abi: "DFWhitelistFacet"
     adminFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet
@@ -153,7 +153,7 @@ topology_template:
       properties:
         abi: "DFAdminFacet"
     lobbyFacet:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
         - host: ganache
         - wallet: userWallet

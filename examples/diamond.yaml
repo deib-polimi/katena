@@ -7,44 +7,44 @@ imports:
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.wallet
+      type: katena.nodes.wallet
       requirements:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
     facet1:
-      type: toscachain.nodes.diamond.facet
+      type: katena.nodes.diamond.facet
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "Callee"
     # facet2:
-    #   type: toscachain.nodes.diamond.facet
+    #   type: katena.nodes.diamond.facet
     #   requirements:
     #   - host: ganache
     #   properties:
     #     abi: "Callee"
     #     privateKey: { get_input: UserKeyGanache }
     diamondCut:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "DiamondCutFacet"
     diamondLoupe:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "DiamondLoupeFacet"
     myDiamond:
-      type: toscachain.nodes.diamond
+      type: katena.nodes.diamond
       requirements:
       - host: ganache
       - wallet: userWallet

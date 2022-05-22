@@ -4,12 +4,12 @@ imports:
   - contract.yaml
 
 capability_types:
-  tosca.capabilities.Callable:
-    derived_from: tosca.capabilities.Container
-    valid_source_types: [toscachain.nodes.contract]
-  tosca.capabilities.Facet:
-    derived_from: tosca.capabilities.Container
-    valid_source_types: [toscachain.nodes.diamond.facet]
-  tosca.capabilities.InitFunction:
-    derived_from: tosca.capabilities.Container
-    valid_source_types: [toscachain.nodes.diamond.diamondInit]
+  katena.capabilities.Callable:
+    derived_from: katena.capabilities.Container
+    valid_source_types: [katena.nodes.contract]
+  katena.capabilities.Facet:
+    derived_from: katena.capabilities.Container
+    valid_source_types: [katena.nodes.diamond.facet]
+  katena.capabilities.InitFunction:
+    derived_from: katena.capabilities.Container
+    valid_source_types: [katena.nodes.diamond.diamondInit]

@@ -7,29 +7,29 @@ imports:
   - wallet.yaml
 
 node_types:
-  toscachain.nodes.contractReference:
-    derived_from: tosca.nodes.Root
+  katena.nodes.contractReference:
+    derived_from: katena.nodes.Root
     attributes:
       contractAddress: # set after playbook execution
         type: string
         description: "address reference of existing contract"
-  toscachain.nodes.library:
+  katena.nodes.library:
     derived_from: tosca.nodes.Root
     requirements:
       - host:
           capability: tosca.capabilities.Container
-          node: toscachain.nodes.network
+          node: katena.nodes.network
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1] # a node smart contract is deployed in only one network at time
       - wallet:
           capability: tosca.capabilities.Container
-          node: toscachain.nodes.wallet
+          node: katena.nodes.wallet
           relationship: tosca.relationships.HostedOn
           occurrences: [1, 1]
       - libraries:
           capability: tosca.capabilities.Container
-          node: toscachain.nodes.library
-          relationship: tosca.relationships.libraryLinkage
+          node: katena.nodes.library
+          relationship: katena.relationships.libraryLinkage
           occurrences: [0, UNBOUNDED]
     properties:
       abi:
@@ -84,25 +84,25 @@ node_types:
                 - scripts/
                 - contracts/
 
-  toscachain.nodes.contract:
-    derived_from: toscachain.nodes.library
+  katena.nodes.contract:
+    derived_from: katena.nodes.library
     requirements:
       - calls: # a contract can call other contracts
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.calls
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.calls
           occurrences: [0, UNBOUNDED]
       - constructorCalls:
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.callsConstructor
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.callsConstructor
           occurrences: [0, UNBOUNDED]
       - libraries:
           capability: tosca.capabilities.Container
-          node: toscachain.nodes.library
-          relationship: tosca.relationships.libraryLinkage
+          node: katena.nodes.library
+          relationship: katena.relationships.libraryLinkage
           occurrences: [0, UNBOUNDED]
     capabilities:
       callable:
-        type: tosca.capabilities.Callable
+        type: katena.capabilities.Callable
     properties:
       parameters:
         type: list
@@ -186,24 +186,24 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-  toscachain.nodes.diamond:
-    derived_from: toscachain.nodes.contract
+  katena.nodes.diamond:
+    derived_from: katena.nodes.contract
     requirements:
       - facet:
-          capability: tosca.capabilities.Facet
-          relationship: tosca.relationships.facet
+          capability: katena.capabilities.Facet
+          relationship: katena.relationships.facet
           occurrences: [0, UNBOUNDED]
       - cut:
-          capability: tosca.capabilities.Callable
-          relationship: tosca.relationships.callsConstructor
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.callsConstructor
           occurrences: [1, 1]
       # - loupe:
-      #     capability: tosca.capabilities.Callable
-      #     relationship: tosca.relationships.callsConstructor
+      #     capability: katena.capabilities.Callable
+      #     relationship: katena.relationships.callsConstructor
       #     occurrences: [1, 1]
       # - init:
-      #     capability: tosca.capabilities.InitFunction
-      #     relationship: tosca.relationships.DependsOn
+      #     capability: katena.capabilities.InitFunction
+      #     relationship: katena.relationships.DependsOn
       #     occurrences: [1, 1]
     interfaces:
       Standard:
@@ -240,11 +240,11 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-  toscachain.nodes.diamond.diamondInit:
-    derived_from: toscachain.nodes.contract
+  katena.nodes.diamond.diamondInit:
+    derived_from: katena.nodes.contract
     capabilities:
       initFunction:
-        type: tosca.capabilities.InitFunction
+        type: katena.capabilities.InitFunction
     properties:
       initFunction:
         type: string
@@ -310,8 +310,8 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-  toscachain.nodes.diamond.facet:
-    derived_from: toscachain.nodes.contract
+  katena.nodes.diamond.facet:
+    derived_from: katena.nodes.contract
     capabilities:
       facet:
-        type: tosca.capabilities.Facet
+        type: katena.capabilities.Facet

@@ -5,7 +5,7 @@ imports:
   - capabilities.yaml
 
 relationship_types:
-  tosca.relationships.callsConstructor:
+  katena.relationships.callsConstructor:
     derived_from: tosca.relationships.DependsOn
     interfaces:
       Configure:
@@ -28,9 +28,9 @@ relationship_types:
             implementation:
               primary: playbooks/constructor_calls.yml
     # TODO: set valid target type
-    # valid_target_types: [toscachain.nodes.contract]
-  tosca.relationships.calls:
-    derived_from: tosca.relationships.callsConstructor
+    # valid_target_types: [katena.nodes.contract]
+  katena.relationships.calls:
+    derived_from: katena.relationships.callsConstructor
     properties:
       # TODO: maybe could be an array of strings
       modifier:
@@ -125,7 +125,7 @@ relationship_types:
               dependencies:
                 - scripts/
                 - contracts/
-  tosca.relationships.libraryLinkage:
+  katena.relationships.libraryLinkage:
     derived_from: tosca.relationships.DependsOn
     interfaces:
       Configure:
@@ -149,9 +149,9 @@ relationship_types:
               dependencies:
                 - scripts/
                 - contracts/
-  tosca.relationships.facet:
+  katena.relationships.facet:
     derived_from: tosca.relationships.DependsOn
-    valid_target_types: [tosca.capabilities.Facet]
+    valid_target_types: [katena.capabilities.Facet]
     properties:
       # TODO: maybe could be an array of strings
       exclude:

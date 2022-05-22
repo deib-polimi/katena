@@ -1,9 +1,9 @@
 topology_template:
   node_templates:
     ganache:
-      type: toscachain.nodes.network.ganache
+      type: katena.nodes.network.ganache
     userWallet: 
-      type: toscachain.nodes.wallet
+      type: katena.nodes.wallet
       requirements:
       - host: ganache
       properties:
@@ -11,14 +11,14 @@ topology_template:
         owner: { get_input: UserWallet}
 
     adminImpl:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "AdminImpl"
     operationImpl:
-      type: toscachain.nodes.library
+      type: katena.nodes.library
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -26,7 +26,7 @@ topology_template:
         abi: "OperationImpl"
 
     soloMargin:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -77,7 +77,7 @@ topology_template:
         - 100.00e18
 
     polynomialInterestSetter:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -88,7 +88,7 @@ topology_template:
         - 87960930880000
 
     doubleExponentInterestSetter:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -99,46 +99,46 @@ topology_template:
         - 86236206100
 
     oraclePoker:
-      type: toscachain.nodes.contractReference
+      type: katena.nodes.contractReference
       attributes:
         contractAddress: { get_input: UserWallet }
     weth:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "WETH9"
     dai:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "TokenB"
     curve:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "TestCurve"
     uniswapDai:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "TestUniswapV2Pair"
     uniswapUsd:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "TestUniswapV2Pair2"
     daiPriceOracle:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -155,7 +155,7 @@ topology_template:
         - 100000000000000
         - 10000000000000000
     usdcPriceOracle:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -163,7 +163,7 @@ topology_template:
         abi: "UsdcPriceOracle"
 
     testMakerOracle:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -175,7 +175,7 @@ topology_template:
 
    
     wethPriceOracle:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -186,7 +186,7 @@ topology_template:
         -  { get_attribute: [SELF, constructorCalls, contractAddress] }
 
     testCalle:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -196,7 +196,7 @@ topology_template:
         parameters:
         -  { get_attribute: [SELF, constructorCalls, contractAddress] }
     testSimpleCallee:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -207,7 +207,7 @@ topology_template:
         -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
 
     payableProxyForSoloMargin:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -216,7 +216,7 @@ topology_template:
       properties:
         abi: "PayableProxyForSoloMargin"
     expiry:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -226,7 +226,7 @@ topology_template:
         parameters:
           - 3600
     expiryV2:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -236,7 +236,7 @@ topology_template:
         parameters:
           - 3600
     finalSettlement:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -246,7 +246,7 @@ topology_template:
         parameters:
           - 2419200
     refunder:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -256,7 +256,7 @@ topology_template:
         parameters:
         - EMPTY_LIST
     daiMigrator:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -265,7 +265,7 @@ topology_template:
         parameters: 
         - EMPTY_LIST 
     liquidatorProxyV1ForSoloMargin:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -273,7 +273,7 @@ topology_template:
       properties:
         abi: "LiquidatorProxyV1ForSoloMargin"
     limitOrders:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -283,7 +283,7 @@ topology_template:
         parameters:
         - 1001
     stopLimitOrders:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -293,7 +293,7 @@ topology_template:
         parameters:
         - 1001 
     canonicalOrders:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -304,7 +304,7 @@ topology_template:
         - { get_input: UserWallet }
         - 1001 
     signedOperationProxy:
-      type: toscachain.nodes.contract
+      type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -316,6 +316,6 @@ topology_template:
 
   relationship_templates:
     ownerSetGlobalOperator:
-      type: tosca.relationships.calls
+      type: katena.relationships.calls
       properties:
         modifier: "ownerSetGlobalOperator"

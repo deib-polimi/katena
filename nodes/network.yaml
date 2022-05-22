@@ -4,8 +4,8 @@ imports:
 - contract.yaml
 
 node_types:
-  toscachain.nodes.network: # network can be any type of blockchain (e.g. Eth, L2, Ganache)
-    derived_from: tosca.nodes.Root
+  katena.nodes.network: # network can be any type of blockchain (e.g. Eth, L2, Ganache)
+    derived_from: katena.nodes.Root
     properties:
       address:
         description: Host IP and port
@@ -14,9 +14,9 @@ node_types:
     capabilities:
       host:
         type: tosca.capabilities.Container
-        valid_source_types: [toscachain.nodes.contract] # network can host only smart contracts
-  toscachain.nodes.network.ganache: # set default value for ganache
-    derived_from: toscachain.nodes.network
+        valid_source_types: [katena.nodes.contract] # network can host only smart contracts
+  katena.nodes.network.ganache: # set default value for ganache
+    derived_from: katena.nodes.network
     properties:
       address:
         description: Host IP and port
