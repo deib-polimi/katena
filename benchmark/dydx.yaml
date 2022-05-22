@@ -112,6 +112,46 @@ topology_template:
       - wallet: userWallet
       - libraries: adminImpl
       - libraries: operationImpl
+      - calls:
+          node: payableProxyForSoloMargin
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: expiry
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: finalSettlement
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: refunder
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: daiMigrator
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: limitOrders
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: stopLimitOrders
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: canonicalOrders
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: signedOperationProxy
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: expiryV2
+          capability: tosca.capabilities.Callable
+          relationship: ownerSetGlobalOperator
       properties:
         abi: "SoloMargin"
         parameters:
@@ -452,6 +492,11 @@ topology_template:
         parameters:
         - 1001 
 
+  relationship_templates:
+    ownerSetGlobalOperator:
+      type: tosca.relationships.calls
+      properties:
+        modifier: "ownerSetGlobalOperator"
 
   inputs:
     UserKeyGanache:

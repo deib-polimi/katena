@@ -74,14 +74,14 @@ topology_template:
       properties:
         abi: "DiamondCutFacet"
     diamondLoupe:
-      type: toscachain.nodes.contract
+      type: toscachain.nodes.diamond.facet
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
         abi: "DiamondLoupeFacet"
     ownership:
-      type: toscachain.nodes.contract
+      type: toscachain.nodes.diamond.facet
       requirements:
       - host: ganache
       - wallet: userWallet
