@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+  - name: install web3
+    pip: 
+      name: web3==5.28.0
+  - name: deploy
+    command: python scripts/proxy_deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --implementationAddress {{ implementationAddress }}
+    register: contract_address
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_address: "{{ contract_address.stdout_lines[-1] }}"

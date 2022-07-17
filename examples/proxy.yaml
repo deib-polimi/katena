@@ -1,0 +1,39 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet: 
+      type: katena.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+    callee:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Callee"
+    proxy:
+      type: katena.nodes.proxy.erc1967
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - implementation: callee
+      properties:
+        abi: "ERC1967Proxy"
+        parameters:
+
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string

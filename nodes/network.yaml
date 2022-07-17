@@ -5,22 +5,23 @@ imports:
 
 node_types:
   katena.nodes.network: # network can be any type of blockchain (e.g. Eth, L2, Ganache)
-    derived_from: katena.nodes.Root
-    properties:
-      address:
-        description: Host IP and port
-        type: string
-        required: true
+    derived_from: tosca.nodes.Root
     capabilities:
       host:
         type: tosca.capabilities.Container
         valid_source_types: [katena.nodes.contract] # network can host only smart contracts
-  katena.nodes.network.ganache: # set default value for ganache
+  katena.nodes.network.selfHostedNode:
     derived_from: katena.nodes.network
     properties:
       address:
         description: Host IP and port
         type: string
         required: true
+  katena.nodes.network.ganache: # set default value for ganache
+    derived_from: katena.nodes.network.selfHostedNode
+    properties:
+      address:
+        description: Host IP and port
+        type: string
+        required: true
         default: 'localhost:8545'
-# TODO: add more networks

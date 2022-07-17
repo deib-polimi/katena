@@ -5,11 +5,11 @@ imports:
 
 capability_types:
   katena.capabilities.Callable:
-    derived_from: katena.capabilities.Container
+    derived_from: tosca.capabilities.Container
     valid_source_types: [katena.nodes.contract]
   katena.capabilities.Facet:
-    derived_from: katena.capabilities.Container
+    derived_from: tosca.capabilities.Container
     valid_source_types: [katena.nodes.diamond.facet]
   katena.capabilities.InitFunction:
-    derived_from: katena.capabilities.Container
+    derived_from: tosca.capabilities.Container
     valid_source_types: [katena.nodes.diamond.diamondInit]

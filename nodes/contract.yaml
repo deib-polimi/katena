@@ -8,7 +8,7 @@ imports:
 
 node_types:
   katena.nodes.contractReference:
-    derived_from: katena.nodes.Root
+    derived_from: tosca.nodes.Root
     attributes:
       contractAddress: # set after playbook execution
         type: string
@@ -183,6 +183,38 @@ node_types:
                 { type: string, default: { get_property: [SELF, refund] } }
             implementation:
               primary: playbooks/delete_contract.yml
+              dependencies:
+                - scripts/
+                - contracts/
+  katena.nodes.proxy.erc1967:
+    derived_from: katena.nodes.contract
+    requirements:
+      - implementation:
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.callsConstructor
+          occurrences: [1, 1]
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          configure:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              implementationAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, implementation, contractAddress] },
+                }
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: playbooks/proxy_deploy.yml
               dependencies:
                 - scripts/
                 - contracts/
