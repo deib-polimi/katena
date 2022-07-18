@@ -60,10 +60,8 @@ async function getRiskLimits() {
 
 async function getRiskParams(network) {
   verifyNetwork(network);
-  let mbv = '0.00';
-  if (isDevNetwork(network)) {
-    mbv = '0.05';
-  }
+  let mbv = '0.05';
+
   return {
     marginRatio: { value: decimalToString('0.15') },
     liquidationSpread: { value: decimalToString('0.05') },
@@ -73,12 +71,7 @@ async function getRiskParams(network) {
 }
 
 async function getPolynomialParams(network) {
-  if (isMainNet(network)) {
-    return {
-      maxAPR: decimalToString('0.50'), // 50%
-      coefficients: coefficientsToString([0, 20, 10, 0, 0, 0, 0, 0, 0, 0, 70]),
-    };
-  }
+
   return {
     maxAPR: decimalToString('1.00'), // 100%
     coefficients: coefficientsToString([0, 10, 10, 0, 0, 80]),
@@ -86,12 +79,7 @@ async function getPolynomialParams(network) {
 }
 
 async function getDoubleExponentParams(network) {
-  if (isMainNet(network)) {
-    return {
-      maxAPR: decimalToString('0.50'), // 50%
-      coefficients: coefficientsToString([0, 20, 0, 0, 0, 0, 20, 60]),
-    };
-  }
+
   return {
     maxAPR: decimalToString('1.00'), // 100%
     coefficients: coefficientsToString([20, 20, 20, 20, 20]),
@@ -99,19 +87,12 @@ async function getDoubleExponentParams(network) {
 }
 
 function getDaiPriceOracleDeviationParams(network) {
-  verifyNetwork(network);
-  if (isDevNetwork) {
+
     return {
       denominator: decimalToString('1.00'),
       maximumPerSecond: decimalToString('0.0001'),
       maximumAbsolute: decimalToString('0.01'),
     };
-  }
-  return {
-    denominator: decimalToString('1.00'),
-    maximumPerSecond: decimalToString('0.0001'),
-    maximumAbsolute: decimalToString('0.01'),
-  };
 }
 
 function getExpiryRampTime() {
@@ -129,45 +110,21 @@ function verifyNetwork(network) {
 }
 
 function getSenderAddress(network, accounts) {
-  if (isMainNet(network) || isKovan(network)) {
-    return '0xf809e07870dca762B9536d61A4fBEF1a17178092';
-  }
-  if (isDevNetwork(network)) {
+
     return accounts[0];
-  }
-  throw new Error('Cannot find Sender address');
+
 }
 
 function getOraclePokerAddress(network, accounts) {
-  if (isMainNet(network)) {
-    return '0x500dd93a74dbfa65a4eeda44da489adcef530cb9';
-  }
-  if (isKovan(network)) {
-    return '0xa13cc3ab215bf669764a1a56a831c1bdc95659dd';
-  }
-  if (isDevNetwork(network)) {
     return accounts[0];
-  }
-  throw new Error('Cannot find Oracle Poker');
+
 }
 
 function getPartiallyDelayedMultisigAddress(network) {
-  if (isMainNet(network)) {
-    return '0xba2906b18B069b40C6D2CAFd392E76ad479B1B53';
-  }
-  if (isKovan(network)) {
-    return '0x3d62d8b3ef034e0fde7de8fec4f557a3e6e4efa1';
-  }
   throw new Error('Cannot find Admin Multisig');
 }
 
 function getNonDelayedMultisigAddress(network) {
-  if (isMainNet(network)) {
-    return '0x03b24cf9fe32dd719631d52bd6705d014c49f86f';
-  }
-  if (isKovan(network)) {
-    return '0xecc04f59c69e6ddb19d601282eb6dd4ea763ee09';
-  }
   throw new Error('Cannot find Admin Multisig');
 }
 

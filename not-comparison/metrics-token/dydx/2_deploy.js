@@ -271,70 +271,34 @@ async function getSoloMargin(network) {
 }
 
 function getMedianizerAddress(network) {
-  if (isDevNetwork(network)) {
     return TestMakerOracle.address;
-  }
-  if (isMainNet(network)) {
-    return '0x29a199a49af8d657c110418c2b0d2f932b025de7';
-  }
-  if (isKovan(network)) {
-    return '0xa5aA4e07F5255E14F02B385b1f04b35cC50bdb66';
-  }
-  throw new Error('Cannot find Medianizer');
 }
 
 function getDaiAddress(network) {
-  if (isDevNetwork(network)) {
+ 
     return TokenB.address;
-  }
-  if (isMainNet(network)) {
-    return '0x6b175474e89094c44da98b954eedeac495271d0f';
-  }
-  if (isKovan(network)) {
-    return '0x5944413037920674d39049ec4844117a031eaa74';
-  }
-  throw new Error('Cannot find Dai');
 }
 
 function getCurveAddress(network) {
-  if (isDevNetwork(network)) {
+ 
     return TestCurve.address;
-  }
-  if (isMainNet(network)) {
-    return '0xA5407eAE9Ba41422680e2e00537571bcC53efBfD';
-  }
-  throw new Error('Cannot find Curve');
+  
 }
 
 function getUniswapDaiEthAddress(network) {
-  if (isDevNetwork(network)) {
+ 
     return TestUniswapV2Pair.address;
-  }
-  if (isMainNet(network)) {
-    return '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11';
-  }
-  throw new Error('Cannot find DAI-ETH Uniswap pool');
+ 
 }
 
 function getUniswapUsdcEthAddress(network) {
-  if (isDevNetwork(network)) {
+
     return TestUniswapV2Pair2.address;
-  }
-  if (isMainNet(network)) {
-    return '0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc';
-  }
-  throw new Error('Cannot find USDC-ETH Uniswap pool');
+  
 }
 
 function getWethAddress(network) {
-  if (isDevNetwork(network)) {
+ 
     return WETH9.address;
-  }
-  if (isMainNet(network)) {
-    return '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
-  }
-  if (isKovan(network)) {
-    return '0xd0a1e359811322d97991e03f863a0c30c2cf029c';
-  }
-  throw new Error('Cannot find Weth');
+  
 }
