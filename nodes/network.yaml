@@ -9,7 +9,7 @@ node_types:
     capabilities:
       host:
         type: tosca.capabilities.Container
-        valid_source_types: [katena.nodes.contract] # network can host only smart contracts
+        valid_source_types: [katena.nodes.library] # network can host only libraries and smart contracts
   katena.nodes.network.selfHostedNode:
     derived_from: katena.nodes.network
     properties:

@@ -31,7 +31,6 @@ topology_template:
         abi: "CallerConstructor"
         parameters:
           - 5
-          # - { get_attribute: [SELF, constructorCalls, contractAddress] }
 
   relationship_templates:
     increment:

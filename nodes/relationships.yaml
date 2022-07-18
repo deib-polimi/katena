@@ -7,6 +7,8 @@ imports:
 relationship_types:
   katena.relationships.callsConstructor:
     derived_from: tosca.relationships.DependsOn
+    # TODO: set valid target type
+    valid_target_types: [katena.capabilities.Callable]
     interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
@@ -27,8 +29,6 @@ relationship_types:
               contract_addresses: [SOURCE, addressParameters]
             implementation:
               primary: playbooks/constructor_calls.yml
-    # TODO: set valid target type
-    # valid_target_types: [katena.nodes.contract]
   katena.relationships.calls:
     derived_from: katena.relationships.callsConstructor
     properties:
@@ -37,6 +37,7 @@ relationship_types:
         description: Method name to set callee address
         type: string
         required: true
+    valid_target_types: [katena.capabilities.Callable]
     interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
@@ -127,6 +128,7 @@ relationship_types:
                 - contracts/
   katena.relationships.libraryLinkage:
     derived_from: tosca.relationships.DependsOn
+    valid_target_types: [katena.capabilities.Linkable]
     interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
@@ -189,50 +191,11 @@ relationship_types:
                 { type: string, default: { get_attribute: [TARGET, abi] } }
               facet_bytecode:
                 { type: string, default: { get_attribute: [TARGET, bytecode] } }
-              # init_address:
-              #   {
-              #     type: string,
-              #     default: { get_attribute: [SOURCE, init, contractAddress] },
-              #   }
-              # init_abi:
-              #   {
-              #     type: string,
-              #     default: { get_property: [SOURCE, init, abi] },
-              #   }
-              # init_function:
-              #   {
-              #     type: string,
-              #     default: { get_property: [SOURCE, init, initFunction] },
-              #   }
-              # init_parameters:
-              #   {
-              #     type: string,
-              #     default: { get_property: [SOURCE, init, initParameters] },
-              #   }
             implementation:
               primary: playbooks/set_facet.yml
               dependencies:
                 - scripts/
                 - contracts/
-          # target_changed:
-          #   inputs:
-          #     diamond_address:
-          #       { type: string, default: { get_attribute: [SOURCE, contractAddress] } }
-          #     diamond_private_key:
-          #       { type: string, default: { get_property: [SOURCE, privateKey] } }
-          #     network:
-          #       { type: string, default: { get_property: [SOURCE, network] } }
-          #     cut_abi:
-          #       { type: string, default: { get_property: [SOURCE, cut, abi] } }
-          #     facet_address:
-          #       { type: string, default: { get_attribute: [TARGET, contractAddress] } }
-          #     facet_abi:
-          #       { type: string, default: { get_attribute: [TARGET, abi] } }
-          #   implementation:
-          #     primary: playbooks/change_facet.yml
-          #     dependencies:
-          #       - scripts/
-          #       - contracts/
           remove_target:
             inputs:
               diamond_address:

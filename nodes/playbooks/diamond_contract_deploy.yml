@@ -10,5 +10,3 @@
     set_stats:
       data:
         contract_address: "{{ contract_address.stdout_lines[-1] }}"
-
-        # --loupeAbi {{ loupeAbi}} --loupeAddress {{ loupeAddress }} 

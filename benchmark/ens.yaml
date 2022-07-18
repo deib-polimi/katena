@@ -17,7 +17,6 @@ topology_template:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
 
-    # deploy diamond
     ensRegistry:
       type: katena.nodes.contract
       requirements:

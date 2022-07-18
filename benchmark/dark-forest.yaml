@@ -107,18 +107,6 @@ topology_template:
       - facet: lobbyFacet
       properties:
         abi: "Diamond"
-    # diamondInit:
-    #   type: katena.nodes.diamond.diamondInit
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   - libraries: libGameUtils
-    #   properties:
-    #     abi: "DFInitialize"
-    #     initFunction: init
-    #     initParameters:
-    #       - true
-    #       - 'https://nft-test.zkga.me/token-uri/artifact/'
     coreFacet:
       type: katena.nodes.diamond.facet
       requirements:

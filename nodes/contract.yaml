@@ -15,6 +15,9 @@ node_types:
         description: "address reference of existing contract"
   katena.nodes.library:
     derived_from: tosca.nodes.Root
+    capabilities:
+      linkable:
+        type: katena.capabilities.Linkable
     requirements:
       - host:
           capability: tosca.capabilities.Container
@@ -229,14 +232,6 @@ node_types:
           capability: katena.capabilities.Callable
           relationship: katena.relationships.callsConstructor
           occurrences: [1, 1]
-      # - loupe:
-      #     capability: katena.capabilities.Callable
-      #     relationship: katena.relationships.callsConstructor
-      #     occurrences: [1, 1]
-      # - init:
-      #     capability: katena.capabilities.InitFunction
-      #     relationship: katena.relationships.DependsOn
-      #     occurrences: [1, 1]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -258,13 +253,6 @@ node_types:
                   type: string,
                   default: { get_attribute: [SELF, cut, contractAddress] },
                 }
-              # loupeAbi:
-              #   { type: string, default: { get_property: [SELF, loupe, abi] } }
-              # loupeAddress:
-              #   {
-              #     type: string,
-              #     default: { get_attribute: [SELF, loupe, contractAddress] },
-              #   }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:

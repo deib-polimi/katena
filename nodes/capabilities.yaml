@@ -13,3 +13,6 @@ capability_types:
   katena.capabilities.InitFunction:
     derived_from: tosca.capabilities.Container
     valid_source_types: [katena.nodes.diamond.diamondInit]
+  katena.capabilities.Linkable:
+    derived_from: tosca.capabilities.Container
+    valid_source_types: [katena.nodes.library]

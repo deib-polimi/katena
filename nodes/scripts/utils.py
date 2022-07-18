@@ -1,5 +1,3 @@
-from cmath import sin
-from sys import exec_prefix
 from typing import Any
 import re
 
@@ -55,12 +53,6 @@ def parse_tuple(params, values, addresses):
             print('d')
             new_t = parse_tuple(p['components'], values, addresses)
             t.append(new_t)
-        # elif '[]' in p['type']:
-        #     param = []
-        #     _type = p['type'].replace('[]', '')
-        #     for v in values:
-        #         param.append(convert(_type, v))
-        #     params.append(param)
         elif 'address' in p['type']:
             print('e')
             try:
@@ -79,12 +71,9 @@ def parse_tuple(params, values, addresses):
     return t
 
 def convert(data_type: str, value: str) -> Any:
-    # if address
     if value.startswith('0x'):
         print('1')
         return value
-    # if "int" in data_type or "fixed" in data_type:
-        # return int(value)
     if "int" in data_type or "fixed" in data_type or re.findall(r'[\d]+e[\d]+', value) or re.findall(r'[\d]+.[\d]+e[\d]+', value):
         print('2')
         value = value.replace('+', '')

@@ -22,13 +22,6 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "Callee"
-    # facet2:
-    #   type: katena.nodes.diamond.facet
-    #   requirements:
-    #   - host: ganache
-    #   properties:
-    #     abi: "Callee"
-    #     privateKey: { get_input: UserKeyGanache }
     diamondCut:
       type: katena.nodes.contract
       requirements:
@@ -51,7 +44,6 @@ topology_template:
       - cut: diamondCut
       - facet: diamondLoupe
       - facet: facet1
-      # - facet: facet2
       properties:
         abi: "Diamond"
         

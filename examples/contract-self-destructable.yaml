@@ -15,7 +15,7 @@ topology_template:
       properties:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
-    Destroy: 
+    destroy: 
       type: katena.nodes.contract
       requirements:
       - host: ganache

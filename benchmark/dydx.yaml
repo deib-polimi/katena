@@ -16,79 +16,7 @@ topology_template:
       properties:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
-
-    # libraries
-    # account:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Account"
-    # # onlySolo: TODO: should be deployed?
-    # actions:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: Actions
-    # interest:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Interest"
-    # math:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Math"
-    # monetary:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Monetary"
-    # require:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Require"
-    # time:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Time"
-    # decimal:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: Decimal
-    # types:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: Types
-    # typedSignature:
-    #   type: katena.nodes.library
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: TypedSignature
+        
     adminImpl:
       type: katena.nodes.library
       requirements:
@@ -104,7 +32,6 @@ topology_template:
       properties:
         abi: "OperationImpl"
 
-    # deploy base protocol
     soloMargin:
       type: katena.nodes.contract
       requirements:
@@ -166,14 +93,11 @@ topology_template:
         - 2.00e18
         - 100.00e18
 
-    # deploy Interest setters
     polynomialInterestSetter:
       type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: interest
-      # - libraries: math
       properties:
         abi: "PolynomialInterestSetter"
         parameters:
@@ -185,15 +109,11 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: interest
-      # - libraries: math
       properties:
         abi: "DoubleExponentInterestSetter"
         parameters:
         - 1000000000000000000
         - 86236206100
-
-    # deploy price oracles
 
     oraclePoker:
       type: katena.nodes.contractReference
@@ -220,20 +140,6 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "TestCurve"
-    # safeMath:
-    #   type: katena.nodes.contract
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "SafeMath"
-    # ownable:
-    #   type: katena.nodes.contract
-    #   requirements:
-    #   - host: ganache
-    #   - wallet: userWallet
-    #   properties:
-    #     abi: "Ownable"
     uniswapDai:
       type: katena.nodes.contract
       requirements:
@@ -253,12 +159,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: time
-      # - libraries: math
-      # - libraries: safeMath
-      # - libraries: ownable
       - constructorCalls: oraclePoker
       - constructorCalls: weth
       - constructorCalls: dai
@@ -276,7 +176,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: monetary
       properties:
         abi: "UsdcPriceOracle"
 
@@ -285,7 +184,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: monetary
       - constructorCalls: testMakerOracle
       properties:
         abi: "WethPriceOracle"
@@ -298,48 +196,17 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: monetary
       - constructorCalls: testMakerOracle
       properties:
         abi: "WethPriceOracle"
         parameters:
         -  { get_attribute: [SELF, constructorCalls, contractAddress] }
 
-    # second layer
-    testCalle:
-      type: katena.nodes.contract
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      # - libraries: account
-      # - libraries: require
-      - constructorCalls: soloMargin
-      properties:
-        abi: "TestCallee"
-        parameters:
-        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
-    testSimpleCallee:
-      type: katena.nodes.contract
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      # - libraries: account
-      - constructorCalls: soloMargin
-      properties:
-        abi: "TestCallee"
-        parameters:
-        -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
-
-    # second layer
-
     payableProxyForSoloMargin:
       type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: actions
-      # - libraries: require
       - constructorCalls: soloMargin
       - constructorCalls: weth
       properties:
@@ -349,13 +216,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: decimal
-      # - libraries: math
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: time
-      # - libraries: types
       - constructorCalls: soloMargin
       properties:
         abi: "Expiry"
@@ -366,13 +226,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: decimal
-      # - libraries: math
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: time
-      # - libraries: types
       - constructorCalls: soloMargin
       properties:
         abi: "ExpiryV2"
@@ -383,13 +236,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: decimal
-      # - libraries: math
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: time
-      # - libraries: types
       - constructorCalls: soloMargin
       properties:
         abi: "FinalSettlement"
@@ -400,9 +246,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: require
-      # - libraries: types
       - constructorCalls: soloMargin
       properties:
         abi: "Refunder"
@@ -413,9 +256,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: require
-      # - libraries: types
       properties:
         abi: "DaiMigrator"
         parameters: 
@@ -433,11 +273,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: math
-      # - libraries: require
-      # - libraries: types
-      # - libraries: typedSignature
       - constructorCalls: soloMargin
       properties:
         abi: "LimitOrders"
@@ -448,12 +283,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: math
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: types
-      # - libraries: typedSignature
       - constructorCalls: soloMargin
       properties:
         abi: "LimitOrders"
@@ -464,12 +293,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: math
-      # - libraries: monetary
-      # - libraries: require
-      # - libraries: types
-      # - libraries: typedSignature
       - constructorCalls: soloMargin
       properties:
         abi: "CanonicalOrders"
@@ -481,11 +304,6 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      # - libraries: account
-      # - libraries: actions
-      # - libraries: require
-      # - libraries: types
-      # - libraries: typedSignature
       - constructorCalls: soloMargin
       properties:
         abi: "SignedOperationProxy"

@@ -7,7 +7,6 @@ from web3 import Web3
 import argparse
 import json
 
-# from nodes.scripts.utils import parse_parameters
 
 zero_address = '0x0000000000000000000000000000000000000000'
 
@@ -38,10 +37,6 @@ def set_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument('--facetAddress', type=str, help='facet address')
     parser.add_argument('--facetAbi', type=str, help='facet abi')
     parser.add_argument('--facetBytecode', type=str, help='facet bytecode')
-    # parser.add_argument('--initAddress', type=str, help='init function address', default='')
-    # parser.add_argument('--initAbi', type=str, help='init function abi', default='')
-    # parser.add_argument('--initFunction', type=str, help='facet abi', default='')
-    # parser.add_argument('--initParameters', nargs='*', help='facet abi', default=[])
     
     return parser
 
@@ -72,23 +67,8 @@ def set_facet(args, action: FacetAction):
 
     init_address = zero_address
 
-    # if args.initAddress != '':
-    #     init_address = args.initAddress
-    
     init_calldata = b''
 
-    # if args.initAbi != '' and args.initFunction != '':
-    #     with open(f'contracts/{args.initAbi}.json') as f:
-    #         init_json = json.load(f)
-        
-    #     function_abi = ''
-    #     for f in init_json['abi']:
-    #         if f == args.initFunction:
-    #             function_abi = f
-        
-    #     init = w3.eth.contract(abi=function_abi, address=init_address)
-    #     init_calldata = init.encodeABI(fn_name=args.initFunction, args=parse_parameters(function_abi, args.initParameters, []))
-    
     # TODO: last 2 arguments not used
     # avoid out of gas
     tx_hash= diamond_cut.functions.diamondCut(diamond_cut_input, init_address, init_calldata).transact()
