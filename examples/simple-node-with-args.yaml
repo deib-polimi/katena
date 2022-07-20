@@ -9,7 +9,7 @@ topology_template:
     ganache:
       type: katena.nodes.network.ganache
     userWallet: 
-      type: katena.nodes.network
+      type: katena.nodes.wallet
       requirements:
       - host: ganache
       properties:

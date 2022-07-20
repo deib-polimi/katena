@@ -10,18 +10,18 @@ topology_template:
     ganache:
       type: katena.nodes.network.ganache
     userWallet: 
-      type: katena.nodes.network
+      type: katena.nodes.wallet
       requirements:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
-    demo: 
+    callee: 
       type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
-        abi: "Demo"
+        abi: "Callee"
       
   inputs:
     UserKeyGanache:

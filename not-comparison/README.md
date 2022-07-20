@@ -4,17 +4,17 @@ The deployment files modified according to the paper (i.e., logs generation and 
 
 # Launch the experiments
 
-To run the experiments, use the files in the [metrics-token](./metrics-token/) folder. It contains the following scripts:
+To run the experiments, move into the [metrics-token](./metrics-token/) folder. It contains the following scripts:
 
-- [tokens-single-file](./metrics-token/tokens-single-file.py): calculates the tokens for a single file (YAML or JS/TS). It needs the file path as input:
+- [tokens-single-file](./tokens-single-file.py): calculates the tokens for a single file (YAML or JS/TS). It needs the file path as input:
     ```
     python tokens-single-file.py --file FILE_PATH
     ```
-- [run-not-evaluation-single-bench](./metrics-token/run-not-evaluation-single-bench.py): calculates the YAML and JS/TS tokens for an application. It needs the directory as input:
+- [run-not-evaluation-single-bench](./run-not-evaluation-single-bench.py): calculates the YAML and JS/TS tokens for an application. It needs the directory as input:
     ```
     python run-not-evaluation-single-bench.py --directory DIRECTORY_PATH
     ```
-- [run-not-evaluation-all](./metrics-token/run-not-evaluation-all.sh): run the evaluation for all the three applications:
+- [run-not-evaluation-all](./run-not-evaluation-all.sh): run the evaluation for all the three applications:
     ```
     ./run-not-evaluation-all.sh
     ```
