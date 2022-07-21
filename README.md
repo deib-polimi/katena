@@ -24,7 +24,7 @@ The steps are the following:
 Keep ganache terminal open and create a new one. Then:
 - Retrieve the `<container_id>` with `docker ps`.
 - `docker exec -it <container_id> /bin/bash` start the new terminal inside the container. 
-- Create `input.yml` file to stores your wallet credentials. Ganache will prompt that information as shown in the figure below. Choose one of the `Available accounts` and its `Private Key`, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the two values respectively. Example:
+- Create `input.yml` file to stores your wallet credentials. Ganache will prompt that information as shown in the [figure](images/ganache-accounts.jpg) below. Choose one of the `Available accounts` and its `Private Key`, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the two values respectively. Example:
 ```
 UserWallet: '<account>'
 UserKeyGanache: '<private_key>'
@@ -53,15 +53,12 @@ To use KATENA on your local machine you need:
 
 Do the following steps:
 - Run a Ganache instance with the command `ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize` (see [benchmarks](#benchmark-applications) section to understand why we choose those parameters). It will prompt a set of accounts and private keys to use in the next step.
-- Create the `input.yml` file that stores your wallet credentials. Ganache will prompt that information as shown in the figure below. Choose one of the accounts and its private key, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the values respectively. Example:
+- Create the `input.yml` file that stores your wallet credentials. Ganache will prompt that information as shown in the [figure](images/ganache-accounts.jpg). Choose one of the accounts and its private key, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the values respectively. Example:
 ```
 UserWallet: '<account>'
 UserKeyGanache: '<private_key>'
 ```
-Use `input.example.yaml` as example.
-
-
-![](./images/ganache-accounts.jpg) 
+Use `input.example.yaml` as example. 
 
 
 - Install the required packages with `pip` (file located [here](./requirements.txt)) (`pip install -r requirements.txt`)
