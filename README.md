@@ -8,6 +8,7 @@ What should be reproduced in this repo:
 - **Benchmark application deployment**: deploy the three applications analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker setup with the [deploy-bench.sh](./deploy-bench.sh) script that automates the deployment of the benchmark applications. See [here](#docker-setup).
 - **Numer of tokens analysis**: run the scripts to compare the difference in Number of Tokens between KATENA specification files used to deploy the applications and the original deployment scripts. See [here](#compute-number-of-tokens).
 
+**Disclaimer**: the prototype has been tested on Ubuntu 20.04
 ## Getting started
 In order to start deploying apps using KATENA, we strongly recommend looking at the files in [Examples](./examples/) and [Benchmark](./benchmark/) folders. 
 KATENA can be used with a Python virtual environment on your local machine or with a [Docker](https://www.docker.com/) image.
@@ -73,7 +74,9 @@ Number of Tokens analysis compares the TOSCA specification files with the origin
 Folders [df](./not-comparison/dark-forest/), [dydx](./not-comparison/dydx/), and [ens](./not-comparison/ens/) contain the Katena and the original deployment files.
 The deployment files modified according to the paper (i.e., logs generation and comments are removed, `.` is counts as a token separator) and the Python script used to perform the NoT comparison are in the [metrics-token](./not-comparison/metrics-token/) folder.
 
-**IMPORTANT**: to run the generation of Number of Tokens used in the paper, move into the [metrics-token](./not-comparison/metrics-token/) (`cd ./not-comparison/metrics-token/`) folder. It contains the following scripts:
+**IMPORTANT**: to run the generation of Number of Tokens used in the paper, move into the [metrics-token](./not-comparison/metrics-token/) (`cd ./not-comparison/metrics-token/`) folder. 
+The script to run the analysis on all the application is [run-not-evaluation-all](./run-not-evaluation-all.sh) (see below for usage). 
+The [metrics-token](./not-comparison/metrics-token/) contains the following scripts:
 
 - [run-not-evaluation-all](./run-not-evaluation-all.sh): run the evaluation for all the three applications:
     ```
