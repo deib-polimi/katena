@@ -5,6 +5,7 @@ imports:
   - relationships.yaml
   - capabilities.yaml
 
+# Every KATENA specification file needs one wallet coordinates to pay for the deployment.
 node_types:
   katena.nodes.wallet:
     derived_from: tosca.nodes.Root

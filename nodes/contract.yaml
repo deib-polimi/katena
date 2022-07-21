@@ -7,6 +7,7 @@ imports:
   - wallet.yaml
 
 node_types:
+  # Node used for smart contract not managed by KATENA. contains only the smart contract address
   katena.nodes.contractReference:
     derived_from: tosca.nodes.Root
     attributes:
@@ -86,7 +87,7 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-
+  # Node for a generic smart contract
   katena.nodes.contract:
     derived_from: katena.nodes.library
     requirements:
@@ -94,11 +95,11 @@ node_types:
           capability: katena.capabilities.Callable
           relationship: katena.relationships.calls
           occurrences: [0, UNBOUNDED]
-      - constructorCalls:
+      - constructorCalls: # use this when the smart contract needs an address in its constructor parameters
           capability: katena.capabilities.Callable
           relationship: katena.relationships.callsConstructor
           occurrences: [0, UNBOUNDED]
-      - libraries:
+      - libraries: # define library dependencies
           capability: tosca.capabilities.Container
           node: katena.nodes.library
           relationship: katena.relationships.libraryLinkage
@@ -107,7 +108,7 @@ node_types:
       callable:
         type: katena.capabilities.Callable
     properties:
-      parameters:
+      parameters: # parameters that are not addresses
         type: list
         description: arguments to pass in smart contract constructor. The order must reflect the one in the contract signature.
         default: []
