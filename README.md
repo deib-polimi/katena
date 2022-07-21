@@ -17,7 +17,12 @@ KATENA can be used with a Python virtual environment on your local machine or wi
 The steps are the following:
 - build the docker image (`docker build -t katena .`) and run the container (`docker run -it katena`).
 - open one terminal (i.e., `docker exec -it <container_id> /bin/bash`, retrieve `<container_id>` with `docker ps`) and create a ganache instance `npx ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize` (see [benchmarks](#benchmark-applications) section to understand why we choose those parameters). It will prompt a set of accounts and private keys to use in the next steps.
-- open a different terminal and create the `input.yml` file that stores your wallet credentials. Use `input.example.yaml` as an example and paste your wallet address and private key in the newly created `input.yml`. Ganache will prompt that information as shown in the figure below. Choose the account you prefer and the corresponding private key and put them in the `UserWallet` and `UserKeyGanache` respectively.
+- open a different terminal and create the `input.yml` file that stores your wallet credentials. Ganache will prompt that information as shown in the figure below. Choose one of the accounts and its private key, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the values respectively. Example:
+```
+UserWallet: '<account>'
+UserKeyGanache: '<private_key>'
+```
+Use `input.example.yaml` as example.
 
 ![](./images/ganache-accounts.jpg)
 
@@ -37,7 +42,12 @@ To use KATENA on your local machine you need:
 
 Do the following steps:
 - Run a Ganache instance with the command `ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize` (see [benchmarks](#benchmark-applications) section to understand why we choose those parameters). It will prompt a set of accounts and private keys to use in the next step.
-- Create the `input.yml` file that stores your wallet credentials. Use `input.example.yaml` as an example and paste your wallet address and private key in the newly created `input.yml`. Ganache will prompt that information as shown in the figure below. Choose the account you prefer from `Available accounts` and the corresponding private key from `Private keys` and put them in the `UserWallet` and `UserKeyGanache` respectively.
+- Create the `input.yml` file that stores your wallet credentials. Ganache will prompt that information as shown in the figure below. Choose one of the accounts and its private key, in `input.yml` create the keys `UserWallet` and `UserKeyGanache`, and paste the values respectively. Example:
+```
+UserWallet: '<account>'
+UserKeyGanache: '<private_key>'
+```
+Use `input.example.yaml` as example.
 
 
 ![](./images/ganache-accounts.jpg) 
@@ -45,7 +55,7 @@ Do the following steps:
 
 - Install the required packages with `pip` (file located [here](./requirements.txt)) (`pip install -r requirements.txt`)
 - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
-- The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`. In order to use them copy the ABIs in the contracts folder (`cp ./nodes/contracts-ens ./nodes/contracts`)
+- The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`. In order to use them copy the ABIs in the contracts folder (`cp -r ./nodes/contracts-ens ./nodes/contracts`)
 - Deploy with `xopera` (i.e. `opera deploy -i input.yml ens.yaml`)
 
 
@@ -63,7 +73,7 @@ Number of Tokens analysis compares the TOSCA specification files with the origin
 Folders [df](./not-comparison/dark-forest/), [dydx](./not-comparison/dydx/), and [ens](./not-comparison/ens/) contain the Katena and the original deployment files.
 The deployment files modified according to the paper (i.e., logs generation and comments are removed, `.` is counts as a token separator) and the Python script used to perform the NoT comparison are in the [metrics-token](./not-comparison/metrics-token/) folder.
 
-To run the generation of Number of Tokens used in the paper, move into the [metrics-token](./metrics-token/) (`cd ./metrics-token`) folder. It contains the following scripts:
+**IMPORTANT**: to run the generation of Number of Tokens used in the paper, move into the [metrics-token](./not-comparison/metrics-token/) (`cd ./not-comparison/metrics-token/`) folder. It contains the following scripts:
 
 - [run-not-evaluation-all](./run-not-evaluation-all.sh): run the evaluation for all the three applications:
     ```
@@ -74,10 +84,18 @@ To run the generation of Number of Tokens used in the paper, move into the [metr
     ```
     python run-not-evaluation-single-bench.py --directory DIRECTORY_PATH
     ```
+    Example:
+    ```
+    python run-not-evaluation-single-bench.py --directory ens
+    ```
 
 - [tokens-single-file](./tokens-single-file.py): calculates the tokens for a single file (YAML or JS/TS). It needs the file path as input:
     ```
     python tokens-single-file.py --file FILE_PATH
+    ```
+    Example:
+    ```
+    python tokens-single-file.py --file ens/ens.yaml
     ```
 
 
