@@ -5,8 +5,27 @@ This repo contains all the files needed to setup and run the experiments used in
 
 ## Experiments reproducibility
 What should be reproduced in this repo:
-- **Benchmark application deployment**: deploy the three applications analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker setup with the [deploy-bench.sh](./deploy-bench.sh) script that automates the deployment of the benchmark applications. See [Docker setup](#docker-setup) section.
+- **Benchmark application deployment**: deploy the three applications (dark forest, dydx, ens) analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker setup with the [deploy-bench.sh](./deploy-bench.sh) script that automates the deployment of the benchmark applications. See [Docker setup](#docker-setup) section.
+It succeeds if this is the output:
+```
+dark-forest deployed successfully
+ens deployed successfully
+dydx deployed successfully
+```
 - **Numer of tokens analysis**: run the scripts to compare the difference in Number of Tokens between KATENA specification files used to deploy the applications and the original deployment scripts. See [here](#compute-number-of-tokens).
+The experiments succeeds if this is the output:
+```
+dark-forest
+YAML: 304
+JS: 1765
+ens
+YAML: 87
+JS: 95
+dydx
+YAML: 559
+JS: 923
+```
+
 
 **Disclaimer**: the prototype has been tested on Ubuntu 20.04
 
