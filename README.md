@@ -2,7 +2,7 @@
 Operations on Blockchain with TOSCA.
 
 This repo contains all the files needed to setup and run the experiments used in the evaluation of KATENA.
-
+The prototype has been tested on Ubuntu 20.04
 ## Experiments reproducibility
 What should be reproduced in this repo:
 - **Benchmark application deployment**: deploy the three applications (dark forest, dydx, ens) analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker setup with the [deploy-bench.sh](./deploy-bench.sh) script that automates the deployment of the benchmark applications. See [Docker setup](#docker-setup) section.
@@ -25,9 +25,6 @@ dydx
 YAML: 559
 JS: 923
 ```
-
-
-**Disclaimer**: the prototype has been tested on Ubuntu 20.04
 
 ## Getting started
 In order to start deploying apps using KATENA, we strongly recommend looking at the files in [Examples](./examples/) and [Benchmark](./benchmark/) folders. 
@@ -52,7 +49,7 @@ Use `input.example.yaml` as example.
 
 ![available accounts and private keys in ganache](./images/ganache-accounts.jpg)
 
-- run the [deploy-bench.sh](./deploy-bench.sh) script to automatically deploy the three benchmark applications. In case of errors, the script generates a log stored in the file `deploy.log`. It takes 10 minutes to complete the entire procedure.
+- run the [deploy-bench.sh](./deploy-bench.sh) script to automatically deploy the three benchmark applications. In case of errors, the script generates a log stored in the file `deploy.log`. It took 10/20 minutes to complete the entire procedure.
 This script automates the following operations (that you should do manually if you are using KATENA to deploy your personal dApp):
     - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
     - The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`.
