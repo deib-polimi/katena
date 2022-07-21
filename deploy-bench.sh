@@ -2,14 +2,14 @@
 
 for APP in dark-forest ens dydx;
 do
-    @rm -r ./.opera
+    rm -r ./.opera &> /dev/null
     cp ./benchmark/$APP.yaml .
-    @rm -r ./nodes/contracts
-    @mkdir ./nodes/contracts
+    rm -r ./nodes/contracts &> /dev/null
+    mkdir ./nodes/contracts &> /dev/null
     cp ./nodes/contracts-$APP/* ./nodes/contracts
     opera deploy -r -i input.yml ./$APP.yaml -v > deploy.log
     status=$?
     [ $status -eq 0 ] && echo "${APP} deployed successfully" || exit 2
-    rm ./$APP.yaml
-    rm -r ./nodes/contracts
+    rm ./$APP.yaml &> /dev/null
+    rm -r ./nodes/contracts &> /dev/null
 done;
