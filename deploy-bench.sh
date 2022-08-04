@@ -2,6 +2,7 @@
 
 for APP in ens dark-forest dydx;
 do
+    echo "deploying ${APP}..."
     rm -r ./.opera &> /dev/null
     cp ./benchmark/$APP.yaml .
     rm -r ./nodes/contracts &> /dev/null
