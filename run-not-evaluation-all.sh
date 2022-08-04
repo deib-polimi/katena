@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd $PWD/not-comparison/metrics-token
 
 for APP in dark-forest ens dydx;
 do
