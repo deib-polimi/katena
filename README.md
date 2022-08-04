@@ -4,7 +4,8 @@ Operations on Blockchain with TOSCA.
 This repo contains all the files needed to setup and run the experiments used in the evaluation of KATENA.
 The prototype has been tested on Ubuntu 20.04.
 
-**NOTE**: to reproduce the experiments reported in the paper refer to [Experiments Reproducibility](#experiments-reproducibility) section. For each experiment, we provided the required step to run them. The rest of the README contains the information to start deploying your dApps with KATENA.
+**NOTE**: to reproduce the experiments reported in the paper refer to [Experiments Reproducibility](#experiments-reproducibility) section. For each experiment, we provided the required step to run them.
+ <!-- The rest of the README contains the information to start deploying your dApps with KATENA. -->
 
 **NOTE**: we added a [Answers for the reviewers](#answers-for-the-reviewers) section to clarify their doubts and explain what we modified in our new submission.
 ## Experiments Reproducibility
@@ -17,7 +18,7 @@ What should be reproduced in this repo:
         - Retrieves the credentials of Account 0 and uses them to pay for transactions on Ganache.
         - Deploys ENS, Dark Forest, and DYDX. 
   
-  Note that depending on your hardware configuration this step could take a while (approximatively 10/20 minutes). 
+  Note that depending on your hardware configuration this step could take a while (approximatively 10/20 minutes).
   It succeeds if this is the output:
 ```
 deploying ens...
