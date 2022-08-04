@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for APP in dark-forest ens dydx;
+for APP in ens dark-forest dydx;
 do
     rm -r ./.opera &> /dev/null
     cp ./benchmark/$APP.yaml .
@@ -9,7 +9,16 @@ do
     cp ./nodes/contracts-$APP/* ./nodes/contracts
     opera deploy -r -i input.yml ./$APP.yaml -v > deploy.log
     status=$?
-    [ $status -eq 0 ] && echo "${APP} deployed successfully" || exit 2
+    if [ $status -eq 0 ]
+    then
+        echo "${APP} deployed successfully"
+    else
+        grep -w "stderr" deploy.log | tail -1
+        exit 2
+    fi
     rm ./$APP.yaml &> /dev/null
     rm -r ./nodes/contracts &> /dev/null
 done;
+
+rm accounts.json
+rm accounts-pretty.json
