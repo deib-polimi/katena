@@ -12,7 +12,7 @@ What should be reproduced in this repo:
 - **Benchmark application deployment**: deploy the three applications (dark forest, dydx, ens) analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker image with the script [run-deploy.sh](./run-deploy.sh). In order to use it:
     - `docker build -t katena .`: build the docker image
     - `docker run -it katena`: run the container.
-    - `./run-deploy.sh`: run the script to deploy applications. The script automatically:
+    - `./run-deploy.sh`: inside the container run the script to deploy applications. The script automatically:
         - Bootstrap a Ganache instance.
         - Retrieves the credentials of Account 0 and uses them to pay for transactions on Ganache.
         - Deploys ENS, Dark Forest, and DYDX. 
@@ -41,11 +41,13 @@ dydx
 YAML: 559
 JS: 923
 ```
-
+<!-- 
 ## Getting Started
 In order to start deploying your own dApps using KATENA, we strongly recommend looking at the files in [Examples](./examples/) and [Benchmark](./benchmark/) folders. 
 KATENA can be used with our [Docker](https://www.docker.com/) image.
-<!-- a Python virtual environment on your local machine  -->
+
+a Python virtual environment on your local machine  
+
 ### Docker setup
 If you want to deploy your applications on Ganache, you will need two terminals active at the same time: one for running Ganache and another one for KATENA.
 
@@ -71,7 +73,7 @@ This script automates the following operations (that you should do manually if y
     - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
     - The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`.
     - Deploy with `xopera` (e.g., `opera deploy -i input.yml ens.yaml`)
-<!-- 
+
 ### Local setup
 
 **This setting is an alternative to the docker setup. If you are using docker, skip this section**
@@ -97,7 +99,7 @@ Use `input.example.yaml` as example.
 - Install the required packages with `pip` (file located [here](./requirements.txt)) (`pip install -r requirements.txt`)
 - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
 - The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`. In order to use them copy the ABIs in the contracts folder (`cp -r ./nodes/contracts-ens ./nodes/contracts`)
-- Deploy with `xopera` (i.e. `opera deploy -i input.yml ens.yaml`) -->
+- Deploy with `xopera` (i.e. `opera deploy -i input.yml ens.yaml`)  -->
 
 ## Compute Number of Tokens
 
@@ -157,7 +159,7 @@ The [metrics-token](./not-comparison/metrics-token/) contains the following scri
 
 - [NoT-comparison](./not-comparison/) files used for the evaluation using the Number of Tokens (NoT) metric.
 
-- [Smart Contract Example](./smart-contract-example/): contains a truffle project used to test and use JS and TS capabilities to use functions of the benchmark apps
+<!-- - [Smart Contract Example](./smart-contract-example/): contains a truffle project used to test and use JS and TS capabilities to use functions of the benchmark apps -->
 
 
 ## Answers for the reviewers
