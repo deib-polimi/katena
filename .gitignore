@@ -10,3 +10,4 @@ migrations/
 test
 nodes/benchmark/
 nodes/contracts-try/
+log-container.txt
