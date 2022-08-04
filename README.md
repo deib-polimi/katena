@@ -12,7 +12,7 @@ What should be reproduced in this repo:
 - **Benchmark application deployment**: deploy the three applications (dark forest, dydx, ens) analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker image with the script [run-deploy.sh](./run-deploy.sh). In order to use it:
     - `docker build -t katena .`: build the docker image
     - `docker run -it katena`: run the container.
-    - Run the script: `./run-deploy.sh`. The script automatically:
+    - `./run-deploy.sh`: run the script to deploy applications. The script automatically:
         - Bootstrap a Ganache instance.
         - Retrieves the credentials of Account 0 and uses them to pay for transactions on Ganache.
         - Deploys ENS, Dark Forest, and DYDX. 
