@@ -29,7 +29,7 @@ deploying dydx...
 dydx deployed successfully
 ```
 - **Numer of tokens analysis**: run the scripts to compare the difference in Number of Tokens between KATENA specification files used to deploy the applications and the original deployment scripts. To run the experiment:
-    - run `./run-not-evaluation-all.sh`. You can run this script either inside or outside the container. For further details, refer to [Compute Number of Tokens](#compute-number-of-tokens) section.
+    - run `./run-not-evaluation-all.sh`. You can run this script either inside or outside the container. For further details, refer to [Number of Tokens](./NUMBER_OF_TOKENS.md) file.
 The experiment succeeds if the output is:
 ```
 dark-forest
