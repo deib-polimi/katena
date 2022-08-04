@@ -22,7 +22,7 @@ abi = contract_json['abi']
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
 signer = w3.eth.account.from_key(args.privateKey.upper())
-w3.eth.default_account = signer.address
+w3.eth.default_account = w3.toChecksumAddress(signer.address)
 contract = w3.eth.contract(abi=abi, bytecode=args.bytecode)
 
 constructor_inputs = []

@@ -28,7 +28,7 @@ bytecode = contract_json['bytecode']
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
 signer = w3.eth.account.from_key(args.privateKey.upper())
-w3.eth.default_account = signer.address
+w3.eth.default_account = w3.toChecksumAddress(signer.address)
 contract = w3.eth.contract(address=args.address, abi=abi, bytecode=bytecode)
 
 try:
@@ -38,6 +38,6 @@ except AttributeError as e:
     sys.exit(-1)
 
 
-tx_hash = destroy_function(args.refund).transact()
+tx_hash = destroy_function(w3.toChecksumAddress(args.refund)).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 

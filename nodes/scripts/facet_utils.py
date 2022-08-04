@@ -47,7 +47,7 @@ def set_facet(args, action: FacetAction):
     w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
     signer = w3.eth.account.from_key(args.diamondPrivateKey.upper())
-    w3.eth.default_account = signer.address
+    w3.eth.default_account = w3.toChecksumAddress(signer.address)
     diamond_cut = w3.eth.contract(abi=diamond_cut_abi, bytecode=args.cutBytecode, address=args.diamondAddress)
 
     diamond_cut_input = []

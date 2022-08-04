@@ -20,9 +20,9 @@ with open(f'contracts/{args.contractAbi}.json') as f:
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
 signer = w3.eth.account.from_key(args.privateKey.upper())
-w3.eth.default_account = signer.address
+w3.eth.default_account = w3.toChecksumAddress(signer.address)
 diamond = w3.eth.contract(abi=diamond_json['abi'], bytecode=args.bytecode)
 
-tx_hash = diamond.constructor(args.owner, args.cutAddress).transact()
+tx_hash = diamond.constructor(w3.toChecksumAddress(args.owner), args.cutAddress).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print(tx_receipt.contractAddress)

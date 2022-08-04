@@ -23,7 +23,7 @@ bytecode = contract_json['bytecode']
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
 signer = w3.eth.account.from_key(args.callerPrivateKey)
-w3.eth.default_account = signer.address
+w3.eth.default_account = w3.toChecksumAddress(signer.address)
 caller = w3.eth.contract(address=args.callerAddress, abi=abi, bytecode=bytecode)
 try:
     function = getattr(caller.functions, args.callerAddressSetter)
@@ -31,5 +31,5 @@ except AttributeError:
     print(f'Failed to retrieve method {args.callerAddressSetter} in contract {caller}')
     sys.exit(-1)
 
-tx_hash = function(args.calleeAddress).transact()
+tx_hash = function(w3.toChecksumAddress(args.calleeAddress)).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
