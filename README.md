@@ -47,7 +47,7 @@ In order to start deploying your own dApps using KATENA, we strongly recommend l
 KATENA can be used with a Python virtual environment on your local machine or with a [Docker](https://www.docker.com/) image.
 
 ### Docker setup
-If you want to deploy applications on Ganache, you will need two terminals active at the same time: one for running Ganache and another one for KATENA.
+If you want to deploy your applications on Ganache, you will need two terminals active at the same time: one for running Ganache and another one for KATENA.
 
 The required steps are the following for the first terminal:
 - `docker build -t katena .`: build the docker image
@@ -71,7 +71,7 @@ This script automates the following operations (that you should do manually if y
     - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
     - The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`.
     - Deploy with `xopera` (e.g., `opera deploy -i input.yml ens.yaml`)
-
+<!-- 
 ### Local setup
 
 **This setting is an alternative to the docker setup. If you are using docker, skip this section**
@@ -97,7 +97,7 @@ Use `input.example.yaml` as example.
 - Install the required packages with `pip` (file located [here](./requirements.txt)) (`pip install -r requirements.txt`)
 - Move the YAML file containing the application description to the project root (e.g., `cp ./benchmark/ens.yaml .`)
 - The smart contract ABIs of your application must be put in a folder named `contracts` in `nodes` directory. The ABIs of the benchmark applications are in the folders `./nodes/contracts-<APP_NAME>`. In order to use them copy the ABIs in the contracts folder (`cp -r ./nodes/contracts-ens ./nodes/contracts`)
-- Deploy with `xopera` (i.e. `opera deploy -i input.yml ens.yaml`)
+- Deploy with `xopera` (i.e. `opera deploy -i input.yml ens.yaml`) -->
 
 ## Compute Number of Tokens
 
