@@ -44,8 +44,8 @@ JS: 923
 
 ## Getting Started
 In order to start deploying your own dApps using KATENA, we strongly recommend looking at the files in [Examples](./examples/) and [Benchmark](./benchmark/) folders. 
-KATENA can be used with a Python virtual environment on your local machine or with a [Docker](https://www.docker.com/) image.
-
+KATENA can be used with our [Docker](https://www.docker.com/) image.
+<!-- a Python virtual environment on your local machine  -->
 ### Docker setup
 If you want to deploy your applications on Ganache, you will need two terminals active at the same time: one for running Ganache and another one for KATENA.
 
