@@ -6,7 +6,7 @@ The prototype has been tested on Ubuntu 20.04.
 
 **NOTE**: to reproduce the experiments reported in the paper refer to [Experiments Reproducibility](#experiments-reproducibility) section. For each experiment, we provided the required step to run them. The rest of the README contains the information to start deploying your dApps with KATENA.
 
-We added a [Answers for the reviewers](#answers-for-the-reviewers) section to clarify their doubts and explain what we modified in our new submission.
+**NOTE**: we added a [Answers for the reviewers](#answers-for-the-reviewers) section to clarify their doubts and explain what we modified in our new submission.
 ## Experiments Reproducibility
 What should be reproduced in this repo:
 - **Benchmark application deployment**: deploy the three applications (dark forest, dydx, ens) analyzed in the paper on Ganache. To reproduce the experiments, we recommend using the Docker image with the script [run-deploy.sh](./run-deploy.sh). In order to use it:
