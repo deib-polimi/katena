@@ -19,7 +19,7 @@ PRIVATE_KEY=$(echo $PRIVATE_KEY | sed "s/\"/'/g")
 
 echo "Your account is: ${ACCOUNT}"
 echo "Your private key is: ${PRIVATE_KEY}"
-rm input.yml
+rm input.yml &> /dev/null
 
 cat << EOF > input.yml
 UserKeyGanache: $PRIVATE_KEY
