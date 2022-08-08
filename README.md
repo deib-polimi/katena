@@ -43,7 +43,7 @@ The KATENA container allows to reproduce both the deployment of benchmark applic
   - Stores these credentials in KATENA
   - Instructs KATENA to deploy ENS, Dark Forest, and dydx by providing the TOSCA models (stored in folder `benchmark`) and the smart contract ABIs (stored in folders `nodes/contracts-<APP_NAME>` where APP_NAME can be either ens, dydx or dark-forest).
 
-Note that depending on your hardware configuration this step could take a while (approximatively 10/20 minutes).
+Note that depending on the hardware configuration this step could take a while (approximatively 10/20 minutes).
 
 The deployment succeeds if this output is printed in the console.
 
