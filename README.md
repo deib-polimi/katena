@@ -10,7 +10,7 @@ If you want further information on how to use KATENA to deploy your applications
 
 ## Install and run KATENA
 
-The suggest way to reproduce the experiments is to use Docker (see [here](https://docs.docker.com/get-docker/) for its installation:).
+The suggest way to reproduce the experiments is to use Docker (if not installed, check this [link](https://docs.docker.com/get-docker/)).
 
 1. Clone this repository and navigate into the project folder
 2. To build the KATENA Docker image execute
