@@ -38,7 +38,7 @@ The KATENA container allow to reproduce both the deployment of benchmark applica
 
   The script automatically:
 
-  - Bootstrap a Ganache instance.
+  - Bootstraps a Ganache instance.
   - Retrieves the credentials of Account 0 and uses them to pay for transactions on Ganache.
   - Deploys ENS, Dark Forest, and dydx.
 
@@ -89,7 +89,11 @@ The errors produced by KATENA (if any) are stored in file `deploy.log` which can
 - dydx: DeFi application
 - Dark Forest: on-chain game that uses the Diamond pattern.
 
-**PAY ATTENTION**: if you want to deploy Dark Forest smart contracts you will probably need to disable the smart contract size constraint and increase the gas limit (i.e. start Ganache with these parameters `ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize`) because some contracts are quite large. If this doesn't work try to check if you are running out of gas and increase the allowed gas per transaction.
+Note that if you want to deploy Dark Forest smart contracts _manually_ (i.e., without using script `run-deploy.sh`), Ganache must be started with the following options to remove smart contract size constraint and to increase the gas limit.
+
+```
+ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize
+```
 
 ## Repository structure
 
