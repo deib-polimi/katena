@@ -10,7 +10,7 @@ If you want further information on how to use KATENA to deploy your applications
 
 ## Install and run KATENA
 
-The suggest way to reproduce the experiments is to use Docker (if not installed, check this [link](https://docs.docker.com/get-docker/)).
+The suggested way to reproduce the experiments is to use Docker (if not installed, check this [link](https://docs.docker.com/get-docker/)).
 
 1. Clone this repository and navigate into the project folder
 2. To build the KATENA Docker image execute
@@ -24,9 +24,9 @@ The suggest way to reproduce the experiments is to use Docker (if not installed,
 
 ## Experiments Reproducibility
 
-The KATENA container allow to reproduce both the deployment of benchmark applications and the Number of Tokens analysis as described below.
+The KATENA container allows to reproduce both the deployment of benchmark applications and the Number of Tokens analysis as described below.
 
-**The following commands must be executed within KATENA containers (i.e., after the execution of step 3 of the previous section)**
+**The following commands must be executed within KATENA containers (i.e., after the execution of step 3 of the previous section). The two experiments are independent, so there is no specific order to execute them.**
 
 - ### Benchmark application deployment
 
@@ -88,7 +88,7 @@ The errors produced by KATENA (if any) are stored in file `deploy.log` which can
 
 ## Benchmark Applications
 
-- Ethreum Name Service (ENS): a DNS working on Ethereum
+- Ethereum Name Service (ENS): a DNS working on Ethereum
 - dydx: DeFi application
 - Dark Forest: on-chain game that uses the Diamond pattern.
 
