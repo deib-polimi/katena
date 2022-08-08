@@ -79,6 +79,8 @@ The KATENA container allow to reproduce both the deployment of benchmark applica
   JS: 923
   ```
 
+More information regarding the analysis can be found [here](./NUMBER_OF_TOKENS.md).
+
 ## Error logs
 
 The errors produced by KATENA (if any) are stored in file `deploy.log` which can be accessed _within KATENA container_.
