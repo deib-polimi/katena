@@ -1,6 +1,6 @@
 # Deploy your dApp with KATENA
 In order to start deploying your own dApps using KATENA, we strongly recommend looking at the files in [Examples](./examples/) and [Benchmark](./benchmark/) folders. 
-KATENA can be used with our [Docker](https://www.docker.com/) image or with a Python virtual environment on your local machine.
+KATENA can be used with our [Docker](https://www.docker.com/) image or directly on your OS.
 
 ### Docker setup
 If you want to deploy your applications on Ganache, you will need two terminals active at the same time: one for running Ganache and another one for KATENA.
@@ -36,7 +36,7 @@ To use KATENA on your local machine you need:
 - We tested our prototype on Ubuntu 20.04.4
 - `python 3.8`
 - `pip`
-- [xopera orchestrator](https://github.com/xlab-si/xopera-opera#installation-and-quickstart)
+- [xopera orchestrator](https://github.com/xlab-si/xopera-opera#installation-and-quickstart): check that the folder `$HOME/.local/bin` is in your $PATH environment variable. pip will install xOpera in this directory
 - [Ganache](https://trufflesuite.com/ganache/): this is required to bootstrap a blockchain hosted locally. You can either use this or another Ethereum-compatible client (e.g., [geth](https://geth.ethereum.org/)).
 
 
