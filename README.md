@@ -26,7 +26,7 @@ The suggested way to reproduce the experiments is to use Docker (if not installe
 
 The KATENA container allows to reproduce both the deployment of benchmark applications and the Number of Tokens analysis as described below.
 
-**The following commands must be executed within KATENA containers (i.e., after the execution of step 3 of the previous section)**
+**The following commands must be executed within KATENA containers (i.e., after the execution of step 3 of the previous section). The two experiments are independent, so there is no specific order to execute them.**
 
 - ### Benchmark application deployment
 
