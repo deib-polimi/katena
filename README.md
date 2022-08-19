@@ -1,5 +1,7 @@
 # KATENA
 
+[![DOI](https://zenodo.org/badge/472717537.svg)](https://zenodo.org/badge/latestdoi/472717537)
+
 Operations on Blockchain with TOSCA.
 
 This repo contains all the files needed to setup and run the experiments used in the evaluation of KATENA.
