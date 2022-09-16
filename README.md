@@ -1,4 +1,4 @@
-# KATENA
+# KATENA ⛓️ 
 
 [![DOI](https://zenodo.org/badge/472717537.svg)](https://zenodo.org/badge/latestdoi/472717537)
 
