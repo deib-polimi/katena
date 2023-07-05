@@ -1,7 +1,6 @@
 FROM --platform=linux/amd64 ubuntu:20.04
 
 WORKDIR /
-ADD . /
 
 ENV PATH "$PATH:/new/path"
 
@@ -14,6 +13,10 @@ RUN tar -xf node-v14.15.4-linux-x64.tar.xz
 RUN ln -s /node-v14.15.4-linux-x64/bin/node /usr/local/bin/node
 RUN ln -s /node-v14.15.4-linux-x64/bin/npm /usr/local/bin/npm
 RUN ln -s /node-v14.15.4-linux-x64/bin/npx /usr/local/bin/npx
+
+WORKDIR /katena
+ADD . /
+
 RUN npm install -g ganache-cli
 RUN npm config set user 0
 RUN pip install -r ./requirements.txt

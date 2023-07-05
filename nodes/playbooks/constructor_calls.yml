@@ -15,3 +15,6 @@
     set_stats:
       data:
         contract_addresses: "{{ lists_merged }}"
+  - name: Print the gateway for each host when defined
+    ansible.builtin.debug:
+      msg: "############### JUST A DEBUG MSG"
