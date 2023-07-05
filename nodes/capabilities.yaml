@@ -4,6 +4,8 @@ imports:
   - contract.yaml
 
 capability_types:
+# defines the valid source types of all relationships 
+
   katena.capabilities.Callable:
     derived_from: tosca.capabilities.Container
     valid_source_types: [katena.nodes.contract]

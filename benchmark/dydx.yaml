@@ -16,7 +16,7 @@ topology_template:
       properties:
         privateKey: { get_input: UserKeyGanache }
         owner: { get_input: UserWallet}
-        
+  #LIBRARIES     
     adminImpl:
       type: katena.nodes.library
       requirements:
@@ -31,7 +31,7 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "OperationImpl"
-
+ 
     soloMargin:
       type: katena.nodes.contract
       requirements:
@@ -93,6 +93,7 @@ topology_template:
         - 2.00e18
         - 100.00e18
 
+# CONTRACTS
     polynomialInterestSetter:
       type: katena.nodes.contract
       requirements:
@@ -103,7 +104,6 @@ topology_template:
         parameters:
         - 1000000000000000000
         - 87960930880000
-
     doubleExponentInterestSetter:
       type: katena.nodes.contract
       requirements:
@@ -114,11 +114,6 @@ topology_template:
         parameters:
         - 1000000000000000000
         - 86236206100
-
-    oraclePoker:
-      type: katena.nodes.contractReference
-      attributes:
-        contractAddress: { get_input: UserWallet }
     weth:
       type: katena.nodes.contract
       requirements:
@@ -178,7 +173,6 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "UsdcPriceOracle"
-
     testMakerOracle:
       type: katena.nodes.contract
       requirements:
@@ -188,9 +182,7 @@ topology_template:
       properties:
         abi: "WethPriceOracle"
         parameters:
-        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
-
-   
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
     wethPriceOracle:
       type: katena.nodes.contract
       requirements:
@@ -201,7 +193,6 @@ topology_template:
         abi: "WethPriceOracle"
         parameters:
         -  { get_attribute: [SELF, constructorCalls, contractAddress] }
-
     payableProxyForSoloMargin:
       type: katena.nodes.contract
       requirements:
@@ -310,6 +301,10 @@ topology_template:
         parameters:
         - 1001 
 
+  oraclePoker:
+    type: katena.nodes.contractReference
+    attributes:
+      contractAddress: { get_input: UserWallet }
   relationship_templates:
     ownerSetGlobalOperator:
       type: katena.relationships.calls

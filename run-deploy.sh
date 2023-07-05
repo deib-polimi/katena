@@ -1,5 +1,4 @@
 #!/bin/bash
-
-./bootstrap-dev.sh
+./bootstrap-dev.shs
 
 ./deploy-bench.sh
