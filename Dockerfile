@@ -14,9 +14,15 @@ RUN ln -s /node-v14.15.4-linux-x64/bin/node /usr/local/bin/node
 RUN ln -s /node-v14.15.4-linux-x64/bin/npm /usr/local/bin/npm
 RUN ln -s /node-v14.15.4-linux-x64/bin/npx /usr/local/bin/npx
 
-WORKDIR /katena
-ADD . /
-
 RUN npm install -g ganache-cli
 RUN npm config set user 0
+
+
+WORKDIR /katena
+ADD . /katena/
+
 RUN pip install -r ./requirements.txt
+
+# to avoid: /bin/bash^M: bad interpreter:
+# when creating scripts in Windows env and then porting over to run on a Unix environment.
+RUN sed -i -e 's/\r$//' *.sh

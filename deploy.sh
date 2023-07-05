@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# RUN DEPLOY
 read -p 'Choose a contract: ' APP
 echo "the contract to be deployed is: ${APP}"
 rm accounts.json &> /dev/null
@@ -10,8 +11,8 @@ npx ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize -q --account_keys_
 sleep 10
 
 # to format the accounts info into a better readable format
-cat accounts.json | jq > accounts_pretty.json
-IFS=: read -r ACCOUNT PRIVATE_KEY <<< $(awk '/"private_keys"/{getline; print}' accounts_pretty.json)
+cat accounts.json | jq > accounts-pretty.json
+IFS=: read -r ACCOUNT PRIVATE_KEY <<< $(awk '/"private_keys"/{getline; print}' accounts-pretty.json)
 
 PRIVATE_KEY=${PRIVATE_KEY::-1}
 
