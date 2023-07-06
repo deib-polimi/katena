@@ -1,6 +1,6 @@
 - hosts: all
   tasks:
-  - name: deploy
+  - name: load contract bytecode
     command: python scripts/load_bytecode.py --abi {{ abi }}
     register: contract_bytecode
   - name: Set attributes

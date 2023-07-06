@@ -1,8 +1,5 @@
 - hosts: all
   tasks:
-  - name: install web3
-    pip: 
-      name: web3==5.28.0
   - name: deploy
     command: python scripts/diamond_deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --cutAbi {{ cutAbi }} --cutAddress {{ cutAddress }} --owner {{ owner }}
     register: contract_address

@@ -11,6 +11,13 @@ node_types:
       host:
         type: tosca.capabilities.Container
         valid_source_types: [katena.nodes.library] # network can host only libraries and smart contracts
+    interfaces:
+        Standard:
+          type: tosca.interfaces.node.lifecycle.Standard
+          operations:
+            create:
+              implementation:
+                primary: playbooks/init.yml
   katena.nodes.network.selfHostedNode:
     derived_from: katena.nodes.network
     properties:

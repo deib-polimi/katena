@@ -1,8 +1,5 @@
 - hosts: all
   tasks:
-  - name: install web3
-    pip: 
-      name: web3==5.28.0
   - name: deploy
     command: python scripts/deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --addressParams {{ address_parameters | join(" ") }}  --params {{ contract_parameters | join(" ") }}
     register: contract_address

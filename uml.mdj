@@ -9354,7 +9354,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI+/1aocz7RDs="
 									},
-									"name": "previous_constructor_calls"
+									"name": "previous_constructor_calls",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9362,7 +9363,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI+/1aocz7RDs="
 									},
-									"name": "new_address"
+									"name": "new_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9433,7 +9435,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Ab/7c66fJQ="
 									},
-									"name": "caller_address"
+									"name": "caller_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9441,7 +9444,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Ab/7c66fJQ="
 									},
-									"name": "caller_private_key"
+									"name": "caller_private_key",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9449,7 +9453,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Ab/7c66fJQ="
 									},
-									"name": "network"
+									"name": "network",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9457,7 +9462,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Ab/7c66fJQ="
 									},
-									"name": "caller_abi"
+									"name": "caller_abi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9465,7 +9471,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Ab/7c66fJQ="
 									},
-									"name": "caller_address_setter"
+									"name": "caller_address_setter",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9492,7 +9499,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Aqi3M8AyDU="
 									},
-									"name": "caller_address"
+									"name": "caller_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9500,7 +9508,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Aqi3M8AyDU="
 									},
-									"name": "caller_private_key"
+									"name": "caller_private_key",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9508,7 +9517,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Aqi3M8AyDU="
 									},
-									"name": "network"
+									"name": "network",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9516,7 +9526,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Aqi3M8AyDU="
 									},
-									"name": "caller_abi"
+									"name": "caller_abi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9524,7 +9535,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/Aqi3M8AyDU="
 									},
-									"name": "caller_address_setter"
+									"name": "caller_address_setter",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9652,7 +9664,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "diamond_address"
+									"name": "diamond_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9660,7 +9673,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "diamond_private_key"
+									"name": "diamond_private_key",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9668,7 +9682,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "network"
+									"name": "network",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9676,7 +9691,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "cut_abi"
+									"name": "cut_abi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9684,7 +9700,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "cut_bytecode"
+									"name": "cut_bytecode",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9692,7 +9709,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "facet_address"
+									"name": "facet_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9700,7 +9718,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/BVP+9CRqLY="
 									},
-									"name": "facet_abi"
+									"name": "facet_abi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9970,7 +9989,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/CRx99THoNo="
 									},
-									"name": "library"
+									"name": "library",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -9978,7 +9998,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGI/CRx99THoNo="
 									},
-									"name": "library_address"
+									"name": "library_address",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -19317,7 +19338,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGI/EfcAtp2auk="
 							},
-							"name": "owner"
+							"name": "owner",
+							"type": ""
 						}
 					]
 				},
@@ -19335,7 +19357,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGI/EgGLNqgXH4="
 							},
-							"name": "address"
+							"name": "address",
+							"type": ""
 						}
 					]
 				},
@@ -20506,6 +20529,120 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Ganache Network"
+				},
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAGJJr/OhAoB+Vk=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "ClassDiagram1",
+					"ownedElements": [
+						{
+							"_type": "FCFlowchart",
+							"_id": "AAAAAAGJJr/tUQpeE6c=",
+							"_parent": {
+								"$ref": "AAAAAAGJJr/OhAoB+Vk="
+							},
+							"name": "Flowchart1",
+							"ownedElements": [
+								{
+									"_type": "FCFlowchartDiagram",
+									"_id": "AAAAAAGJJr/tUQpfz1g=",
+									"_parent": {
+										"$ref": "AAAAAAGJJr/tUQpeE6c="
+									},
+									"name": "contractflow",
+									"ownedViews": [
+										{
+											"_type": "FCProcessView",
+											"_id": "AAAAAAGJJsAsFgqTggk=",
+											"_parent": {
+												"$ref": "AAAAAAGJJr/tUQpfz1g="
+											},
+											"model": {
+												"$ref": "AAAAAAGJJsAsFgqRDBw="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGJJsAsFgqU0SI=",
+													"_parent": {
+														"$ref": "AAAAAAGJJsAsFgqTggk="
+													},
+													"font": "Arial;13;0",
+													"left": 410,
+													"top": 210,
+													"width": 205.91162109375,
+													"height": 13,
+													"text": "load_bytecode.py --abi Callee",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 400,
+											"top": 200,
+											"width": 225.91162109375,
+											"height": 41,
+											"nameLabel": {
+												"$ref": "AAAAAAGJJsAsFgqU0SI="
+											}
+										},
+										{
+											"_type": "FCProcessView",
+											"_id": "AAAAAAGJJsBoyQqdFVk=",
+											"_parent": {
+												"$ref": "AAAAAAGJJr/tUQpfz1g="
+											},
+											"model": {
+												"$ref": "AAAAAAGJJsBoyQqbv6M="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGJJsBoyQqe20A=",
+													"_parent": {
+														"$ref": "AAAAAAGJJsBoyQqdFVk="
+													},
+													"font": "Arial;13;0",
+													"left": 138,
+													"top": 162,
+													"width": 92,
+													"height": 26,
+													"text": "Gathering facts?",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 128,
+											"top": 152,
+											"width": 112,
+											"height": 88,
+											"nameLabel": {
+												"$ref": "AAAAAAGJJsBoyQqe20A="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCProcess",
+									"_id": "AAAAAAGJJsAsFgqRDBw=",
+									"_parent": {
+										"$ref": "AAAAAAGJJr/tUQpeE6c="
+									},
+									"name": "load_bytecode.py --abi Callee"
+								},
+								{
+									"_type": "FCProcess",
+									"_id": "AAAAAAGJJsBoyQqbv6M=",
+									"_parent": {
+										"$ref": "AAAAAAGJJr/tUQpeE6c="
+									},
+									"name": "Gathering facts?"
+								}
+							]
+						}
+					]
 				}
 			]
 		}
