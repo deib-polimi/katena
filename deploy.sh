@@ -3,12 +3,6 @@
 # RUN DEPLOY
 read -p 'Choose a contract: ' APP
 echo "the contract to be deployed is: ${APP}"
-rm accounts.json &> /dev/null
-rm accounts-pretty.json &> /dev/null
-npx ganache-cli -l 10000000 -g 1 --allowUnlimitedContractSize -q --account_keys_path accounts.json &
-
-
-sleep 10
 
 # to format the accounts info into a better readable format
 cat accounts.json | jq > accounts-pretty.json
