@@ -1,6 +1,0 @@
-# prepare all the dependencies of contracts or the network
-- hosts: all
-  tasks:
-  - name: install web3
-    pip: 
-      name: web3==5.28.0
