@@ -1,0 +1,1202 @@
+{
+  "contractName": "TestUniswapV2Pair",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "RESERVE0",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint112"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "RESERVE1",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint112"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getReserves",
+      "outputs": [
+        {
+          "name": "reserve0",
+          "type": "uint112"
+        },
+        {
+          "name": "reserve1",
+          "type": "uint112"
+        },
+        {
+          "name": "blockTimestampLast",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "reserve0",
+          "type": "uint112"
+        },
+        {
+          "name": "reserve1",
+          "type": "uint112"
+        }
+      ],
+      "name": "setReserves",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getReserves\",\"outputs\":[{\"name\":\"reserve0\",\"type\":\"uint112\"},{\"name\":\"reserve1\",\"type\":\"uint112\"},{\"name\":\"blockTimestampLast\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"RESERVE0\",\"outputs\":[{\"name\":\"\",\"type\":\"uint112\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"reserve0\",\"type\":\"uint112\"},{\"name\":\"reserve1\",\"type\":\"uint112\"}],\"name\":\"setReserves\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"RESERVE1\",\"outputs\":[{\"name\":\"\",\"type\":\"uint112\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Mock Uniswap V2 pair.\",\"methods\":{},\"title\":\"TestUniswapV2Pair\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/testing/TestUniswapV2Pair.sol\":\"TestUniswapV2Pair\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"project:/contracts/external/interfaces/IUniswapV2Pair.sol\":{\"keccak256\":\"0xaabb468ea4fbe3f503ecc0d172a5ad16f3cddd363b5df7c99b37c8aad978e501\",\"urls\":[\"bzzr://0af14b16179666b1ac8fcd608addab8a353afead2729e95c90697a0135c0de62\"]},\"project:/contracts/testing/TestUniswapV2Pair.sol\":{\"keccak256\":\"0xcd25d79bd9a651b2cbc13f1531c7deed06847cee44e12957edc33e3def1b037a\",\"urls\":[\"bzzr://943ce6fa894faf526311330c361da86312cdc9ffc7fe49045f38456fb0dada7a\"]}},\"version\":1}",
+  "bytecode": "0x6080604052600080547fffffffff0000000000000000000000000000000000000000000000000000000016905534801561003857600080fd5b506102a5806100486000396000f3fe608060405234801561001057600080fd5b5060043610610068577c010000000000000000000000000000000000000000000000000000000060003504630902f1ac811461006d5780631b7a38891461008d57806375ea5f2e146100a25780637ef44b96146100b7575b600080fd5b6100756100bf565b6040516100849392919061021f565b60405180910390f35b6100956100ee565b604051610084919061020b565b6100b56100b03660046101b9565b610104565b005b61009561017e565b600080546dffffffffffffffffffffffffffff808216926e010000000000000000000000000000909204169192565b6000546dffffffffffffffffffffffffffff1681565b600080546dffffffffffffffffffffffffffff9283166e010000000000000000000000000000027fffffffff0000000000000000000000000000ffffffffffffffffffffffffffff949093167fffffffffffffffffffffffffffffffffffff00000000000000000000000000009091161792909216179055565b6000546e01000000000000000000000000000090046dffffffffffffffffffffffffffff1681565b60006101b2823561024f565b9392505050565b600080604083850312156101cc57600080fd5b60006101d885856101a6565b92505060206101e9858286016101a6565b9150509250929050565b6101fc8161024f565b82525050565b6101fc81610262565b6020810161021982846101f3565b92915050565b6060810161022d82866101f3565b61023a60208301856101f3565b6102476040830184610202565b949350505050565b6dffffffffffffffffffffffffffff1690565b63ffffffff169056fea265627a7a72305820b4db6336daa183bc3cc232d68d6752a1762ef423c5ab3272ba45f34c775d3c236c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610068577c010000000000000000000000000000000000000000000000000000000060003504630902f1ac811461006d5780631b7a38891461008d57806375ea5f2e146100a25780637ef44b96146100b7575b600080fd5b6100756100bf565b6040516100849392919061021f565b60405180910390f35b6100956100ee565b604051610084919061020b565b6100b56100b03660046101b9565b610104565b005b61009561017e565b600080546dffffffffffffffffffffffffffff808216926e010000000000000000000000000000909204169192565b6000546dffffffffffffffffffffffffffff1681565b600080546dffffffffffffffffffffffffffff9283166e010000000000000000000000000000027fffffffff0000000000000000000000000000ffffffffffffffffffffffffffff949093167fffffffffffffffffffffffffffffffffffff00000000000000000000000000009091161792909216179055565b6000546e01000000000000000000000000000090046dffffffffffffffffffffffffffff1681565b60006101b2823561024f565b9392505050565b600080604083850312156101cc57600080fd5b60006101d885856101a6565b92505060206101e9858286016101a6565b9150509250929050565b6101fc8161024f565b82525050565b6101fc81610262565b6020810161021982846101f3565b92915050565b6060810161022d82866101f3565b61023a60208301856101f3565b6102476040830184610202565b949350505050565b6dffffffffffffffffffffffffffff1690565b63ffffffff169056fea265627a7a72305820b4db6336daa183bc3cc232d68d6752a1762ef423c5ab3272ba45f34c775d3c236c6578706572696d656e74616cf50037",
+  "sourceMap": "819:591:73:-;;;900:1;874:27;;907;;;;819:591;5:2:-1;;;;30:1;27;20:12;5:2;819:591:73;;;;;;;",
+  "deployedSourceMap": "819:591:73:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;819:591:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;992:184;;;:::i;:::-;;;;;;;;;;;;;;;;;;874:27;;;:::i;:::-;;;;;;;;1243:165;;;;;;;;;:::i;:::-;;907:27;;;:::i;992:184::-;1062:16;1147:8;;;;;;;1157;;;;;992:184;;:::o;874:27::-;;;;;;:::o;1243:165::-;1353:8;:19;;;1382;;;;;;1353;;;;;;;;;1382;;;;;;;1243:165::o;907:27::-;;;;;;;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;57:66;-1:-1;;;57:66;130:366;;;251:2;239:9;230:7;226:23;222:32;219:2;;;267:1;264;257:12;219:2;302:1;319:53;364:7;344:9;319:53;;;309:63;;281:97;409:2;427:53;472:7;463:6;452:9;448:22;427:53;;;417:63;;388:98;213:283;;;;;;503:120;586:31;611:5;586:31;;;581:3;574:44;568:55;;;630:117;711:30;735:5;711:30;;754:213;872:2;857:18;;886:71;861:9;930:6;886:71;;;843:124;;;;;974:431;1146:2;1131:18;;1160:71;1135:9;1204:6;1160:71;;;1242:72;1310:2;1299:9;1295:18;1286:6;1242:72;;;1325:70;1391:2;1380:9;1376:18;1367:6;1325:70;;;1117:288;;;;;;;1412:116;1492:30;1481:42;;1464:64;1535:95;1614:10;1603:22;;1586:44",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { IUniswapV2Pair } from \"../external/interfaces/IUniswapV2Pair.sol\";\n\n\n/**\n * @title TestUniswapV2Pair\n * @author dYdX\n *\n * Mock Uniswap V2 pair.\n */\ncontract TestUniswapV2Pair is\n    IUniswapV2Pair\n{\n    uint112 public RESERVE0 = 0;\n    uint112 public RESERVE1 = 0;\n\n    // ============ Getter Functions ============\n\n    function getReserves()\n        external\n        view\n        returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)\n    {\n        return (RESERVE0, RESERVE1, 0);\n    }\n\n    // ============ Test Data Setter Functions ============\n\n    function setReserves(\n        uint112 reserve0,\n        uint112 reserve1\n    )\n        external\n    {\n        RESERVE0 = reserve0;\n        RESERVE1 = reserve1;\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/testing/TestUniswapV2Pair.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/testing/TestUniswapV2Pair.sol",
+    "exportedSymbols": {
+      "TestUniswapV2Pair": [
+        24003
+      ]
+    },
+    "id": 24004,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23960,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:73"
+      },
+      {
+        "id": 23961,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:73"
+      },
+      {
+        "absolutePath": "project:/contracts/external/interfaces/IUniswapV2Pair.sol",
+        "file": "../external/interfaces/IUniswapV2Pair.sol",
+        "id": 23963,
+        "nodeType": "ImportDirective",
+        "scope": 24004,
+        "sourceUnit": 1204,
+        "src": "661:75:73",
+        "symbolAliases": [
+          {
+            "foreign": 23962,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 23964,
+              "name": "IUniswapV2Pair",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1203,
+              "src": "853:14:73",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IUniswapV2Pair_$1203",
+                "typeString": "contract IUniswapV2Pair"
+              }
+            },
+            "id": 23965,
+            "nodeType": "InheritanceSpecifier",
+            "src": "853:14:73"
+          }
+        ],
+        "contractDependencies": [
+          1203
+        ],
+        "contractKind": "contract",
+        "documentation": "@title TestUniswapV2Pair\n@author dYdX\n * Mock Uniswap V2 pair.",
+        "fullyImplemented": true,
+        "id": 24003,
+        "linearizedBaseContracts": [
+          24003,
+          1203
+        ],
+        "name": "TestUniswapV2Pair",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 23968,
+            "name": "RESERVE0",
+            "nodeType": "VariableDeclaration",
+            "scope": 24003,
+            "src": "874:27:73",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint112",
+              "typeString": "uint112"
+            },
+            "typeName": {
+              "id": 23966,
+              "name": "uint112",
+              "nodeType": "ElementaryTypeName",
+              "src": "874:7:73",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint112",
+                "typeString": "uint112"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 23967,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "900:1:73",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 23971,
+            "name": "RESERVE1",
+            "nodeType": "VariableDeclaration",
+            "scope": 24003,
+            "src": "907:27:73",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint112",
+              "typeString": "uint112"
+            },
+            "typeName": {
+              "id": 23969,
+              "name": "uint112",
+              "nodeType": "ElementaryTypeName",
+              "src": "907:7:73",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint112",
+                "typeString": "uint112"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 23970,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "933:1:73",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 23985,
+              "nodeType": "Block",
+              "src": "1129:47:73",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "id": 23980,
+                        "name": "RESERVE0",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 23968,
+                        "src": "1147:8:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint112",
+                          "typeString": "uint112"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 23981,
+                        "name": "RESERVE1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 23971,
+                        "src": "1157:8:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint112",
+                          "typeString": "uint112"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "30",
+                        "id": 23982,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1167:1:73",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      }
+                    ],
+                    "id": 23983,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1146:23:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_uint112_$_t_uint112_$_t_rational_0_by_1_$",
+                      "typeString": "tuple(uint112,uint112,int_const 0)"
+                    }
+                  },
+                  "functionReturnParameters": 23979,
+                  "id": 23984,
+                  "nodeType": "Return",
+                  "src": "1139:30:73"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 23986,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserves",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23972,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1012:2:73"
+            },
+            "returnParameters": {
+              "id": 23979,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23974,
+                  "name": "reserve0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23986,
+                  "src": "1062:16:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 23973,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1062:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23976,
+                  "name": "reserve1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23986,
+                  "src": "1080:16:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 23975,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1080:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23978,
+                  "name": "blockTimestampLast",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23986,
+                  "src": "1098:25:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 23977,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1098:6:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1061:63:73"
+            },
+            "scope": 24003,
+            "src": "992:184:73",
+            "stateMutability": "view",
+            "superFunction": 1202,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 24001,
+              "nodeType": "Block",
+              "src": "1343:65:73",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 23995,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 23993,
+                      "name": "RESERVE0",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 23968,
+                      "src": "1353:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint112",
+                        "typeString": "uint112"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 23994,
+                      "name": "reserve0",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 23988,
+                      "src": "1364:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint112",
+                        "typeString": "uint112"
+                      }
+                    },
+                    "src": "1353:19:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "id": 23996,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1353:19:73"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 23999,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 23997,
+                      "name": "RESERVE1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 23971,
+                      "src": "1382:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint112",
+                        "typeString": "uint112"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 23998,
+                      "name": "reserve1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 23990,
+                      "src": "1393:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint112",
+                        "typeString": "uint112"
+                      }
+                    },
+                    "src": "1382:19:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "id": 24000,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1382:19:73"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 24002,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setReserves",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23991,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23988,
+                  "name": "reserve0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24002,
+                  "src": "1273:16:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 23987,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1273:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23990,
+                  "name": "reserve1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24002,
+                  "src": "1299:16:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint112",
+                    "typeString": "uint112"
+                  },
+                  "typeName": {
+                    "id": 23989,
+                    "name": "uint112",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1299:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint112",
+                      "typeString": "uint112"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1263:58:73"
+            },
+            "returnParameters": {
+              "id": 23992,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1343:0:73"
+            },
+            "scope": 24003,
+            "src": "1243:165:73",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 24004,
+        "src": "819:591:73"
+      }
+    ],
+    "src": "603:808:73"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/testing/TestUniswapV2Pair.sol",
+      "exportedSymbols": {
+        "TestUniswapV2Pair": [
+          24003
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 23960,
+        "name": "PragmaDirective",
+        "src": "603:22:73"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 23961,
+        "name": "PragmaDirective",
+        "src": "626:33:73"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1204,
+          "absolutePath": "project:/contracts/external/interfaces/IUniswapV2Pair.sol",
+          "file": "../external/interfaces/IUniswapV2Pair.sol",
+          "scope": 24004,
+          "symbolAliases": [
+            {
+              "foreign": 23962,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 23963,
+        "name": "ImportDirective",
+        "src": "661:75:73"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            1203
+          ],
+          "contractKind": "contract",
+          "documentation": "@title TestUniswapV2Pair\n@author dYdX\n * Mock Uniswap V2 pair.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            24003,
+            1203
+          ],
+          "name": "TestUniswapV2Pair",
+          "scope": 24004
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IUniswapV2Pair",
+                  "referencedDeclaration": 1203,
+                  "type": "contract IUniswapV2Pair"
+                },
+                "id": 23964,
+                "name": "UserDefinedTypeName",
+                "src": "853:14:73"
+              }
+            ],
+            "id": 23965,
+            "name": "InheritanceSpecifier",
+            "src": "853:14:73"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "RESERVE0",
+              "scope": 24003,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint112",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint112",
+                  "type": "uint112"
+                },
+                "id": 23966,
+                "name": "ElementaryTypeName",
+                "src": "874:7:73"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 0",
+                  "value": "0"
+                },
+                "id": 23967,
+                "name": "Literal",
+                "src": "900:1:73"
+              }
+            ],
+            "id": 23968,
+            "name": "VariableDeclaration",
+            "src": "874:27:73"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "RESERVE1",
+              "scope": 24003,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint112",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint112",
+                  "type": "uint112"
+                },
+                "id": 23969,
+                "name": "ElementaryTypeName",
+                "src": "907:7:73"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 0",
+                  "value": "0"
+                },
+                "id": 23970,
+                "name": "Literal",
+                "src": "933:1:73"
+              }
+            ],
+            "id": 23971,
+            "name": "VariableDeclaration",
+            "src": "907:27:73"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getReserves",
+              "scope": 24003,
+              "stateMutability": "view",
+              "superFunction": 1202,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 23972,
+                "name": "ParameterList",
+                "src": "1012:2:73"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "reserve0",
+                      "scope": 23986,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 23973,
+                        "name": "ElementaryTypeName",
+                        "src": "1062:7:73"
+                      }
+                    ],
+                    "id": 23974,
+                    "name": "VariableDeclaration",
+                    "src": "1062:16:73"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "reserve1",
+                      "scope": 23986,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 23975,
+                        "name": "ElementaryTypeName",
+                        "src": "1080:7:73"
+                      }
+                    ],
+                    "id": 23976,
+                    "name": "VariableDeclaration",
+                    "src": "1080:16:73"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "blockTimestampLast",
+                      "scope": 23986,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 23977,
+                        "name": "ElementaryTypeName",
+                        "src": "1098:6:73"
+                      }
+                    ],
+                    "id": 23978,
+                    "name": "VariableDeclaration",
+                    "src": "1098:25:73"
+                  }
+                ],
+                "id": 23979,
+                "name": "ParameterList",
+                "src": "1061:63:73"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 23979
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "tuple(uint112,uint112,int_const 0)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23968,
+                              "type": "uint112",
+                              "value": "RESERVE0"
+                            },
+                            "id": 23980,
+                            "name": "Identifier",
+                            "src": "1147:8:73"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23971,
+                              "type": "uint112",
+                              "value": "RESERVE1"
+                            },
+                            "id": 23981,
+                            "name": "Identifier",
+                            "src": "1157:8:73"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 23982,
+                            "name": "Literal",
+                            "src": "1167:1:73"
+                          }
+                        ],
+                        "id": 23983,
+                        "name": "TupleExpression",
+                        "src": "1146:23:73"
+                      }
+                    ],
+                    "id": 23984,
+                    "name": "Return",
+                    "src": "1139:30:73"
+                  }
+                ],
+                "id": 23985,
+                "name": "Block",
+                "src": "1129:47:73"
+              }
+            ],
+            "id": 23986,
+            "name": "FunctionDefinition",
+            "src": "992:184:73"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setReserves",
+              "scope": 24003,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "reserve0",
+                      "scope": 24002,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 23987,
+                        "name": "ElementaryTypeName",
+                        "src": "1273:7:73"
+                      }
+                    ],
+                    "id": 23988,
+                    "name": "VariableDeclaration",
+                    "src": "1273:16:73"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "reserve1",
+                      "scope": 24002,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint112",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint112",
+                          "type": "uint112"
+                        },
+                        "id": 23989,
+                        "name": "ElementaryTypeName",
+                        "src": "1299:7:73"
+                      }
+                    ],
+                    "id": 23990,
+                    "name": "VariableDeclaration",
+                    "src": "1299:16:73"
+                  }
+                ],
+                "id": 23991,
+                "name": "ParameterList",
+                "src": "1263:58:73"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 23992,
+                "name": "ParameterList",
+                "src": "1343:0:73"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint112"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23968,
+                              "type": "uint112",
+                              "value": "RESERVE0"
+                            },
+                            "id": 23993,
+                            "name": "Identifier",
+                            "src": "1353:8:73"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23988,
+                              "type": "uint112",
+                              "value": "reserve0"
+                            },
+                            "id": 23994,
+                            "name": "Identifier",
+                            "src": "1364:8:73"
+                          }
+                        ],
+                        "id": 23995,
+                        "name": "Assignment",
+                        "src": "1353:19:73"
+                      }
+                    ],
+                    "id": 23996,
+                    "name": "ExpressionStatement",
+                    "src": "1353:19:73"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint112"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23971,
+                              "type": "uint112",
+                              "value": "RESERVE1"
+                            },
+                            "id": 23997,
+                            "name": "Identifier",
+                            "src": "1382:8:73"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23990,
+                              "type": "uint112",
+                              "value": "reserve1"
+                            },
+                            "id": 23998,
+                            "name": "Identifier",
+                            "src": "1393:8:73"
+                          }
+                        ],
+                        "id": 23999,
+                        "name": "Assignment",
+                        "src": "1382:19:73"
+                      }
+                    ],
+                    "id": 24000,
+                    "name": "ExpressionStatement",
+                    "src": "1382:19:73"
+                  }
+                ],
+                "id": 24001,
+                "name": "Block",
+                "src": "1343:65:73"
+              }
+            ],
+            "id": 24002,
+            "name": "FunctionDefinition",
+            "src": "1243:165:73"
+          }
+        ],
+        "id": 24003,
+        "name": "ContractDefinition",
+        "src": "819:591:73"
+      }
+    ],
+    "id": 24004,
+    "name": "SourceUnit",
+    "src": "603:808:73"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.409Z",
+  "devdoc": {
+    "author": "dYdX * Mock Uniswap V2 pair.",
+    "methods": {},
+    "title": "TestUniswapV2Pair"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

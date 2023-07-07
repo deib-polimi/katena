@@ -1,0 +1,895 @@
+{
+  "contractName": "IAutoTrader",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "inputMarketId",
+          "type": "uint256"
+        },
+        {
+          "name": "outputMarketId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "name": "number",
+              "type": "uint256"
+            }
+          ],
+          "name": "makerAccount",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "name": "number",
+              "type": "uint256"
+            }
+          ],
+          "name": "takerAccount",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "name": "sign",
+              "type": "bool"
+            },
+            {
+              "name": "value",
+              "type": "uint128"
+            }
+          ],
+          "name": "oldInputPar",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "name": "sign",
+              "type": "bool"
+            },
+            {
+              "name": "value",
+              "type": "uint128"
+            }
+          ],
+          "name": "newInputPar",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "name": "sign",
+              "type": "bool"
+            },
+            {
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "inputWei",
+          "type": "tuple"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "getTradeCost",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "sign",
+              "type": "bool"
+            },
+            {
+              "name": "denomination",
+              "type": "uint8"
+            },
+            {
+              "name": "ref",
+              "type": "uint8"
+            },
+            {
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"inputMarketId\",\"type\":\"uint256\"},{\"name\":\"outputMarketId\",\"type\":\"uint256\"},{\"components\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"makerAccount\",\"type\":\"tuple\"},{\"components\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"takerAccount\",\"type\":\"tuple\"},{\"components\":[{\"name\":\"sign\",\"type\":\"bool\"},{\"name\":\"value\",\"type\":\"uint128\"}],\"name\":\"oldInputPar\",\"type\":\"tuple\"},{\"components\":[{\"name\":\"sign\",\"type\":\"bool\"},{\"name\":\"value\",\"type\":\"uint128\"}],\"name\":\"newInputPar\",\"type\":\"tuple\"},{\"components\":[{\"name\":\"sign\",\"type\":\"bool\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"inputWei\",\"type\":\"tuple\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"getTradeCost\",\"outputs\":[{\"components\":[{\"name\":\"sign\",\"type\":\"bool\"},{\"name\":\"denomination\",\"type\":\"uint8\"},{\"name\":\"ref\",\"type\":\"uint8\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Interface that Auto-Traders for Solo must implement in order to approve trades.\",\"methods\":{\"getTradeCost(uint256,uint256,(address,uint256),(address,uint256),(bool,uint128),(bool,uint128),(bool,uint256),bytes)\":{\"params\":{\"data\":\"Arbitrary data passed in by the trader\",\"inputMarketId\":\"The market for which the trader specified the original amount\",\"inputWei\":\"The change in token amount for the makerAccount for the inputMarketId\",\"makerAccount\":\"The account for which this contract is making trades\",\"newInputPar\":\"The new principal amount for the makerAccount for the inputMarketId\",\"oldInputPar\":\"The old principal amount for the makerAccount for the inputMarketId\",\"outputMarketId\":\"The market for which the trader wants the resulting amount specified\",\"takerAccount\":\"The account requesting the trade\"},\"return\":\"The AssetAmount for the makerAccount for the outputMarketId\"}},\"title\":\"IAutoTrader\"},\"userdoc\":{\"methods\":{\"getTradeCost(uint256,uint256,(address,uint256),(address,uint256),(bool,uint128),(bool,uint128),(bool,uint256),bytes)\":{\"notice\":\"Allows traders to make trades approved by this smart contract. The active trader's account is the takerAccount and the passive account (for which this contract approves trades on-behalf-of) is the makerAccount.\"}}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/protocol/interfaces/IAutoTrader.sol\":\"IAutoTrader\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzzr://41ca38f6b0fa4b77b0feec43e422cfbec48b7eb38a41edf0b85c77e8d9a296b1\"]},\"project:/contracts/protocol/interfaces/IAutoTrader.sol\":{\"keccak256\":\"0xa416051ccd2a83cc5a77e86591a4a3fc093ceb5f42ca7b1d7c8e8d35c79ddb5b\",\"urls\":[\"bzzr://9ad6198a2fcb288d5485b3f2e9042815ec644f85c0ab884b0a2667250780cee5\"]},\"project:/contracts/protocol/lib/Account.sol\":{\"keccak256\":\"0x4c27c617b01972ddb8ca160454284ed09f3ec6f7abd667c31ca9f38805738d33\",\"urls\":[\"bzzr://ad0dd4229cea4f8c5b877a653766cf413d733e442cfc448ffd715e786d7b5216\"]},\"project:/contracts/protocol/lib/Math.sol\":{\"keccak256\":\"0x05162cffa6d5479b6555e03af67b75e63d85272a3c3d3d2630a127ffa811ba41\",\"urls\":[\"bzzr://0e784dccf35201ef16030ec531028252d590936d75f0200f368a7e5981046af4\"]},\"project:/contracts/protocol/lib/Require.sol\":{\"keccak256\":\"0x6ecb512d52bb5cb36ba26b98877240e0b23eb3310df5dc61f82c655dc974d04b\",\"urls\":[\"bzzr://826485117e00106f438a7e64ecc32b2c3705e02d9bd6035dbdc5f9faaa19482c\"]},\"project:/contracts/protocol/lib/Types.sol\":{\"keccak256\":\"0x35c04c154e9ef818a3e1b59eb748565645864d5f8f2bc696c1f425a8ade9ab00\",\"urls\":[\"bzzr://8b2db9cb583f79fc2b74a70b270667f6a3bc54c3afef6a2d56e0d2ec5b8ca725\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { Account } from \"../lib/Account.sol\";\nimport { Types } from \"../lib/Types.sol\";\n\n\n/**\n * @title IAutoTrader\n * @author dYdX\n *\n * Interface that Auto-Traders for Solo must implement in order to approve trades.\n */\ncontract IAutoTrader {\n\n    // ============ Public Functions ============\n\n    /**\n     * Allows traders to make trades approved by this smart contract. The active trader's account is\n     * the takerAccount and the passive account (for which this contract approves trades\n     * on-behalf-of) is the makerAccount.\n     *\n     * @param  inputMarketId   The market for which the trader specified the original amount\n     * @param  outputMarketId  The market for which the trader wants the resulting amount specified\n     * @param  makerAccount    The account for which this contract is making trades\n     * @param  takerAccount    The account requesting the trade\n     * @param  oldInputPar     The old principal amount for the makerAccount for the inputMarketId\n     * @param  newInputPar     The new principal amount for the makerAccount for the inputMarketId\n     * @param  inputWei        The change in token amount for the makerAccount for the inputMarketId\n     * @param  data            Arbitrary data passed in by the trader\n     * @return                 The AssetAmount for the makerAccount for the outputMarketId\n     */\n    function getTradeCost(\n        uint256 inputMarketId,\n        uint256 outputMarketId,\n        Account.Info memory makerAccount,\n        Account.Info memory takerAccount,\n        Types.Par memory oldInputPar,\n        Types.Par memory newInputPar,\n        Types.Wei memory inputWei,\n        bytes memory data\n    )\n        public\n        returns (Types.AssetAmount memory);\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/protocol/interfaces/IAutoTrader.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/protocol/interfaces/IAutoTrader.sol",
+    "exportedSymbols": {
+      "IAutoTrader": [
+        16226
+      ]
+    },
+    "id": 16227,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 16199,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:37"
+      },
+      {
+        "id": 16200,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:37"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+        "file": "../lib/Account.sol",
+        "id": 16202,
+        "nodeType": "ImportDirective",
+        "scope": 16227,
+        "sourceUnit": 16434,
+        "src": "661:45:37",
+        "symbolAliases": [
+          {
+            "foreign": 16201,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Types.sol",
+        "file": "../lib/Types.sol",
+        "id": 16204,
+        "nodeType": "ImportDirective",
+        "scope": 16227,
+        "sourceUnit": 21431,
+        "src": "707:41:37",
+        "symbolAliases": [
+          {
+            "foreign": 16203,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title IAutoTrader\n@author dYdX\n * Interface that Auto-Traders for Solo must implement in order to approve trades.",
+        "fullyImplemented": false,
+        "id": 16226,
+        "linearizedBaseContracts": [
+          16226
+        ],
+        "name": "IAutoTrader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "Allows traders to make trades approved by this smart contract. The active trader's account is\nthe takerAccount and the passive account (for which this contract approves trades\non-behalf-of) is the makerAccount.\n     * @param  inputMarketId   The market for which the trader specified the original amount\n@param  outputMarketId  The market for which the trader wants the resulting amount specified\n@param  makerAccount    The account for which this contract is making trades\n@param  takerAccount    The account requesting the trade\n@param  oldInputPar     The old principal amount for the makerAccount for the inputMarketId\n@param  newInputPar     The new principal amount for the makerAccount for the inputMarketId\n@param  inputWei        The change in token amount for the makerAccount for the inputMarketId\n@param  data            Arbitrary data passed in by the trader\n@return                 The AssetAmount for the makerAccount for the outputMarketId",
+            "id": 16225,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTradeCost",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16221,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16206,
+                  "name": "inputMarketId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2049:21:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 16205,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2049:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16208,
+                  "name": "outputMarketId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2080:22:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 16207,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2080:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16210,
+                  "name": "makerAccount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2112:32:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                    "typeString": "struct Account.Info"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16209,
+                    "name": "Account.Info",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 16403,
+                    "src": "2112:12:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Info_$16403_storage_ptr",
+                      "typeString": "struct Account.Info"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16212,
+                  "name": "takerAccount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2154:32:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Info_$16403_memory_ptr",
+                    "typeString": "struct Account.Info"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16211,
+                    "name": "Account.Info",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 16403,
+                    "src": "2154:12:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Info_$16403_storage_ptr",
+                      "typeString": "struct Account.Info"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16214,
+                  "name": "oldInputPar",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2196:28:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Par_$20996_memory_ptr",
+                    "typeString": "struct Types.Par"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16213,
+                    "name": "Types.Par",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 20996,
+                    "src": "2196:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Par_$20996_storage_ptr",
+                      "typeString": "struct Types.Par"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16216,
+                  "name": "newInputPar",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2234:28:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Par_$20996_memory_ptr",
+                    "typeString": "struct Types.Par"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16215,
+                    "name": "Types.Par",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 20996,
+                    "src": "2234:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Par_$20996_storage_ptr",
+                      "typeString": "struct Types.Par"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16218,
+                  "name": "inputWei",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2272:25:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Wei_$21218_memory_ptr",
+                    "typeString": "struct Types.Wei"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16217,
+                    "name": "Types.Wei",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 21218,
+                    "src": "2272:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Wei_$21218_storage_ptr",
+                      "typeString": "struct Types.Wei"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16220,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2307:17:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 16219,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2307:5:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2039:291:37"
+            },
+            "returnParameters": {
+              "id": 16224,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16223,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16225,
+                  "src": "2363:24:37",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_AssetAmount_$20986_memory_ptr",
+                    "typeString": "struct Types.AssetAmount"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16222,
+                    "name": "Types.AssetAmount",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 20986,
+                    "src": "2363:17:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_AssetAmount_$20986_storage_ptr",
+                      "typeString": "struct Types.AssetAmount"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2362:26:37"
+            },
+            "scope": 16226,
+            "src": "2018:371:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 16227,
+        "src": "883:1508:37"
+      }
+    ],
+    "src": "603:1789:37"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/protocol/interfaces/IAutoTrader.sol",
+      "exportedSymbols": {
+        "IAutoTrader": [
+          16226
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 16199,
+        "name": "PragmaDirective",
+        "src": "603:22:37"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 16200,
+        "name": "PragmaDirective",
+        "src": "626:33:37"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16434,
+          "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+          "file": "../lib/Account.sol",
+          "scope": 16227,
+          "symbolAliases": [
+            {
+              "foreign": 16201,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 16202,
+        "name": "ImportDirective",
+        "src": "661:45:37"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 21431,
+          "absolutePath": "project:/contracts/protocol/lib/Types.sol",
+          "file": "../lib/Types.sol",
+          "scope": 16227,
+          "symbolAliases": [
+            {
+              "foreign": 16203,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 16204,
+        "name": "ImportDirective",
+        "src": "707:41:37"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title IAutoTrader\n@author dYdX\n * Interface that Auto-Traders for Solo must implement in order to approve trades.",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            16226
+          ],
+          "name": "IAutoTrader",
+          "scope": 16227
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "Allows traders to make trades approved by this smart contract. The active trader's account is\nthe takerAccount and the passive account (for which this contract approves trades\non-behalf-of) is the makerAccount.\n     * @param  inputMarketId   The market for which the trader specified the original amount\n@param  outputMarketId  The market for which the trader wants the resulting amount specified\n@param  makerAccount    The account for which this contract is making trades\n@param  takerAccount    The account requesting the trade\n@param  oldInputPar     The old principal amount for the makerAccount for the inputMarketId\n@param  newInputPar     The new principal amount for the makerAccount for the inputMarketId\n@param  inputWei        The change in token amount for the makerAccount for the inputMarketId\n@param  data            Arbitrary data passed in by the trader\n@return                 The AssetAmount for the makerAccount for the outputMarketId",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getTradeCost",
+              "scope": 16226,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "inputMarketId",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 16205,
+                        "name": "ElementaryTypeName",
+                        "src": "2049:7:37"
+                      }
+                    ],
+                    "id": 16206,
+                    "name": "VariableDeclaration",
+                    "src": "2049:21:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "outputMarketId",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 16207,
+                        "name": "ElementaryTypeName",
+                        "src": "2080:7:37"
+                      }
+                    ],
+                    "id": 16208,
+                    "name": "VariableDeclaration",
+                    "src": "2080:22:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "makerAccount",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Account.Info",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Account.Info",
+                          "referencedDeclaration": 16403,
+                          "type": "struct Account.Info"
+                        },
+                        "id": 16209,
+                        "name": "UserDefinedTypeName",
+                        "src": "2112:12:37"
+                      }
+                    ],
+                    "id": 16210,
+                    "name": "VariableDeclaration",
+                    "src": "2112:32:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "takerAccount",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Account.Info",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Account.Info",
+                          "referencedDeclaration": 16403,
+                          "type": "struct Account.Info"
+                        },
+                        "id": 16211,
+                        "name": "UserDefinedTypeName",
+                        "src": "2154:12:37"
+                      }
+                    ],
+                    "id": 16212,
+                    "name": "VariableDeclaration",
+                    "src": "2154:32:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "oldInputPar",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Types.Par",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Types.Par",
+                          "referencedDeclaration": 20996,
+                          "type": "struct Types.Par"
+                        },
+                        "id": 16213,
+                        "name": "UserDefinedTypeName",
+                        "src": "2196:9:37"
+                      }
+                    ],
+                    "id": 16214,
+                    "name": "VariableDeclaration",
+                    "src": "2196:28:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newInputPar",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Types.Par",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Types.Par",
+                          "referencedDeclaration": 20996,
+                          "type": "struct Types.Par"
+                        },
+                        "id": 16215,
+                        "name": "UserDefinedTypeName",
+                        "src": "2234:9:37"
+                      }
+                    ],
+                    "id": 16216,
+                    "name": "VariableDeclaration",
+                    "src": "2234:28:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "inputWei",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Types.Wei",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Types.Wei",
+                          "referencedDeclaration": 21218,
+                          "type": "struct Types.Wei"
+                        },
+                        "id": 16217,
+                        "name": "UserDefinedTypeName",
+                        "src": "2272:9:37"
+                      }
+                    ],
+                    "id": 16218,
+                    "name": "VariableDeclaration",
+                    "src": "2272:25:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "data",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 16219,
+                        "name": "ElementaryTypeName",
+                        "src": "2307:5:37"
+                      }
+                    ],
+                    "id": 16220,
+                    "name": "VariableDeclaration",
+                    "src": "2307:17:37"
+                  }
+                ],
+                "id": 16221,
+                "name": "ParameterList",
+                "src": "2039:291:37"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 16225,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Types.AssetAmount",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Types.AssetAmount",
+                          "referencedDeclaration": 20986,
+                          "type": "struct Types.AssetAmount"
+                        },
+                        "id": 16222,
+                        "name": "UserDefinedTypeName",
+                        "src": "2363:17:37"
+                      }
+                    ],
+                    "id": 16223,
+                    "name": "VariableDeclaration",
+                    "src": "2363:24:37"
+                  }
+                ],
+                "id": 16224,
+                "name": "ParameterList",
+                "src": "2362:26:37"
+              }
+            ],
+            "id": 16225,
+            "name": "FunctionDefinition",
+            "src": "2018:371:37"
+          }
+        ],
+        "id": 16226,
+        "name": "ContractDefinition",
+        "src": "883:1508:37"
+      }
+    ],
+    "id": 16227,
+    "name": "SourceUnit",
+    "src": "603:1789:37"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.314Z",
+  "devdoc": {
+    "author": "dYdX * Interface that Auto-Traders for Solo must implement in order to approve trades.",
+    "methods": {
+      "getTradeCost(uint256,uint256,(address,uint256),(address,uint256),(bool,uint128),(bool,uint128),(bool,uint256),bytes)": {
+        "params": {
+          "data": "Arbitrary data passed in by the trader",
+          "inputMarketId": "The market for which the trader specified the original amount",
+          "inputWei": "The change in token amount for the makerAccount for the inputMarketId",
+          "makerAccount": "The account for which this contract is making trades",
+          "newInputPar": "The new principal amount for the makerAccount for the inputMarketId",
+          "oldInputPar": "The old principal amount for the makerAccount for the inputMarketId",
+          "outputMarketId": "The market for which the trader wants the resulting amount specified",
+          "takerAccount": "The account requesting the trade"
+        },
+        "return": "The AssetAmount for the makerAccount for the outputMarketId"
+      }
+    },
+    "title": "IAutoTrader"
+  },
+  "userdoc": {
+    "methods": {
+      "getTradeCost(uint256,uint256,(address,uint256),(address,uint256),(bool,uint128),(bool,uint128),(bool,uint256),bytes)": {
+        "notice": "Allows traders to make trades approved by this smart contract. The active trader's account is the takerAccount and the passive account (for which this contract approves trades on-behalf-of) is the makerAccount."
+      }
+    }
+  }
+}

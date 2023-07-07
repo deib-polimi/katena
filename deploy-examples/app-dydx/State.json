@@ -1,0 +1,226 @@
+{
+  "contractName": "State",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"dYdX * Base-level contract that holds the state of Solo\",\"methods\":{},\"title\":\"State\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/protocol/State.sol\":\"State\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzzr://41ca38f6b0fa4b77b0feec43e422cfbec48b7eb38a41edf0b85c77e8d9a296b1\"]},\"project:/contracts/protocol/State.sol\":{\"keccak256\":\"0x5714e47e67861242ddb9563681aeccf0e6f1c42dec9e27ec29ff248785cdd25a\",\"urls\":[\"bzzr://4862c97a9f382291472c3954fd3dc279b00ae3d37daed8287491e5a9b9b5d584\"]},\"project:/contracts/protocol/interfaces/IErc20.sol\":{\"keccak256\":\"0x6a972ae5d9fcb4e3f44589dc77ac3c168061c09a0a9001f29fdc2e361d044946\",\"urls\":[\"bzzr://e467ccb83dd015c9ca4862f3e95b7fd8c17c1cfd0a15a3dc799209967cf537ac\"]},\"project:/contracts/protocol/interfaces/IInterestSetter.sol\":{\"keccak256\":\"0xb675679876a8163f224dfc4f6598a168f8248400a49ab836fdd2a7f4d25a1683\",\"urls\":[\"bzzr://1597c0ec5015093d8d0a91af168e5e89c91ba615abc65048ed721195040ec0f8\"]},\"project:/contracts/protocol/interfaces/IPriceOracle.sol\":{\"keccak256\":\"0x647a7519803283e4152e0617881f0cf2766f8968cd1de9f28d624ee164adf19a\",\"urls\":[\"bzzr://0cb0053f7cfea2c823036aef20a99b63e5037fa9de5d55116a10374a45c7b828\"]},\"project:/contracts/protocol/lib/Account.sol\":{\"keccak256\":\"0x4c27c617b01972ddb8ca160454284ed09f3ec6f7abd667c31ca9f38805738d33\",\"urls\":[\"bzzr://ad0dd4229cea4f8c5b877a653766cf413d733e442cfc448ffd715e786d7b5216\"]},\"project:/contracts/protocol/lib/Cache.sol\":{\"keccak256\":\"0x5caa444f1798e385674713fef9b8190088f3a31655ae918340ff755e26566c82\",\"urls\":[\"bzzr://23b8e2e44d3db5588ff1311520e24272255f7b8d23c0923e955f51d5a4397beb\"]},\"project:/contracts/protocol/lib/Decimal.sol\":{\"keccak256\":\"0xfddbafc617a77d1db59ddbc596f6aa22931a9a656c0755887648c09bb038ae8c\",\"urls\":[\"bzzr://40396a3a6ded6bb9fe5b5c4b0318f7518ce23c925b104f557310a3775e6e383d\"]},\"project:/contracts/protocol/lib/Interest.sol\":{\"keccak256\":\"0x657f152e3853377ea93d101e145c2f2969fb6fbde025cedd10e7ee17c8bd5c4c\",\"urls\":[\"bzzr://ec53ea6522f8a1ae4150e1c8718f6d7d20d1755b93f4ee6268fd67bd979fa0f9\"]},\"project:/contracts/protocol/lib/Math.sol\":{\"keccak256\":\"0x05162cffa6d5479b6555e03af67b75e63d85272a3c3d3d2630a127ffa811ba41\",\"urls\":[\"bzzr://0e784dccf35201ef16030ec531028252d590936d75f0200f368a7e5981046af4\"]},\"project:/contracts/protocol/lib/Monetary.sol\":{\"keccak256\":\"0x6f876a958c45fb1f2cefce1d7ee0ceb610fbe393e0040ad2d5680e0aa5536e54\",\"urls\":[\"bzzr://8b027c6ce5cd901a634dab7de74d617098b706d50b1c2ea0636406e021ea2815\"]},\"project:/contracts/protocol/lib/Require.sol\":{\"keccak256\":\"0x6ecb512d52bb5cb36ba26b98877240e0b23eb3310df5dc61f82c655dc974d04b\",\"urls\":[\"bzzr://826485117e00106f438a7e64ecc32b2c3705e02d9bd6035dbdc5f9faaa19482c\"]},\"project:/contracts/protocol/lib/Storage.sol\":{\"keccak256\":\"0x862bb5cf49dd4415b2659d2815021bb97392d3bd11a32ae2803d9f85ecc947b4\",\"urls\":[\"bzzr://3c48763c77cfd222a379a7be791a4341f355e76f35bc4c62e16264fa0f71f23e\"]},\"project:/contracts/protocol/lib/Time.sol\":{\"keccak256\":\"0x6523f89764a33b986f6655b5a0fb5b375103153be606b07a9fa95ceb2b93c2f6\",\"urls\":[\"bzzr://61ff7be71d666649cf1b78c2d9950e0d58322932e7e5f6742adbe511e864cd51\"]},\"project:/contracts/protocol/lib/Token.sol\":{\"keccak256\":\"0x7fff4d94f462515466ed263d686abb7fff9b6d6c95a28662a64a8424f5d95a23\",\"urls\":[\"bzzr://41bc60c90477c5ddab82a7760c652d87cce21dadb00456e028ff37b849bd13f4\"]},\"project:/contracts/protocol/lib/Types.sol\":{\"keccak256\":\"0x35c04c154e9ef818a3e1b59eb748565645864d5f8f2bc696c1f425a8ade9ab00\",\"urls\":[\"bzzr://8b2db9cb583f79fc2b74a70b270667f6a3bc54c3afef6a2d56e0d2ec5b8ca725\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50604380601d6000396000f3fe6080604052600080fdfea265627a7a7230582086265e85da5e3aa63ad9be58a44961527a95c7aa0b1bf2aaac789c2bdc8f54826c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a7230582086265e85da5e3aa63ad9be58a44961527a95c7aa0b1bf2aaac789c2bdc8f54826c6578706572696d656e74616cf50037",
+  "sourceMap": "803:45:34:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;803:45:34;;;;;;;",
+  "deployedSourceMap": "803:45:34:-;;;;;",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { Storage } from \"./lib/Storage.sol\";\n\n\n/**\n * @title State\n * @author dYdX\n *\n * Base-level contract that holds the state of Solo\n */\ncontract State\n{\n    Storage.State g_state;\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/protocol/State.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/protocol/State.sol",
+    "exportedSymbols": {
+      "State": [
+        13278
+      ]
+    },
+    "id": 13279,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 13272,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:34"
+      },
+      {
+        "id": 13273,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:34"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Storage.sol",
+        "file": "./lib/Storage.sol",
+        "id": 13275,
+        "nodeType": "ImportDirective",
+        "scope": 13279,
+        "sourceUnit": 20758,
+        "src": "661:44:34",
+        "symbolAliases": [
+          {
+            "foreign": 13274,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title State\n@author dYdX\n * Base-level contract that holds the state of Solo",
+        "fullyImplemented": true,
+        "id": 13278,
+        "linearizedBaseContracts": [
+          13278
+        ],
+        "name": "State",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 13277,
+            "name": "g_state",
+            "nodeType": "VariableDeclaration",
+            "scope": 13278,
+            "src": "824:21:34",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_State_$19461_storage",
+              "typeString": "struct Storage.State"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 13276,
+              "name": "Storage.State",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 19461,
+              "src": "824:13:34",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_State_$19461_storage_ptr",
+                "typeString": "struct Storage.State"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 13279,
+        "src": "803:45:34"
+      }
+    ],
+    "src": "603:246:34"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/protocol/State.sol",
+      "exportedSymbols": {
+        "State": [
+          13278
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 13272,
+        "name": "PragmaDirective",
+        "src": "603:22:34"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 13273,
+        "name": "PragmaDirective",
+        "src": "626:33:34"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 20758,
+          "absolutePath": "project:/contracts/protocol/lib/Storage.sol",
+          "file": "./lib/Storage.sol",
+          "scope": 13279,
+          "symbolAliases": [
+            {
+              "foreign": 13274,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13275,
+        "name": "ImportDirective",
+        "src": "661:44:34"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title State\n@author dYdX\n * Base-level contract that holds the state of Solo",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            13278
+          ],
+          "name": "State",
+          "scope": 13279
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "g_state",
+              "scope": 13278,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "struct Storage.State",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Storage.State",
+                  "referencedDeclaration": 19461,
+                  "type": "struct Storage.State"
+                },
+                "id": 13276,
+                "name": "UserDefinedTypeName",
+                "src": "824:13:34"
+              }
+            ],
+            "id": 13277,
+            "name": "VariableDeclaration",
+            "src": "824:21:34"
+          }
+        ],
+        "id": 13278,
+        "name": "ContractDefinition",
+        "src": "803:45:34"
+      }
+    ],
+    "id": 13279,
+    "name": "SourceUnit",
+    "src": "603:246:34"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.280Z",
+  "devdoc": {
+    "author": "dYdX * Base-level contract that holds the state of Solo",
+    "methods": {},
+    "title": "State"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

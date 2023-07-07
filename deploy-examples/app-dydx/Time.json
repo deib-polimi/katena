@@ -1,0 +1,486 @@
+{
+  "contractName": "Time",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"dYdX * Library for dealing with time, assuming timestamps fit within 32 bits (valid until year 2106)\",\"methods\":{},\"title\":\"Time\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/protocol/lib/Time.sol\":\"Time\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzzr://41ca38f6b0fa4b77b0feec43e422cfbec48b7eb38a41edf0b85c77e8d9a296b1\"]},\"project:/contracts/protocol/lib/Math.sol\":{\"keccak256\":\"0x05162cffa6d5479b6555e03af67b75e63d85272a3c3d3d2630a127ffa811ba41\",\"urls\":[\"bzzr://0e784dccf35201ef16030ec531028252d590936d75f0200f368a7e5981046af4\"]},\"project:/contracts/protocol/lib/Require.sol\":{\"keccak256\":\"0x6ecb512d52bb5cb36ba26b98877240e0b23eb3310df5dc61f82c655dc974d04b\",\"urls\":[\"bzzr://826485117e00106f438a7e64ecc32b2c3705e02d9bd6035dbdc5f9faaa19482c\"]},\"project:/contracts/protocol/lib/Time.sol\":{\"keccak256\":\"0x6523f89764a33b986f6655b5a0fb5b375103153be606b07a9fa95ceb2b93c2f6\",\"urls\":[\"bzzr://61ff7be71d666649cf1b78c2d9950e0d58322932e7e5f6742adbe511e864cd51\"]}},\"version\":1}",
+  "bytecode": "0x605a6023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72305820674e1b546f3d5444db67ce56f4a243fd4c52541db877cf8442b21518b38e191f6c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72305820674e1b546f3d5444db67ce56f4a243fd4c52541db877cf8442b21518b38e191f6c6578706572696d656e74616cf50037",
+  "sourceMap": "837:206:54:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "837:206:54:-;;;;;;;;",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { Math } from \"./Math.sol\";\n\n\n/**\n * @title Time\n * @author dYdX\n *\n * Library for dealing with time, assuming timestamps fit within 32 bits (valid until year 2106)\n */\nlibrary Time {\n\n    // ============ Library Functions ============\n\n    function currentTime()\n        internal\n        view\n        returns (uint32)\n    {\n        return Math.to32(block.timestamp);\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/protocol/lib/Time.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/protocol/lib/Time.sol",
+    "exportedSymbols": {
+      "Time": [
+        20775
+      ]
+    },
+    "id": 20776,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 20759,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:54"
+      },
+      {
+        "id": 20760,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:54"
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Math.sol",
+        "file": "./Math.sol",
+        "id": 20762,
+        "nodeType": "ImportDirective",
+        "scope": 20776,
+        "sourceUnit": 18642,
+        "src": "661:34:54",
+        "symbolAliases": [
+          {
+            "foreign": 20761,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": "@title Time\n@author dYdX\n * Library for dealing with time, assuming timestamps fit within 32 bits (valid until year 2106)",
+        "fullyImplemented": true,
+        "id": 20775,
+        "linearizedBaseContracts": [
+          20775
+        ],
+        "name": "Time",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 20773,
+              "nodeType": "Block",
+              "src": "991:50:54",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 20769,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24112,
+                          "src": "1018:5:54",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 20770,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1018:15:54",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 20767,
+                        "name": "Math",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18641,
+                        "src": "1008:4:54",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Math_$18641_$",
+                          "typeString": "type(library Math)"
+                        }
+                      },
+                      "id": 20768,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "to32",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 18606,
+                      "src": "1008:9:54",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_uint32_$",
+                        "typeString": "function (uint256) pure returns (uint32)"
+                      }
+                    },
+                    "id": 20771,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1008:26:54",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "functionReturnParameters": 20766,
+                  "id": 20772,
+                  "nodeType": "Return",
+                  "src": "1001:33:54"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 20774,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTime",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20763,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "929:2:54"
+            },
+            "returnParameters": {
+              "id": 20766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20765,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20774,
+                  "src": "979:6:54",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 20764,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "979:6:54",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "978:8:54"
+            },
+            "scope": 20775,
+            "src": "909:132:54",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 20776,
+        "src": "837:206:54"
+      }
+    ],
+    "src": "603:441:54"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/protocol/lib/Time.sol",
+      "exportedSymbols": {
+        "Time": [
+          20775
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 20759,
+        "name": "PragmaDirective",
+        "src": "603:22:54"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 20760,
+        "name": "PragmaDirective",
+        "src": "626:33:54"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 18642,
+          "absolutePath": "project:/contracts/protocol/lib/Math.sol",
+          "file": "./Math.sol",
+          "scope": 20776,
+          "symbolAliases": [
+            {
+              "foreign": 20761,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 20762,
+        "name": "ImportDirective",
+        "src": "661:34:54"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": "@title Time\n@author dYdX\n * Library for dealing with time, assuming timestamps fit within 32 bits (valid until year 2106)",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            20775
+          ],
+          "name": "Time",
+          "scope": 20776
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "currentTime",
+              "scope": 20775,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 20763,
+                "name": "ParameterList",
+                "src": "929:2:54"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 20774,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 20764,
+                        "name": "ElementaryTypeName",
+                        "src": "979:6:54"
+                      }
+                    ],
+                    "id": 20765,
+                    "name": "VariableDeclaration",
+                    "src": "979:6:54"
+                  }
+                ],
+                "id": 20766,
+                "name": "ParameterList",
+                "src": "978:8:54"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 20766
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint32",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "to32",
+                              "referencedDeclaration": 18606,
+                              "type": "function (uint256) pure returns (uint32)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 18641,
+                                  "type": "type(library Math)",
+                                  "value": "Math"
+                                },
+                                "id": 20767,
+                                "name": "Identifier",
+                                "src": "1008:4:54"
+                              }
+                            ],
+                            "id": 20768,
+                            "name": "MemberAccess",
+                            "src": "1008:9:54"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "timestamp",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 24112,
+                                  "type": "block",
+                                  "value": "block"
+                                },
+                                "id": 20769,
+                                "name": "Identifier",
+                                "src": "1018:5:54"
+                              }
+                            ],
+                            "id": 20770,
+                            "name": "MemberAccess",
+                            "src": "1018:15:54"
+                          }
+                        ],
+                        "id": 20771,
+                        "name": "FunctionCall",
+                        "src": "1008:26:54"
+                      }
+                    ],
+                    "id": 20772,
+                    "name": "Return",
+                    "src": "1001:33:54"
+                  }
+                ],
+                "id": 20773,
+                "name": "Block",
+                "src": "991:50:54"
+              }
+            ],
+            "id": 20774,
+            "name": "FunctionDefinition",
+            "src": "909:132:54"
+          }
+        ],
+        "id": 20775,
+        "name": "ContractDefinition",
+        "src": "837:206:54"
+      }
+    ],
+    "id": 20776,
+    "name": "SourceUnit",
+    "src": "603:441:54"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.367Z",
+  "devdoc": {
+    "author": "dYdX * Library for dealing with time, assuming timestamps fit within 32 bits (valid until year 2106)",
+    "methods": {},
+    "title": "Time"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

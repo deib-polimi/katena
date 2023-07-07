@@ -1,0 +1,974 @@
+{
+  "contractName": "Operation",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "name": "number",
+              "type": "uint256"
+            }
+          ],
+          "name": "accounts",
+          "type": "tuple[]"
+        },
+        {
+          "components": [
+            {
+              "name": "actionType",
+              "type": "uint8"
+            },
+            {
+              "name": "accountId",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "name": "sign",
+                  "type": "bool"
+                },
+                {
+                  "name": "denomination",
+                  "type": "uint8"
+                },
+                {
+                  "name": "ref",
+                  "type": "uint8"
+                },
+                {
+                  "name": "value",
+                  "type": "uint256"
+                }
+              ],
+              "name": "amount",
+              "type": "tuple"
+            },
+            {
+              "name": "primaryMarketId",
+              "type": "uint256"
+            },
+            {
+              "name": "secondaryMarketId",
+              "type": "uint256"
+            },
+            {
+              "name": "otherAddress",
+              "type": "address"
+            },
+            {
+              "name": "otherAccountId",
+              "type": "uint256"
+            },
+            {
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "actions",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "operate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"components\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"accounts\",\"type\":\"tuple[]\"},{\"components\":[{\"name\":\"actionType\",\"type\":\"uint8\"},{\"name\":\"accountId\",\"type\":\"uint256\"},{\"components\":[{\"name\":\"sign\",\"type\":\"bool\"},{\"name\":\"denomination\",\"type\":\"uint8\"},{\"name\":\"ref\",\"type\":\"uint8\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"amount\",\"type\":\"tuple\"},{\"name\":\"primaryMarketId\",\"type\":\"uint256\"},{\"name\":\"secondaryMarketId\",\"type\":\"uint256\"},{\"name\":\"otherAddress\",\"type\":\"address\"},{\"name\":\"otherAccountId\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"actions\",\"type\":\"tuple[]\"}],\"name\":\"operate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Primary public function for allowing users and contracts to manage accounts within Solo\",\"methods\":{\"operate((address,uint256)[],(uint8,uint256,(bool,uint8,uint8,uint256),uint256,uint256,address,uint256,bytes)[])\":{\"params\":{\"accounts\":\"A list of all accounts that will be used in this operation. Cannot contain                  duplicates. In each action, the relevant account will be referred-to by its                  index in the list.\",\"actions\":\"An ordered list of all actions that will be taken in this operation. The                  actions will be processed in order.\"}}},\"title\":\"Operation\"},\"userdoc\":{\"methods\":{\"operate((address,uint256)[],(uint8,uint256,(bool,uint8,uint8,uint256),uint256,uint256,address,uint256,bytes)[])\":{\"notice\":\"The main entry-point to Solo that allows users and contracts to manage accounts. Take one or more actions on one or more accounts. The msg.sender must be the owner or operator of all accounts except for those being liquidated, vaporized, or traded with. One call to operate() is considered a singular \\\"operation\\\". Account collateralization is ensured only after the completion of the entire operation.\"}}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/protocol/Operation.sol\":\"Operation\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzzr://41ca38f6b0fa4b77b0feec43e422cfbec48b7eb38a41edf0b85c77e8d9a296b1\"]},\"openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol\":{\"keccak256\":\"0x58e8ca389c46941a0bfc26b91025d3427864bd9070a7762f90d29677cd3f3dd8\",\"urls\":[\"bzzr://5c079549429384de9624a5686a33649e7e637bf0b715773182e77dffc9ea4c38\"]},\"project:/contracts/protocol/Operation.sol\":{\"keccak256\":\"0x851643bbda019072de0ee1acab8ae730b2917edb8efda0800d77be1607a60d9f\",\"urls\":[\"bzzr://c010a5ab40450595c71643ae6a1a0924dd1d12df05b672a7429bdf0801b98bbb\"]},\"project:/contracts/protocol/State.sol\":{\"keccak256\":\"0x5714e47e67861242ddb9563681aeccf0e6f1c42dec9e27ec29ff248785cdd25a\",\"urls\":[\"bzzr://4862c97a9f382291472c3954fd3dc279b00ae3d37daed8287491e5a9b9b5d584\"]},\"project:/contracts/protocol/impl/OperationImpl.sol\":{\"keccak256\":\"0x7042bf56dd98e9fef064493bfd79e1710fd0586fab5b98dcbc0ddebafc1fa3c5\",\"urls\":[\"bzzr://cd20b5da43faff4160dcb0298600c8edfaf8647e818a2ca2a34db47f30d57e72\"]},\"project:/contracts/protocol/interfaces/IAutoTrader.sol\":{\"keccak256\":\"0xa416051ccd2a83cc5a77e86591a4a3fc093ceb5f42ca7b1d7c8e8d35c79ddb5b\",\"urls\":[\"bzzr://9ad6198a2fcb288d5485b3f2e9042815ec644f85c0ab884b0a2667250780cee5\"]},\"project:/contracts/protocol/interfaces/ICallee.sol\":{\"keccak256\":\"0x3904aba675b36e1e5e98f8e1e20404287da48adefd527fe8f2e21d9d0439b4ac\",\"urls\":[\"bzzr://1097cf3fd9bdce4abf90e2ce0611c45e39c8a33baf7bdb9e1996e7718530c124\"]},\"project:/contracts/protocol/interfaces/IErc20.sol\":{\"keccak256\":\"0x6a972ae5d9fcb4e3f44589dc77ac3c168061c09a0a9001f29fdc2e361d044946\",\"urls\":[\"bzzr://e467ccb83dd015c9ca4862f3e95b7fd8c17c1cfd0a15a3dc799209967cf537ac\"]},\"project:/contracts/protocol/interfaces/IExchangeWrapper.sol\":{\"keccak256\":\"0xa4983e5de7559a9e7236e71d3d089a85eea413ac1f03f8365bac3c5eb0ce0ac8\",\"urls\":[\"bzzr://80338d73c68e6c6649def643dc4c6ae4b1cee4c8e117435f6becc30846e85fa2\"]},\"project:/contracts/protocol/interfaces/IInterestSetter.sol\":{\"keccak256\":\"0xb675679876a8163f224dfc4f6598a168f8248400a49ab836fdd2a7f4d25a1683\",\"urls\":[\"bzzr://1597c0ec5015093d8d0a91af168e5e89c91ba615abc65048ed721195040ec0f8\"]},\"project:/contracts/protocol/interfaces/IPriceOracle.sol\":{\"keccak256\":\"0x647a7519803283e4152e0617881f0cf2766f8968cd1de9f28d624ee164adf19a\",\"urls\":[\"bzzr://0cb0053f7cfea2c823036aef20a99b63e5037fa9de5d55116a10374a45c7b828\"]},\"project:/contracts/protocol/lib/Account.sol\":{\"keccak256\":\"0x4c27c617b01972ddb8ca160454284ed09f3ec6f7abd667c31ca9f38805738d33\",\"urls\":[\"bzzr://ad0dd4229cea4f8c5b877a653766cf413d733e442cfc448ffd715e786d7b5216\"]},\"project:/contracts/protocol/lib/Actions.sol\":{\"keccak256\":\"0xa3def9f1d58c1a353cd5412df8027674226000fd0b1cf52f3e11d6b4428fe2dc\",\"urls\":[\"bzzr://955e36c7bd9e222b58764b755169056c4225fc0561fdd88bb71ce7f1e2782a41\"]},\"project:/contracts/protocol/lib/Cache.sol\":{\"keccak256\":\"0x5caa444f1798e385674713fef9b8190088f3a31655ae918340ff755e26566c82\",\"urls\":[\"bzzr://23b8e2e44d3db5588ff1311520e24272255f7b8d23c0923e955f51d5a4397beb\"]},\"project:/contracts/protocol/lib/Decimal.sol\":{\"keccak256\":\"0xfddbafc617a77d1db59ddbc596f6aa22931a9a656c0755887648c09bb038ae8c\",\"urls\":[\"bzzr://40396a3a6ded6bb9fe5b5c4b0318f7518ce23c925b104f557310a3775e6e383d\"]},\"project:/contracts/protocol/lib/Events.sol\":{\"keccak256\":\"0x8467cdc3f69a617a6ae9b3c0921abce180ebcfb0bc9deb6f59f96f2e149b9ad5\",\"urls\":[\"bzzr://44973ebae91505e96610b4732d31b98d2bbab2b1b48875e528ba6e26cbd097e4\"]},\"project:/contracts/protocol/lib/Exchange.sol\":{\"keccak256\":\"0xaea9d9746796378d2e191ccf47569c0acc728342ff948817061179724d4f52e8\",\"urls\":[\"bzzr://2b73f2c0c7726ebea3301504334110b5b2a2d3271fe298bef29b8ccccaf0bb6a\"]},\"project:/contracts/protocol/lib/Interest.sol\":{\"keccak256\":\"0x657f152e3853377ea93d101e145c2f2969fb6fbde025cedd10e7ee17c8bd5c4c\",\"urls\":[\"bzzr://ec53ea6522f8a1ae4150e1c8718f6d7d20d1755b93f4ee6268fd67bd979fa0f9\"]},\"project:/contracts/protocol/lib/Math.sol\":{\"keccak256\":\"0x05162cffa6d5479b6555e03af67b75e63d85272a3c3d3d2630a127ffa811ba41\",\"urls\":[\"bzzr://0e784dccf35201ef16030ec531028252d590936d75f0200f368a7e5981046af4\"]},\"project:/contracts/protocol/lib/Monetary.sol\":{\"keccak256\":\"0x6f876a958c45fb1f2cefce1d7ee0ceb610fbe393e0040ad2d5680e0aa5536e54\",\"urls\":[\"bzzr://8b027c6ce5cd901a634dab7de74d617098b706d50b1c2ea0636406e021ea2815\"]},\"project:/contracts/protocol/lib/Require.sol\":{\"keccak256\":\"0x6ecb512d52bb5cb36ba26b98877240e0b23eb3310df5dc61f82c655dc974d04b\",\"urls\":[\"bzzr://826485117e00106f438a7e64ecc32b2c3705e02d9bd6035dbdc5f9faaa19482c\"]},\"project:/contracts/protocol/lib/Storage.sol\":{\"keccak256\":\"0x862bb5cf49dd4415b2659d2815021bb97392d3bd11a32ae2803d9f85ecc947b4\",\"urls\":[\"bzzr://3c48763c77cfd222a379a7be791a4341f355e76f35bc4c62e16264fa0f71f23e\"]},\"project:/contracts/protocol/lib/Time.sol\":{\"keccak256\":\"0x6523f89764a33b986f6655b5a0fb5b375103153be606b07a9fa95ceb2b93c2f6\",\"urls\":[\"bzzr://61ff7be71d666649cf1b78c2d9950e0d58322932e7e5f6742adbe511e864cd51\"]},\"project:/contracts/protocol/lib/Token.sol\":{\"keccak256\":\"0x7fff4d94f462515466ed263d686abb7fff9b6d6c95a28662a64a8424f5d95a23\",\"urls\":[\"bzzr://41bc60c90477c5ddab82a7760c652d87cce21dadb00456e028ff37b849bd13f4\"]},\"project:/contracts/protocol/lib/Types.sol\":{\"keccak256\":\"0x35c04c154e9ef818a3e1b59eb748565645864d5f8f2bc696c1f425a8ade9ab00\",\"urls\":[\"bzzr://8b2db9cb583f79fc2b74a70b270667f6a3bc54c3afef6a2d56e0d2ec5b8ca725\"]}},\"version\":1}",
+  "bytecode": "0x60806040526001600b556108cd806100186000396000f3fe608060405234801561001057600080fd5b5060043610610047577c01000000000000000000000000000000000000000000000000000000006000350463a67a6a45811461004c575b600080fd5b61005f61005a366004610406565b610061565b005b600b8054600101908190556040517fbd76ecfd00000000000000000000000000000000000000000000000000000000815273__OperationImpl_________________________9063bd76ecfd906100c190600090879087906004016106dc565b60006040518083038186803b1580156100d957600080fd5b505af41580156100ed573d6000803e3d6000fd5b50505050600b5481146100ff57600080fd5b505050565b600061011082356107b1565b9392505050565b600082601f83011261012857600080fd5b813561013b61013682610737565b610710565b81815260209384019390925082018360005b8381101561017957813586016101638882610268565b845250602092830192919091019060010161014d565b5050505092915050565b600082601f83011261019457600080fd5b81356101a261013682610737565b915081818352602084019350602081019050838560408402820111156101c757600080fd5b60005b8381101561017957816101dd88826103b3565b845250602090920191604091909101906001016101ca565b600061011082356107c2565b600082601f83011261021257600080fd5b813561022061013682610758565b9150808252602083016020830185838301111561023c57600080fd5b610247838284610833565b50505092915050565b600061011082356107ff565b6000610110823561080e565b6000610160828403121561027b57600080fd5b610286610100610710565b905060006102948484610250565b82525060206102a5848483016103fa565b60208301525060406102b984828501610344565b60408301525060c06102cd848285016103fa565b60608301525060e06102e1848285016103fa565b6080830152506101006102f684828501610104565b60a08301525061012061030b848285016103fa565b60c08301525061014082013567ffffffffffffffff81111561032c57600080fd5b61033884828501610201565b60e08301525092915050565b60006080828403121561035657600080fd5b6103606080610710565b9050600061036e84846101f5565b825250602061037f8484830161025c565b60208301525060406103938482850161025c565b60408301525060606103a7848285016103fa565b60608301525092915050565b6000604082840312156103c557600080fd5b6103cf6040610710565b905060006103dd8484610104565b82525060206103ee848483016103fa565b60208301525092915050565b600061011082356107fc565b6000806040838503121561041957600080fd5b823567ffffffffffffffff81111561043057600080fd5b61043c85828601610183565b925050602083013567ffffffffffffffff81111561045957600080fd5b61046585828601610117565b9150509250929050565b600061011083836105b0565b600061048783836106ab565b505060400190565b610498816107b1565b82525050565b60006104a9826107a4565b6104b381856107a8565b9350836020820285016104c58561079e565b60005b848110156104fc5783830388526104e083835161046f565b92506104eb8261079e565b6020989098019791506001016104c8565b50909695505050505050565b6000610513826107a4565b61051d81856107a8565b93506105288361079e565b60005b828110156105535761053e86835161047b565b95506105498261079e565b915060010161052b565b5093949350505050565b610498816107c2565b6000610571826107a4565b61057b81856107a8565b935061058b81856020860161083f565b6105948161086b565b9093019392505050565b6104988161081d565b61049881610828565b80516000906101608401906105c5858261059e565b5060208301516105d860208601826106d3565b5060408301516105eb604086018261065b565b5060608301516105fe60c08601826106d3565b50608083015161061160e08601826106d3565b5060a083015161062561010086018261048f565b5060c08301516106396101208601826106d3565b5060e08301518482036101408601526106528282610566565b95945050505050565b8051608083019061066c848261055d565b50602082015161067f60208501826105a7565b50604082015161069260408501826105a7565b5060608201516106a560608501826106d3565b50505050565b805160408301906106bc848261048f565b5060208201516106a560208501826106d3565b9052565b610498816107fc565b606081016106ea82866106cf565b81810360208301526106fc8185610508565b90508181036040830152610652818461049e565b60405181810167ffffffffffffffff8111828210171561072f57600080fd5b604052919050565b600067ffffffffffffffff82111561074e57600080fd5b5060209081020190565b600067ffffffffffffffff82111561076f57600080fd5b506020601f919091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0160190565b60200190565b5190565b90815260200190565b60006107bc826107e3565b92915050565b151590565b6000600982106107d357fe5b5090565b6000600282106107d357fe5b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b6000600982106107d357600080fd5b6000600282106107d357600080fd5b60006107bc826107c7565b60006107bc826107d7565b82818337506000910152565b60005b8381101561085a578181015183820152602001610842565b838111156106a55750506000910152565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169056fea265627a7a72305820dd133168136084b484d6a0936d0c636fa8d559732e616a74258b9bcb53ef95c76c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610047577c01000000000000000000000000000000000000000000000000000000006000350463a67a6a45811461004c575b600080fd5b61005f61005a366004610406565b610061565b005b600b8054600101908190556040517fbd76ecfd00000000000000000000000000000000000000000000000000000000815273__OperationImpl_________________________9063bd76ecfd906100c190600090879087906004016106dc565b60006040518083038186803b1580156100d957600080fd5b505af41580156100ed573d6000803e3d6000fd5b50505050600b5481146100ff57600080fd5b505050565b600061011082356107b1565b9392505050565b600082601f83011261012857600080fd5b813561013b61013682610737565b610710565b81815260209384019390925082018360005b8381101561017957813586016101638882610268565b845250602092830192919091019060010161014d565b5050505092915050565b600082601f83011261019457600080fd5b81356101a261013682610737565b915081818352602084019350602081019050838560408402820111156101c757600080fd5b60005b8381101561017957816101dd88826103b3565b845250602090920191604091909101906001016101ca565b600061011082356107c2565b600082601f83011261021257600080fd5b813561022061013682610758565b9150808252602083016020830185838301111561023c57600080fd5b610247838284610833565b50505092915050565b600061011082356107ff565b6000610110823561080e565b6000610160828403121561027b57600080fd5b610286610100610710565b905060006102948484610250565b82525060206102a5848483016103fa565b60208301525060406102b984828501610344565b60408301525060c06102cd848285016103fa565b60608301525060e06102e1848285016103fa565b6080830152506101006102f684828501610104565b60a08301525061012061030b848285016103fa565b60c08301525061014082013567ffffffffffffffff81111561032c57600080fd5b61033884828501610201565b60e08301525092915050565b60006080828403121561035657600080fd5b6103606080610710565b9050600061036e84846101f5565b825250602061037f8484830161025c565b60208301525060406103938482850161025c565b60408301525060606103a7848285016103fa565b60608301525092915050565b6000604082840312156103c557600080fd5b6103cf6040610710565b905060006103dd8484610104565b82525060206103ee848483016103fa565b60208301525092915050565b600061011082356107fc565b6000806040838503121561041957600080fd5b823567ffffffffffffffff81111561043057600080fd5b61043c85828601610183565b925050602083013567ffffffffffffffff81111561045957600080fd5b61046585828601610117565b9150509250929050565b600061011083836105b0565b600061048783836106ab565b505060400190565b610498816107b1565b82525050565b60006104a9826107a4565b6104b381856107a8565b9350836020820285016104c58561079e565b60005b848110156104fc5783830388526104e083835161046f565b92506104eb8261079e565b6020989098019791506001016104c8565b50909695505050505050565b6000610513826107a4565b61051d81856107a8565b93506105288361079e565b60005b828110156105535761053e86835161047b565b95506105498261079e565b915060010161052b565b5093949350505050565b610498816107c2565b6000610571826107a4565b61057b81856107a8565b935061058b81856020860161083f565b6105948161086b565b9093019392505050565b6104988161081d565b61049881610828565b80516000906101608401906105c5858261059e565b5060208301516105d860208601826106d3565b5060408301516105eb604086018261065b565b5060608301516105fe60c08601826106d3565b50608083015161061160e08601826106d3565b5060a083015161062561010086018261048f565b5060c08301516106396101208601826106d3565b5060e08301518482036101408601526106528282610566565b95945050505050565b8051608083019061066c848261055d565b50602082015161067f60208501826105a7565b50604082015161069260408501826105a7565b5060608201516106a560608501826106d3565b50505050565b805160408301906106bc848261048f565b5060208201516106a560208501826106d3565b9052565b610498816107fc565b606081016106ea82866106cf565b81810360208301526106fc8185610508565b90508181036040830152610652818461049e565b60405181810167ffffffffffffffff8111828210171561072f57600080fd5b604052919050565b600067ffffffffffffffff82111561074e57600080fd5b5060209081020190565b600067ffffffffffffffff82111561076f57600080fd5b506020601f919091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0160190565b60200190565b5190565b90815260200190565b60006107bc826107e3565b92915050565b151590565b6000600982106107d357fe5b5090565b6000600282106107d357fe5b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b6000600982106107d357600080fd5b6000600282106107d357600080fd5b60006107bc826107c7565b60006107bc826107d7565b82818337506000910152565b60005b8381101561085a578181015183820152602001610842565b838111156106a55750506000910152565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169056fea265627a7a72305820dd133168136084b484d6a0936d0c636fa8d559732e616a74258b9bcb53ef95c76c6578706572696d656e74616cf50037",
+  "sourceMap": "1079:1236:31:-;;;576:1:3;560:13;:17;1079:1236:31;;;;;;",
+  "deployedSourceMap": "1079:1236:31:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1079:1236:31;;;;;;;;;;;;;;;;;;;2053:260;;;;;;;;;:::i;:::-;;;993:13:3;:18;;1010:1;993:18;;;;;2211:95:31;;;;;:13;;:21;;:95;;993:13:3;;2267:8:31;;2289:7;;2211:95;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2211:95:31;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2211:95:31;;;;1102:13:3;;1086:12;:29;1078:38;;;;;;2053:260:31;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;57:66;-1:-1;;;57:66;166:753;;308:3;301:4;293:6;289:17;285:27;275:2;;326:1;323;316:12;275:2;363:6;350:20;385:105;400:89;482:6;400:89;;;385:105;;;518:21;;;562:4;550:17;;;;376:114;;-1:-1;575:14;;550:17;670:1;655:258;680:6;677:1;674:13;655:258;;;763:3;750:17;742:6;738:30;787:62;845:3;833:10;787:62;;;775:75;;-1:-1;873:4;864:14;;;;892;;;;;702:1;695:9;655:258;;;659:14;268:651;;;;;;;;957:764;;1093:3;1086:4;1078:6;1074:17;1070:27;1060:2;;1111:1;1108;1101:12;1060:2;1148:6;1135:20;1170:99;1185:83;1261:6;1185:83;;1170:99;1161:108;;1286:5;1311:6;1304:5;1297:21;1341:4;1333:6;1329:17;1319:27;;1363:4;1358:3;1354:14;1347:21;;1416:6;1463:3;1455:4;1447:6;1443:17;1438:3;1434:27;1431:36;1428:2;;;1480:1;1477;1470:12;1428:2;1505:1;1490:225;1515:6;1512:1;1509:13;1490:225;;;1573:3;1595:56;1647:3;1635:10;1595:56;;;1583:69;;-1:-1;1675:4;1666:14;;;;1703:4;1694:14;;;;;1537:1;1530:9;1490:225;;1729:112;;1793:43;1828:6;1815:20;1793:43;;1849:432;;1946:3;1939:4;1931:6;1927:17;1923:27;1913:2;;1964:1;1961;1954:12;1913:2;2001:6;1988:20;2023:60;2038:44;2075:6;2038:44;;2023:60;2014:69;;2103:6;2096:5;2089:21;2139:4;2131:6;2127:17;2172:4;2165:5;2161:16;2207:3;2198:6;2193:3;2189:16;2186:25;2183:2;;;2224:1;2221;2214:12;2183:2;2234:41;2268:6;2263:3;2258;2234:41;;;1906:375;;;;;;;;2289:150;;2372:62;2426:6;2413:20;2372:62;;2446:164;;2536:69;2597:6;2584:20;2536:69;;2814:1525;;2928:5;2916:9;2911:3;2907:19;2903:31;2900:2;;;2947:1;2944;2937:12;2900:2;2965:21;2980:5;2965:21;;;2956:30;-1:-1;3042:1;3073:65;3134:3;3114:9;3073:65;;;3049:90;;-1:-1;3205:2;3238:49;3283:3;3259:22;;;3238:49;;;3231:4;3224:5;3220:16;3213:75;3160:139;3351:2;3384:75;3455:3;3446:6;3435:9;3431:22;3384:75;;;3377:4;3370:5;3366:16;3359:101;3309:162;3532:3;3566:49;3611:3;3602:6;3591:9;3587:22;3566:49;;;3559:4;3552:5;3548:16;3541:75;3481:146;3690:3;3724:49;3769:3;3760:6;3749:9;3745:22;3724:49;;;3717:4;3710:5;3706:16;3699:75;3637:148;3843:3;3877:49;3922:3;3913:6;3902:9;3898:22;3877:49;;;3870:4;3863:5;3859:16;3852:75;3795:143;3998:3;4032:49;4077:3;4068:6;4057:9;4053:22;4032:49;;;4025:4;4018:5;4014:16;4007:75;3948:145;4171:3;4160:9;4156:19;4143:33;4196:18;4188:6;4185:30;4182:2;;;4228:1;4225;4218:12;4182:2;4263:54;4313:3;4304:6;4293:9;4289:22;4263:54;;;4256:4;4249:5;4245:16;4238:80;4103:226;2894:1445;;;;;4377:803;;4492:4;4480:9;4475:3;4471:19;4467:30;4464:2;;;4510:1;4507;4500:12;4464:2;4528:20;4543:4;4528:20;;;4519:29;-1:-1;4598:1;4629:46;4671:3;4651:9;4629:46;;;4605:71;;-1:-1;4745:2;4778:72;4846:3;4822:22;;;4778:72;;;4771:4;4764:5;4760:16;4753:98;4697:165;4911:2;4944:69;5009:3;5000:6;4989:9;4985:22;4944:69;;;4937:4;4930:5;4926:16;4919:95;4872:153;5076:2;5109:49;5154:3;5145:6;5134:9;5130:22;5109:49;;;5102:4;5095:5;5091:16;5084:75;5035:135;4458:722;;;;;5213:463;;5321:4;5309:9;5304:3;5300:19;5296:30;5293:2;;;5339:1;5336;5329:12;5293:2;5357:20;5372:4;5357:20;;;5348:29;-1:-1;5428:1;5459:49;5504:3;5484:9;5459:49;;;5435:74;;-1:-1;5572:2;5605:49;5650:3;5626:22;;;5605:49;;;5598:4;5591:5;5587:16;5580:75;5530:136;5287:389;;;;;5683:118;;5750:46;5788:6;5775:20;5750:46;;5808:726;;;6023:2;6011:9;6002:7;5998:23;5994:32;5991:2;;;6039:1;6036;6029:12;5991:2;6074:31;;6125:18;6114:30;;6111:2;;;6157:1;6154;6147:12;6111:2;6177:97;6266:7;6257:6;6246:9;6242:22;6177:97;;;6167:107;;6053:227;6339:2;6328:9;6324:18;6311:32;6363:18;6355:6;6352:30;6349:2;;;6395:1;6392;6385:12;6349:2;6415:103;6510:7;6501:6;6490:9;6486:22;6415:103;;;6405:113;;6290:234;5985:549;;;;;;6542:273;;6701:108;6805:3;6797:6;6701:108;;6824:269;;6957:96;7049:3;7041:6;6957:96;;;-1:-1;;7082:4;7073:14;;6950:143;7101:118;7182:31;7207:5;7182:31;;;7177:3;7170:44;7164:55;;;7293:1003;;7496:79;7569:5;7496:79;;;7588:119;7700:6;7695:3;7588:119;;;7581:126;;7730:3;7772:4;7764:6;7760:17;7755:3;7751:27;7798:81;7873:5;7798:81;;;7900:1;7885:372;7910:6;7907:1;7904:13;7885:372;;;7972:9;7966:4;7962:20;7957:3;7950:33;7998:122;8115:4;8106:6;8100:13;7998:122;;;7990:130;;8137:85;8215:6;8137:85;;;8245:4;8236:14;;;;;8127:95;-1:-1;7932:1;7925:9;7885:372;;;-1:-1;8270:4;;7475:821;-1:-1;;;;;;7475:821;8359:797;;8550:73;8617:5;8550:73;;;8636:113;8742:6;8737:3;8636:113;;;8629:120;;8769:75;8838:5;8769:75;;;8865:1;8850:284;8875:6;8872:1;8869:13;8850:284;;;8922:109;9027:3;9018:6;9012:13;8922:109;;;8915:116;;9048:79;9120:6;9048:79;;;9038:89;-1:-1;8897:1;8890:9;8850:284;;;-1:-1;9147:3;;8529:627;-1:-1;;;;8529:627;9164:109;9239:28;9261:5;9239:28;;9280:331;;9384:34;9412:5;9384:34;;;9430:68;9491:6;9486:3;9430:68;;;9423:75;;9503:52;9548:6;9543:3;9536:4;9529:5;9525:16;9503:52;;;9576:29;9598:6;9576:29;;;9567:39;;;;9364:247;-1:-1;;;9364:247;9618:152;9713:51;9758:5;9713:51;;9777:166;9879:58;9931:5;9879:58;;10178:1666;10403:22;;10178:1666;;10331:5;10322:15;;;10431:83;10326:3;10403:22;10431:83;;;10352:168;10597:4;10590:5;10586:16;10580:23;10609:70;10673:4;10668:3;10664:14;10651:11;10609:70;;;10530:155;10759:4;10752:5;10748:16;10742:23;10771:126;10891:4;10886:3;10882:14;10869:11;10771:126;;;10695:208;10986:4;10979:5;10975:16;10969:23;10998:70;11062:4;11057:3;11053:14;11040:11;10998:70;;;10913:161;11159:4;11152:5;11148:16;11142:23;11171:70;11235:4;11230:3;11226:14;11213:11;11171:70;;;11084:163;11327:4;11320:5;11316:16;11310:23;11339:71;11403:5;11398:3;11394:15;11381:11;11339:71;;;11257:159;11498:4;11491:5;11487:16;11481:23;11510:71;11574:5;11569:3;11565:15;11552:11;11510:71;;;11426:161;11659:4;11652:5;11648:16;11642:23;11712:3;11706:4;11702:14;11694:5;11689:3;11685:15;11678:39;11732:74;11801:4;11788:11;11732:74;;;11724:82;10304:1540;-1:-1;;;;;10304:1540;11910:851;12122:22;;12057:4;12048:14;;;12150:63;12052:3;12122:22;12150:63;;;12077:142;12299:4;12292:5;12288:16;12282:23;12311:91;12396:4;12391:3;12387:14;12374:11;12311:91;;;12229:179;12479:4;12472:5;12468:16;12462:23;12491:88;12573:4;12568:3;12564:14;12551:11;12491:88;;;12418:167;12658:4;12651:5;12647:16;12641:23;12670:70;12734:4;12729:3;12725:14;12712:11;12670:70;;;12595:151;12030:731;;;;12817:479;13016:22;;12950:4;12941:14;;;13044:69;12945:3;13016:22;13044:69;;;12970:149;13193:4;13186:5;13182:16;13176:23;13205:70;13269:4;13264:3;13260:14;13247:11;13205:70;;13303:123;13403:18;;13397:29;13433:118;13514:31;13539:5;13514:31;;13558:981;13949:2;13934:18;;13963:100;13938:9;14036:6;13963:100;;;14111:9;14105:4;14101:20;14096:2;14085:9;14081:18;14074:48;14136:154;14285:4;14276:6;14136:154;;;14128:162;;14338:9;14332:4;14328:20;14323:2;14312:9;14308:18;14301:48;14363:166;14524:4;14515:6;14363:166;;14546:256;14608:2;14602:9;14634:17;;;14709:18;14694:34;;14730:22;;;14691:62;14688:2;;;14766:1;14763;14756:12;14688:2;14782;14775:22;14586:216;;-1:-1;14586:216;14809:283;;14993:18;14985:6;14982:30;14979:2;;;15025:1;15022;15015:12;14979:2;-1:-1;15054:4;15042:17;;;15072:15;;14916:176;15383:254;;15522:18;15514:6;15511:30;15508:2;;;15554:1;15551;15544:12;15508:2;-1:-1;15627:4;15598;15575:17;;;;15594:9;15571:33;15617:15;;15445:192;15646:146;15780:4;15768:17;;15749:43;15952:132;16067:12;;16051:33;16625:211;16776:19;;;16825:4;16816:14;;16769:67;17227:105;;17296:31;17321:5;17296:31;;;17285:42;17279:53;-1:-1;;17279:53;17339:92;17412:13;17405:21;;17388:43;17438:133;;17532:1;17525:5;17522:12;17512:2;;17538:9;17512:2;-1:-1;17561:5;17506:65;17578:140;;17679:1;17672:5;17669:12;17659:2;;17685:9;17869:128;17949:42;17938:54;;17921:76;18004:79;18073:5;18056:27;18301:136;;18395:1;18388:5;18385:12;18375:2;;18411:1;18408;18401:12;18444:143;;18545:1;18538:5;18535:12;18525:2;;18561:1;18558;18551:12;18962:145;;19055:47;19096:5;19055:47;;19114:159;;19214:54;19262:5;19214:54;;19441:145;19522:6;19517:3;19512;19499:30;-1:-1;19578:1;19560:16;;19553:27;19492:94;19595:268;19660:1;19667:101;19681:6;19678:1;19675:13;19667:101;;;19748:11;;;19742:18;19729:11;;;19722:39;19703:2;19696:10;19667:101;;;19783:6;19780:1;19777:13;19774:2;;;-1:-1;;19848:1;19830:16;;19823:27;19644:219;19871:97;19959:2;19939:14;19955:7;19935:28;;19919:49",
+  "source": "/*\n\n    Copyright 2019 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.7;\npragma experimental ABIEncoderV2;\n\nimport { ReentrancyGuard } from \"openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol\";\nimport { State } from \"./State.sol\";\nimport { OperationImpl } from \"./impl/OperationImpl.sol\";\nimport { Account } from \"./lib/Account.sol\";\nimport { Actions } from \"./lib/Actions.sol\";\n\n\n/**\n * @title Operation\n * @author dYdX\n *\n * Primary public function for allowing users and contracts to manage accounts within Solo\n */\ncontract Operation is\n    State,\n    ReentrancyGuard\n{\n    // ============ Public Functions ============\n\n    /**\n     * The main entry-point to Solo that allows users and contracts to manage accounts.\n     * Take one or more actions on one or more accounts. The msg.sender must be the owner or\n     * operator of all accounts except for those being liquidated, vaporized, or traded with.\n     * One call to operate() is considered a singular \"operation\". Account collateralization is\n     * ensured only after the completion of the entire operation.\n     *\n     * @param  accounts  A list of all accounts that will be used in this operation. Cannot contain\n     *                   duplicates. In each action, the relevant account will be referred-to by its\n     *                   index in the list.\n     * @param  actions   An ordered list of all actions that will be taken in this operation. The\n     *                   actions will be processed in order.\n     */\n    function operate(\n        Account.Info[] memory accounts,\n        Actions.ActionArgs[] memory actions\n    )\n        public\n        nonReentrant\n    {\n        OperationImpl.operate(\n            g_state,\n            accounts,\n            actions\n        );\n    }\n}\n",
+  "sourcePath": "/home/terra/opensource/solo/contracts/protocol/Operation.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/protocol/Operation.sol",
+    "exportedSymbols": {
+      "Operation": [
+        13151
+      ]
+    },
+    "id": 13152,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 13115,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:22:31"
+      },
+      {
+        "id": 13116,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "626:33:31"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol",
+        "file": "openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol",
+        "id": 13118,
+        "nodeType": "ImportDirective",
+        "scope": 13152,
+        "sourceUnit": 514,
+        "src": "661:92:31",
+        "symbolAliases": [
+          {
+            "foreign": 13117,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/State.sol",
+        "file": "./State.sol",
+        "id": 13120,
+        "nodeType": "ImportDirective",
+        "scope": 13152,
+        "sourceUnit": 13279,
+        "src": "754:36:31",
+        "symbolAliases": [
+          {
+            "foreign": 13119,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/impl/OperationImpl.sol",
+        "file": "./impl/OperationImpl.sol",
+        "id": 13122,
+        "nodeType": "ImportDirective",
+        "scope": 13152,
+        "sourceUnit": 16198,
+        "src": "791:57:31",
+        "symbolAliases": [
+          {
+            "foreign": 13121,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+        "file": "./lib/Account.sol",
+        "id": 13124,
+        "nodeType": "ImportDirective",
+        "scope": 13152,
+        "sourceUnit": 16434,
+        "src": "849:44:31",
+        "symbolAliases": [
+          {
+            "foreign": 13123,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/protocol/lib/Actions.sol",
+        "file": "./lib/Actions.sol",
+        "id": 13126,
+        "nodeType": "ImportDirective",
+        "scope": 13152,
+        "sourceUnit": 16975,
+        "src": "894:44:31",
+        "symbolAliases": [
+          {
+            "foreign": 13125,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 13127,
+              "name": "State",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 13278,
+              "src": "1105:5:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_State_$13278",
+                "typeString": "contract State"
+              }
+            },
+            "id": 13128,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1105:5:31"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 13129,
+              "name": "ReentrancyGuard",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 513,
+              "src": "1116:15:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReentrancyGuard_$513",
+                "typeString": "contract ReentrancyGuard"
+              }
+            },
+            "id": 13130,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1116:15:31"
+          }
+        ],
+        "contractDependencies": [
+          513,
+          13278
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Operation\n@author dYdX\n * Primary public function for allowing users and contracts to manage accounts within Solo",
+        "fullyImplemented": true,
+        "id": 13151,
+        "linearizedBaseContracts": [
+          13151,
+          513,
+          13278
+        ],
+        "name": "Operation",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 13149,
+              "nodeType": "Block",
+              "src": "2201:112:31",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 13144,
+                        "name": "g_state",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13277,
+                        "src": "2246:7:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_State_$19461_storage",
+                          "typeString": "struct Storage.State storage ref"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 13145,
+                        "name": "accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13133,
+                        "src": "2267:8:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Info_$16403_memory_$dyn_memory_ptr",
+                          "typeString": "struct Account.Info memory[] memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 13146,
+                        "name": "actions",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13136,
+                        "src": "2289:7:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_ActionArgs_$16478_memory_$dyn_memory_ptr",
+                          "typeString": "struct Actions.ActionArgs memory[] memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_State_$19461_storage",
+                          "typeString": "struct Storage.State storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_struct$_Info_$16403_memory_$dyn_memory_ptr",
+                          "typeString": "struct Account.Info memory[] memory"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_struct$_ActionArgs_$16478_memory_$dyn_memory_ptr",
+                          "typeString": "struct Actions.ActionArgs memory[] memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 13141,
+                        "name": "OperationImpl",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 16197,
+                        "src": "2211:13:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_OperationImpl_$16197_$",
+                          "typeString": "type(library OperationImpl)"
+                        }
+                      },
+                      "id": 13143,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "operate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 14207,
+                      "src": "2211:21:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_delegatecall_nonpayable$_t_struct$_State_$19461_storage_ptr_$_t_array$_t_struct$_Info_$16403_memory_$dyn_memory_ptr_$_t_array$_t_struct$_ActionArgs_$16478_memory_$dyn_memory_ptr_$returns$__$",
+                        "typeString": "function (struct Storage.State storage pointer,struct Account.Info memory[] memory,struct Actions.ActionArgs memory[] memory)"
+                      }
+                    },
+                    "id": 13147,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2211:95:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 13148,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2211:95:31"
+                }
+              ]
+            },
+            "documentation": "The main entry-point to Solo that allows users and contracts to manage accounts.\nTake one or more actions on one or more accounts. The msg.sender must be the owner or\noperator of all accounts except for those being liquidated, vaporized, or traded with.\nOne call to operate() is considered a singular \"operation\". Account collateralization is\nensured only after the completion of the entire operation.\n     * @param  accounts  A list of all accounts that will be used in this operation. Cannot contain\n                  duplicates. In each action, the relevant account will be referred-to by its\n                  index in the list.\n@param  actions   An ordered list of all actions that will be taken in this operation. The\n                  actions will be processed in order.",
+            "id": 13150,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 13139,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 13138,
+                  "name": "nonReentrant",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 512,
+                  "src": "2184:12:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2184:12:31"
+              }
+            ],
+            "name": "operate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 13137,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13133,
+                  "name": "accounts",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13150,
+                  "src": "2079:30:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Info_$16403_memory_$dyn_memory_ptr",
+                    "typeString": "struct Account.Info[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 13131,
+                      "name": "Account.Info",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 16403,
+                      "src": "2079:12:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Info_$16403_storage_ptr",
+                        "typeString": "struct Account.Info"
+                      }
+                    },
+                    "id": 13132,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2079:14:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Info_$16403_storage_$dyn_storage_ptr",
+                      "typeString": "struct Account.Info[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13136,
+                  "name": "actions",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13150,
+                  "src": "2119:35:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_ActionArgs_$16478_memory_$dyn_memory_ptr",
+                    "typeString": "struct Actions.ActionArgs[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 13134,
+                      "name": "Actions.ActionArgs",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 16478,
+                      "src": "2119:18:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ActionArgs_$16478_storage_ptr",
+                        "typeString": "struct Actions.ActionArgs"
+                      }
+                    },
+                    "id": 13135,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2119:20:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_ActionArgs_$16478_storage_$dyn_storage_ptr",
+                      "typeString": "struct Actions.ActionArgs[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2069:91:31"
+            },
+            "returnParameters": {
+              "id": 13140,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2201:0:31"
+            },
+            "scope": 13151,
+            "src": "2053:260:31",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 13152,
+        "src": "1079:1236:31"
+      }
+    ],
+    "src": "603:1713:31"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/protocol/Operation.sol",
+      "exportedSymbols": {
+        "Operation": [
+          13151
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".7"
+          ]
+        },
+        "id": 13115,
+        "name": "PragmaDirective",
+        "src": "603:22:31"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 13116,
+        "name": "PragmaDirective",
+        "src": "626:33:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 514,
+          "absolutePath": "openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol",
+          "file": "openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol",
+          "scope": 13152,
+          "symbolAliases": [
+            {
+              "foreign": 13117,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13118,
+        "name": "ImportDirective",
+        "src": "661:92:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 13279,
+          "absolutePath": "project:/contracts/protocol/State.sol",
+          "file": "./State.sol",
+          "scope": 13152,
+          "symbolAliases": [
+            {
+              "foreign": 13119,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13120,
+        "name": "ImportDirective",
+        "src": "754:36:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16198,
+          "absolutePath": "project:/contracts/protocol/impl/OperationImpl.sol",
+          "file": "./impl/OperationImpl.sol",
+          "scope": 13152,
+          "symbolAliases": [
+            {
+              "foreign": 13121,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13122,
+        "name": "ImportDirective",
+        "src": "791:57:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16434,
+          "absolutePath": "project:/contracts/protocol/lib/Account.sol",
+          "file": "./lib/Account.sol",
+          "scope": 13152,
+          "symbolAliases": [
+            {
+              "foreign": 13123,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13124,
+        "name": "ImportDirective",
+        "src": "849:44:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 16975,
+          "absolutePath": "project:/contracts/protocol/lib/Actions.sol",
+          "file": "./lib/Actions.sol",
+          "scope": 13152,
+          "symbolAliases": [
+            {
+              "foreign": 13125,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 13126,
+        "name": "ImportDirective",
+        "src": "894:44:31"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            513,
+            13278
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Operation\n@author dYdX\n * Primary public function for allowing users and contracts to manage accounts within Solo",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            13151,
+            513,
+            13278
+          ],
+          "name": "Operation",
+          "scope": 13152
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "State",
+                  "referencedDeclaration": 13278,
+                  "type": "contract State"
+                },
+                "id": 13127,
+                "name": "UserDefinedTypeName",
+                "src": "1105:5:31"
+              }
+            ],
+            "id": 13128,
+            "name": "InheritanceSpecifier",
+            "src": "1105:5:31"
+          },
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ReentrancyGuard",
+                  "referencedDeclaration": 513,
+                  "type": "contract ReentrancyGuard"
+                },
+                "id": 13129,
+                "name": "UserDefinedTypeName",
+                "src": "1116:15:31"
+              }
+            ],
+            "id": 13130,
+            "name": "InheritanceSpecifier",
+            "src": "1116:15:31"
+          },
+          {
+            "attributes": {
+              "documentation": "The main entry-point to Solo that allows users and contracts to manage accounts.\nTake one or more actions on one or more accounts. The msg.sender must be the owner or\noperator of all accounts except for those being liquidated, vaporized, or traded with.\nOne call to operate() is considered a singular \"operation\". Account collateralization is\nensured only after the completion of the entire operation.\n     * @param  accounts  A list of all accounts that will be used in this operation. Cannot contain\n                  duplicates. In each action, the relevant account will be referred-to by its\n                  index in the list.\n@param  actions   An ordered list of all actions that will be taken in this operation. The\n                  actions will be processed in order.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "operate",
+              "scope": 13151,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "accounts",
+                      "scope": 13150,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Account.Info[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "struct Account.Info[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Account.Info",
+                              "referencedDeclaration": 16403,
+                              "type": "struct Account.Info"
+                            },
+                            "id": 13131,
+                            "name": "UserDefinedTypeName",
+                            "src": "2079:12:31"
+                          }
+                        ],
+                        "id": 13132,
+                        "name": "ArrayTypeName",
+                        "src": "2079:14:31"
+                      }
+                    ],
+                    "id": 13133,
+                    "name": "VariableDeclaration",
+                    "src": "2079:30:31"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "actions",
+                      "scope": 13150,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Actions.ActionArgs[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "struct Actions.ActionArgs[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Actions.ActionArgs",
+                              "referencedDeclaration": 16478,
+                              "type": "struct Actions.ActionArgs"
+                            },
+                            "id": 13134,
+                            "name": "UserDefinedTypeName",
+                            "src": "2119:18:31"
+                          }
+                        ],
+                        "id": 13135,
+                        "name": "ArrayTypeName",
+                        "src": "2119:20:31"
+                      }
+                    ],
+                    "id": 13136,
+                    "name": "VariableDeclaration",
+                    "src": "2119:35:31"
+                  }
+                ],
+                "id": 13137,
+                "name": "ParameterList",
+                "src": "2069:91:31"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 13140,
+                "name": "ParameterList",
+                "src": "2201:0:31"
+              },
+              {
+                "attributes": {
+                  "arguments": null
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 512,
+                      "type": "modifier ()",
+                      "value": "nonReentrant"
+                    },
+                    "id": 13138,
+                    "name": "Identifier",
+                    "src": "2184:12:31"
+                  }
+                ],
+                "id": 13139,
+                "name": "ModifierInvocation",
+                "src": "2184:12:31"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_struct$_State_$19461_storage",
+                                  "typeString": "struct Storage.State storage ref"
+                                },
+                                {
+                                  "typeIdentifier": "t_array$_t_struct$_Info_$16403_memory_$dyn_memory_ptr",
+                                  "typeString": "struct Account.Info memory[] memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_array$_t_struct$_ActionArgs_$16478_memory_$dyn_memory_ptr",
+                                  "typeString": "struct Actions.ActionArgs memory[] memory"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "operate",
+                              "referencedDeclaration": 14207,
+                              "type": "function (struct Storage.State storage pointer,struct Account.Info memory[] memory,struct Actions.ActionArgs memory[] memory)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 16197,
+                                  "type": "type(library OperationImpl)",
+                                  "value": "OperationImpl"
+                                },
+                                "id": 13141,
+                                "name": "Identifier",
+                                "src": "2211:13:31"
+                              }
+                            ],
+                            "id": 13143,
+                            "name": "MemberAccess",
+                            "src": "2211:21:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 13277,
+                              "type": "struct Storage.State storage ref",
+                              "value": "g_state"
+                            },
+                            "id": 13144,
+                            "name": "Identifier",
+                            "src": "2246:7:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 13133,
+                              "type": "struct Account.Info memory[] memory",
+                              "value": "accounts"
+                            },
+                            "id": 13145,
+                            "name": "Identifier",
+                            "src": "2267:8:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 13136,
+                              "type": "struct Actions.ActionArgs memory[] memory",
+                              "value": "actions"
+                            },
+                            "id": 13146,
+                            "name": "Identifier",
+                            "src": "2289:7:31"
+                          }
+                        ],
+                        "id": 13147,
+                        "name": "FunctionCall",
+                        "src": "2211:95:31"
+                      }
+                    ],
+                    "id": 13148,
+                    "name": "ExpressionStatement",
+                    "src": "2211:95:31"
+                  }
+                ],
+                "id": 13149,
+                "name": "Block",
+                "src": "2201:112:31"
+              }
+            ],
+            "id": 13150,
+            "name": "FunctionDefinition",
+            "src": "2053:260:31"
+          }
+        ],
+        "id": 13151,
+        "name": "ContractDefinition",
+        "src": "1079:1236:31"
+      }
+    ],
+    "id": 13152,
+    "name": "SourceUnit",
+    "src": "603:1713:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-29T09:51:29.276Z",
+  "devdoc": {
+    "author": "dYdX * Primary public function for allowing users and contracts to manage accounts within Solo",
+    "methods": {
+      "operate((address,uint256)[],(uint8,uint256,(bool,uint8,uint8,uint256),uint256,uint256,address,uint256,bytes)[])": {
+        "params": {
+          "accounts": "A list of all accounts that will be used in this operation. Cannot contain                  duplicates. In each action, the relevant account will be referred-to by its                  index in the list.",
+          "actions": "An ordered list of all actions that will be taken in this operation. The                  actions will be processed in order."
+        }
+      }
+    },
+    "title": "Operation"
+  },
+  "userdoc": {
+    "methods": {
+      "operate((address,uint256)[],(uint8,uint256,(bool,uint8,uint8,uint256),uint256,uint256,address,uint256,bytes)[])": {
+        "notice": "The main entry-point to Solo that allows users and contracts to manage accounts. Take one or more actions on one or more accounts. The msg.sender must be the owner or operator of all accounts except for those being liquidated, vaporized, or traded with. One call to operate() is considered a singular \"operation\". Account collateralization is ensured only after the completion of the entire operation."
+      }
+    }
+  }
+}

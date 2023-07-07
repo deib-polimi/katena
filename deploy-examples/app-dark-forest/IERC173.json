@@ -1,0 +1,357 @@
+{
+  "contractName": "IERC173",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner_\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"OwnershipTransferred(address,address)\":{\"details\":\"This emits when ownership of a contract changes.\"}},\"kind\":\"dev\",\"methods\":{\"owner()\":{\"returns\":{\"owner_\":\"The address of the owner.\"}},\"transferOwnership(address)\":{\"details\":\"Set _newOwner to address(0) to renounce any ownership.\",\"params\":{\"_newOwner\":\"The address of the new owner of the contract\"}}},\"title\":\"ERC-173 Contract Ownership Standard  Note: the ERC-165 identifier for this interface is 0x7f5828d0\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"owner()\":{\"notice\":\"Get the address of the owner\"},\"transferOwnership(address)\":{\"notice\":\"Set the address of the new owner of the contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/vendor/interfaces/IERC173.sol\":\"IERC173\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/vendor/interfaces/IERC173.sol\":{\"keccak256\":\"0x9356ece9db6f966cb8a40b228d47c9316f769b059e9118d4ad75034d2a8588bd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://da966794f43f0b35840992581a0b1d967d9ebb1beab0da930a865533cc18da9c\",\"dweb:/ipfs/QmfYCyEJ3ZSto1FMnutfhXtvBbR7gDzQfmBFCmUbCsB5Ey\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n/**\n * Vendored on December 23, 2021 from:\n * https://github.com/mudgen/diamond-3-hardhat/blob/7feb995/contracts/interfaces/IERC173.sol\n */\npragma solidity ^0.8.0;\n\n/// @title ERC-173 Contract Ownership Standard\n///  Note: the ERC-165 identifier for this interface is 0x7f5828d0\n/* is ERC165 */\ninterface IERC173 {\n    /// @dev This emits when ownership of a contract changes.\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n    /// @notice Get the address of the owner\n    /// @return owner_ The address of the owner.\n    function owner() external view returns (address owner_);\n\n    /// @notice Set the address of the new owner of the contract\n    /// @dev Set _newOwner to address(0) to renounce any ownership.\n    /// @param _newOwner The address of the new owner of the contract\n    function transferOwnership(address _newOwner) external;\n}\n",
+  "sourcePath": "/home/terra/opensource/tosca-chain/smart-contract-example/contracts/vendor/interfaces/IERC173.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/vendor/interfaces/IERC173.sol",
+    "exportedSymbols": {
+      "IERC173": [
+        21441
+      ]
+    },
+    "id": 21442,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 21420,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "172:23:48"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC173",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 21421,
+          "nodeType": "StructuredDocumentation",
+          "src": "197:114:48",
+          "text": "@title ERC-173 Contract Ownership Standard\n  Note: the ERC-165 identifier for this interface is 0x7f5828d0"
+        },
+        "fullyImplemented": false,
+        "id": 21441,
+        "linearizedBaseContracts": [
+          21441
+        ],
+        "name": "IERC173",
+        "nameLocation": "337:7:48",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 21422,
+              "nodeType": "StructuredDocumentation",
+              "src": "351:57:48",
+              "text": "@dev This emits when ownership of a contract changes."
+            },
+            "eventSelector": "8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+            "id": 21428,
+            "name": "OwnershipTransferred",
+            "nameLocation": "419:20:48",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 21427,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21424,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "previousOwner",
+                  "nameLocation": "456:13:48",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21428,
+                  "src": "440:29:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21423,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "440:7:48",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 21426,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "newOwner",
+                  "nameLocation": "487:8:48",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21428,
+                  "src": "471:24:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21425,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "471:7:48",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "439:57:48"
+            },
+            "src": "413:84:48"
+          },
+          {
+            "documentation": {
+              "id": 21429,
+              "nodeType": "StructuredDocumentation",
+              "src": "503:89:48",
+              "text": "@notice Get the address of the owner\n @return owner_ The address of the owner."
+            },
+            "functionSelector": "8da5cb5b",
+            "id": 21434,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "owner",
+            "nameLocation": "606:5:48",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21430,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "611:2:48"
+            },
+            "returnParameters": {
+              "id": 21433,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21432,
+                  "mutability": "mutable",
+                  "name": "owner_",
+                  "nameLocation": "645:6:48",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21434,
+                  "src": "637:14:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21431,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "637:7:48",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "636:16:48"
+            },
+            "scope": 21441,
+            "src": "597:56:48",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 21435,
+              "nodeType": "StructuredDocumentation",
+              "src": "659:198:48",
+              "text": "@notice Set the address of the new owner of the contract\n @dev Set _newOwner to address(0) to renounce any ownership.\n @param _newOwner The address of the new owner of the contract"
+            },
+            "functionSelector": "f2fde38b",
+            "id": 21440,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nameLocation": "871:17:48",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 21438,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21437,
+                  "mutability": "mutable",
+                  "name": "_newOwner",
+                  "nameLocation": "897:9:48",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21440,
+                  "src": "889:17:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 21436,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "889:7:48",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "888:19:48"
+            },
+            "returnParameters": {
+              "id": 21439,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "916:0:48"
+            },
+            "scope": 21441,
+            "src": "862:55:48",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 21442,
+        "src": "327:592:48",
+        "usedErrors": []
+      }
+    ],
+    "src": "172:748:48"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-30T15:27:25.988Z",
+  "devdoc": {
+    "events": {
+      "OwnershipTransferred(address,address)": {
+        "details": "This emits when ownership of a contract changes."
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "returns": {
+          "owner_": "The address of the owner."
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Set _newOwner to address(0) to renounce any ownership.",
+        "params": {
+          "_newOwner": "The address of the new owner of the contract"
+        }
+      }
+    },
+    "title": "ERC-173 Contract Ownership Standard  Note: the ERC-165 identifier for this interface is 0x7f5828d0",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "owner()": {
+        "notice": "Get the address of the owner"
+      },
+      "transferOwnership(address)": {
+        "notice": "Set the address of the new owner of the contract"
+      }
+    },
+    "version": 1
+  }
+}
