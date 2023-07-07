@@ -3,6 +3,7 @@ import argparse
 import json
 
 from utils import parse_parameters
+from utils import CONTRACTS_DIR
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -18,7 +19,7 @@ args = parser.parse_args()
 
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
 
-with open(f'contracts/{args.contractAbi}.json') as f:
+with open(f'{CONTRACTS_DIR}/{args.contractAbi}.json') as f:
     proxy_contract_json = json.load(f)
 
 PROXY_ABI = proxy_contract_json['abi']

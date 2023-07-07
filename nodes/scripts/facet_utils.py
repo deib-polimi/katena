@@ -7,6 +7,7 @@ from web3 import Web3
 import argparse
 import json
 
+from utils import CONTRACTS_DIR
 
 zero_address = '0x0000000000000000000000000000000000000000'
 
@@ -41,7 +42,7 @@ def set_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 def set_facet(args, action: FacetAction):
-    with open(f'contracts/{args.cutAbi}.json') as f:
+    with open(f'{CONTRACTS_DIR}/{args.cutAbi}.json') as f:
         diamond_cut_abi = json.load(f)['abi']
 
     w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))

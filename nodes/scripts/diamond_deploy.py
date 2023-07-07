@@ -1,6 +1,7 @@
 from web3 import Web3
 import argparse
 import json
+from utils import CONTRACTS_DIR
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -14,7 +15,7 @@ parser.add_argument('--bytecode', type=str, help='contract bytecode')
 
 args = parser.parse_args()
 
-with open(f'contracts/{args.contractAbi}.json') as f:
+with open(f'{CONTRACTS_DIR}/{args.contractAbi}.json') as f:
     diamond_json = json.load(f)
 
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))

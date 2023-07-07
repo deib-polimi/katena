@@ -2,6 +2,7 @@ import sys
 from web3 import Web3
 import argparse
 import json
+from utils import CONTRACTS_DIR
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -19,7 +20,7 @@ args = parser.parse_args()
 if args.destroyFunction is None:
     sys.exit(0)
 
-with open(f'contracts/{args.contractAbi}.json') as f:
+with open(f'{CONTRACTS_DIR}/{args.contractAbi}.json') as f:
     contract_json = json.load(f)
 
 abi = contract_json['abi']

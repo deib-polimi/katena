@@ -3,6 +3,8 @@ from web3 import Web3
 import argparse
 import json
 
+from utils import CONTRACTS_DIR
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
                     help='network in which the caller has been deployed. Can be either a url or a host:port. Default communication is through HTTPS so https:// is omitted.')
@@ -14,7 +16,7 @@ parser.add_argument('--calleeAddress', type=str, help='callee address to pass as
 
 args = parser.parse_args()
 
-with open(f'contracts/{args.callerAbi}.json') as f:
+with open(f'{CONTRACTS_DIR}/{args.callerAbi}.json') as f:
     contract_json = json.load(f)
 
 abi = contract_json['abi']

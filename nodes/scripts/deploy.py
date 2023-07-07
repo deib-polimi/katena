@@ -2,6 +2,7 @@ from utils import parse_parameters
 from web3 import Web3
 import argparse
 import json
+from utils import CONTRACTS_DIR
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -14,7 +15,7 @@ parser.add_argument('--bytecode', type=str, help='contract bytecode')
 
 args = parser.parse_args()
 
-with open(f'contracts-example/{args.contractAbi}.json') as f:
+with open(f'{CONTRACTS_DIR}/{args.contractAbi}.json') as f:
     contract_json = json.load(f)
 
 abi = contract_json['abi']

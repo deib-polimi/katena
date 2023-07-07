@@ -3,6 +3,8 @@ import re
 
 from web3 import Web3
 
+CONTRACTS_DIR = "../abis"
+
 def parse_parameters(signature, values, addresses):
     params = []        
 
