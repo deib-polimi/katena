@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Unlicense
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.18;
 
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {VersionAware} from "../VersionAware.sol";
+import {VersionAware} from "./VersionAware.sol";
 
 
 contract BeaconProxyPatternV2 is Initializable, VersionAware {

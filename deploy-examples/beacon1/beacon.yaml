@@ -14,22 +14,22 @@ topology_template:
       - host: ganache
       properties:
         privateKey: { get_input: UserKeyGanache }
-    proxy1:
+    proxy:
       type: katena.nodes.proxy.beacon
       requirements:
       - host: ganache
       - wallet: userWallet
-      - beacon: callee1
+      - beacon: callee
       properties:
-        abi: "ERC1967Proxy"
+        abi: "BeaconProxyPatternV1"
         proxyCount: 2
-    callee1:
+    callee:
       type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
-        abi: "Callee"
+        abi: "VersionAware"
   
   inputs:
     UserKeyGanache:
