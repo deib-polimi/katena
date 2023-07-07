@@ -222,17 +222,17 @@ node_types:
               dependencies:
                 - scripts/
                 - contracts/
-  katena.nodes.contract.beacon:
+  katena.nodes.proxy.beacon:
     derived_from: katena.nodes.contract
     properties:
       proxyCount:
         type: integer
     requirements:
-      - proxyDefinition: # based on the proxy count there will be deployed X proxies with this definition
+      - beacon: 
           capability: katena.capabilities.Callable
-          node: katena.nodes.proxy.erc1967
           relationship: katena.relationships.callsConstructor
-          occurrences: [1, UNBOUNDED]
+          occurrences: [1, 1]
+          node: katena.nodes.contract
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -251,15 +251,10 @@ node_types:
                   type: integer,
                   default: { get_attribute: [SELF, proxyCount] },
                 }
-              proxyAbi:
+              beaconAddress:
                 {
                   type: string,
-                  default: { get_attribute: [SELF, proxyDefinition, abi] },
-                }
-              proxyBytecode:
-                {
-                  type: string,
-                  default: { get_attribute: [SELF, proxyDefinition, bytecode] },
+                  default: { get_attribute: [SELF, beacon, contractAddress] },
                 }
             outputs:
               contract_address: [SELF, contractAddress]

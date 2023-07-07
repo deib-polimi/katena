@@ -15,22 +15,21 @@ topology_template:
       properties:
         privateKey: { get_input: UserKeyGanache }
     proxy:
-      type: katena.nodes.proxy.erc1967
+      type: katena.nodes.proxy.beacon
       requirements:
       - host: ganache
       - wallet: userWallet
-      - implementation: callee
+      - beacon: callee
       properties:
         abi: "ERC1967Proxy"
+        proxyCount: 2
     callee:
       type: katena.nodes.contract
       requirements:
       - host: ganache
       - wallet: userWallet
-      - proxyDefinition: proxy
       properties:
         abi: "Callee"
-        proxyCount: 2
   
   inputs:
     UserKeyGanache:
