@@ -14,7 +14,7 @@ parser.add_argument('--bytecode', type=str, help='contract bytecode')
 
 args = parser.parse_args()
 
-with open(f'contracts/{args.contractAbi}.json') as f:
+with open(f'contracts-example/{args.contractAbi}.json') as f:
     contract_json = json.load(f)
 
 abi = contract_json['abi']
@@ -30,7 +30,6 @@ for function in contract.abi:
     if function['type'] == 'constructor':
         constructor_inputs = function['inputs']
         break
-
 
 params = args.params
 address_params = args.addressParams
