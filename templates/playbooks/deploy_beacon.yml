@@ -1,9 +1,0 @@
-- hosts: all
-  tasks:
-  - name: deploy
-    command: python scripts/deploy_beacon.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --proxyCount {{ proxyCount }} --beaconAddress {{ beaconAddress }}
-    register: contract_address
-  - name: Set attributes
-    set_stats:
-      data:
-        contract_address: "{{ contract_address.stdout_lines[-1] }}"

@@ -11,8 +11,9 @@ parser.add_argument('--network', type=str, default='localhost:8545',
 parser.add_argument('--privateKey', type=str, help='private key to sign transactions')
 parser.add_argument('--contractAbi', type=str, help='ABI of the smart contract to deploy')
 parser.add_argument('--bytecode', type=str, help='contract bytecode')
-
+parser.add_argument('--params', nargs='*', help='contract input parameters')
 parser.add_argument('--beaconAddress', type=str, help='address of the beacon')
+
 parser.add_argument('--proxyCount', type=int, help='number of proxies to add to the beacon')
 
 args = parser.parse_args()
@@ -30,12 +31,28 @@ PROXY_BYTECODE = args.bytecode
 signer = w3.eth.account.from_key(args.privateKey.upper())
 w3.eth.default_account = w3.toChecksumAddress(signer.address)
 
+
+
 # DEPLOY THE BEACON CONTRACT
 count = args.proxyCount
+constructor_inputs = []
+params = args.params
+beacon_address = args.beaconAddress
 for i in range(0,count):
     # Deploy proxy contracts
     proxy = w3.eth.contract(abi=PROXY_ABI, bytecode=PROXY_BYTECODE)
-    tx_hash = proxy.constructor(w3.toChecksumAddress(args.beaconAddress), b'').transact()
+
+    if i == 1:
+        for function in proxy.abi:
+            if function['type'] == 'constructor':
+                constructor_inputs = function['inputs']
+                break
+        
+    #casted_params = parse_parameters(constructor_inputs, params, [beacon_address])
+    #paramsToBytes = bytes(casted_params)
+    print(type(w3.toChecksumAddress(beacon_address)))
+    #print(type(paramsToBytes))
+    tx_hash = proxy.constructor(w3.toChecksumAddress(beacon_address),b'').transact()
     tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     print(f'{tx_receipt.contractAddress}')
 

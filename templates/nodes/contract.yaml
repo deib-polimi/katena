@@ -222,11 +222,13 @@ node_types:
               dependencies:
                 - ../scripts/
                 - ../contracts/
-  katena.nodes.proxy.beacon:
+  katena.nodes.beacon.upgradableProxy:
     derived_from: katena.nodes.contract
     properties:
-      proxyCount:
-        type: integer
+      beaconAdress:    
+        description: owner wallet address
+        type: string
+        default: { get_property: [SELF, beacon, contractAddress] }
     requirements:
       - beacon: 
           capability: katena.capabilities.Callable
@@ -239,30 +241,51 @@ node_types:
         operations:
           configure:
             inputs:
+              network: { type: string, default: { get_property: [SELF, network] } }
+              privateKey: { type: string, default: { get_property: [SELF, privateKey] } }
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              bytecode:
-                { type: string, default: { get_attribute: [SELF, bytecode] } }
-              privateKey:
-                { type: string, default: { get_property: [SELF, privateKey] } }
-              network:
-                { type: string, default: { get_property: [SELF, network] } }
-              proxyCount: 
-                {
-                  type: integer,
-                  default: { get_attribute: [SELF, proxyCount] },
-                }
-              beaconAddress:
-                {
-                  type: string,
-                  default: { get_attribute: [SELF, beacon, contractAddress] },
-                }
+              beaconAddress: { type: string, default: { get_attribute: [SELF, beacon, contractAddress] },}
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
-              primary: ../playbooks/deploy_beacon.yml
+              primary: ../playbooks/deploy_upgradablebeacon.yml
               dependencies:
                 - ../scripts/
-                - ../contracts/    
+                - ../contracts/ 
+  katena.nodes.beacon.proxy:
+    derived_from: katena.nodes.contract
+    properties:
+      proxyCount:
+        type: integer
+    requirements:
+      - beacon: 
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.callsConstructor
+          occurrences: [1, 1]
+          node: katena.nodes.contract
+      - upgradableBeaconProxy:
+          capability: katena.capabilities.Callable
+          relationship: katena.relationships.callsConstructor
+          occurrences: [1, 1]
+          node: katena.nodes.beacon.upgradableProxy
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          configure:
+            inputs:
+              network: { type: string, default: { get_property: [SELF, network] } }
+              privateKey: { type: string, default: { get_property: [SELF, privateKey] } }
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              beaconAddress: { type: string, default: { get_attribute: [SELF, beacon, contractAddress] },}
+              proxyCount:  {type: integer,default: { get_attribute: [SELF, proxyCount] },}
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: ../playbooks/deploy_proxy_beacon.yml
+              dependencies:
+                - ../scripts/
+                - ../contracts/ 
   katena.nodes.diamond:
     derived_from: katena.nodes.contract
     requirements:

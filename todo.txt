@@ -1,0 +1,4 @@
+- implement init diamond
+- create example with already deployed contract
+- add configuration script -> imperative code that can not be modeled
+- support hash facilities (keccak, etc.) in parameters: - keccak('foo')

@@ -29,46 +29,17 @@ then
 fi
 
 #############################################################################
-#     GET ACCOUNT AND PRIVATE KEYS                                          #
+#     deploy                                                                #
 #############################################################################
-
-
-# to format the accounts info into a better readable format
-cat .katena/accounts.json | jq > .katena/accounts-pretty.json
-IFS=: read -r ACCOUNT PRIVATE_KEY <<< $(awk '/"private_keys"/{getline; print}' .katena/accounts-pretty.json)
-
-PRIVATE_KEY=${PRIVATE_KEY::-1}
-
-ACCOUNT=$(echo $ACCOUNT | sed "s/\"/'/g")
-
-PRIVATE_KEY=$(echo $PRIVATE_KEY | sed "s/\"/'/g")
-
-echo "Your account is: ${ACCOUNT}"
-echo "Your private key is: ${PRIVATE_KEY}"
-
-cat << EOF > .katena/input.yml
-UserKeyGanache: $PRIVATE_KEY
-UserWallet: $ACCOUNT
-EOF
-
-
-#############################################################################
-#     RUN OPERA & DEPLOY APP                                                #
-#############################################################################
+cd /katena
 APP=$(basename "$TEMPLATE_TOPOLOGY")
 echo "deploying ${APP}..."
 
-# remove cacheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-rm -r ./.opera &> /dev/null
-#rm .katena
-
-# get artifacts and topology
-rm -r ./.katena/contracts &> /dev/null
-mkdir .katena/contracts &> /dev/null
-find $CONTRACTSPATH -type f ! -name "*.yaml" -exec cp {} .katena/contracts \;
 # get topology
-cp $TEMPLATE_TOPOLOGY .katena/
-cp -r templates/* .katena
+cp -r $CONTRACTSPATH/* .katena/contracts
+rm .katena/contracts/*.yaml
+cp  $TEMPLATE_TOPOLOGY .katena
+
 
 cd .katena
 opera deploy -r -i input.yml $APP -v > deploy.log
@@ -80,3 +51,4 @@ else
     grep -w "stderr" deploy.log | tail -1
     exit 2
 fi
+
