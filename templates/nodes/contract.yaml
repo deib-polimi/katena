@@ -226,7 +226,6 @@ node_types:
     derived_from: katena.nodes.contract
     properties:
       beaconAdress:    
-        description: owner wallet address
         type: string
         default: { get_property: [SELF, beacon, contractAddress] }
     requirements:
