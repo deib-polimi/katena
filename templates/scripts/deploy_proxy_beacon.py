@@ -38,7 +38,6 @@ IMP_ADRSS = args.implementationAddress
 params = args.params
 
 # to type the params as the function requires
-
 initializer_inputs = [] 
 for function in IMP_ABI:
     if function['name'] == 'initialize':

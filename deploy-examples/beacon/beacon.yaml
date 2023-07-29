@@ -20,18 +20,18 @@ topology_template:
       - host: ganache
       - wallet: userWallet
       properties:
-        abi: "Implementation"
+        abi: "Implementation1"
         parameters:
-            - 55
+            - 40
     callee2:
       type: katena.nodes.contract.implementation
       requirements:
       - host: ganache
       - wallet: userWallet
       properties:
-        abi: "Implementation"
+        abi: "Implementation2"
         parameters:
-            - 66
+            - 12
     upgradable:
       type: katena.nodes.beacon.upgradable
       requirements:
@@ -39,7 +39,7 @@ topology_template:
       - wallet: userWallet
       - implementation: callee1
       properties:
-        abi: "BUpgradable"
+        abi: "UpgradeableBeacon"
     beaconProxy:
       type: katena.nodes.beacon.proxy
       requirements:
@@ -47,7 +47,7 @@ topology_template:
       - wallet: userWallet
       - upgradableBeacon: upgradable
       properties:
-        abi: "BProxy"
+        abi: "BeaconProxy"
         proxyCount: 3
   
   inputs:
