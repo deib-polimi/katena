@@ -2,7 +2,7 @@ from web3 import Web3
 import argparse
 import json
 
-from utils import CONTRACTS_DIR, parse_parameters, encode_function_data
+from utils import CONTRACTS_DIR, parse_parameters
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -35,21 +35,23 @@ with open(f'{CONTRACTS_DIR}/{args.implementationAbi}.json') as f:
 IMP_ABI = proxy_contract_json['abi']
 IMP_ADRSS = args.implementationAddress
 
-constructor_inputs = [] 
-for function in PROXY_ABI:
-    if function['type'] == 'constructor':
-        constructor_inputs = function['inputs']
+params = args.params
+
+# to type the params as the function requires
+
+initializer_inputs = [] 
+for function in IMP_ABI:
+    if function['name'] == 'initialize':
+        initializer_inputs = function['inputs']
         break
 
-params = args.params
-casted_params = parse_parameters(constructor_inputs, params, [])
-
+params = parse_parameters(initializer_inputs, params, [])
 
 # BUILD BEACON AND CONTRACT PROXIES
 proxy = w3.eth.contract(abi=PROXY_ABI, bytecode=PROXY_BYTECODE)
 imp = w3.eth.contract(address=IMP_ADRSS, abi=IMP_ABI)
-initializer = encode_function_data(proxy, imp, params)
 
-tx_hash = proxy.constructor(w3.toChecksumAddress(BEACON_ADDR), b'').transact()
+initializer = imp.encodeABI(fn_name="initialize", args=params)
+tx_hash = proxy.constructor(w3.toChecksumAddress(BEACON_ADDR), initializer).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-print("upgradable contract",tx_receipt.contractAddress)
+print(tx_receipt.contractAddress)

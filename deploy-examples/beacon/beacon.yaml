@@ -15,7 +15,7 @@ topology_template:
       properties:
         privateKey: { get_input: UserKeyGanache }
     callee1:
-      type: katena.nodes.contract
+      type: katena.nodes.contract.implementation
       requirements:
       - host: ganache
       - wallet: userWallet
@@ -24,7 +24,7 @@ topology_template:
         parameters:
             - 55
     callee2:
-      type: katena.nodes.contract
+      type: katena.nodes.contract.implementation
       requirements:
       - host: ganache
       - wallet: userWallet
