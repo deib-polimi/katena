@@ -222,14 +222,14 @@ node_types:
               dependencies:
                 - ../scripts/
                 - ../contracts/
-  katena.nodes.beacon.upgradableProxy:
+  katena.nodes.beacon.upgradable:
     derived_from: katena.nodes.contract
     properties:
-      beaconAdress:    
+      implementationAddress:    
         type: string
-        default: { get_property: [SELF, beacon, contractAddress] }
+        default: { get_attribute: [SELF, implementation, contractAddress] }
     requirements:
-      - beacon: 
+      - implementation: 
           capability: katena.capabilities.Callable
           relationship: katena.relationships.callsConstructor
           occurrences: [1, 1]
@@ -243,7 +243,7 @@ node_types:
               network: { type: string, default: { get_property: [SELF, network] } }
               privateKey: { type: string, default: { get_property: [SELF, privateKey] } }
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              beaconAddress: { type: string, default: { get_attribute: [SELF, beacon, contractAddress] },}
+              implementationAddress: { type: string, default: { get_property: [SELF, implementationAddress] },}
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
@@ -257,16 +257,11 @@ node_types:
       proxyCount:
         type: integer
     requirements:
-      - beacon: 
+      - upgradableBeacon:
           capability: katena.capabilities.Callable
           relationship: katena.relationships.callsConstructor
           occurrences: [1, 1]
-          node: katena.nodes.contract
-      - upgradableBeaconProxy:
-          capability: katena.capabilities.Callable
-          relationship: katena.relationships.callsConstructor
-          occurrences: [1, 1]
-          node: katena.nodes.beacon.upgradableProxy
+          node: katena.nodes.beacon.upgradable
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
@@ -276,8 +271,15 @@ node_types:
               network: { type: string, default: { get_property: [SELF, network] } }
               privateKey: { type: string, default: { get_property: [SELF, privateKey] } }
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              beaconAddress: { type: string, default: { get_attribute: [SELF, beacon, contractAddress] },}
+              beaconAddress: { type: string, default: { get_attribute: [SELF, upgradableBeacon, contractAddress] },}
               proxyCount:  {type: integer,default: { get_attribute: [SELF, proxyCount] },}
+              implementationAddress: { 
+                type: string, default: { get_attribute: [SELF, upgradableBeacon, implementation, contractAddress] },}
+              implementationAbi : { type: string, default: { 
+                get_property: [SELF, upgradableBeacon, implementation, abi ] 
+              } }
+              implementationParameters: # so it inits with the same parameters as the imp
+                { type: list, default: { get_property: [SELF, upgradableBeacon, implementation, parameters] } }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:

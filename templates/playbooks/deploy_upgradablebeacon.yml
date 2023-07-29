@@ -1,7 +1,7 @@
 - hosts: all
   tasks:
   - name: deploy
-    command: python scripts/deploy_upgradablebeacon.py --network {{ network }} --privateKey {{ privateKey }} --abi {{ abi }} --beaconAddress {{ beaconAddress }}
+    command: python scripts/deploy_upgradablebeacon.py --network {{ network }} --privateKey {{ privateKey }} --abi {{ abi }} --implementationAddress {{ implementationAddress }}
     register: contract_address
   - name: Set attributes
     set_stats:

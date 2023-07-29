@@ -89,3 +89,13 @@ def convert(data_type: str, value: str) -> Any:
     else:
         print('5')
         return value
+
+# def encode_function_data(initializer=None,*args):
+#     if len(args) == 0 or not initializer:
+#         return Web3.toBytes(hexstr="0x")
+#     return  initializer.encode_input(*args)
+
+def encode_function_data(proxy, imp=None,*args):
+    if len(args) == 0 or not imp:
+        return Web3.toBytes(hexstr="0x")
+    return  proxy._encode_constructor_data(imp, *args)

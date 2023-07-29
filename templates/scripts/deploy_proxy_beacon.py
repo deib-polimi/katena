@@ -1,9 +1,8 @@
-from web3 import Web3, HTTPProvider
+from web3 import Web3
 import argparse
 import json
 
-from utils import parse_parameters
-from utils import CONTRACTS_DIR
+from utils import CONTRACTS_DIR, parse_parameters, encode_function_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
@@ -11,7 +10,10 @@ parser.add_argument('--network', type=str, default='localhost:8545',
 parser.add_argument('--privateKey', type=str, help='private key to sign transactions')
 parser.add_argument('--abi', type=str, help='ABI of the smart contract to deploy')
 parser.add_argument('--beaconAddress', type=str, help='address of the beacon')
+parser.add_argument('--implementationAbi', type=str)
+parser.add_argument('--implementationAddress', type=str)
 parser.add_argument('--proxyCount', type=int, help='number of proxies to add to the beacon')
+parser.add_argument('--params', nargs='*', help='contract input parameters')
 
 args = parser.parse_args()
 
@@ -28,13 +30,26 @@ with open(f'{CONTRACTS_DIR}/{args.abi}.json') as f:
 PROXY_ABI = proxy_contract_json['abi']
 PROXY_BYTECODE = proxy_contract_json['bytecode']
 
+with open(f'{CONTRACTS_DIR}/{args.implementationAbi}.json') as f:
+    proxy_contract_json = json.load(f)
+IMP_ABI = proxy_contract_json['abi']
+IMP_ADRSS = args.implementationAddress
+
+constructor_inputs = [] 
+for function in PROXY_ABI:
+    if function['type'] == 'constructor':
+        constructor_inputs = function['inputs']
+        break
+
+params = args.params
+casted_params = parse_parameters(constructor_inputs, params, [])
+
 
 # BUILD BEACON AND CONTRACT PROXIES
-
-# deploy beacon contract (already deployed)
-# deploy upgradable
-# deploy proxy contracts
 proxy = w3.eth.contract(abi=PROXY_ABI, bytecode=PROXY_BYTECODE)
+imp = w3.eth.contract(address=IMP_ADRSS, abi=IMP_ABI)
+initializer = encode_function_data(proxy, imp, params)
+
 tx_hash = proxy.constructor(w3.toChecksumAddress(BEACON_ADDR), b'').transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print("upgradable contract",tx_receipt.contractAddress)

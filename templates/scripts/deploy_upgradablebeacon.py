@@ -9,10 +9,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
                     help='network to deploy the smart contract. Can be either a url or a host:port. Default communication is through HTTPS so https:// is omitted.')
 parser.add_argument('--privateKey', type=str, help='private key to sign transactions')
-
 parser.add_argument('--abi', type=str, help='ABI of the smart contract to deploy')
-
-parser.add_argument('--beaconAddress', type=str, help='address of the beacon')
+parser.add_argument('--implementationAddress', type=str, help='address of the beacon')
 
 args = parser.parse_args()
 
@@ -22,7 +20,7 @@ signer = w3.eth.account.from_key(args.privateKey.upper())
 w3.eth.default_account = w3.toChecksumAddress(signer.address)
 
 # DEFINE VARIABLES
-BEACON_ADDR = args.beaconAddress
+IMP_ADDR = args.implementationAddress
 
 with open(f'{CONTRACTS_DIR}/{args.abi}.json') as f:
     upgradeproxy_contract_json = json.load(f)
@@ -31,6 +29,6 @@ UPGRADE_BYTECODE = upgradeproxy_contract_json['bytecode']
 
 # deploy upgradable
 upgradable = w3.eth.contract(abi=UPGRADE_ABI, bytecode=UPGRADE_BYTECODE)
-tx_hash = upgradable.constructor(w3.toChecksumAddress(BEACON_ADDR)).transact()
+tx_hash = upgradable.constructor(w3.toChecksumAddress(IMP_ADDR)).transact()
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-print("proxy contract",tx_receipt.contractAddress)
+print(tx_receipt.contractAddress)

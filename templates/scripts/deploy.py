@@ -26,7 +26,7 @@ signer = w3.eth.account.from_key(args.privateKey.upper())
 w3.eth.default_account = w3.toChecksumAddress(signer.address)
 contract = w3.eth.contract(abi=abi, bytecode=args.bytecode)
 
-constructor_inputs = []
+constructor_inputs = [] 
 for function in contract.abi:
     if function['type'] == 'constructor':
         constructor_inputs = function['inputs']
