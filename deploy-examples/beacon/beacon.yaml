@@ -4,6 +4,15 @@ imports:
 - nodes/contract.yaml
 - nodes/network.yaml
 
+dsl_definitions:
+ proxy_beacon: &proxy_beacon
+    type: katena.nodes.beacon.proxy
+    requirements:
+    - host: ganache
+    - wallet: userWallet
+    - upgradableBeacon: upgradable
+    properties:
+      abi: "BeaconProxy"
 topology_template:
   node_templates:
     ganache:
@@ -40,15 +49,10 @@ topology_template:
       - implementation: callee1
       properties:
         abi: "UpgradeableBeacon"
-    beaconProxy:
-      type: katena.nodes.beacon.proxy
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      - upgradableBeacon: upgradable
-      properties:
-        abi: "BeaconProxy"
-        proxyCount: 3
+    beaconProxy1: *proxy_beacon
+    beaconProxy2: *proxy_beacon
+    beaconProxy3: *proxy_beacon
+    beaconProxy4: *proxy_beacon
   
   inputs:
     UserKeyGanache:

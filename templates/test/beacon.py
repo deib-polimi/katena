@@ -7,11 +7,14 @@ CONTRACTS_DIR =  os.path.dirname(__file__)+"/../contracts"
 parser = argparse.ArgumentParser()
 parser.add_argument('--network', type=str, default='localhost:8545',
                     help='network to deploy the smart con tract. Can be either a url or a host:port. Default communication is through HTTPS so https:// is omitted.')
-parser.add_argument('--privateKey', type=str, default="bad4b1fe8c59e129a6f59db7a344d216940a82e40c82817c0aacecbd43b1bbbd")
-parser.add_argument('--implementationAddress', type=str, default="0x5194ECEf3c52E9259375F5ea650C2cE79576Ae9F")
-parser.add_argument('--implementationAddress2', type=str, default="0xeb899c8B3841E84e05aB224Ae771b6591de3175d")
-parser.add_argument('--proxyAddress', type=str, default="0xd0677AC42199AaF40251fDf5Ba4084D6931c1066")
-parser.add_argument('--upgradableBeaconAddress', type=str, default="0x683e145F3F568aE576F3232dD3BB866DF86F2765")
+parser.add_argument('--privateKey', type=str, default="d064a4bd34f0c40bca05faa3ed1af6c479e410ff8b438c68c5b21a9e5a2f1a1d")
+parser.add_argument('--implementationAddress', type=str, default="0x65F13dD16570e3e6A71466D5cA4dE87F2bB110b3")
+parser.add_argument('--implementationAddress2', type=str, default="0xb92Af5DCC3fE60CDEE66AA402B3Aa1D7b9595cfb")
+parser.add_argument('--proxyAddress1', type=str, default="0x169c57fBD22A27b74e08F3C56cF45d03637dA123")
+parser.add_argument('--proxyAddress2', type=str, default="0x3AE081759bF498916ACeE17d80d4eF1f72E05D65")
+parser.add_argument('--proxyAddress3', type=str, default="0x84dD936fa62a2d962530F74763cad27015Fd1328")
+parser.add_argument('--proxyAddress4', type=str, default="0xAFa895a50787AC8028037d382D6775244A5A45A7")
+parser.add_argument('--upgradableBeaconAddress', type=str, default="0xC034b6150F612a12aAAa01eD5A0a02cB5E6c1497")
 
 parser.add_argument('--implAbi', type=str, default="Implementation1")
 parser.add_argument('--implAbi2', type=str, default="Implementation2")
@@ -35,10 +38,15 @@ IMP_ABI2 = imp_contract_json['abi']
 with open(f'{CONTRACTS_DIR}/{args.proxyAbi}.json') as f:
     proxy_contract_json = json.load(f)
 PROXY_ABI = proxy_contract_json['abi']
+PROXY_ADDRS1 = w3.toChecksumAddress(args.proxyAddress1)
+PROXY_ADDRS2 = w3.toChecksumAddress(args.proxyAddress2)
+PROXY_ADDRS3 = w3.toChecksumAddress(args.proxyAddress3)
+PROXY_ADDRS4 = w3.toChecksumAddress(args.proxyAddress4)
 
 with open(f'{CONTRACTS_DIR}/{args.upgradableProxyAbi}.json') as f:
     upgradable_proxy_contract_json = json.load(f)
 UPGRADABLE_BEACON_ABI = upgradable_proxy_contract_json['abi']
+UPGRADABLE_ADDRS = w3.toChecksumAddress(args.upgradableBeaconAddress)
 
 # GET CONTRACTS AND THEIR ADDRESS
 imp_address = w3.toChecksumAddress(args.implementationAddress)
@@ -47,42 +55,96 @@ print("\nimplementation address ", args.implementationAddress)
 imp_address2 = w3.toChecksumAddress(args.implementationAddress2)
 implementation2 = w3.eth.contract(address=imp_address2,abi=IMP_ABI)
 print("implementation2 address ", args.implementationAddress2)
-proxy_address = w3.toChecksumAddress(args.proxyAddress)
-proxy = w3.eth.contract(address=proxy_address,abi=IMP_ABI)
-print("proxy address ", args.proxyAddress)
-upgradable_address = w3.toChecksumAddress(args.upgradableBeaconAddress)
-upgradable = w3.eth.contract(address=upgradable_address,abi=UPGRADABLE_BEACON_ABI)
-print("upgradable beacon address ", args.upgradableBeaconAddress)
-print("\n")
-w3.eth.sendTransaction({'to': upgradable_address,'data':upgradable.encodeABI(fn_name="upgradeTo", args=[imp_address])})
 
-# TESTS
-print("..::upgradableBeacon: implementation addrs", upgradable.functions.implementation().call())
-print("..::upgradableBeacon: current version     ", proxy.functions.getContractVersion().call())
-print("..::proxy:            getCount() ",proxy.functions.getCount().call())
-proxy.functions.add(5).transact()
-print("..::proxy:            add(5)     ")
-print("..::proxy:            getCount()",proxy.functions.getCount().call())
+# get proxy contracts
+proxy1 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS1),abi=IMP_ABI)
+proxy2 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS2),abi=IMP_ABI)
+proxy3 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS3),abi=IMP_ABI)
+proxy4 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS4),abi=IMP_ABI)
+upgradable = w3.eth.contract(address=UPGRADABLE_ADDRS,abi=UPGRADABLE_BEACON_ABI)
+print("proxy1 address ", PROXY_ADDRS1)
+print("proxy2 address ", PROXY_ADDRS2)
+print("proxy3 address ", PROXY_ADDRS3)
+print("proxy4 address ", PROXY_ADDRS4)
+print("upgradableBeacon address ", UPGRADABLE_ADDRS)
+print("\n")
+
+print("..:: CURRENT CONFIGURATION ::..")
+print("..::proxy1 getContractVersion()",proxy1.functions.getContractVersion().call())
+print("..::proxy2 getContractVersion()",proxy2.functions.getContractVersion().call())
+print("..::proxy3 getContractVersion()",proxy3.functions.getContractVersion().call())
+print("..::proxy4 getContractVersion()",proxy4.functions.getContractVersion().call())
+print("..::upgradableBeacon implementation()", upgradable.functions.implementation().call())
+print("\n")
+
+#w3.eth.sendTransaction({'to': UPGRADABLE_ADDRS,'data':upgradable.encodeABI(fn_name="upgradeTo", args=[imp_address])})
+
+# TESTS PROXY 1
+print("..::proxy1:            getCount() ",proxy1.functions.getCount().call())
+proxy1.functions.add(5).transact()
+print("..::proxy1:            add(5)     ")
+print("..::proxy1:            getCount()",proxy1.functions.getCount().call())
 
 try:
     proxy.functions.substract(3).call()
-    print("..::proxy:            subtract() ",)
-    print("..::proxy:            getCount()",proxy.functions.getCount().call())
+    print("..::proxy1:            subtract(3) ",)
+    print("..::proxy1:            getCount()",proxy1.functions.getCount().call())
 except:
-    print("..::proxy:            subtract() ERROR!! function not present in contract")
-    print("..::proxy:            getCount()",proxy.functions.getCount().call())
+    print("..::proxy1:            subtract(3) ERROR!! function not present in contract")
+    print("..::proxy1:            getCount()",proxy1.functions.getCount().call())
+
+# TESTS PROXY 2
+print("..::proxy2:            getCount() ",proxy2.functions.getCount().call())
+proxy2.functions.add(7).transact()
+print("..::proxy2:            add(7)     ")
+print("..::proxy2:            getCount()",proxy2.functions.getCount().call())
+
+try:
+    proxy.functions.substract(3).call()
+    print("..::proxy2:            subtract(3) ",)
+    print("..::proxy2:            getCount()",proxy2.functions.getCount().call())
+except:
+    print("..::proxy2:            subtract(3) ERROR!! function not present in contract")
+    print("..::proxy2:            getCount()",proxy2.functions.getCount().call())
+print("..::proxy3:            getCount() ",proxy3.functions.getCount().call())
+print("..::proxy4:            getCount() ",proxy4.functions.getCount().call())
+
+print("\n..::     UPDATE BEACON     ::..")
+w3.eth.sendTransaction({'to': UPGRADABLE_ADDRS,'data':upgradable.encodeABI(fn_name="upgradeTo", args=[imp_address2])})
+print("..:: CURRENT CONFIGURATION ::..")
+print("..::proxy1 getContractVersion()",proxy1.functions.getContractVersion().call())
+print("..::proxy2 getContractVersion()",proxy2.functions.getContractVersion().call())
+print("..::proxy3 getContractVersion()",proxy3.functions.getContractVersion().call())
+print("..::proxy4 getContractVersion()",proxy4.functions.getContractVersion().call())
+print("..::upgradableBeacon implementation()", upgradable.functions.implementation().call())
+print("\n")
+
+# get updated proxy contracts
+proxy1 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS1),abi=IMP_ABI2)
+proxy2 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS2),abi=IMP_ABI2)
+proxy3 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS3),abi=IMP_ABI2)
+proxy4 = w3.eth.contract(address=w3.toChecksumAddress(PROXY_ADDRS4),abi=IMP_ABI2)
+
+# TESTS PROXY 1
+# TESTS PROXY 2
+print("..::proxy1:            getCount() ",proxy1.functions.getCount().call())
+proxy1.functions.substract(2).transact()
+print("..::proxy1:            subtract(2)")
+print("..::proxy1:            getCount() ",proxy1.functions.getCount().call())
+proxy1.functions.add(6).transact()
+print("..::proxy1:            add(6)     ") 
+print("..::proxy1:            getCount() ",proxy1.functions.getCount().call())
 
 
+print("\n..::proxy2:            getCount() ",proxy2.functions.getCount().call())
+proxy2.functions.substract(10).transact()
+print("..::proxy2:            subtract(10)")
+print("..::proxy2:            getCount() ",proxy2.functions.getCount().call())
+proxy2.functions.add(20).transact()
+print("..::proxy2:            add(20)     ") 
+print("..::proxy2:            getCount() ",proxy2.functions.getCount().call())
 
-print("\n..:: update contract to beacon 2 ::..")
-proxy = w3.eth.contract(address=proxy_address,abi=IMP_ABI2)
-w3.eth.sendTransaction({'to': upgradable_address,'data':upgradable.encodeABI(fn_name="upgradeTo", args=[imp_address2])})
-print("..::upgradableBeacon: implementation addrs", upgradable.functions.implementation().call())
-print("..::upgradableBeacon: current version     ", proxy.functions.getContractVersion().call())
-print("..::proxy:            getCount() ",proxy.functions.getCount().call())
-proxy.functions.substract(2).transact()
-print("..::proxy:            subtract(2)")
-print("..::proxy:            getCount() ",proxy.functions.getCount().call())
-proxy.functions.add(6).transact()
-print("..::proxy:            add(6)     ") 
-print("..::proxy:            getCount() ",proxy.functions.getCount().call())
+print("\n..::proxy1:            getCount() ",proxy1.functions.getCount().call())
+print("..::proxy2:            getCount() ",proxy2.functions.getCount().call())
+print("..::proxy3:            getCount() not modfied",proxy3.functions.getCount().call())
+print("..::proxy4:            getCount() not modfied",proxy4.functions.getCount().call())

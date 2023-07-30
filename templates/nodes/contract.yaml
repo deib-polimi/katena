@@ -272,9 +272,6 @@ node_types:
                 - ../contracts/ 
   katena.nodes.beacon.proxy:
     derived_from: katena.nodes.contract
-    properties:
-      proxyCount:
-        type: integer
     requirements:
       - upgradableBeacon:
           capability: katena.capabilities.Callable
@@ -302,10 +299,6 @@ node_types:
               beaconAddress: { 
                 type: string, 
                 default: { get_attribute: [SELF, upgradableBeacon, contractAddress] }
-                }
-              proxyCount: {
-                type: integer,
-                default: { get_attribute: [SELF, proxyCount] }
                 }
               implementationAddress: { 
                 type: string, 
