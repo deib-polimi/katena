@@ -4,8 +4,7 @@
 
 Operations on Blockchain with TOSCA.
 
-This repo contains all the files needed to setup and run the experiments used in the evaluation of KATENA.
-The prototype has been tested on Ubuntu 20.04.
+This repo contains all the files needed to deploy compiled etherum aplications that are complietn with spacific deploy patterns.
 
 **NOTE**: to reproduce the experiments reported in the paper refer to [Experiments Reproducibility](#experiments-reproducibility) section. For each experiment, we provided the required step to run it.
 If you want further information on how to use KATENA to deploy your applications refer to [Development](DEVELOPMENT.md) file. For extra information on Number of Tokens computation see [here](./NUMBER_OF_TOKENS.md).
@@ -26,17 +25,22 @@ The suggested way to reproduce the experiments is to use Docker (if not installe
 
 ## Experiments Reproducibility
 
-The KATENA container allows to reproduce both the deployment of benchmark applications and the Number of Tokens analysis as described below.
+The KATENA container allows automate the deployment of ethereum applications with different patterns:
 
-**The following commands must be executed within KATENA containers (i.e., after the execution of step 3 of the previous section). The two experiments are independent, so there is no specific order to execute them.**
+1. Diamond 
+2. Proxy (ERC1967)
+3. upgradable Beacon 
 
-- ### Benchmark application deployment
+Examples of this patterns and other apps more comples can be foind in the deploy-examples folder.
 
-  To deploy the benchmark applications execute within the KATENA container the following command.
+- ### To deploy a custom application
+
+  To deploy an applications execute within the KATENA container the following command.
 
   ```
   ./deploy.sh -f <topology.ylm> -c <dir_containing_abis.yml>
   ```
+  Where the <topology.ylm> defines the architcture of the ethereum network being deployed.
 
   The script automatically:
 
@@ -45,15 +49,25 @@ The KATENA container allows to reproduce both the deployment of benchmark applic
   - Stores these credentials in KATENA
   - Instructs KATENA to deploy the input topology
 
+## Run tests
+
+Scripts can be used to test deployment. This scripts, must be listed in a `test` folder in the same directory as the contracts ABIs. An example can be found at `deploy-examples/beacon`:
+
+  ```
+  python ./.katena/contracts/test/<script>.py
+  ```
+
+Informations about the contracts addres and other paramters can be found in the `deploy.log` file or in the `.katena/.opera` directory.
+
 ## Error logs
 
-The errors produced by KATENA (if any) are stored in file `deploy.log`  at the  `.katena` dir.
+The errors produced by KATENA (if any) are stored in file `deploy.log`  at the  `.katena` directory.
 
 ## Repository structure
 
 - [deploy-examples](./deploy-examples/): examples of blockchain deployments.
 
-- [templates](./templates/): contains:
+- [templates](./templates/) folder contains:
 
   - katena building blocks (folder `nodes`)
   - Ansible playbooks attached to xopera node and relationships types (folder `playbooks`)
