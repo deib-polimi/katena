@@ -13,9 +13,7 @@ parser.add_argument('--contractAbi', type=str, help='ABI of the smart contract t
 parser.add_argument('--bytecode', type=str, help='contract bytecode')
 parser.add_argument('--params', nargs='*', help='contract input parameters')
 parser.add_argument('--beaconAddress', type=str, help='address of the beacon')
-
 parser.add_argument('--proxyCount', type=int, help='number of proxies to add to the beacon')
-
 args = parser.parse_args()
 
 w3 = Web3(Web3.HTTPProvider(f'http://{args.network}', request_kwargs={'verify': False}))
@@ -30,7 +28,6 @@ PROXY_BYTECODE = args.bytecode
 # TO SIGN ALL THE TRANSACTIONS
 signer = w3.eth.account.from_key(args.privateKey.upper())
 w3.eth.default_account = w3.toChecksumAddress(signer.address)
-
 
 
 # DEPLOY THE BEACON CONTRACT
@@ -48,29 +45,7 @@ for i in range(0,count):
                 constructor_inputs = function['inputs']
                 break
         
-    #casted_params = parse_parameters(constructor_inputs, params, [beacon_address])
-    #paramsToBytes = bytes(casted_params)
-    print(type(w3.toChecksumAddress(beacon_address)))
-    #print(type(paramsToBytes))
     tx_hash = proxy.constructor(w3.toChecksumAddress(beacon_address),b'').transact()
     tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     print(f'{tx_receipt.contractAddress}')
 
-# # Update the beacon value through the first proxy contract
-# proxy_instance_1 = w3.eth.contract(address=proxy_contract_address_1, abi=proxy_contract_abi)
-# update_transaction_1 = proxy_instance_1.functions.updateBeaconValue(newValue).buildTransaction({
-#     'from': YOUR_ADDRESS,
-#     'gas': YOUR_GAS_LIMIT,
-# })
-# signed_update_transaction_1 = w3.eth.account.signTransaction(update_transaction_1, YOUR_PRIVATE_KEY)
-# tx_hash_update_1 = w3.eth.sendRawTransaction(signed_update_transaction_1.rawTransaction)
-# tx_receipt_update_1 = w3.eth.waitForTransactionReceipt(tx_hash_update_1)
-
-# # Update the beacon value through the second proxy contract
-# proxy_instance_2 = w3.eth.contract(address=proxy_contract_address_2, abi=proxy_contract_abi)
-# update_transaction_2 = proxy_instance_2.functions.updateBeaconValue(newValue).buildTransaction({
-#     'from': YOUR_ADDRESS,
-#     'gas': YOUR_GAS_LIMIT,
-# })
-# signed_update_transaction_2 = w3.eth.account.signTransaction(update_transaction_2, YOUR_PRIVATE_KEY)
-# tx_hash_update_2 = w3.eth.sendRawTransaction(signed_update_transaction
