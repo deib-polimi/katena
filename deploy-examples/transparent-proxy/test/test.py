@@ -78,9 +78,10 @@ print("..::PUBLIC CALLS::..  (any caller)")
 
 print("- LOGIC FUNCTIONS") #SHOULD NOT FALL IN EXCEPT
 print("proxy  getCount()", trans_proxy.functions.getCount().call())
-print("proxy  add(3)", trans_proxy.functions.add(3).call())
+print("proxy  add(3)")
+trans_proxy.functions.add(3).transact()
 print("proxy  getCount()", trans_proxy.functions.getCount().call())
-print("proxy  substract(15)")
+print("proxy  substract(15)", end=" ")
 try:
    trans_proxy.functions.substract(15).call()
 except:
@@ -123,7 +124,8 @@ print("implementation upgraded successfully...")
 print("\n\nTEST UPGRADE:")
 print("proxy getContractVersion()", trans_proxy.functions.getContractVersion().call())
 print("proxy  getCount()", trans_proxy.functions.getCount().call())
-print("proxy  substract(10)", trans_proxy.functions.substract(10).call())
+print("proxy  substract(10)")
+trans_proxy.functions.substract(10).transact()
 print("proxy  getCount()", trans_proxy.functions.getCount().call())
 
 
