@@ -252,7 +252,7 @@ node_types:
       # implementation already defined in parent
       - admin:
           capability: katena.capabilities.Callable
-          node: katena.nodes.proxy.contract
+          node: katena.nodes.contract
           relationship: katena.relationships.callsConstructor
           occurrences: [1, 1]
     interfaces:
@@ -262,8 +262,6 @@ node_types:
           configure:
             inputs:
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              bytecode:
-                { type: string, default: { get_attribute: [SELF, bytecode] } }
               privateKey:
                 { type: string, default: { get_property: [SELF, privateKey] } }
               network:
