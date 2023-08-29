@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - name: deploy
+    command: python scripts/proxy_transparent_deploy.py --network {{ network }} --bytecode {{ bytecode }} --proxyAbi {{ abi }} --privateKey {{ privateKey }} --implementationAddress {{ implementationAddress }} --implementationAbi {{ implementationAbi }} --adminAddress {{ adminAddress }} --implementationParameters {{ implementationParameters | join(" ") }} 
+    register: contract_address
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_address: "{{ contract_address.stdout_lines[-1] }}"

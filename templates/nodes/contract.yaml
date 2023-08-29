@@ -189,9 +189,14 @@ node_types:
               primary: ../playbooks/delete_contract.yml
               dependencies:
                 - ../scripts/
-                - ../contracts/
-  # node to create stateless contracts              
+                - ../contracts/       
   katena.nodes.contract.implementation:
+    # *
+    # The implementation/logic contract differs from a normal contract
+    # as its constructor will never have any parameters
+    # and its function initialize will be run by its proxy
+    # katena.nodes.contract.implementation: node to create stateless logic contracts      
+    # * 
     derived_from: katena.nodes.contract
     interfaces:
       Standard:
@@ -238,6 +243,53 @@ node_types:
               contract_address: [SELF, contractAddress]
             implementation:
               primary: ../playbooks/proxy_deploy.yml
+              dependencies:
+                - ../scripts/
+                - ../contracts/
+  katena.nodes.proxy.transparent:
+    derived_from: katena.nodes.proxy.erc1967
+    requirements:
+      # implementation already defined in parent
+      - admin:
+          capability: katena.capabilities.Callable
+          node: katena.nodes.proxy.contract
+          relationship: katena.relationships.callsConstructor
+          occurrences: [1, 1]
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          configure:
+            inputs:
+              abi: { type: string, default: { get_property: [SELF, abi] } }
+              bytecode:
+                { type: string, default: { get_attribute: [SELF, bytecode] } }
+              privateKey:
+                { type: string, default: { get_property: [SELF, privateKey] } }
+              network:
+                { type: string, default: { get_property: [SELF, network] } }
+              implementationAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, implementation, contractAddress] },
+                }
+              implementationAbi : { 
+                  type: string, 
+                  default: { get_property: [SELF, implementation, abi ] } 
+                }
+              implementationParameters: { # so it inits with the same parameters as the imp
+                type: list, 
+                default: { get_property: [SELF, implementation, parameters] } 
+                }
+              adminAddress:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, admin, contractAddress] },
+                }
+            outputs:
+              contract_address: [SELF, contractAddress]
+            implementation:
+              primary: ../playbooks/proxy_transparent_deploy.yml
               dependencies:
                 - ../scripts/
                 - ../contracts/
