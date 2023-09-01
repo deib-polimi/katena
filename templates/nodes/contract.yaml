@@ -239,6 +239,16 @@ node_types:
                   type: string,
                   default: { get_attribute: [SELF, implementation, contractAddress] },
                 }
+              implementationAbi:
+                {
+                  type: string,
+                  default: { get_attribute: [SELF, implementation, abi] },
+                }
+              implementationParams:
+                {
+                  type: list,
+                  default: { get_property: [SELF, implementation, parameters] },
+                }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:

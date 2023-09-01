@@ -44,7 +44,7 @@ mkdir .katena/contracts &> /dev/null
 npx ganache-cli --quiet -l 10000000 -g 1 --allowUnlimitedContractSize --account_keys_path .katena/accounts.json &
 
 
-sleep 10
+sleep 15
 
 # to format the accounts info into a better readable format
 cat .katena/accounts.json | jq > .katena/accounts-pretty.json

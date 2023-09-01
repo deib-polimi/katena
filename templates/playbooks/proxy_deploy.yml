@@ -1,7 +1,7 @@
 - hosts: all
   tasks:
   - name: deploy
-    command: python scripts/proxy_deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --implementationAddress {{ implementationAddress }}
+    command: python scripts/proxy_deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }} --implementationAddress {{ implementationAddress }} --implementationParams {{ implementationParams | join(" ") }} --implementationAbi {{ implementationAbi }}
     register: contract_address
   - name: Set attributes
     set_stats:
