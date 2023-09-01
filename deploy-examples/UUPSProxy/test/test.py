@@ -114,7 +114,7 @@ try:
    print("update implementation contract...")
    print("proxy  upgradeTo()")
    proxy.functions.upgradeTo(imp_address2).transact()
-   print("proxy  substract(20)", end=" ")
+   print("proxy  substract(20)")
    proxy.functions.substract(20).call()
    print("proxy  getCount()", proxy.functions.getCount().call())
 except:
