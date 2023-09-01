@@ -117,7 +117,7 @@ try:
    proxy.functions.upgradeTo(imp_address2).transact()
    print("proxy getContractVersion()", proxy.functions.getContractVersion().call())
    print("proxy  substract(20)")
-   proxy.functions.substract(20).call()
+   proxy.functions.substract(20).transact()
    print("proxy  getCount()", proxy.functions.getCount().call())
 except:
    print("ERROR!!")
