@@ -108,12 +108,14 @@ try:
    proxy.functions.substract(20).call()
 except:
    print("ERROR func not found in this version")
+print("proxy getContractVersion()", proxy.functions.getContractVersion().call())
 print("proxy  getCount()", proxy.functions.getCount().call())
 
 try:
    print("update implementation contract...")
-   print("proxy  upgradeTo()")
+   print("proxy  upgradeTo() ...")
    proxy.functions.upgradeTo(imp_address2).transact()
+   print("proxy getContractVersion()", proxy.functions.getContractVersion().call())
    print("proxy  substract(20)")
    proxy.functions.substract(20).call()
    print("proxy  getCount()", proxy.functions.getCount().call())
