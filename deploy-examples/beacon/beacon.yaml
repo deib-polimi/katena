@@ -49,8 +49,8 @@ topology_template:
       - implementation: callee1
       properties:
         abi: "UpgradeableBeacon"
-      parameters: 
-       - { get_attribute: [SELF, implementation, contractAddress] }
+        parameters: 
+        - { get_attribute: [SELF, implementation, contractAddress] }
     beaconProxy1: *proxy_beacon
     beaconProxy2: *proxy_beacon
     beaconProxy3: *proxy_beacon
