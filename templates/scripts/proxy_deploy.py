@@ -34,11 +34,18 @@ imp = w3.eth.contract(address=IMP_ADRSS, abi=IMP_ABI)
 params = args.implementationParams
 
 # to type the params as the function requires
-initializer_inputs = [] 
-for function in IMP_ABI:
-    if function['name'] == 'initialize':
-        initializer_inputs = function['inputs']
-        break
+try: 
+    initializer_inputs = [] 
+    for function in IMP_ABI:
+        if function['name'] == 'initialize':
+            initializer_inputs = function['inputs']
+            break
+        
+    params = parse_parameters(initializer_inputs, params, [])
+    initializer = imp.encodeABI(fn_name="initialize", args=params)
+except:
+    initializer = b''
+
     
 params = parse_parameters(initializer_inputs, params, [])
 initializer = imp.encodeABI(fn_name="initialize", args=params)
