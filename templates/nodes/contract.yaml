@@ -322,7 +322,7 @@ node_types:
               network: { type: string, default: { get_property: [SELF, network] } }
               privateKey: { type: string, default: { get_property: [SELF, privateKey] } }
               abi: { type: string, default: { get_property: [SELF, abi] } }
-              implementationAddress: { type: string, default: { get_property: [SELF, implementationAddress] },}
+              parameters: { type: list, default: { get_property: [SELF, parameters] } }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:
