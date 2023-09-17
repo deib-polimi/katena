@@ -37,20 +37,37 @@ IMP_ADRSS = args.implementationAddress
 
 params = args.params
 
-# to type the params as the function requires
-initializer_inputs = [] 
-for function in IMP_ABI:
-    if function['name'] == 'initialize':
-        initializer_inputs = function['inputs']
-        break
-
-params = parse_parameters(initializer_inputs, params, [])
-
-# BUILD BEACON AND CONTRACT PROXIES
 proxy = w3.eth.contract(abi=PROXY_ABI, bytecode=PROXY_BYTECODE)
 imp = w3.eth.contract(address=IMP_ADRSS, abi=IMP_ABI)
 
-initializer = imp.encodeABI(fn_name="initialize", args=params)
-tx_hash = proxy.constructor(w3.toChecksumAddress(BEACON_ADDR), initializer).transact()
-tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-print(tx_receipt.contractAddress)
+# to type the params as the function requires
+try:
+    initializer_inputs = [] 
+    for function in IMP_ABI:
+        if function['name'] == 'initialize':
+            initializer_inputs = function['inputs']
+            break
+    params = parse_parameters(initializer_inputs, params, [])
+
+    # BUILD BEACON AND CONTRACT PROXIES
+
+    initializer = imp.encodeABI(fn_name="initialize", args=params)
+    tx_hash = proxy.constructor(w3.toChecksumAddress(BEACON_ADDR), initializer).transact()
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    print(tx_receipt.contractAddress)
+except: 
+
+    initializer_inputs = [] 
+    for function in IMP_ABI:
+        if function['type'] == 'constructor':
+            initializer_inputs = function['inputs']
+            break
+
+    params = parse_parameters(initializer_inputs, params, [])
+
+    # BUILD BEACON AND CONTRACT PROXIES
+    tx_hash = proxy.constructor(*params).transact()
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    print(tx_receipt.contractAddress)
+
+
