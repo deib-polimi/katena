@@ -1,0 +1,64 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+
+dsl_definitions:
+ proxy_beacon: &proxy_beacon
+    type: katena.nodes.beacon.proxy
+    requirements:
+    - host: ganache
+    - wallet: userWallet
+    - upgradableBeacon: upgradable
+    properties:
+      abi: "BeaconProxy"
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet: 
+      type: katena.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+    callee1:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Implementation1"
+        parameters:
+            - 40
+    callee2:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Implementation2"
+        parameters:
+            - 12
+    upgradable:
+      type: katena.nodes.beacon.upgradable
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - implementation: callee1
+      properties:
+        abi: "UpgradeableBeacon"
+        parameters: 
+        - { get_attribute: [SELF, implementation, contractAddress] }
+    beaconProxy1: *proxy_beacon
+    beaconProxy2: *proxy_beacon
+    beaconProxy3: *proxy_beacon
+    beaconProxy4: *proxy_beacon
+  
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string

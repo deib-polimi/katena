@@ -1,0 +1,253 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0xCA937B8DA86c1907457BE3230CeA70c5569C2c4F",
+      "txHash": "0x5a264fbcaa8977ec36bb85e22cb8d338c7acda81ef987314a0344d6852c12ccc",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x885300aB7e136Fa9c70F2e2082D612DFE590D707",
+      "txHash": "0xc13ac9a93bbbfaa4e2c46d9b9700d752f54fcb15c9553fc7d2afccc844de8a3c",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x6DF62F9Ac892CB122f58b20F9fE982B6408208e8",
+      "txHash": "0xb8a07537314b780e0fca57a08773df5f49c8241f0bea4bcd05db089912219a03",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x613a1f335930BBCfF6d74264E8571c0f47Af3903",
+      "txHash": "0xd024d342ae307cd5fafd95021f5a9c24c6d573e5249e2f99260c2b9e178af6cb",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x3D753B1863E8a510Ea4DBC67aEd9967Fc45767B0",
+      "txHash": "0x378a8095233773c441b4fc3a1b548cd66ef586efa6b591d83ab4fa9d8e90473a",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x6Bb390F1CEf26c1683ba483570715889Fe2a25D5",
+      "txHash": "0x545f665376bd7cab5d38c5ae8182c5d7ba9234ea8c9427afe4d0b5881c5cf36e",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x28848df00775f8a3D3e35Ea29867Cb15D7Cdf947",
+      "txHash": "0x9ced10f92764eab3357717176a87d6628f3026d6c1549214ac20690cf0d71d28",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x2dE3a36d9f89085faD18bFc13bEa63B3F3e4Bd5C",
+      "txHash": "0xdc82fa166c121f0abc409d50c72de17392e30620188f50f19a73d3a637a73ca1",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x1e362A5D1bf185C789A94e38Be0afD415cC3b831",
+      "txHash": "0xe85b462b8a901d62b8b7fc5f3192462940704f506e601a1b4ee24163b144da1e",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xc21D9DE7AAD55484Cf1F6080A0fE49044B0f6525",
+      "txHash": "0x06ab75baabd9d2e27700d5be2d0d2941377d253909830d16df6d3cb706d599a3",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xDd89af2dD1B6E20ea4492ac29C585eA77d5102b1",
+      "txHash": "0x9ed1309c44b057d182c934cccda4bbd34a63d6b0122493b93def3817ef5554de",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x683Cb003C5CEF587542D23Ba005dAC6F9a50dd0A",
+      "txHash": "0x826b085c5fc5f6565a9c4a5ff485f0960499aadc134e2ff0f35e65a808b74ebf",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x75E9e90E47EF4BA0547d5F34Da04b74AFbC36855",
+      "txHash": "0x405bc2a9f721926e6a69e41efd481a130e981a2f6dec788514f86866cadbf739",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x5Aa0fD04D650aE2572856017301bfb1FdD3ddcCa",
+      "txHash": "0x3a7649a32aa227efdefab79afd07089532a3851fa5db7a597f0ca6bdddfd47bd",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x0401Cc9Ff0fA0B6c0C6fF16C042dF61fdA7a91fD",
+      "txHash": "0x49d7253a620e9130f678adb5c892237a65e3141b24c51fe58d6d502831483c68",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xb9E80CaFBed113e49664369d14f45d4c89f23b21",
+      "txHash": "0x95b7e8043c4e9a79f086413024f176a44cbde834a4370b76b00ae83f8c19cd3c",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x49a3502acb162b00F41E1cfD1F1E1d2652eBA7F1",
+      "txHash": "0x74891777196c9a54dffe445deffd79bd20b411624837dff93d7fa617f06e791c",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x9BEeC4cADa4AE62a1E45EE2064C47656FC034489",
+      "txHash": "0x0b35b84e4d1a0b4d4dc55d031ecaf32b24734e2d32fab8461b6b1c33256ad378",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x3465063AF6b31908486474abe07806d4Fe26e98C",
+      "txHash": "0x05d4947a68c512c4d576662c4a05e610cedaa3ce96a0308a845ad00269f8f7d1",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xb1307C9591E8c9dE3037ed28BeA0Ff69b61F1092",
+      "txHash": "0xd1f982fec52215a1862f888fb7620b1764fe5b89ed37c38750042b3b3278c134",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x6e29D73bA286f49f38Fd35bB3a72aec743a62d77",
+      "txHash": "0x02b634a3565f5ada9e0063658430feea4f602fcde13e1e0f8d6b81e0518e0dcc",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xa68487e46aF59Fae75eEB170399BdeDDA07c87dA",
+      "txHash": "0xe645bf94d7ddeaf7aef0467ad2acb000956e5807eecc8ceeb2aed91012c3bd5d",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x5B5E567f5aeF30A8cf8468695B259aFB54f0F3eC",
+      "txHash": "0xc36621bea96948842577c91d45b1ae3b16ed3cc0106a5f1ddc192f4487c5effa",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xAeC68a0853Aa944dbfa8088cC380cADFf54371c8",
+      "txHash": "0x145234b8606ab55b2711d8b4d62af627e8939737c9137c48e53b9a9cefddad61",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x01Ad036f19922510d64bf745FaBcCA177d83634e",
+      "txHash": "0x04a64412d72deeb860d65d67b7b8920f90a6862e7ef20dac1f4c6df827bc98d2",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xe409c13d4c90A0f09240B5ba3A8f967c902F8763",
+      "txHash": "0x51b93fbb96a468ce618d55d97ede4f691061ec35c08cd93184b7a1ac6e729ee4",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x6e3fd716C21B56e819dB3Ce4D890CeA9Ca13d876",
+      "txHash": "0x7d17e9ee9367d813412ed2f864590d3fc8206299229960a497e191853aca2a77",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x7bCc443C9108A92875dd9324a30cCF8a5b324E93",
+      "txHash": "0x36c87cc05fd47b19023d778bbe60b4497da495c3f1fd6fc588b21dee7b6d1ba9",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x740f2B107c8740110F4EBB185717E5126bFC6fff",
+      "txHash": "0xd408d8097d497e8a283ac47a1daff4f55a2fa7080d9dcfd1f2319fbe04fba905",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xf10182D9F171b3Ec6114F6bBB6F4092b16d41bAA",
+      "txHash": "0xf51efae0be7c431aef6ac92c28aceac5c7b934e3109d843eb72eb465b9c8dce2",
+      "kind": "beacon"
+    }
+  ],
+  "impls": {
+    "a5671b67dc5fa5c28e09ff2da511a4a75f2bd8ce3ade8d85e4d3937225a06395": {
+      "address": "0x26996bE12762800F14C7A28c31dF55DAA0B235fA",
+      "txHash": "0xc3e62d9a7ec101c2984a519a95c5bc932751722bf478d3338fc1f1c5b71c10a2",
+      "layout": {
+        "solcVersion": "0.8.18",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "count",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "Implementation1",
+            "src": "contracts\\Implementation1.sol:9"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "a24f4349d52655589fc2008b16e53dca6be42608b04fd4283ddf107b1b45ec77": {
+      "address": "0x15d2da06CeAfaF26e6B7748a07cC97Fb3336cd6a",
+      "txHash": "0xe3ee422482b01efcbae6862efe65d16dd5b3663c42d7713655f39f72a20b2fc4",
+      "layout": {
+        "solcVersion": "0.8.18",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "count",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "Implementation1",
+            "src": "contracts\\Implementation1.sol:9"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}
