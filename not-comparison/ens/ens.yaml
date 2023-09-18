@@ -1,0 +1,64 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - nodes/contract.yaml
+  - nodes/network.yaml
+  - nodes/wallet.yaml
+
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet:
+      type: katena.nodes.wallet
+      requirements:
+        - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet }
+
+    # deploy diamond
+    ensRegistry:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "ENSRegistry"
+    publicResolver:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - constructorCalls: ensRegistry
+      properties:
+        abi: "PublicResolver"
+        parameters:
+          - "0x0000000000000000000000000000000000000000"
+    registrar:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - constructorCalls: ensRegistry
+      properties:
+        abi: "FIFSRegistrar"
+        parameters:
+          - "0x04f740db81dc36c853ab4205bddd785f46e79ccedca351fc6dfcbd8cc9a33dd6"
+    reverseRegistrar:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - constructorCalls: ensRegistry
+        - constructorCalls: publicResolver
+      properties:
+        abi: ReverseRegistrar
+
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string
+      required: true

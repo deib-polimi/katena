@@ -1,0 +1,321 @@
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet: 
+      type: katena.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet}
+
+    adminImpl:
+      type: katena.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "AdminImpl"
+    operationImpl:
+      type: katena.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "OperationImpl"
+
+    soloMargin:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: adminImpl
+      - libraries: operationImpl
+      - calls:
+          node: payableProxyForSoloMargin
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: expiry
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: finalSettlement
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: refunder
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: daiMigrator
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: limitOrders
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: stopLimitOrders
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: canonicalOrders
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: signedOperationProxy
+          relationship: ownerSetGlobalOperator
+      - calls:
+          node: expiryV2
+          relationship: ownerSetGlobalOperator
+      properties:
+        abi: "SoloMargin"
+        parameters:
+        - 0.15e18
+        - 0.05e18
+        - 0.90e18
+        - 0.00
+        - 2.00e18
+        - 0.50e18
+        - 1.00e18
+        - 2.00e18
+        - 2.00e18
+        - 100.00e18
+
+    polynomialInterestSetter:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "PolynomialInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 87960930880000
+
+    doubleExponentInterestSetter:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "DoubleExponentInterestSetter"
+        parameters:
+        - 1000000000000000000
+        - 86236206100
+
+    oraclePoker:
+      type: katena.nodes.contractReference
+      attributes:
+        contractAddress: { get_input: UserWallet }
+    weth:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "WETH9"
+    dai:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TokenB"
+    curve:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestCurve"
+    uniswapDai:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair"
+    uniswapUsd:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "TestUniswapV2Pair2"
+    daiPriceOracle:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: oraclePoker
+      - constructorCalls: weth
+      - constructorCalls: dai
+      - constructorCalls: curve
+      - constructorCalls: uniswapDai
+      - constructorCalls: uniswapUsd
+      properties:
+        abi: "DaiPriceOracle"
+        parameters:
+        - 1000000000000000000
+        - 100000000000000
+        - 10000000000000000
+    usdcPriceOracle:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "UsdcPriceOracle"
+
+    testMakerOracle:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+   
+    wethPriceOracle:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: testMakerOracle
+      properties:
+        abi: "WethPriceOracle"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+
+    testCalle:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }
+    testSimpleCallee:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "TestCallee"
+        parameters:
+        -  { get_attribute: [SELF, constructorCalls, contractAddress] }   
+
+    payableProxyForSoloMargin:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      - constructorCalls: weth
+      properties:
+        abi: "PayableProxyForSoloMargin"
+    expiry:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "Expiry"
+        parameters:
+          - 3600
+    expiryV2:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "ExpiryV2"
+        parameters:
+          - 3600
+    finalSettlement:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "FinalSettlement"
+        parameters:
+          - 2419200
+    refunder:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "Refunder"
+        parameters:
+        - EMPTY_LIST
+    daiMigrator:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "DaiMigrator"
+        parameters: 
+        - EMPTY_LIST 
+    liquidatorProxyV1ForSoloMargin:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LiquidatorProxyV1ForSoloMargin"
+    limitOrders:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LimitOrders"
+        parameters:
+        - 1001
+    stopLimitOrders:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "LimitOrders"
+        parameters:
+        - 1001 
+    canonicalOrders:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "CanonicalOrders"
+        parameters:
+        - { get_input: UserWallet }
+        - 1001 
+    signedOperationProxy:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - constructorCalls: soloMargin
+      properties:
+        abi: "SignedOperationProxy"
+        parameters:
+        - 1001 
+
+  relationship_templates:
+    ownerSetGlobalOperator:
+      type: katena.relationships.calls
+      properties:
+        modifier: "ownerSetGlobalOperator"

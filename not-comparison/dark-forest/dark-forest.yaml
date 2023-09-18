@@ -1,0 +1,169 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - nodes/contract.yaml
+  - nodes/network.yaml
+  - nodes/wallet.yaml
+
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet:
+      type: katena.nodes.wallet
+      requirements:
+        - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+        owner: { get_input: UserWallet }
+
+    # libraries
+    verifier:
+      type: katena.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "Verifier"
+    libGameUtils:
+      type: katena.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "LibGameUtils"
+    libLazyUpdate:
+      type: katena.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "LibLazyUpdate"
+    libArtifactUtils:
+      type: katena.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+      properties:
+        abi: "LibArtifactUtils"
+    libPlanet:
+      type: katena.nodes.library
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: libLazyUpdate
+        - libraries: verifier
+      properties:
+        abi: "LibPlanet"
+
+    # deploy diamond
+    diamondCut:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DiamondCutFacet"
+    diamondLoupe:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DiamondLoupeFacet"
+    ownership:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "OwnershipFacet"
+    diamond:
+      type: katena.nodes.diamond
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - cut: diamondCut
+        - facet: diamondLoupe
+        - facet: ownership
+        - facet: coreFacet
+        - facet: moveFacet
+        - facet: captureFacet
+        - facet: getterFacet
+        - facet: whitelistFacet
+        - facet: adminFacet
+        - facet: lobbyFacet
+      properties:
+        abi: "Diamond"
+    coreFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: verifier
+        - libraries: libPlanet
+      properties:
+        abi: "DFCoreFacet"
+    moveFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libArtifactUtils
+        - libraries: libGameUtils
+        - libraries: verifier
+        - libraries: libPlanet
+      properties:
+        abi: "DFMoveFacet"
+    captureFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libPlanet
+      properties:
+        abi: "DFCaptureFacet"
+    getterFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+      properties:
+        abi: "DFGetterFacet"
+    whitelistFacet:
+      type: katena.nodes.contract
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: verifier
+      properties:
+        abi: "DFWhitelistFacet"
+    adminFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+        - libraries: libGameUtils
+        - libraries: libArtifactUtils
+        - libraries: libPlanet
+      properties:
+        abi: "DFAdminFacet"
+    lobbyFacet:
+      type: katena.nodes.diamond.facet
+      requirements:
+        - host: ganache
+        - wallet: userWallet
+      properties:
+        abi: "DFLobbyFacet"
+
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string
+      required: true

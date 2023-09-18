@@ -1,0 +1,81 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+
+dsl_definitions:
+ proxy_beacon: &proxy_beacon
+    type: katena.nodes.beacon.proxy
+    requirements:
+    - host: ganache
+    - wallet: userWallet
+    - upgradableBeacon: upgradable
+    properties:
+      abi: "BeaconProxy"
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet: 
+      type: katena.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+    ticket1:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Ticket"
+        parameters:
+        - 0
+        - 0
+        - 0
+        - { get_input: UserWallet }
+        - "Ticket1"
+        - "NFT"
+        - ""
+    ticket2:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Ticket"
+        parameters:
+        - 0 #_startBlock
+        - 0 #_endBlock
+        - 0 #_ticketPrice
+        - { get_input: UserWallet } #_newOwner
+        - "Ticket2" #_name
+        - "NFT" #_symbol
+        - "" #_uri
+    upgradable:
+      type: katena.nodes.beacon.upgradable
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - implementation: ticket1
+      properties:
+        abi: "Beacon"
+        parameters:
+        - { get_input: UserWallet }
+        - { get_attribute: [SELF, implementation, contractAddress] }
+    beaconProxy: 
+      type: katena.nodes.beacon.proxy
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - upgradableBeacon: upgradable
+      properties:
+        abi: "TicketFactory"
+  
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string
