@@ -1,26 +1,17 @@
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const Logic1 = await ethers.getContractFactory("Implementation1");
+  const Logic2 = await ethers.getContractFactory("Implementation2");
+  
 
-  const lockedAmount = ethers.parseEther("0.001");
+  const imp = await upgrades.deployProxy(Logic1,[42],{initializer:'initialize'});
+  await imp.waitForDeployment();
 
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  const imp_upgraded = await upgrades.upgradeProxy(await imp.getAddress(), Logic2)
+  await imp_upgraded.waitForDeployment();
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

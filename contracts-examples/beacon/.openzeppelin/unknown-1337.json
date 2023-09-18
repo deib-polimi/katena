@@ -150,12 +150,32 @@
       "address": "0xf10182D9F171b3Ec6114F6bBB6F4092b16d41bAA",
       "txHash": "0xf51efae0be7c431aef6ac92c28aceac5c7b934e3109d843eb72eb465b9c8dce2",
       "kind": "beacon"
+    },
+    {
+      "address": "0x16DA400Eb28D798B612B0aFE8798f85d8796e119",
+      "txHash": "0x23701700f2389b9e25b254400a7e2bc22509357135d512c015564ea1e3ec8c46",
+      "kind": "beacon"
+    },
+    {
+      "address": "0x4387f0893628f4073Eac699283351dDA50Eb10CA",
+      "txHash": "0x1a2d56c5e96b14dfc3025c228a983b06b030a039435492667deda38fb97a4d09",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xE036a4D1bd4ab444C97215B8AeC6e7f62C049f4D",
+      "txHash": "0xf078c1d15d0f1ae835dfdd65bcef297b22d36af7074d298b1eca2e3409446366",
+      "kind": "beacon"
+    },
+    {
+      "address": "0xB6311d0B4f3A50A72A7532cDd1CB3A5B3Cd38a62",
+      "txHash": "0xfc630ae381ebe8f79634068bb784faa8c6bb251ebd17658728f52c3eb3ac49bc",
+      "kind": "beacon"
     }
   ],
   "impls": {
     "a5671b67dc5fa5c28e09ff2da511a4a75f2bd8ce3ade8d85e4d3937225a06395": {
-      "address": "0x26996bE12762800F14C7A28c31dF55DAA0B235fA",
-      "txHash": "0xc3e62d9a7ec101c2984a519a95c5bc932751722bf478d3338fc1f1c5b71c10a2",
+      "address": "0x25dD988dCf522bB7615d53007D9E795d0B4c2aB0",
+      "txHash": "0x3a9d1cce98ad7b83ca750249fd5a2067f0d568a61178c54268024e7958cb55eb",
       "layout": {
         "solcVersion": "0.8.18",
         "storage": [
@@ -202,8 +222,8 @@
       }
     },
     "a24f4349d52655589fc2008b16e53dca6be42608b04fd4283ddf107b1b45ec77": {
-      "address": "0x15d2da06CeAfaF26e6B7748a07cC97Fb3336cd6a",
-      "txHash": "0xe3ee422482b01efcbae6862efe65d16dd5b3663c42d7713655f39f72a20b2fc4",
+      "address": "0x9cc30D5af4f4bFD4292D12A5eC9e3E0ff73b3df1",
+      "txHash": "0x6164ac17b4cd6c0719ba0821ea6688b9d69b48c6524a52653b476a1e91539ee8",
       "layout": {
         "solcVersion": "0.8.18",
         "storage": [

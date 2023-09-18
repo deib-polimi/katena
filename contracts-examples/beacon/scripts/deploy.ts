@@ -1,10 +1,8 @@
 import {  ethers, upgrades } from "hardhat";
 
 async function main() {
-  const BeaconProxy = await ethers.getContractFactory("BeaconProxy");
   const Logic1 = await ethers.getContractFactory("Implementation1");
   const Logic2 = await ethers.getContractFactory("Implementation2");
-  const UpgradeableBeacon = await ethers.getContractFactory("UpgradeableBeacon");
   
   const beacon = await upgrades.deployBeacon(Logic1);
   await beacon.waitForDeployment();

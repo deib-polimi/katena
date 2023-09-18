@@ -1,0 +1,52 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+- nodes/contract.yaml
+- nodes/network.yaml
+
+# The function to upgrade to new version is implemented in the logic’s contract, 
+# so the mechanism of upgrading could change during the time
+
+topology_template:
+  node_templates:
+    ganache:
+      type: katena.nodes.network.ganache
+    userWallet: 
+      type: katena.nodes.wallet
+      requirements:
+      - host: ganache
+      properties:
+        privateKey: { get_input: UserKeyGanache }
+    callee1:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "UUPSImplementation1"
+        parameters:
+            - 40
+    callee2:
+      type: katena.nodes.contract.implementation
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "UUPSImplementation2"
+        parameters:
+            - 12
+    uups_proxy:
+      type: katena.nodes.proxy.erc1967
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - implementation: callee1
+      properties:
+        abi: "ERC1967Proxy"
+  
+  inputs:
+    UserKeyGanache:
+      type: string
+      required: true
+    UserWallet:
+      type: string

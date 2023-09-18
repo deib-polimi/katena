@@ -2,6 +2,7 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@openzeppelin/hardhat-upgrades";
 import "@typechain/hardhat";
+import "@nomicfoundation/hardhat-ethers";
 
 
 const config: HardhatUserConfig = {

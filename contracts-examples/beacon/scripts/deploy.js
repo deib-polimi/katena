@@ -19,7 +19,7 @@ async function main() {
     await upgradeableBeacon.waitForDeployment()
 
 
-    let ABI = [ "function initialize(uint256 initial_count)" ];
+    let ABI = [ 'function initialize(uint256 initial_count)' ];
     let iface = new ethers.utils.Interface(ABI);
     const calldata = iface.encodeFunctionData("initialize", [ 43 ])
 
