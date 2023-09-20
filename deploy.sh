@@ -6,17 +6,19 @@
 helpFunction()
 {
    echo ""
-   echo "Usage: $0  -f  -c "
+   echo "Usage: $0  -f  -c -n"
    echo -e "\t-f      : .yaml file with the topology of the deployment"
    echo -e "\t-c : directory where the abi contracts are stored"
+   echo -e "\t-n : the networkt o run the contracts"
    exit 1 # Exit script after printing help
 }
 
-while getopts "f:c:" opt
+while getopts "f:c:n::" opt
 do
    case "$opt" in
       f ) TEMPLATE_TOPOLOGY="$OPTARG" ;;
       c ) CONTRACTSPATH="$OPTARG" ;;
+      n ) NETWORK="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
@@ -41,7 +43,15 @@ mkdir .katena/contracts &> /dev/null
 ######################################################################
 #     RUN GANACHE AND GET ACCOUNT AND PRIVATE KEYS                          #
 #############################################################################
-npx ganache-cli --quiet -l 10000000 -g 1 --allowUnlimitedContractSize --account_keys_path .katena/accounts.json &
+if [ -z "$NETWORK" ] 
+then
+   echo "loading local network..."
+   npx ganache-cli --quiet -l 10000000 -g 1 --allowUnlimitedContractSize --account_keys_path .katena/accounts.json &
+else
+   echo "loading fork with external network..."
+   npx ganache-cli --fork $NETWORK --quiet -l 10000000 -g 1 --allowUnlimitedContractSize --account_keys_path .katena/accounts.json &
+fi
+
 
 
 sleep 15
