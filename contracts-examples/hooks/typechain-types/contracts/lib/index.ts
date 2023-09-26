@@ -3,8 +3,4 @@
 /* eslint-disable */
 import type * as fontsSol from "./Fonts.sol";
 export type { fontsSol };
-import type * as lyra from "./lyra";
-export type { lyra };
-import type * as synthetix from "./synthetix";
-export type { synthetix };
 export type { TokenURI } from "./TokenURI";

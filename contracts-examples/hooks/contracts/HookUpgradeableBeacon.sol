@@ -53,63 +53,72 @@ import "./interfaces/IHookProtocol.sol";
 /// the owner of this contract.
 /// This contract is based on the UpgradeableBeaconContract from OZ and DharmaUpgradeBeaconController from Dharma
 contract HookUpgradeableBeacon is IBeacon, PermissionConstants {
-    using Address for address;
+  using Address for address;
+  address private _implementation;
+  IHookProtocol private _protocol;
+  bytes32 private _role;
 
-    address private _implementation;
-    IHookProtocol private _protocol;
-    bytes32 private _role;
+  /// @dev Emitted when the implementation returned by the beacon is changed.
+  event Upgraded(address indexed implementation);
 
-    /// @dev Emitted when the implementation returned by the beacon is changed.
-    event Upgraded(address indexed implementation);
+  /// @dev Sets the address of the initial implementation, and the deployer account as the owner who can upgrade the
+  /// beacon.
+  constructor(
+    address implementation_,
+    address hookProtocol,
+    bytes32 upgraderRole
+  ) {
+    require(
+      Address.isContract(hookProtocol),
+      "UpgradeableBeacon: hookProtocol is not a contract"
+    );
 
-    /// @dev Sets the address of the initial implementation, and the deployer account as the owner who can upgrade the
-    /// beacon.
-    constructor(address implementation_, address hookProtocol, bytes32 upgraderRole) {
-        require(Address.isContract(hookProtocol), "UpgradeableBeacon: hookProtocol is not a contract");
+    require(
+      upgraderRole == VAULT_UPGRADER || upgraderRole == CALL_UPGRADER,
+      "upgrader role must be vault or call upgrader"
+    );
+    _setImplementation(implementation_);
+    _protocol = IHookProtocol(hookProtocol);
+    _role = upgraderRole;
+  }
 
-        require(
-            upgraderRole == VAULT_UPGRADER || upgraderRole == CALL_UPGRADER,
-            "upgrader role must be vault or call upgrader"
-        );
-        _setImplementation(implementation_);
-        _protocol = IHookProtocol(hookProtocol);
-        _role = upgraderRole;
-    }
+  /// @dev Throws if called by any account other than the owner.
+  modifier onlyOwner() {
+    require(
+      _protocol.hasRole(_role, msg.sender),
+      "HookUpgradeableBeacon: caller does not have the required upgrade permissions"
+    );
+    _;
+  }
 
-    /// @dev Throws if called by any account other than the owner.
-    modifier onlyOwner() {
-        require(
-            _protocol.hasRole(_role, msg.sender),
-            "HookUpgradeableBeacon: caller does not have the required upgrade permissions"
-        );
-        _;
-    }
+  /// @dev Returns the current implementation address.
+  function implementation() external view virtual override returns (address) {
+    return _implementation;
+  }
 
-    /// @dev Returns the current implementation address.
-    function implementation() external view virtual override returns (address) {
-        return _implementation;
-    }
+  /// @dev Upgrades the beacon to a new implementation.
+  ///
+  /// Emits an {Upgraded} event.
+  ///
+  /// Requirements:
+  ///
+  /// - msg.sender must be the owner of the contract.
+  /// - `newImplementation` must be a contract.
+  function upgradeTo(address newImplementation) external virtual onlyOwner {
+    _setImplementation(newImplementation);
+    emit Upgraded(newImplementation);
+  }
 
-    /// @dev Upgrades the beacon to a new implementation.
-    ///
-    /// Emits an {Upgraded} event.
-    ///
-    /// Requirements:
-    ///
-    /// - msg.sender must be the owner of the contract.
-    /// - `newImplementation` must be a contract.
-    function upgradeTo(address newImplementation) external virtual onlyOwner {
-        _setImplementation(newImplementation);
-        emit Upgraded(newImplementation);
-    }
-
-    /// @dev Sets the implementation contract address for this beacon
-    ///
-    /// Requirements:
-    ///
-    /// - `newImplementation` must be a contract.
-    function _setImplementation(address newImplementation) private {
-        require(Address.isContract(newImplementation), "HookUpgradeableBeacon: implementation is not a contract");
-        _implementation = newImplementation;
-    }
+  /// @dev Sets the implementation contract address for this beacon
+  ///
+  /// Requirements:
+  ///
+  /// - `newImplementation` must be a contract.
+  function _setImplementation(address newImplementation) private {
+    require(
+      Address.isContract(newImplementation),
+      "HookUpgradeableBeacon: implementation is not a contract"
+    );
+    _implementation = newImplementation;
+  }
 }

@@ -1,4 +1,4 @@
-tosca_definitions_version: tosca_simple_ykoaml_1_3
+tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
 - nodes/contract.yaml
@@ -24,14 +24,15 @@ topology_template:
       - wallet: userWallet
       properties:
         abi: "HookProtocol"
-      parameters: 
-      # all this addresses are hosted in mainnet
-      - "0x8894adFF1B59B04172160Ace8d3017290F53292F" # allowlister
-      - "0x4639c19C188f219D25C27235cB5C5eE04158Ca45" # vaultUpgrader
-      - "0x0e6558f79303fA07C37528b7dd85826db0AF34B7" # callsUpgrader
-      - "0x3cFc64E7C16f79398a477b06EE9b9d28f9588326" # marketConf
-      - "0x99d173aB3dF83eb8ce39056Fe8613514127C9274" # collectionConf
-      - "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" # weth
+        parameters: 
+        # all this addresses are hosted in mainnet
+        - "0x8894adFF1B59B04172160Ace8d3017290F53292F" # allowlister
+        - "0xfAE92dA2c341A1FFB51b1D3905373156E8d35618" # pauserRole
+        - "0x4639c19C188f219D25C27235cB5C5eE04158Ca45" # vaultUpgrader
+        - "0x0e6558f79303fA07C37528b7dd85826db0AF34B7" # callsUpgrader
+        - "0x3cFc64E7C16f79398a477b06EE9b9d28f9588326" # marketConf
+        - "0x99d173aB3dF83eb8ce39056Fe8613514127C9274" # collectionConf
+        - "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" # weth
     multiVault:
       type: katena.nodes.contract.implementation
       requirements:
@@ -78,25 +79,51 @@ topology_template:
       - host: ganache
       - wallet: userWallet
       - upgradableBeacon: soloVaultBeacon
-      - upgradableBeacon: multiVaultBeacon
+      #- constructorCalls: multiVaultBeacon
       - constructorCalls: protocol
       properties:
-        abi: "BeaconProxy"
+        abi: "HookERC721VaultFactory"
+        parameters:
         - { get_attribute: [SELF, constructorCalls, contractAddress] } # protocol  address
-        - { get_attribute: [SELF, upgradableBeacon, soloVaultBeacon, contractAddress] }
-        - { get_attribute: [SELF, upgradableBeacon, multiVaultBeacon, contractAddress] }
-    tokenUri:
+        - "0x1F6E5215D3DE35Dbaa2Fe0Ff61B7f8843b53b678" # multi vault
+        - { get_attribute: [SELF, upgradableBeacon, contractAddress] }
+    font1:
       type: katena.nodes.library
-        requirements:
-        - host: ganache
-        - wallet: userWallet
-        properties:
-          abi: "TokenURI"
-    callV1:
-       type: katena.nodes.contract.implementation
       requirements:
       - host: ganache
       - wallet: userWallet
+      properties:
+        abi: "Font1"
+    font2:
+      type: katena.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Font2"
+    font3:
+      type: katena.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      properties:
+        abi: "Font3"
+    tokenUri:
+      type: katena.nodes.library
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: font1
+      - libraries: font2
+      - libraries: font3
+      properties:
+        abi: "TokenURI"
+    callV1:
+      type: katena.nodes.contract
+      requirements:
+      - host: ganache
+      - wallet: userWallet
+      - libraries: tokenUri
       properties:
         abi: "HookCoveredCallImplV1"
     callBeacon:
@@ -104,7 +131,7 @@ topology_template:
       requirements:
       - host: ganache
       - wallet: userWallet
-      - implementation: soloVault
+      - implementation: callV1
       - constructorCalls: protocol
       properties:
         abi: "HookUpgradeableBeacon"
@@ -119,41 +146,12 @@ topology_template:
       - wallet: userWallet
       - upgradableBeacon: callBeacon
       - constructorCalls: protocol
-      properties:
+      properties: 
         abi: "HookCoveredCallFactory"
+        parameters: 
         - { get_attribute: [SELF, constructorCalls, contractAddress] } # protocol  address
-        - { get_attribute: [SELF, upgradableBeacon, multiVaultBeacon, contractAddress] }
-        - "0x3cFc64E7C16f79398a477b06EE9b9d28f9588326" # pre aproved market contract address
-
-    publicResolver:
-      type: katena.nodes.contract
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      - constructorCalls: ensRegistry
-      properties:
-        abi: "PublicResolver"
-        parameters:
-        - "0x0000000000000000000000000000000000000000"
-    registrar:
-      type: katena.nodes.contract
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      - constructorCalls: ensRegistry
-      properties:
-        abi: "FIFSRegistrar"
-        parameters:
-        - "0x04f740db81dc36c853ab4205bddd785f46e79ccedca351fc6dfcbd8cc9a33dd6"
-    reverseRegistrar:
-      type: katena.nodes.contract
-      requirements:
-      - host: ganache
-      - wallet: userWallet
-      - constructorCalls: ensRegistry
-      - constructorCalls: publicResolver
-      properties:
-        abi: ReverseRegistrar
+        - { get_attribute: [SELF, upgradableBeacon, contractAddress] }
+        - "0xdef1c0ded9bec7f1a1670819833240f027b25eff" # pre aproved market contract address
 
   inputs:
     UserKeyGanache:

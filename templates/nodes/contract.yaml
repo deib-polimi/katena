@@ -336,7 +336,7 @@ node_types:
       - upgradableBeacon:
           capability: katena.capabilities.Callable
           relationship: katena.relationships.callsConstructor
-          occurrences: [1, 1]
+          occurrences: [1, UNBOUNDED]
           node: katena.nodes.beacon.upgradable
     interfaces:
       Standard:
@@ -372,6 +372,7 @@ node_types:
                 type: list, 
                 default: { get_property: [SELF, upgradableBeacon, implementation, parameters] } 
                 }
+              contractParameters: { type: list, default: { get_property: [SELF, parameters] } }
             outputs:
               contract_address: [SELF, contractAddress]
             implementation:

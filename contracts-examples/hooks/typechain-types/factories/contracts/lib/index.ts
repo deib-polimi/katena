@@ -2,6 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as fontsSol from "./Fonts.sol";
-export * as lyra from "./lyra";
-export * as synthetix from "./synthetix";
 export { TokenURI__factory } from "./TokenURI__factory";

@@ -8,13 +8,13 @@ async function main () {
   const weth = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" 
   const approvedMarket = "0xdef1c0ded9bec7f1a1670819833240f027b25eff"
   // local addresses 
-  const deployer = "0x6864F076608d4b11aF4F505D489734b56D8dD216"
-  const vaultUpgrader = "0x4639c19C188f219D25C27235cB5C5eE04158Ca45"
-  const callsUpgrader =  "0x0e6558f79303fA07C37528b7dd85826db0AF34B7"
-  const pauserRole = "0xfAE92dA2c341A1FFB51b1D3905373156E8d35618"
-  const marketConf = "0x3cFc64E7C16f79398a477b06EE9b9d28f9588326"
-  const collectionConf = "0x99d173aB3dF83eb8ce39056Fe8613514127C9274"
-  const allowlister = "0x8894adFF1B59B04172160Ace8d3017290F53292F"
+  const deployer: string = "0xfA7404986878899719AD1bfB406C8a170A03479E"
+  const vaultUpgrader: string = "0x13cdBCDEED68F7C6396084101bC07B706252a275"
+  const callsUpgrader: string =  "0xDF5fE7C793607C9Fd2f3b8207EA11A40Caf7C963"
+  const pauserRole: string = "0x86Fe37fd17AabBB6E258F6DC3E31CF962F28B922"
+  const marketConf: string = "0x0E38B2e431F98e805DF738bd493bfE351Ec0d221"
+  const collectionConf: string = "0x4c325307ef14B49e3c560Ab25Bf987eA2C9783b1"
+  const allowlister: string = "0xcc69d844D875EC91efDF9f7A66C2Fb068C659DcA"
 
   const VAULT_UPGRADER = ethers.id("VAULT_UPGRADER");
   console.log("VAULT_UPGRADER",VAULT_UPGRADER)
@@ -135,13 +135,13 @@ async function main () {
 
  
   const TokenURIFac = await ethers.getContractFactory(
-    "TokenURI",
-  //   { libraries: {
-  //     Font1: await font1.getAddress(),//"0x1Ac06Ef3cda4dC2CB30A866090041D3266c33d45",
-  //     Font2: await font2.getAddress(),//"0xfa10218700bFd179DE800a461C98357b39525f38",
-  //     Font3: await font3.getAddress(), //"0x4C6eDA9CBb9B31152f3f002CAe5E3eF805Ad19f9",
-  //   }
-  // }
+      "TokenURI",
+      { libraries: {
+        Font1: await font1.getAddress(),//"0x1Ac06Ef3cda4dC2CB30A866090041D3266c33d45",
+        Font2: await font2.getAddress(),//"0xfa10218700bFd179DE800a461C98357b39525f38",
+        Font3: await font3.getAddress(), //"0x4C6eDA9CBb9B31152f3f002CAe5E3eF805Ad19f9",
+      }
+    }
   )
   const tokenURI = await TokenURIFac.deploy({
     from: deployer,  

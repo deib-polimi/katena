@@ -22,8 +22,18 @@ import type {
 } from "../../common";
 
 export interface TokenURIInterface extends Interface {
-  getFunction(nameOrSignature: "tokenURIERC721"): FunctionFragment;
+  getFunction(
+    nameOrSignature: "renderSVG1" | "renderSVG2" | "tokenURIERC721"
+  ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "renderSVG1",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "renderSVG2",
+    values: [AddressLike, BigNumberish]
+  ): string;
   encodeFunctionData(
     functionFragment: "tokenURIERC721",
     values: [
@@ -36,6 +46,8 @@ export interface TokenURIInterface extends Interface {
     ]
   ): string;
 
+  decodeFunctionResult(functionFragment: "renderSVG1", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "renderSVG2", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "tokenURIERC721",
     data: BytesLike
@@ -85,6 +97,18 @@ export interface TokenURI extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  renderSVG1: TypedContractMethod<
+    [strike: BigNumberish, expiration: BigNumberish],
+    [string],
+    "view"
+  >;
+
+  renderSVG2: TypedContractMethod<
+    [underlyingAddress: AddressLike, underlyingTokenId: BigNumberish],
+    [string],
+    "view"
+  >;
+
   tokenURIERC721: TypedContractMethod<
     [
       instrumentId: BigNumberish,
@@ -102,6 +126,20 @@ export interface TokenURI extends BaseContract {
     key: string | FunctionFragment
   ): T;
 
+  getFunction(
+    nameOrSignature: "renderSVG1"
+  ): TypedContractMethod<
+    [strike: BigNumberish, expiration: BigNumberish],
+    [string],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "renderSVG2"
+  ): TypedContractMethod<
+    [underlyingAddress: AddressLike, underlyingTokenId: BigNumberish],
+    [string],
+    "view"
+  >;
   getFunction(
     nameOrSignature: "tokenURIERC721"
   ): TypedContractMethod<

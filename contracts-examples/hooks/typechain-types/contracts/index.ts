@@ -8,7 +8,6 @@ export type { lib };
 import type * as mixin from "./mixin";
 export type { mixin };
 export type { HookBeaconProxy } from "./HookBeaconProxy";
-export type { HookBidPool } from "./HookBidPool";
 export type { HookCoveredCallFactory } from "./HookCoveredCallFactory";
 export type { HookCoveredCallImplV1 } from "./HookCoveredCallImplV1";
 export type { HookERC721MultiVaultImplV1 } from "./HookERC721MultiVaultImplV1";

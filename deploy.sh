@@ -52,8 +52,6 @@ else
    npx ganache-cli --fork $NETWORK --quiet -l 10000000 -g 1 --allowUnlimitedContractSize --account_keys_path .katena/accounts.json &
 fi
 
-
-
 sleep 15
 
 # to format the accounts info into a better readable format

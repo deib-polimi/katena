@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookBeaconProxy.sol": {
-      "lastModificationDate": 1695045001636,
-      "contentHash": "8b2e034d436a7976348bebe9c781ec74",
+      "lastModificationDate": 1695756576698,
+      "contentHash": "aeb2b2f4d2fd2f2108c9e47df068e8a2",
       "sourceName": "contracts/HookBeaconProxy.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -75,6 +75,41 @@
         "Proxy"
       ]
     },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\proxy\\beacon\\IBeacon.sol": {
+      "lastModificationDate": 1695067957061,
+      "contentHash": "b6bd23bf19e90b771337037706470933",
+      "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IBeacon"
+      ]
+    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\proxy\\ERC1967\\ERC1967Upgrade.sol": {
       "lastModificationDate": 1695067956649,
       "contentHash": "a127706394bead18392601a20d44867a",
@@ -116,41 +151,6 @@
         "ERC1967Upgrade"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\proxy\\beacon\\IBeacon.sol": {
-      "lastModificationDate": 1695067957061,
-      "contentHash": "b6bd23bf19e90b771337037706470933",
-      "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IBeacon"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Address.sol": {
       "lastModificationDate": 1695067956231,
       "contentHash": "211ffd288c1588ba8c10eae668ca3c66",
@@ -186,41 +186,6 @@
         "Address"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC1967.sol": {
-      "lastModificationDate": 1695067957205,
-      "contentHash": "d0d060231a45da7a1eecbb5cd286fa40",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC1967.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC1967"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC1822.sol": {
       "lastModificationDate": 1695067956448,
       "contentHash": "2858d98e74e67987ec81b39605230b74",
@@ -254,6 +219,41 @@
       ],
       "artifacts": [
         "IERC1822Proxiable"
+      ]
+    },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC1967.sol": {
+      "lastModificationDate": 1695067957205,
+      "contentHash": "d0d060231a45da7a1eecbb5cd286fa40",
+      "sourceName": "@openzeppelin/contracts/interfaces/IERC1967.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1967"
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\StorageSlot.sol": {
@@ -292,8 +292,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\BeaconSalts.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "00c4a48fa6aa63ee80b82faf48279091",
+      "lastModificationDate": 1695756577131,
+      "contentHash": "e44aa5ceda347b6b92f860d14a60ac16",
       "sourceName": "contracts/lib/BeaconSalts.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -329,8 +329,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookERC721VaultFactory.sol": {
-      "lastModificationDate": 1695045001636,
-      "contentHash": "1de5658d65e3f3bd58ec6d5bd6c69efd",
+      "lastModificationDate": 1695756576801,
+      "contentHash": "5decd526e78b556379262eceec2b8115",
       "sourceName": "contracts/HookERC721VaultFactory.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -372,9 +372,46 @@
         "HookERC721VaultFactory"
       ]
     },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookProtocol.sol": {
+      "lastModificationDate": 1695756577024,
+      "contentHash": "e84bec84dcb17253c5e74f0b924fecad",
+      "sourceName": "contracts/interfaces/IHookProtocol.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/IAccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "IHookProtocol"
+      ]
+    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookERC721VaultFactory.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "4c8fdf66a743f2f4d97856c8547ec181",
+      "lastModificationDate": 1695756577001,
+      "contentHash": "f114d18b73daebbc9275f4b2fdbf5d81",
       "sourceName": "contracts/interfaces/IHookERC721VaultFactory.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -410,8 +447,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookERC721Vault.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "d33645542c8196a955a72109f79015f0",
+      "lastModificationDate": 1695756576977,
+      "contentHash": "f4144588fbef8973d295f17a283edcff",
       "sourceName": "contracts/interfaces/IHookERC721Vault.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -448,8 +485,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IInitializeableBeacon.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "b08f4688ab0697660c96ad9960cc4d21",
+      "lastModificationDate": 1695756577073,
+      "contentHash": "5a32a1811fb3a2aa6411e986b8105670",
       "sourceName": "contracts/interfaces/IInitializeableBeacon.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -482,46 +519,9 @@
         "IInitializeableBeacon"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookProtocol.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "4c2eec9eddd5f56b8d1e6a92c60b418a",
-      "sourceName": "contracts/interfaces/IHookProtocol.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/access/IAccessControl.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IHookProtocol"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\mixin\\PermissionConstants.sol": {
-      "lastModificationDate": 1695045001670,
-      "contentHash": "a7f23aa35c054c2a6d070c9f2475334e",
+      "lastModificationDate": 1695756577346,
+      "contentHash": "34c5c8c6b0ca2210ae09dcdf03554bcb",
       "sourceName": "contracts/mixin/PermissionConstants.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -589,9 +589,44 @@
         "Create2"
       ]
     },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\access\\IAccessControl.sol": {
+      "lastModificationDate": 1695067957020,
+      "contentHash": "57c84298234411cea19c7c284d86be8b",
+      "sourceName": "@openzeppelin/contracts/access/IAccessControl.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IAccessControl"
+      ]
+    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookVault.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "2d9d4a4dc61f69a6a0f3699f8f569cd6",
+      "lastModificationDate": 1695756577041,
+      "contentHash": "2c8492889ece73cc38296f540a55f04d",
       "sourceName": "contracts/interfaces/IHookVault.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -663,8 +698,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\Entitlements.sol": {
-      "lastModificationDate": 1695045001661,
-      "contentHash": "f4fa5e80efe4026abcb1723eaf2a5c83",
+      "lastModificationDate": 1695756577171,
+      "contentHash": "516af978decb601653347fe79a2107f1",
       "sourceName": "contracts/lib/Entitlements.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -735,8 +770,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\Signatures.sol": {
-      "lastModificationDate": 1695045001661,
-      "contentHash": "17dcfa8c6974d167ca60e94be0bc0cdc",
+      "lastModificationDate": 1695756577247,
+      "contentHash": "fdcad730a30b08dd5be606c35eb28e38",
       "sourceName": "contracts/lib/Signatures.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -769,44 +804,9 @@
         "Signatures"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\access\\IAccessControl.sol": {
-      "lastModificationDate": 1695067957020,
-      "contentHash": "57c84298234411cea19c7c284d86be8b",
-      "sourceName": "@openzeppelin/contracts/access/IAccessControl.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IAccessControl"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookCoveredCallImplV1.sol": {
-      "lastModificationDate": 1695221899950,
-      "contentHash": "e72accde153f87614583b7de1b1a5495",
+      "lastModificationDate": 1695756576755,
+      "contentHash": "46e21a39f0e751784ee31c79a2176ecd",
       "sourceName": "contracts/HookCoveredCallImplV1.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -855,44 +855,9 @@
         "HookCoveredCallImplV1"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IWETH.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "924a7612cd970022d5fb7117d0d69f96",
-      "sourceName": "contracts/interfaces/IWETH.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IWETH"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookCoveredCall.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "0b29264ed207a4940aae24ec061c9e2e",
+      "lastModificationDate": 1695756576931,
+      "contentHash": "568ee32e926163fd22c919b39c3bc26e",
       "sourceName": "contracts/interfaces/IHookCoveredCall.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -928,9 +893,44 @@
         "IHookCoveredCall"
       ]
     },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IWETH.sol": {
+      "lastModificationDate": 1695756577091,
+      "contentHash": "bb570f1fe9602dc577ea83ba06ac8dd0",
+      "sourceName": "contracts/interfaces/IWETH.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "IWETH"
+      ]
+    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\mixin\\HookInstrumentERC721.sol": {
-      "lastModificationDate": 1695068200400,
-      "contentHash": "8163a0fbad623ebb6e011b65af96e347",
+      "lastModificationDate": 1695756600001,
+      "contentHash": "7b4abdd392044e0318023cbb254c8e5c",
       "sourceName": "contracts/mixin/HookInstrumentERC721.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -971,41 +971,6 @@
         "HookInstrumentERC721"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
-      "lastModificationDate": 1695067956318,
-      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
-      "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Counters"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\security\\ReentrancyGuard.sol": {
       "lastModificationDate": 1695067957544,
       "contentHash": "1535f8c0c68463f8c1b5239f7584e71f",
@@ -1041,10 +1006,10 @@
         "ReentrancyGuard"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol": {
-      "lastModificationDate": 1695067957436,
-      "contentHash": "5efeb93e6b1c83c754da2846c2da51a7",
-      "sourceName": "@openzeppelin/contracts/proxy/utils/Initializable.sol",
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
+      "lastModificationDate": 1695067956318,
+      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
+      "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
       "solcConfig": {
         "version": "0.8.10",
         "settings": {
@@ -1068,14 +1033,12 @@
           }
         }
       },
-      "imports": [
-        "../../utils/Address.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
-        "^0.8.2"
+        "^0.8.0"
       ],
       "artifacts": [
-        "Initializable"
+        "Counters"
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\IERC721.sol": {
@@ -1113,6 +1076,43 @@
       ],
       "artifacts": [
         "IERC721"
+      ]
+    },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\proxy\\utils\\Initializable.sol": {
+      "lastModificationDate": 1695067957436,
+      "contentHash": "5efeb93e6b1c83c754da2846c2da51a7",
+      "sourceName": "@openzeppelin/contracts/proxy/utils/Initializable.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "Initializable"
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\extensions\\IERC721Metadata.sol": {
@@ -1153,8 +1153,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\HookStrings.sol": {
-      "lastModificationDate": 1695045001661,
-      "contentHash": "47398066dfed4a9d907ca56339b8d1c1",
+      "lastModificationDate": 1695756577224,
+      "contentHash": "3037032671004b6d5d23fec9f9ec998b",
       "sourceName": "contracts/lib/HookStrings.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1188,8 +1188,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\TokenURI.sol": {
-      "lastModificationDate": 1695220711363,
-      "contentHash": "cfcbed282dfba54b57abcece6bf4e685",
+      "lastModificationDate": 1695756577262,
+      "contentHash": "1b42bf575f7b80bea4ee6e3ffbbf34ae",
       "sourceName": "contracts/lib/TokenURI.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1216,7 +1216,9 @@
       },
       "imports": [
         "@openzeppelin/contracts/utils/Base64.sol",
-        "./HookStrings.sol"
+        "./HookStrings.sol",
+        "./Fonts.sol",
+        "./BokkyPooBahsDateTimeLibrary.sol"
       ],
       "versionPragmas": [
         "^0.8.10"
@@ -1335,6 +1337,113 @@
         "ERC721Burnable"
       ]
     },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\BokkyPooBahsDateTimeLibrary.sol": {
+      "lastModificationDate": 1695756577151,
+      "contentHash": "7edf69991f7616e1c9bbf7301cb84d29",
+      "sourceName": "contracts/lib/BokkyPooBahsDateTimeLibrary.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.9.0"
+      ],
+      "artifacts": [
+        "BokkyPooBahsDateTimeLibrary"
+      ]
+    },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\Fonts.sol": {
+      "lastModificationDate": 1695756577199,
+      "contentHash": "9ec0564f13214db36e21f6ca1f60f921",
+      "sourceName": "contracts/lib/Fonts.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "Font1",
+        "Font2",
+        "Font3"
+      ]
+    },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1695067956306,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\ERC721.sol": {
       "lastModificationDate": 1695067956793,
       "contentHash": "95602b04f0b53f1139f4668d123ddeb7",
@@ -1376,41 +1485,6 @@
       ],
       "artifacts": [
         "ERC721"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1695067956306,
-      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
-      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Context"
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\Strings.sol": {
@@ -1488,41 +1562,6 @@
         "ERC165"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\math\\Math.sol": {
-      "lastModificationDate": 1695067957482,
-      "contentHash": "fe63409d8a06818b926cf89e0ea88b1b",
-      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Math"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SignedMath.sol": {
       "lastModificationDate": 1695067957588,
       "contentHash": "9488ebd4daacfee8ad04811600d7d061",
@@ -1556,6 +1595,41 @@
       ],
       "artifacts": [
         "SignedMath"
+      ]
+    },
+    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\math\\Math.sol": {
+      "lastModificationDate": 1695067957482,
+      "contentHash": "fe63409d8a06818b926cf89e0ea88b1b",
+      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Math"
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\access\\AccessControl.sol": {
@@ -1599,8 +1673,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IERC721FlashLoanReceiver.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "17a626946fd2c5a8794347c98e02869b",
+      "lastModificationDate": 1695756576901,
+      "contentHash": "e91b3c5838d1930bd1605cb14f84a72d",
       "sourceName": "contracts/interfaces/IERC721FlashLoanReceiver.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1637,8 +1711,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookERC721MultiVaultImplV1.sol": {
-      "lastModificationDate": 1695045001636,
-      "contentHash": "985e22db1398797c30c4572d601968cd",
+      "lastModificationDate": 1695756576771,
+      "contentHash": "0caf5b732a32f95c4fef139224c5f24d",
       "sourceName": "contracts/HookERC721MultiVaultImplV1.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1682,8 +1756,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\mixin\\EIP712.sol": {
-      "lastModificationDate": 1695045001670,
-      "contentHash": "47a250f426898464ea667957c2294290",
+      "lastModificationDate": 1695756577303,
+      "contentHash": "8049e1a303695b8e803c70a7bce642dd",
       "sourceName": "contracts/mixin/EIP712.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1717,8 +1791,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookERC721VaultImplV1.sol": {
-      "lastModificationDate": 1695045001636,
-      "contentHash": "629c410a30e7f49001a2fb661a737c6c",
+      "lastModificationDate": 1695756576823,
+      "contentHash": "a3b6c886a68d18bbe4afd4a7e780dfb7",
       "sourceName": "contracts/HookERC721VaultImplV1.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -1753,746 +1827,9 @@
         "HookERC721VaultImplV1"
       ]
     },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\utils\\SafeERC20.sol": {
-      "lastModificationDate": 1695067957565,
-      "contentHash": "1b5d667d3740d866eca0352758e59827",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../IERC20.sol",
-        "../extensions/IERC20Permit.sol",
-        "../../../utils/Address.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "SafeERC20"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
-      "lastModificationDate": 1695067957218,
-      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Permit.sol": {
-      "lastModificationDate": 1695067957240,
-      "contentHash": "aa849939a4ae83a4dcb2dca9b3e9e707",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20Permit"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookBidPool.sol": {
-      "lastModificationDate": 1695051900818,
-      "contentHash": "c47d1e286bc9da9b19a40f4d6cd0534c",
-      "sourceName": "contracts/HookBidPool.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC721/IERC721.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
-        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-        "@openzeppelin/contracts/access/AccessControl.sol",
-        "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol",
-        "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-        "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol",
-        "./lib/PoolOrders.sol",
-        "./lib/Signatures.sol",
-        "./lib/lyra/BlackScholes.sol",
-        "./interfaces/IHookProtocol.sol",
-        "./interfaces/IHookOption.sol",
-        "./interfaces/delegate-cash/IDelegationRegistry.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "HookBidPool"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\PoolOrders.sol": {
-      "lastModificationDate": 1695045001661,
-      "contentHash": "617fbed4bbf30f189adc04ad4fc98731",
-      "sourceName": "contracts/lib/PoolOrders.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../interfaces/zeroex-v4/IPropertyValidator.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "PoolOrders"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\lyra\\BlackScholes.sol": {
-      "lastModificationDate": 1695051891565,
-      "contentHash": "aa37599c45c020301f8d0a6480a4f7bc",
-      "sourceName": "contracts/lib/lyra/BlackScholes.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../synthetix/SignedDecimalMath.sol",
-        "../synthetix/DecimalMath.sol",
-        "./FixedPointMathLib.sol",
-        "./Math.sol"
-      ],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "BlackScholes"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\delegate-cash\\IDelegationRegistry.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "d62706f2f68289d8aa98f381065398ee",
-      "sourceName": "contracts/interfaces/delegate-cash/IDelegationRegistry.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "IDelegationRegistry"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookOption.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "dbd529f852a63e6de0f5fd82e0f0ce35",
-      "sourceName": "contracts/interfaces/IHookOption.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IHookOption"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\ECDSA.sol": {
-      "lastModificationDate": 1695067956475,
-      "contentHash": "d822a8a9468649cab463f29f5decf5cc",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../Strings.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ECDSA"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\draft-EIP712.sol": {
-      "lastModificationDate": 1695067956414,
-      "contentHash": "99862ec40e690088798ff5801da0a8ed",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./EIP712.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": []
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\SignatureChecker.sol": {
-      "lastModificationDate": 1695067957582,
-      "contentHash": "53d16b3bec482493405bdc74852eb2cd",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./ECDSA.sol",
-        "../../interfaces/IERC1271.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "SignatureChecker"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\zeroex-v4\\IPropertyValidator.sol": {
-      "lastModificationDate": 1695045001653,
-      "contentHash": "bdbec38b0ad64290ed9696b054b34dad",
-      "sourceName": "contracts/interfaces/zeroex-v4/IPropertyValidator.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IPropertyValidator"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\synthetix\\SignedDecimalMath.sol": {
-      "lastModificationDate": 1695045001670,
-      "contentHash": "5eab56dbd60e3028a22224cf9ba2810d",
-      "sourceName": "contracts/lib/synthetix/SignedDecimalMath.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "SignedDecimalMath"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\synthetix\\DecimalMath.sol": {
-      "lastModificationDate": 1695045001669,
-      "contentHash": "4713df33305d5d6a6784ad4c6e1a4caf",
-      "sourceName": "contracts/lib/synthetix/DecimalMath.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "DecimalMath"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\lyra\\Math.sol": {
-      "lastModificationDate": 1695051860243,
-      "contentHash": "84f0bf17d6e2c3cca633db1136f50a98",
-      "sourceName": "contracts/lib/lyra/Math.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "Math_"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\lyra\\FixedPointMathLib.sol": {
-      "lastModificationDate": 1695045001661,
-      "contentHash": "d04a191d23a1cd38e2e96205a0e4d5f0",
-      "sourceName": "contracts/lib/lyra/FixedPointMathLib.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.10"
-      ],
-      "artifacts": [
-        "FixedPointMathLib"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\EIP712.sol": {
-      "lastModificationDate": 1695067956486,
-      "contentHash": "459aeb9cc3fc3c6d67d30ffefb724aba",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/EIP712.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./ECDSA.sol",
-        "../ShortStrings.sol",
-        "../../interfaces/IERC5267.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.8"
-      ],
-      "artifacts": [
-        "EIP712"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\utils\\ShortStrings.sol": {
-      "lastModificationDate": 1695067957578,
-      "contentHash": "8dde288da49722a70f34ee369be4bfba",
-      "sourceName": "@openzeppelin/contracts/utils/ShortStrings.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./StorageSlot.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.8"
-      ],
-      "artifacts": [
-        "ShortStrings"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC5267.sol": {
-      "lastModificationDate": 1695067957297,
-      "contentHash": "b1756048024350a162c3be27c04aa652",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC5267.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC5267"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC1271.sol": {
-      "lastModificationDate": 1695067957139,
-      "contentHash": "8fe867b95c856b204f954a1910e28a1e",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC1271.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC1271"
-      ]
-    },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookUpgradeableBeacon.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "6c0832dd749bf346cd72e90f72895dc1",
+      "lastModificationDate": 1695756576871,
+      "contentHash": "6d570bf8e9b1d250907e33d17466c9a6",
       "sourceName": "contracts/HookUpgradeableBeacon.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -2531,8 +1868,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookProtocol.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "0e8db8a653d41c089273dfb74f55af7b",
+      "lastModificationDate": 1695756576846,
+      "contentHash": "762f5b683c77540e0a0575bc1474d855",
       "sourceName": "contracts/HookProtocol.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -2609,8 +1946,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\HookCoveredCallFactory.sol": {
-      "lastModificationDate": 1695045001636,
-      "contentHash": "fcdaf0ae49e6a4d6ec16233a0daf78a6",
+      "lastModificationDate": 1695756576723,
+      "contentHash": "7cab37a7ae8757770aab091f905d4eed",
       "sourceName": "contracts/HookCoveredCallFactory.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -2651,8 +1988,8 @@
       ]
     },
     "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookCoveredCallFactory.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "5d334e2e3c78106cbbd0f4a3eee34cc3",
+      "lastModificationDate": 1695756576951,
+      "contentHash": "f5d67d41b9f03a53f41c9d45bd676429",
       "sourceName": "contracts/interfaces/IHookCoveredCallFactory.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -2683,80 +2020,6 @@
       ],
       "artifacts": [
         "IHookCoveredCallFactory"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\interfaces\\IHookERC20Vault.sol": {
-      "lastModificationDate": 1695045001645,
-      "contentHash": "ebccf4861d2e1dc6c0cb1da0fbf8706f",
-      "sourceName": "contracts/interfaces/IHookERC20Vault.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IHookVault.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IHookERC20Vault"
-      ]
-    },
-    "C:\\Users\\claud\\OneDrive\\Área de Trabalho\\katena\\contracts-examples\\hooks\\contracts\\lib\\Fonts.sol": {
-      "lastModificationDate": 1695211218335,
-      "contentHash": "a103b37d09acd16edaab4441d2cd817f",
-      "sourceName": "contracts/lib/Fonts.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "Font1",
-        "Font2",
-        "Font3"
       ]
     }
   }
