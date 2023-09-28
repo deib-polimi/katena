@@ -79,13 +79,14 @@ topology_template:
       - host: ganache
       - wallet: userWallet
       - upgradableBeacon: soloVaultBeacon
-      #- constructorCalls: multiVaultBeacon
+      - constructorCalls: multiVaultBeacon
       - constructorCalls: protocol
       properties:
         abi: "HookERC721VaultFactory"
         parameters:
-        - { get_attribute: [SELF, constructorCalls, contractAddress] } # protocol  address
-        - "0x1F6E5215D3DE35Dbaa2Fe0Ff61B7f8843b53b678" # multi vault
+        - { get_attribute: [SELF, constructorCalls,0, contractAddress] } # protocol  address
+        - { get_attribute: [SELF, constructorCalls,1, contractAddress] } # multi vault
+         #- "0x1F6E5215D3DE35Dbaa2Fe0Ff61B7f8843b53b678" 
         - { get_attribute: [SELF, upgradableBeacon, contractAddress] }
     font1:
       type: katena.nodes.library

@@ -58,5 +58,4 @@ contract BeaconProxy is Proxy, ERC1967Upgrade {
     function _setBeacon(address beacon, bytes memory data) internal virtual {
         _upgradeBeaconToAndCall(beacon, data, false);
     }
-    
 }
