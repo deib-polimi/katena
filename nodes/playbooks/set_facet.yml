@@ -1,7 +1,0 @@
-- hosts: all
-  tasks:
-  - name: install web3
-    pip: 
-      name: web3==5.28.0
-  - name: set address
-    command: python scripts/set_facet.py --network {{ network }} --cutAbi {{ cut_abi }} --cutBytecode {{ cut_bytecode }} --diamondPrivateKey {{ diamond_private_key }} --diamondAddress {{ diamond_address }} --facetAddress {{ facet_address }} --facetBytecode {{ facet_bytecode }} --facetAbi {{ facet_abi }} 

@@ -1,9 +1,0 @@
-- hosts: all
-  tasks:
-  - name: deploy
-    command: python scripts/load_bytecode.py --abi {{ abi }}
-    register: contract_bytecode
-  - name: Set attributes
-    set_stats:
-      data:
-        contract_bytecode: "{{ contract_bytecode.stdout }}"

@@ -21,11 +21,17 @@ parser.add_argument('--directory', default='', type=str)
 args = parser.parse_args()
 
 yaml_files = get_files_in_directory(args.directory, 'yaml')
-js_files  = get_files_in_directory(args.directory, 'js') + get_files_in_directory(args.directory, 'ts')
+js_files  = get_files_in_directory(args.directory, 'js')
+ts_files =  get_files_in_directory(args.directory, 'ts')
 
 yaml_tokens = sum([get_tokens_in_file(f) for f in yaml_files])
 js_tokens = sum([get_tokens_in_file(f) for f in js_files])
+ts_tokens = sum([get_tokens_in_file(f) for f in ts_files])
 
-print(f'{args.directory}')
-print(f'YAML: {yaml_tokens}')
-print(f'JS: {js_tokens}')
+print(f'\n{args.directory}')
+if yaml_tokens > 0:
+    print(f'YAML: {yaml_tokens}')
+if js_tokens > 0:
+    print(f'JS: {js_tokens}')
+if ts_tokens > 0:
+    print(f'TS: {ts_tokens}')

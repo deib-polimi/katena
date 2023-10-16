@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+  - name: set address
+    command: python scripts/delete_facet.py --network {{ network }} --cutAbi {{ cut_abi }} --diamondPrivateKey {{ diamond_private_key }} --diamondAddress {{ diamond_address }} --facetAddress {{ facet_address }} --facetAbi {{ facet_abi }} 

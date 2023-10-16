@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - name: deploy
+    command: python scripts/deploy.py --network {{ network }} --bytecode {{ bytecode }} --contractAbi {{ abi }} --privateKey {{ privateKey }}
+    register: contract_address
+  - name: Set attributes
+    set_stats:
+      data:
+        contract_address: "{{ contract_address.stdout_lines[-1] }}"
